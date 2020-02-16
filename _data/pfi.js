@@ -469,7 +469,7 @@ function createCardColumn(item, brkColCls) {
     return '<div class="col-12 ' + brkColCls + '">' +  createItemCard(item) + '</div>';
 }
 
-function createAllItems(pages)  {
+function createCards(pages)  {
     var res = "";
     var items = pages.sub;
     for (var i = 0; i < items.length; i++) {
@@ -479,7 +479,7 @@ function createAllItems(pages)  {
 }
     
 function createSection(pages) {
-    return '<section class="pt-7 pb-12"><div class="container"><div class="row">' + createAllItems(pages) + '</div></div></section>';
+    return '<section class="pt-5 pb-3"><div class="container"><div class="row">' + createCards(pages) + '</div></div></section>';
 }
 
 function createCarousel(carId, carItems) {
@@ -700,7 +700,6 @@ return '<div class="modal fade" id="shopping-cart" tabindex="-1" role="dialog" a
 function getShopHeader() {
 return '<div class="container"> <div class="row py-1"> <div class="col-12"><div id="currencies" class="text-left float-left" style="font-size: 12px"><span data-currency="INR" id="currencies-inr">INR(&#8377;)</span><span data-currency="GBP" id="currencies-gbp">GBP(&pound;)</span> <span data-currency="EUR" id="currencies-eur">EUR(&euro;)</span> <span data-currency="USD" id="currencies-usd">USD(&dollar;)</span></div><div id="shop-cart-summary" class="text-right float-right" style="font-size: 12px"> <a id="sc-edit-id" class="disabled" aria-disabled="true" type="button" data-toggle="modal" data-target="#shopping-cart"> <i class="fa fa-shopping-cart"></i> (<span class="sc-badge-items">0</span>) <span class="sc-non-empty" style="display:none"> - </span> <span class="sc-currency-string sc-non-empty" style="display:none"><i class="fa fa-inr"></i></span> <span class="sc-total sc-non-empty" style="display:none">0</span> </a> <div class="item sc-item-list" style="display: none"> </div></div></div></div></div>';
 }
-
 
 module.exports = {
     createCarousel: createCarousel,
