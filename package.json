@@ -1,0 +1,23 @@
+{
+  "name": "premaflorenceisaac",
+  "version": "1.0.0",
+  "description": "website sources",
+  "main": ".eleventy.js",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.6.0"
+  },
+  "scripts": {
+    "test": "npx eleventy",
+    "jsBuild": "npx eleventy --input=./_includes/partials_html --output=./_includes/partials_js",
+    "ejsBuild": "npx eleventy --input=./partials_html --output=./partials"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^5.11.0",
+    "html-minifier": "^3.5.21",
+    "jquery": "^3.4.1",
+    "node-fetch": "^2.3.0",
+    "terser": "^3.11.0",
+    "uglify-js": "^3.4.9"
+  }
+}

@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <script>
+        $.get('https://openexchangerates.org/api/latest.json', {
+                app_id: '271b25d48cf4464f8c943c525591340d'
+            },
+            function(data) {
+                var outelt = $('#json-output');
+                outelt.empty();
+                outelt.text(JSON.stringify(
+                    getEffective(reBase(filterRates(data.rates), "INR"), "INR")
+                ));
+            });
+
+        var fxRates = ["AUD", "CAD", "CHF", "EUR", "GBP", "INR", "USD"];
+        var efxAdj = {
+            "AUD": 0.99,
+            "CAD": 0.99,
+            "CHF": 0.99,
+            "EUR": 0.99,
+            "GBP": 0.99,
+            "INR": 1,
+            "USD": 0.99
+        };
+
+        function filterRates(rates) {
+            var flt = {};
+            for (var i = 0; i < fxRates.length; i++) {
+                var cur = fxRates[i];
+                flt[cur] = rates[cur];
+            }
+            return flt;
+        }
+
+        function reBase(rates, base) {
+            var res = {};
+            var bfx = rates[base];
+            for (var cur in rates) {
+                if (rates.hasOwnProperty(cur)) {
+                    res[cur] = bfx / rates[cur];
+                }
+            }
+            return res;
+        }
+
+        function getEffective(rates, base) {
+            var res = {};
+            for (var cur in rates) {
+                if (rates.hasOwnProperty(cur)) {
+                    res[cur] = base === cur ? rates[cur] : efxAdj[cur] * rates[cur];
+                }
+            }
+            return res;
+        }
+
+    </script>
+    <quote id="json-output">
+    </quote>
+</body>
+
+</html>

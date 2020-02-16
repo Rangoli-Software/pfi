@@ -1,0 +1,58 @@
+---
+layout: shop
+title: Blog
+description: A blog about the atelier, the team, the process of creation, collaborations, clients etc.
+keywords: blog, what's new, ootd, collaborations, stories
+---
+<script>
+function createMegaMenuSection(json, mbcls) {
+    return '<div class="col-6 col-md">\
+    <div class="mb-5 font-weight-bold">' + json.text + '</div>'
+    + createLinkedList(json.sub, mbcls) + '</div>';
+}
+
+function createMegaMenuImage(item) {
+    return '<div class="col-4 d-none d-lg-block">\
+    <div class="card">\
+        <img class="card-img" src="' + item.imageURL + '" alt="...">\
+        <div class="card-img-overlay bg-dark-0 bg-hover align-items-center">\
+            <div class="text-center">\
+            <a class="btn btn-white stretched-link" href="' + item.url + '">'
+                + item.text  + '<i class="fe fe-arrow-right ml-2"></i></a>\
+            </div>\
+        </div>\
+    </div>\
+    </div>';
+}
+
+function createSqPanelImageList(panelNumArr) {
+    var res = [];
+    for (var i = 0; i < panelNumArr.length; i++) {
+        res.push({imageURL: "/tbc/sqIC/IC" + panelNumArr[i] + ".jpg"});
+    }
+    return res;
+}
+
+function createPanelCarousel() {
+    var panelNums = [545,548,549,552,565,571];
+    var panelImgs  =  createSqPanelImageList(panelNums);
+    return createCarousel("car-panels", panelImgs);
+}
+
+</script>
+<h1><%- locals.title %></h1>
+<section class="pt-7 pb-12">
+<p>A blog about the atelier, the team, the process of creation, collaborations, clients etc.</p>
+</section>
+<ul class="nav nav-tabs nav-justified">
+<script>
+    document.write(getTabItem("Atelier Tales", "atelier", getUrlVars()["t"] == "a" || getUrlVars()["t"] === undefined));
+    document.write(getTabItem("Origin", "origin", getUrlVars()["t"] == "o"));
+</script>
+</ul>
+<div class="tab-content">
+<script>
+    document.write(getTabContent(createSection(atelier), "atelier", getUrlVars()["t"] == "a" || getUrlVars()["t"] === undefined));
+    document.write(getTabContent(createSection(origin), "origin", getUrlVars()["t"] == "o"));
+</script>
+</div>

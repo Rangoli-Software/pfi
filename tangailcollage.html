@@ -1,0 +1,83 @@
+---
+layout: shop
+title: Tangail Art
+description: Collages created from my treasure-trove of vintage hand-woven Tangail sari borders
+keywords: vintage, fabric art, textile art, artwork, collage art, abstract art, modern art, quilting, patchwork, art collectors
+---
+<script type="text/javascript" src="/tbc/tbc20010900.js"></script>
+<script>
+    function createPanel(img, text, bgcolor, fgcolor) {
+        return '<div class="item" style="background-color: ' + bgcolor + '; padding-top: 2.5ex; padding-bottom: 1.5ex; border-width: thick; border-color: white">\
+    <div class="row">\
+        <div class="col-10 offset-1">\
+            <figure>\
+                    <img src="' + img + '" class="img-fluid center-block">\
+            </figure>\
+            <p style="color: ' + fgcolor + '; text-align: center">' + text + '</p>\
+        </div>\
+    </div></div>';
+    }
+
+    function createRowPanel(row) {
+        var bgcolor = row[2] === "Black" ? "black" : "white";
+        var fgcolor = row[2] === "Black" ? "white" : "black";
+        var text = "# " + row[0] + '<br>' + row[4] + " cm. x " + row[3] + " cm.";
+        if (row[5] === "") {
+            text += '<br><a href="/fabricartT.html">Available</a> to Collect'
+        } else {
+            text += (row[5] === "" ? "" : "<br>Collected in " + row[5]) +
+                (row[6] === "" ? "" : " by " + row[6]);
+        }
+        return createPanel(row[1], text, bgcolor, fgcolor);
+    }
+
+    function createAllPanels(ld) {
+        var ret = "";
+        var rowIdx = ld.length - 1;
+        var max2ColRows = Math.floor(ld.length / 2);
+        for (var i = 0; i < max2ColRows; i++) {
+            ret += createRowPanel(ld[rowIdx]);
+            ret += createRowPanel(ld[rowIdx - 1]);
+            rowIdx = rowIdx - 2;
+        }
+        if ( 0 <= rowIdx ) {
+            ret += createRowPanel(ld[rowIdx]);
+        }
+        return ret;
+    }
+</script>
+<h1>Tangail Art</h1>
+<div class="item">
+    <figure>
+        <img src="/fabricart/Collage02.jpg" class="img-fluid center-block">
+    </figure>
+    <p>In late 2016, I found a beautiful new way to use my <a href="/journey/treasuretrove.html"><strong>Treasure Trove</strong> of Tangail Borders</a>. I started creating numbered, one-of-a-kind art-pieces: FabricArt Collages! At the moment, we offer them as the chest panel of our <a href="/fabricartT.html"><strong>FabricArt</strong> T-Shirts</a>.</p>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <figure>
+            <img src="/fabricart/Collage03.jpg" class="img-fluid center-block">
+        </figure>
+        <p>I create each collage with the background color in mind. I start with a few hundred candidate borders (selected from thousands), playing with different hues and motifs. I fold and unfold, pleat and play, looking for a harmonious flow of color and form. I keep exploring alternatives until I am happy with the final composition.
+        </p>
+    </div>
+    <div class="col-sm-6">
+        <figure>
+            <img src="/fabricart/Collage01.jpg" class="img-fluid center-block">
+        </figure>
+        <p>I number and pin together the strips of folded fabric as I work and the finished piece is then stitched together. A thin layer of soft fusing is ironed onto the bottom of the collage for additional stability.
+        </p>
+    </div>
+</div>
+<div class="item">
+    <p>I create the collages using from 3 to 12 borders, but mostly they are assembled from 6 or 7. The panel is 11.5 to 12.5 cm. (4.53 to 4.92 in.) high when stitched, and from 25 to 35 cm (9.84 to 13.78 in.) wide.
+    </p>
+</div>
+<div class="item">
+    <p><strong>Photography by Mathilde Hauser</strong></p>
+</div>
+<h1 id="fullseries">The Series</h1>
+<p>To celebrate the 50th anniversary of Auroville, which coincided with the launch of this line, we decided to number the first collage 50 1, or 501. The sequence then continues roughly in the order that I created them.</p>
+<script>
+    document.write(createAllPanels(colListData));
+</script>

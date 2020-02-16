@@ -1,0 +1,31 @@
+---
+permalink: "<%- page.inputPath.substring(1) %>"
+---
+<!DOCTYPE html>
+<html lang="en">
+<% include partials/head %>
+<body>
+<% if ( locals.prerender ) { %>
+<%- pfi.getShopHeader() %>
+<%- pfi.pfiTopMenu(page.inputPath.substring(1)) %>
+<% } else { %>
+<script> document.write(getShopHeader()); </script>
+<script> document.write(pfiTopMenu(<%- '"' + page.inputPath.substring(1) + '"' %>)); </script>
+<% } %>
+<div class="container">
+<% if ( locals.prerender ) { %>
+<%- pfi.getShopTop() %>
+<% } else { %>
+<script> document.write(getShopTop()); </script>
+<% } %>
+<%- content %>
+</div>
+<% if ( locals.prerender ) { %>
+<%- pfi.botMenu(page.inputPath.substring(1)) %>
+<%- pfi.scriptSrcs() %>
+<% } else { %>
+<script> document.write(botMenu(<%- '"' + page.inputPath.substring(1) + '"' %>)); </script>
+<script> document.write(scriptSrcs()); </script>
+<% } %>
+</body>
+</html>
