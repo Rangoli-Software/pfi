@@ -320,8 +320,8 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
                 return selColour.find(':selected').text();
             },
             getSelectedSize: function() {
-                var selSize = $('#SizeSelect');
-                return selSize.find(':selected').text();
+                var selRadio = $("input[name='sizeRadio']:checked");
+                return selRadio.val();
             },
             setShop: function(shop) {
                 this.allCartC.setShop(shop);
@@ -466,11 +466,11 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
 </p>
 <form>
     <h1>The Panels</h1>
-    <div class="row">
+    <div class="row align-items-center">
         <div class="col-6 text-center">
             <div class="form-group">
-                <label>Size: </label>
-                <div class="mb-2">
+                <label for="SizeSelect">Size: </label>
+                <span id="SizeSelect" class="mb-2">
                 <div class="custom-control custom-control-inline custom-control-size mb-2">
                     <input type="radio" class="custom-control-input" name="sizeRadio" id="sizeRadioOne" value="S" onclick="onSelectionChange()">
                     <label class="custom-control-label" for="sizeRadioOne">S</label>
@@ -491,13 +491,13 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
                     <input type="radio" class="custom-control-input" name="sizeRadio" id="sizeRadio5" value="XXL" onclick="onSelectionChange()">
                     <label class="custom-control-label" for="sizeRadio5">XXL</label>
                 </div>
-                </div>
+                </span>
             </div>
         </div>
         <div class="col-6 text-center">
             <div class="form-group">
                 <label for="ColourSelect">Color: </label>
-                <select id="ColourSelect" onchange="onSelectionChange()">
+                <select id="ColourSelect" class="custom-select" style="width: auto;" onchange="onSelectionChange()">
                     <option>All</option>
                     <option selected="selected">Black</option>
                     <option>White</option>
