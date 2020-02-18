@@ -1,4 +1,16 @@
 <script type="text/javascript">
+function inches2cm (x) {
+    return (Math.round(10 * 2.54 * x) / 10).toFixed(0);
+}
+
+function cm2inches (x) {
+    return (Math.round(10 * x / 2.54) / 10).toFixed(0);
+}
+
+function identity (x) {
+    return x;
+}
+
 var TSHIRT_SKU = "AWTSHT1604Je";
 
 var sizes = ["S", "M", "L", "XL", "XXL"];
@@ -34,12 +46,13 @@ var dimensionsInches = {
 
 var dimensionWidths = [29, 35, 29];
 
-function createSizingTable(fn) {
+function createSizingTable(units) {
+        var fn = units == "in" ? identity : inches2cm;
         var rem = 100;
         for (var i = 0; i < dimensionWidths.length; i++) {
             rem -= dimensionWidths[i];
         }
-        var table = '<thead>\
+        var table = '<table class="table table-bordered table-sm table-hover mb-0 text-center"><caption><strong>Measurements (in ' + (units == "in" ? "inches" :  "cm") + ')</strong></caption><thead>\
                 <tr><td class="text-left" width="' + rem + '%"><strong>Size</strong></td>';
         for (var i = 0; i < dimensionWidths.length; i++) {
             table += '<td width="' + dimensionWidths[i] + '%"><strong>' + dimensionNames[i] + '</strong></td>';
@@ -58,6 +71,15 @@ function createSizingTable(fn) {
         table += '</tbody></table>';
         return table;
     }
+    
+function onUnitChange() {
+    $('#SizeTable').empty();
+    var selRadio = $("input[name='SizeChartUnits']:checked");
+    var units = selRadio.val();
+    var table = createSizingTable(units);
+    $(table).appendTo('#SizeTable');
+}
+
 var sizingData = {
     S: [27.0, 30.0],
     M: [29.0, 31.5],
@@ -458,14 +480,14 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
     <div class="col-md-6 offset-md-3">
     </div>
 </div>
-<h1>Buy Now</h1>
-    <p>These are the panels that are currrently available<strong><span class="align-top"><a href="#availability">*</a></span></strong>. The entire series, including the panels that have already been collected, can be viewed <a href="/tangailcollage.html#fullseries">here</a>. As new panels are created, they will be numbered and listed here for sale.</p>
+<h3>Buy Now</h3>
+    <p>These are the panels that are currrently available. The entire series, including the panels that have already been collected, can be viewed <a href="/tangailcollage.html#fullseries">here</a>. As new panels are created, they will be numbered and listed here for sale.</p>
 <p>Our unisex T-shirts are crew-neck and regular-fit, made of soft bio-washed, 100% cotton (160 gsm weight).
 </p>
-<p> Select a T-Shirt size (see the size chart <a href="#sizing">below</a> for dimensions) and colour to find what works for you. When you order your one-of-a-kind numbered collage, it will be stitched on to a T-shirt and shipped to you.
+<p> Select a T-Shirt size (see the size chart below for dimensions) and colour to find what works for you. When you order your one-of-a-kind numbered collage, it will be stitched on to a T-shirt and shipped to you.
 </p>
 <form>
-    <h1>The Panels</h1>
+    <h3>The Panels</h3>
     <div class="row align-items-center">
         <div class="col-6 text-center">
             <div class="form-group">
@@ -513,47 +535,73 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
         </script>
     </div>
 </form>
-<h1 id="sizing">Sizing</h1>
-<div class="row">
-    <div class="col-md-4 text-center">
-        <img src="/fabricart/TSizing1.jpg" class="img-fluid center-block" />
+<section class="pt-7"><div class="container"><div class="row"><div class="col-12">
+    <div class="nav nav-tabs nav-overflow justify-content-start justify-content-md-center border-bottom">
+        <a class="nav-link active" data-toggle="tab" href="#sizing">
+            Sizing
+        </a>
+        <a class="nav-link" data-toggle="tab" href="#care">
+            Care
+        </a>
+        <a class="nav-link" data-toggle="tab" href="#shipping">
+            Availability
+        </a>
     </div>
-    <div class="col-md-8 text-center">
-        <table class="table table-striped table-responsive text-center">
-            <caption><strong>Measurements (in inches)</strong></caption>
-            <script>
-                document.write(createSizingTable(function(x) {
-                    return x;
-                }))
-            </script>
-        </table>
-        <table class="table table-striped table-responsive text-center">
+    <div class="tab-content">
+
+    
+        <div class="tab-pane fade show active" id="sizing"><div class="item">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center py-5">
+                    <img src="/fabricart/TSizing1.jpg" class="img-fluid center-block"/>
+                </div>
+                <div class="col-md-8 text-center py-5">
+                    <div class="btn-group btn-group-toggle ml-auto py-5" data-toggle="buttons">
+                    <label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 active">
+                        <input type="radio" name="SizeChartUnits" value="in" onclick="onUnitChange()" checked>IN
+                    </label>
+                    <label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 ml-2">
+                        <input type="radio" name="SizeChartUnits" value="cm" onclick="onUnitChange()">CM
+                    </label>
+                    </div>
+
+                    <div id="SizeTable">
+                    <script>
+                        document.write(createSizingTable("in"));
+                    </script>
+                    </div>
+<!--        <table class="table table-striped table-responsive text-center">
             <caption><strong>Measurements (in cm.)</strong></caption>
             <script>
                 document.write(createSizingTable(function(x) {
-                    return (Math.round(10 * 2.54 * x) / 10).toFixed(0);
+                    return inches2cm(x);
                 }))
             </script>
-        </table>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4 text-center">
-        <img src="/fabricart/TPanel1.jpg" class="img-fluid center-block" />
-    </div>
-    <div class="col-md-8 align-self-center">
-        <p>
-            The dimensions of each collage are fixed at the time I create it. Depending on the size of the T-Shirt and the size of the collage, the visual area covered by the panel will seem different. For each T-shirt size, we suggest the panels that are visually appropriate.
-        </p>
-    </div>
-</div>
-<h1>FAQ</h1>
+        </table>-->
+                </div>
+            </div>
+
+        </div></div>
+
+        <div class="tab-pane fade" id="care"><div class="item py-5">
+
 <p>Each border in every panel has been individually tested for colour-fastness and colour-fixed in some cases, so there will be no colour-bleeding with normal washing.</p>
 <p>For wash-care and other pre-purchase information take a look at our <a href="shopfaq.html">Shop FAQ</a>.</p>
-<h1>Corporate Gifts</h1>
-<p>These panels make fantastic corporate gifts. Please email us if you would like to order a batch of panels for corporate gifting to team members or executives. If you like, we can also attach them to your corporate branded t-shirts.</p>
-<h1 id="availability"><strong><span class="align-top">*</span></strong>Availability</h1>
+
+        </div></div>
+
+        <div class="tab-pane fade" id="shipping"><div class="item py-5">
+
 <p>Since our garments are on sale in several physical locations in addition to the website, there is a small chance that the one-of-a-kind item that you have selected has already been sold. In this case, we will let you select another item of the same kind, or refund your purchase price, as you prefer.</p>
+
+        </div></div>
+
+    </div>
+</div></div></div></section>
+<section>
+<h3>Corporate Gifts</h3>
+<p>These panels make fantastic corporate gifts. Please email us if you would like to order a batch of panels for corporate gifting to team members or executives. If you like, we can also attach them to your corporate branded t-shirts.</p>
+</section>
 <div class="item">
     <p><strong>Models: Shajin Kalathingal, Gulshan Gupta, Kartik Samuel Isaac. Photography by Mathilde Hauser</strong></p>
 </div>
