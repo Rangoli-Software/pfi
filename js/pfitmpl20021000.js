@@ -56,7 +56,7 @@ var ramp = {
 };
 
 var lotm = {
-    title: "Look!",
+    title: "Prema's Look",
     url: "/look.html",
     lede: '<strong><a href="/look.html">Look-of-the-Moment</a></strong> - Off-shoulder knit top with one of my signature Artwear skirts - The Naksha.',
     imageURL: "/g/look/nkshofstp.jpg",
@@ -134,6 +134,21 @@ var origin = {
         ]
     };
 
+function createSqPanelImageList(panelNumArr) {
+    var res = [];
+    for (var i = 0; i < panelNumArr.length; i++) {
+        res.push({imageURL: "/tbc/sqIC/IC" + panelNumArr[i] + ".jpg"});
+    }
+    return res;
+}
+
+
+function createPanelCarousel() {
+    var panelNums = [545,548,549,552,565,571];
+    var panelImgs  =  createSqPanelImageList(panelNums);
+    return createCarousel("car-panels", panelImgs);
+}
+
 var atelier = {
     title: "Atelier Tales",
     url: "/blog.html?t=a",
@@ -202,7 +217,7 @@ var atelier = {
 };
 
 var clients = {
-    title: "Happy 😃 Clients",
+    title: "Happy Clients",
     url: "/about.html?a=c&#about-tabs",
     sub: [
         {
@@ -345,7 +360,7 @@ function createBreadCrumbLevels(level1, level2) {
 }
 
 function createStyledList(jsonArray) {
-var res = '<ul class="list-styled mb7 font-size-sm">';
+var res = '<ul class="list-styled mb-6 font-size-sm">';
     for (var i = 0; i < jsonArray.length; i++ ) {
         var item = jsonArray[ i ];
         res += '<li class="list-styled-item"><a class="list-styled-link" href="' + item.url + '">' + item.title + '</a></li>';
@@ -374,40 +389,81 @@ function createDropdownColumn(itemLists, colCls){
 }
 
 function createDropdownCard(cols) {
-    var  res  = '<div class="dropdown-menu" style="min-width: 420px;"><div class="card card-lg"><div class="card-body"><div class="row">';
+    var  res  = '<div class="card card-lg"><div class="card-body"><div class="row">';
     for (var i = 0; i < cols.length; i++) {
         res += cols[ i ];
     }
-    res += '</div></div></div></div>';
+    res += '</div></div></div>';
     return res;
 }
 
-function createLookDD () {
-    var col1 = createDropdownColumn([atelier], "col-6");
-    var col2 = createDropdownColumn([origin], "col-6");
-    return createDropdownCard([col1, col2]);
+function createMinWidthDDCard(cols, width, alignRight) {
+    var  res  = '<div class="dropdown-menu' + (alignRight ? " dropdown-menu-right" : "") + '" style="min-width: ' + width +';">';
+    res += createDropdownCard(cols);
+    res += '</div>';
+    return res;
+}
+
+function createFullWidthDDCard(cols)  {
+    var  res  = '<div class="dropdown-menu w-100"><div class="container">';
+    res += createDropdownCard(cols);
+    res += '</div></div>';
+    return res;    
+}
+
+function createMegaMenuSection(item) {
+    return '<div class="col-6 col-md">\
+    <div class="mb-5 font-weight-bold">' + item.title + '</div>'
+    + createStyledList(item.sub) + '</div>';
+}
+
+function createMegaMenuImage(item) {
+    return '<div class="col-4 d-none d-lg-block">\
+    <div class="card">\
+        <img class="card-img" src="' + item.imageURL + '" alt="...">\
+        <div class="card-img-overlay bg-dark-0 bg-hover align-items-center">\
+            <div class="text-center">\
+            <a class="btn btn-white stretched-link" href="' + item.url + '">'
+                + item.title  + '<i class="fe fe-arrow-right ml-2"></i></a>\
+            </div>\
+        </div>\
+    </div>\
+    </div>';
+}
+
+function createShopMM() {
+    return "";
+}
+
+function createLookMM() {
+    var col1 = createDropdownColumn([lotm], "col-6 col-md");
+    var col2 = createDropdownColumn([ramp], "col-6 col-md");
+    var col3 = createDropdownColumn([moods], "col-6 col-md");
+    var col4 = createDropdownColumn([archives], "col-6 col-md");
+    return createFullWidthDDCard([col1, col2, col3, col4]);
 }
 
 function createBlogDD () {
     var col1 = createDropdownColumn([atelier], "col-6");
     var col2 = createDropdownColumn([origin], "col-6");
-    return createDropdownCard([col1, col2]);
+    return createMinWidthDDCard([col1, col2], "360px", true);
 }
 
 function createAboutDD () {
     var col1 = createDropdownColumn([about, clients], "col-6");
     var col2 = createDropdownColumn([buzz], "col-6");
-    return createDropdownCard([col1, col2]);
+    return createMinWidthDDCard([col1, col2], "330px", true);
 }
 
-function createDropDowns() {
+function createTopNav() {
     var res = '<ul class="nav nav-justified">';
     
     res += '<li class="nav-item dropdown"><a class="nav-link" data-toggle="dropdown" href="#">Shop</a>';
+    res += createShopMM();
     res += '</li>';
 
-    res += '<li class="nav-item dropdown"><a class="nav-link" data-toggle="dropdown" href="#">Look!</a>';
-    res += createLookDD();
+    res += '<li class="nav-item dropdown position-static"><a class="nav-link" data-toggle="dropdown" href="#">Look</a>'
+    res += createLookMM();
     res += '</li>';
 
     res += '<li class="nav-item dropdown"><a class="nav-link" data-toggle="dropdown" href="#">Blog</a>';
@@ -421,6 +477,7 @@ function createDropDowns() {
     res += '</ul>';
     return res;
 }
+
 
 function pfisig() {
     return '<strong>Prema Florence Isaac</strong>';
@@ -446,6 +503,23 @@ function getTabContent(content, id, isActive) {
         + '</div>';
 }
 
+function createFeatureItemCard(item, section) {
+    var res = '<div class="card mb-7 mb-md-0">';
+    if ( item.imageURL !== undefined) {
+        res += '<div class="embed-responsive embed-responsive-1by1">';
+        res += '<img src="' + item.imageURL + '" alt="' + item.title  + '" class="embed-responsive-item" style="object-fit: cover">';
+        res += '</div>';
+    } else if (item.imageHTML !== undefined ) {
+        res += item.imageHTML;
+    }
+    res += '<div class="card-body px-0 py-7">';
+    res += '<div class="font-size-xs"><a class="text-muted" href="'  + section.url + '">' + section.title +'</a></div>';
+    res += '<h5 class="card-title mb-3">' + item.title + '<a  href="' + item.url + '"><i class="fe fe-arrow-right ml-2"></i></a></h5>';
+    res += '<p class="mb-2">' + item.lede + '</p>';
+    res += '</div></div>';
+    return res;
+}
+
 function createItemCard(item) {
     var res = '<div class="card mb-7 mb-md-0">';
     if ( item.badge !== undefined ) {
@@ -464,22 +538,25 @@ function createItemCard(item) {
     res += '</div></div>';
     return res;
 }
-    
-function createCardColumn(item, brkColCls) {
-    return '<div class="col-12 ' + brkColCls + '">' +  createItemCard(item) + '</div>';
-}
 
-function createCards(pages)  {
-    var res = "";
-    var items = pages.sub;
-    for (var i = 0; i < items.length; i++) {
-        res += createCardColumn(items[ i ], "col-md-4");
+function createSection(pages) {
+    var brkColCls = "col-md-4";
+    var res = '<section class="pt-5 pb-3"><div class="container"><div class="row">';
+    for (var i = 0; i < pages.sub.length; i++) {
+        res += '<div class="col-12 ' + brkColCls + '">' +  createItemCard(pages.sub[ i ]) + '</div>';
     }
+    res += '</div></div></section>';
     return res;
 }
-    
-function createSection(pages) {
-    return '<section class="pt-5 pb-3"><div class="container"><div class="row">' + createCards(pages) + '</div></div></section>';
+
+function createRelated(header, items, sections) {
+    var brkColCls = "col-md-4";
+    var res = '<section class="pt-5 pb-3"><div class="container"><div class="row"><h5>' + header + '</h5>';
+    for (var i = 0; i < items.length; i++) {
+        res += '<div class="col-12 ' + brkColCls + '">' +  createFeatureItemCard(items[ i ], sections[ i ]) + '</div>';
+    }
+    res += '</div></div></section>';
+    return res;
 }
 
 function createCarousel(carId, carItems) {
@@ -594,13 +671,13 @@ function pfiTopMenu (location) {
     </div>'+ '<div class="container">'
     +
 '<div><a href="/index.html"><img src="/g/pfilogo1710.svg" alt="Prema Florence Isaac" class="img-fluid center-block" width="1000px"></a></div>'
-        + createDropDowns() + '</div>' + createBreadCrumb(location);
+        + createTopNav() + '</div>' + createBreadCrumb(location);
 }
 
 function kimTopMenu (location) {
     return shareInit() +
         '<div class="container"><div class="item text-center"><div style="padding-top: 1ex; padding-bottom: 1ex"><a href="/kidinmi.html"><img src="/g/kimlogo.svg" alt="KidInMi" class="img-fluid center-block" width="300px"></a></div></div>'
-        + createDropDowns() + '</div>';
+        + createTopNav() + '</div>';
 }
 
 function creatFBShareBtn(location) {
@@ -631,20 +708,20 @@ function createMCSignup() {
 }
 
 function createShareBar(location) {
-    return '<div class="container"><div class="row" style="padding-top: 1.5ex; padding-bottom: 0.5ex">\
-        <div class="col text-center">'
-        + creatFBShareBtn(location) + 
-        '</div>\
-        <div class="col text-center">\
-            <a data-pin-do="buttonBookmark" data-pin-tall="true" data-pin-round="true" href="https://www.pinterest.com/pin/create/button/"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_32.png"/>Save</a>\
-        </div>\
-        <div class="col text-center">'
-           + creatTweetBtn(location) +
-        '</div>\
-        <div class="col text-center">'
-           + createINBtn(location) +
-        '</div>\
-    </div></div>';
+    return '<div class="container mb-5"><div style="display: flex; justify-content: space-between;">'
+        + '<span>'  
+        + creatFBShareBtn(location)
+        + '</span>'
+        + '<span>'  
+        + '<a data-pin-do="buttonBookmark" data-pin-tall="true" data-pin-round="true" href="https://www.pinterest.com/pin/create/button/"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_32.png"/>Save</a>'
+        + '</span>'
+        + '<span>'  
+           + creatTweetBtn(location)
+        + '</span>'
+        + '<span>'  
+           + createINBtn(location) 
+        + '</span>'
+        + '</div></div>';
 }
 
 function botNav(botImgTag, location) {
@@ -664,8 +741,8 @@ function botNav(botImgTag, location) {
         <center><div class="row" style="padding-bottom: 1em">\
             <div class="col-sm-6">\
             <p>\
-        EMail: <a href="mailto:premaflorenceisaac@gmail.com">prema.florence.isaac@gmail.com</a><br>\
-        WhatsApp: <a href="tel:+919443362528">+919443362528</a>\
+        EMail <i class="fa fa-envelope-o"></i>: <a href="mailto:premaflorenceisaac@gmail.com">prema.florence.isaac@gmail.com</a><br>\
+        WhatsApp <i class="fa fa-whatsapp"></i>: <a href="tel:+919443362528">+919443362528</a>\
             </p>\
             </div>\
             <div class="col-sm-6">\
@@ -676,7 +753,7 @@ function botNav(botImgTag, location) {
         <p class="text-center">'
     + botImgTag +
         '</p>\
-        <p class="text-right">&copy; 2015-2020 Prema Florence Isaac</p>\
+        <p class="text-right">&copy; 2015 - 2020 Prema Florence Isaac</p>\
     </div>'
     ;
 }
