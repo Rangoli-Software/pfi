@@ -18,31 +18,33 @@ var dimensionNames = ["Shoulder", "Chest", "Length"];
 
 var dimensionsInches = {
         S: [
-            [14, 15],
-            [38, 39],
-            [26, 27]
+            15.5,
+            38,
+            26
         ],
         M: [
-            [15, 16],
-            [40, 41],
-            [27, 28]
+            16.5,
+            40,
+            27
         ],
         L: [
-            [16, 17],
-            [42, 43],
-            [28, 29]
+            17.5,
+            42,
+            28
         ],
         XL: [
-            [17, 18],
-            [43, 44],
-            [29, 30]
+            18.5,
+            44,
+            29
         ],
         XXL: [
-            [18, 19],
-            [45, 46],
-            [30, 31]
+            19.5,
+            46,
+            30
         ]
     };
+var dimensionVariationInches = 0.5;
+
 
 var dimensionWidths = [29, 35, 29];
 
@@ -52,7 +54,8 @@ function createSizingTable(units) {
         for (var i = 0; i < dimensionWidths.length; i++) {
             rem -= dimensionWidths[i];
         }
-        var table = '<table class="table table-bordered table-sm table-hover mb-0 text-center"><caption><strong>Measurements (in ' + (units == "in" ? "inches" :  "cm") + ')</strong></caption><thead>\
+        var unTxt = (units == "in" ? " inches" :  "  cm")
+        var table = '<div class="table-responsive"><table class="dim-table table table-bordered table-hover table-sm mb-0 text-center" style="padding: 6px;"><caption><strong>Measurements (in' + unTxt + ')</strong><br>Variation can be up to +/- ' + fn(dimensionVariationInches) + unTxt + '</caption><thead>\
                 <tr><td class="text-left" width="' + rem + '%"><strong>Size</strong></td>';
         for (var i = 0; i < dimensionWidths.length; i++) {
             table += '<td width="' + dimensionWidths[i] + '%"><strong>' + dimensionNames[i] + '</strong></td>';
@@ -64,11 +67,11 @@ function createSizingTable(units) {
             table += '<tr><td class="text-left">' + size + '</td>';
             for (var j = 0; j < dimensionNames.length; j++) {
                 subdim = dims[j];
-                table += '<td>' + fn(subdim[0]) + " - " + fn(subdim[1]) + '</td>';
+                table += '<td>' + fn(subdim) + '</td>';
             }
             table += '</tr>'
         }
-        table += '</tbody></table>';
+        table += '</tbody></table></div>';
         return table;
     }
     
@@ -400,9 +403,9 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
     }
 
 </script>
-<h1>
-    <%- title %>
-</h1>
+<h3>
+    FabricArt T
+</h3>
 <div class="item">
     <figure>
         <img src="/fabricart/TShirtColl.jpg" class="figure-img img-fluid center-block" />
@@ -480,14 +483,14 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
     <div class="col-md-6 offset-md-3">
     </div>
 </div>
-<h3>Buy Now</h3>
+<h6>Buy Now</h6>
     <p>These are the panels that are currrently available. The entire series, including the panels that have already been collected, can be viewed <a href="/tangailcollage.html#fullseries">here</a>. As new panels are created, they will be numbered and listed here for sale.</p>
 <p>Our unisex T-shirts are crew-neck and regular-fit, made of soft bio-washed, 100% cotton (160 gsm weight).
 </p>
 <p> Select a T-Shirt size (see the size chart below for dimensions) and colour to find what works for you. When you order your one-of-a-kind numbered collage, it will be stitched on to a T-shirt and shipped to you.
 </p>
 <form>
-    <h3>The Panels</h3>
+    <h6>The Panels</h6>
     <div class="row align-items-center">
         <div class="col-6 text-center">
             <div class="form-group">
@@ -570,14 +573,6 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
                         document.write(createSizingTable("in"));
                     </script>
                     </div>
-<!--        <table class="table table-striped table-responsive text-center">
-            <caption><strong>Measurements (in cm.)</strong></caption>
-            <script>
-                document.write(createSizingTable(function(x) {
-                    return inches2cm(x);
-                }))
-            </script>
-        </table>-->
                 </div>
             </div>
 
@@ -599,9 +594,12 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
     </div>
 </div></div></div></section>
 <section>
-<h3>Corporate Gifts</h3>
+<h6>Corporate Gifts</h6>
 <p>These panels make fantastic corporate gifts. Please email us if you would like to order a batch of panels for corporate gifting to team members or executives. If you like, we can also attach them to your corporate branded t-shirts.</p>
 </section>
 <div class="item">
     <p><strong>Models: Shajin Kalathingal, Gulshan Gupta, Kartik Samuel Isaac. Photography by Mathilde Hauser</strong></p>
 </div>
+<script>
+    document.write(createFeatures("Featured Stories"));
+</script>

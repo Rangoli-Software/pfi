@@ -134,21 +134,6 @@ var origin = {
         ]
     };
 
-function createSqPanelImageList(panelNumArr) {
-    var res = [];
-    for (var i = 0; i < panelNumArr.length; i++) {
-        res.push({imageURL: "/tbc/sqIC/IC" + panelNumArr[i] + ".jpg"});
-    }
-    return res;
-}
-
-
-function createPanelCarousel() {
-    var panelNums = [545,548,549,552,565,571];
-    var panelImgs  =  createSqPanelImageList(panelNums);
-    return createCarousel("car-panels", panelImgs);
-}
-
 var atelier = {
     title: "Atelier Tales",
     url: "/blog.html?t=a",
@@ -334,6 +319,39 @@ var siteMap = [
     buzz
 ];
 
+function createSqPanelImageList(panelNumArr) {
+    var res = [];
+    for (var i = 0; i < panelNumArr.length; i++) {
+        res.push({imageURL: "/tbc/sqIC/IC" + panelNumArr[i] + ".jpg"});
+    }
+    return res;
+}
+
+
+function createPanelCarousel() {
+    var panelNums = [545,548,549,552,565,571];
+    var panelImgs  =  createSqPanelImageList(panelNums);
+    return createCarousel("car-panels", panelImgs);
+}
+
+function selectFeature(section) {
+    var len = section.sub.length;
+    var rndI = Math.floor(Math.random() * len);
+    return section.sub[ rndI ];
+}
+
+function selectFeatures(sections) {
+    var items = [];
+    var pars = [];
+    for (var i = 0; i < sections.length; i++ ) {
+        var sec = sections[ i ];
+        var sel = selectFeature(sec);
+        items.push(sel);
+        pars.push(sec);
+    }
+    return [items, pars];
+}
+
 function createBreadCrumb(location) {
     var path = location;
     for (var i = 0; i < siteMap.length; i++) {
@@ -456,7 +474,7 @@ function createAboutDD () {
 }
 
 function createTopNav() {
-    var res = '<ul class="nav nav-justified">';
+    var res = '<ul class="nav nav-justified pt-0 pb-1">';
     
     res += '<li class="nav-item dropdown"><a class="nav-link" data-toggle="dropdown" href="#">Shop</a>';
     res += createShopMM();
@@ -504,7 +522,7 @@ function getTabContent(content, id, isActive) {
 }
 
 function createFeatureItemCard(item, section) {
-    var res = '<div class="card mb-7 mb-md-0">';
+    var res = '<div class="card mb-2">';
     if ( item.imageURL !== undefined) {
         res += '<div class="embed-responsive embed-responsive-1by1">';
         res += '<img src="' + item.imageURL + '" alt="' + item.title  + '" class="embed-responsive-item" style="object-fit: cover">';
@@ -512,16 +530,16 @@ function createFeatureItemCard(item, section) {
     } else if (item.imageHTML !== undefined ) {
         res += item.imageHTML;
     }
-    res += '<div class="card-body px-0 py-7">';
-    res += '<div class="font-size-xs"><a class="text-muted" href="'  + section.url + '">' + section.title +'</a></div>';
-    res += '<h5 class="card-title mb-3">' + item.title + '<a  href="' + item.url + '"><i class="fe fe-arrow-right ml-2"></i></a></h5>';
-    res += '<p class="mb-2">' + item.lede + '</p>';
+    res += '<div class="card-body px-0 pt-6 pb-4">';
+    res += '<div class="card-subtitle mb-1"><a class="text-muted" href="'  + section.url + '">' + section.title +'</a></div>';
+    res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"><i class="fe fe-arrow-right ml-2"></i></a></h6>';
+    res += '<p class="mb-1">' + item.lede + '</p>';
     res += '</div></div>';
     return res;
 }
 
 function createItemCard(item) {
-    var res = '<div class="card mb-7 mb-md-0">';
+    var res = '<div class="card mb-2">';
     if ( item.badge !== undefined ) {
         res += '<div class="badge badge-white card-badge card-badge-left text-uppercase">' + item.badge + '</div>';
     }
@@ -532,9 +550,9 @@ function createItemCard(item) {
     } else if (item.imageHTML !== undefined ) {
         res += item.imageHTML;
     }
-    res += '<div class="card-body px-0 py-7">';
-    res += '<h5 class="card-title mb-3">' + item.title + '<a  href="' + item.url + '"><i class="fe fe-arrow-right ml-2"></i></a></h5>';
-    res += '<p class="mb-2">' + item.lede + '</p>';
+    res += '<div class="card-body px-0 pt-6 pb-4">';
+    res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"><i class="fe fe-arrow-right ml-2"></i></a></h6>';
+    res += '<p class="mb-1">' + item.lede + '</p>';
     res += '</div></div>';
     return res;
 }
@@ -551,12 +569,17 @@ function createSection(pages) {
 
 function createRelated(header, items, sections) {
     var brkColCls = "col-md-4";
-    var res = '<section class="pt-5 pb-3"><div class="container"><div class="row"><h5>' + header + '</h5>';
+    var res = '<h5>' + header + '</h5><section class="pt-4"><div class="container"><div class="row">';
     for (var i = 0; i < items.length; i++) {
         res += '<div class="col-12 ' + brkColCls + '">' +  createFeatureItemCard(items[ i ], sections[ i ]) + '</div>';
     }
     res += '</div></div></section>';
     return res;
+}
+
+function createFeatures(header) {
+    var res = selectFeatures([atelier, origin, moods]);
+    return createRelated(header, res[0], res[1]);
 }
 
 function createCarousel(carId, carItems) {
@@ -666,11 +689,11 @@ function twitterShareInit() {
 
 function pfiTopMenu (location) {
     return shareInit() +
-        '<div class="rwell">\
-            <p class="text-center"><small><strong>Distinctive Designs . Fusion Flair . Textile Treasures</strong></small></p>\
-    </div>'+ '<div class="container">'
+        '<div class="rwell text-center">\
+            <small><strong>Distinctive Designs . Fusion Flair . Textile Treasures</strong></small>\
+    </div>'+ '<div class="container p-0">'
     +
-'<div><a href="/index.html"><img src="/g/pfilogo1710.svg" alt="Prema Florence Isaac" class="img-fluid center-block" width="1000px"></a></div>'
+'<div class="text-center px-3 pt-3 pb-2"><a href="/index.html"><img src="/g/pfilogo2002.svg" alt="Prema Florence Isaac" class="img-fluid" width="1000px"></a></div>'
         + createTopNav() + '</div>' + createBreadCrumb(location);
 }
 
@@ -729,26 +752,18 @@ function botNav(botImgTag, location) {
     '<div class="rwell">\
             <p class="text-center"><strong>Light . Beauty . Freedom</strong></p>\
     </div>\
-    <div class="container-fluid">\
-        <center><div class="row" style="padding-bottom: 1em">\
+    <div class="container">\
+        <div class="pb-2"><center><div class="row">\
             <div class="col-sm-6">\
-        Instagram <i class="fa fa-instagram"></i>: <a href="https://www.instagram.com/_prema.florence.isaac_/">@_prema.florence.isaac_</a>\
-            </div>\
-            <div class="col-sm-6">\
-        Facebook <i class="fa fa-facebook-square"></i>: <a href="https://www.facebook.com/rangolibyprema">@rangolibyprema</a>\
-            </div>\
-        </div></center>\
-        <center><div class="row" style="padding-bottom: 1em">\
-            <div class="col-sm-6">\
-            <p>\
-        EMail <i class="fa fa-envelope-o"></i>: <a href="mailto:premaflorenceisaac@gmail.com">prema.florence.isaac@gmail.com</a><br>\
+        Instagram <i class="fa fa-instagram"></i>: <a href="https://www.instagram.com/_prema.florence.isaac_/">@_prema.florence.isaac_</a><br>\
+        Facebook <i class="fa fa-facebook-square"></i>: <a href="https://www.facebook.com/rangolibyprema">@rangolibyprema</a><br>\
+        Mail <i class="fa fa-envelope-o"></i>: <a href="mailto:premaflorenceisaac@gmail.com">prema.florence.isaac@gmail.com</a><br>\
         WhatsApp <i class="fa fa-whatsapp"></i>: <a href="tel:+919443362528">+919443362528</a>\
-            </p>\
             </div>\
             <div class="col-sm-6">\
-                    <i class="fa fa-map-marker"></i> <a href="https://goo.gl/maps/rszKWi3P7xM2">Rangoli Atelier<br>Aurosarjan Complex, Auroshilpam<br>Auroville 605101, Tamil Nadu, India</a>\
+                    Visit <i class="fa fa-map-marker"></i>: <a href="https://goo.gl/maps/rszKWi3P7xM2">Rangoli Atelier<br>Aurosarjan Complex, Auroshilpam<br>Auroville 605101<br>Tamil Nadu, India</a>\
             </div>\
-        </div></center>\
+        </div></center></div>\
         <center>Sign up for our (few-times-a-year) newsletter.<br>' + createMCSignup() + '</center>\
         <p class="text-center">'
     + botImgTag +
