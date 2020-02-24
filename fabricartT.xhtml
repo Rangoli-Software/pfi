@@ -493,31 +493,9 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
     <h6>The Panels</h6>
     <div class="row align-items-center">
         <div class="col-6 text-center">
-            <div class="form-group">
-                <label for="SizeSelect">Size: </label>
-                <span id="SizeSelect" class="mb-2">
-                <div class="custom-control custom-control-inline custom-control-size mb-2">
-                    <input type="radio" class="custom-control-input" name="sizeRadio" id="sizeRadioOne" value="S" onclick="onSelectionChange()">
-                    <label class="custom-control-label" for="sizeRadioOne">S</label>
-                </div>
-                <div class="custom-control custom-control-inline custom-control-size mb-2">
-                    <input type="radio" class="custom-control-input" name="sizeRadio" id="sizeRadioTwo" value="M" checked="checked" onclick="onSelectionChange()">
-                    <label class="custom-control-label" for="sizeRadioTwo">M</label>
-                </div>
-                <div class="custom-control custom-control-inline custom-control-size mb-2">
-                    <input type="radio" class="custom-control-input" name="sizeRadio" id="sizeRadioThree" value="L" onclick="onSelectionChange()">
-                    <label class="custom-control-label" for="sizeRadioThree">L</label>
-                </div>
-                <div class="custom-control custom-control-inline custom-control-size mb-2">
-                    <input type="radio" class="custom-control-input" name="sizeRadio" id="sizeRadio4" value="XL" onclick="onSelectionChange()">
-                    <label class="custom-control-label" for="sizeRadio4">XL</label>
-                </div>
-                <div class="custom-control custom-control-inline custom-control-size mb-2">
-                    <input type="radio" class="custom-control-input" name="sizeRadio" id="sizeRadio5" value="XXL" onclick="onSelectionChange()">
-                    <label class="custom-control-label" for="sizeRadio5">XXL</label>
-                </div>
-                </span>
-            </div>
+            <script>
+                document.write(createSizeOptions("sizeRadio", "Sizes", ["S",  "M", "L", "XL", "XXL"], 1));
+            </script>
         </div>
         <div class="col-6 text-center">
             <div class="form-group">
