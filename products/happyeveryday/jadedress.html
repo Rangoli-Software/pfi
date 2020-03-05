@@ -180,3 +180,57 @@ var angkorProd = getProductCatalog().getProduct(angkor.SKU);
 </div>
 </div>
 </section>
+<section class="pt-7"><div class="container"><div class="row"><div class="col-12">
+    <div class="nav nav-tabs nav-overflow justify-content-start justify-content-md-center border-bottom">
+        <a class="nav-link active" data-toggle="tab" href="#description">
+            Description
+        </a>
+        <a class="nav-link" data-toggle="tab" href="#features">
+            Features
+        </a>
+        <a class="nav-link" data-toggle="tab" href="#shipping">
+            Shipping
+        </a>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="description"><div class="item py-5">
+
+<p>Each border in every panel has been individually tested for colour-fastness and colour-fixed in some cases, so there will be no colour-bleeding with normal washing.</p>
+<p>For wash-care and other pre-purchase information take a look at our <a href="shopfaq.html">Shop FAQ</a>.</p>
+
+        </div></div>
+
+        <div class="tab-pane fade" id="features"><div class="item">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center py-5">
+                    <img src="/fabricart/TSizing1.jpg" class="img-fluid center-block"/>
+                </div>
+                <div class="col-md-8 text-center py-5">
+                    <div class="btn-group btn-group-toggle ml-auto py-5" data-toggle="buttons">
+                    <label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 active">
+                        <input type="radio" name="SizeChartUnits" value="in" onclick="onUnitChange()" checked>IN
+                    </label>
+                    <label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 ml-2">
+                        <input type="radio" name="SizeChartUnits" value="cm" onclick="onUnitChange()">CM
+                    </label>
+                    </div>
+
+                    <div id="SizeTable">
+                    <script>
+                        document.write(createSizingTable("in"));
+                    </script>
+                    </div>
+                </div>
+            </div>
+
+        </div></div>
+
+        <div class="tab-pane fade" id="shipping"><div class="item py-5">
+
+<p>Since our garments are on sale in several physical locations in addition to the website, there is a small chance that the one-of-a-kind item that you have selected has already been sold. In this case, we will let you select another item of the same kind, or refund your purchase price, as you prefer.</p>
+
+        </div></div>
+
+    </div>
+</div></div></div></section>
+
