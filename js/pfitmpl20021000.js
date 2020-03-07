@@ -1,8 +1,6 @@
 var moods = {
     title: "Moods",
-    url: "",
-    lede: "",
-    imageURL: "",
+    url: "/look.html?t=m",
     sub: [
         {
             title: "Summer Dreams",
@@ -30,49 +28,64 @@ var moods = {
         }
     ]
 };
-    
-var archives = {
-    title: "Look Back",
-    sub: [
-        {
-            title: "Look!",
-            url: "/look.html",
-            lede: '<strong><a href="/look.html">Look-of-the-Moment</a></strong> - Off-shoulder knit top with one of my signature Artwear skirts - The Naksha.',
-            imageURL: "/g/look/nkshofstp.jpg"
-        }
-    ]
-};
 
 var ramp = {
     title: "Ramp",
+    url: "/look.html?t=r",
     sub: [
-        {
-            title: "Look!",
-            url: "/look.html",
-            lede: '<strong><a href="/look.html">Look-of-the-Moment</a></strong> - Off-shoulder knit top with one of my signature Artwear skirts - The Naksha.',
-            imageURL: "/g/look/nkshofstp.jpg"
-        }
     ]
 };
 
 var lotm = {
-    title: "Prema's Look",
-    url: "/look.html",
-    lede: '<strong><a href="/look.html">Look-of-the-Moment</a></strong> - Off-shoulder knit top with one of my signature Artwear skirts - The Naksha.',
-    imageURL: "/g/look/nkshofstp.jpg",
+    title: "Look!",
+    url: "/look.html?t=p",
     sub: [
+        {
+            lede: 'Off-shoulder knit top with one of my signature Artwear skirts - The Naksha.',
+            imageURL: "/g/look/nkshofstp.jpg"
+        },
+        {
+            lede: 'New! Black &amp; Silver spandex creation with deep handwoven neckline.',
+            imageURL: "/g/look/bwspndnew.jpg"
+        },
+        {
+            lede: 'All set to trick-or-treat in Kitty Mask with hand-embroidered sequins, Peekaboo Top and Jeggings.',
+            imageURL: "/g/look/Halloween.jpg"
+        },
+        {
+            title: 'Look-of-the-Month',
+            url: '/look/lotm.html',
+            lede: 'How we started our impromptu Look-of-the-Moment series of images',
+            imageURL: "/g/look/look01.jpg"
+        }
     ]
 };
 
-var lines = {
+var archives = {
+    title: "Look Back",
+    url: "/blog.html?t=l",
+    sub: [
+        {
+            title: "Delta &amp; Naksha",
+            url: "/blog/lb/dnn.html",
+            lede: 'Older images of the Delta Dress and Naksha Scarf',
+            imageURL: "/blog/lb/lb3.jpg"
+        },
+        {
+            title: "Happy Everyday",
+            url: "/blog/lb/hed.html",
+            lede: 'Some interesting designs from early work on my Happy Everyday line.',
+            imageURL: "/blog/lb/hed2.jpg"
+        }
+    ]
 };
 
 var origin = {
-        title: "Origin",
+        title: "My Journey",
         url: "/blog.html?t=o",
         sub: [
             {
-                title: "My Journey",
+                title: "The Rangoli Story",
                 url: "/journey/myjourney.html",
                 lede: '<strong>The Rangoli Journey</strong> Over the years, I have told <a href="/journey/myjourney.html">this story in bits and pieces to clients and friends</a>, who kept asking why it was not on the website.....',
                 imageURL: "/journey/PremaStory.jpg"
@@ -202,9 +215,21 @@ var atelier = {
 };
 
 var clients = {
-    title: "Happy Clients",
+    title: "Real People",
     url: "/about.html?a=c&#about-tabs",
     sub: [
+        {
+            title: "Curators",
+            url: "/people/curators.html",
+            lede: "A trio of curators that like my designs",
+            imageURL: ""
+        },
+        {
+            title: "Ibiza Living!",
+            url: "/people/resortwear.html",
+            lede: "At a beach resort on Ibiza",
+            imageURL: ""
+        },
         {
             title: "Birthday Boy",
             url: "/blog/bdayboy.html",
@@ -222,19 +247,19 @@ var about = {
             title: "Essence",
             url: '/essence.html',
             lede: 'The Essence of my Way',
-            imageHTML: ''
+            imageURL: '/g/premabydinh.jpg'
         },
         {
             title: "Inspiration",
             url: '/beauty.html',
             lede: 'The Beauty of the Tangail Handloom Tradition',
-            imageHTML: ''
+            imageURL: '/g/w/IMG_0093.jpg'
         },
         {
             title: "Visit",
             url: '/visitus.html',
             lede: 'How to visit our locations',
-            imageHTML: ''
+            imageURL: ''
         }
     ]
 };
@@ -294,6 +319,61 @@ var buzz = {
         }
     ]
 };
+
+var shop = {
+        title: "Shop",
+        url: "/shop.html",
+        sub: [
+        {
+            title: "Woven Canvas",
+            url: "/fabricartT.html"
+        },
+        {
+            title: "Dip-Dye Scarf",
+            url: "/products/scarves/dipdye.html"
+        },
+        {
+            title: "Kagera Tie",
+            url: "/products/ties/kagera.html"
+        },
+        {
+            title: "Champagne Bottle Bag",
+            url: "/products/home/champagnebag.html"
+        }
+    ]
+};
+
+var faqs = {
+        title: "Shop FAQ",
+        url: "/shopfaq.html",
+        sub: [
+        {
+            title: "Colours",
+            url: "/shopfaq.html#colours"
+        },
+        {
+            title: "Availability",
+            url: "/shopfaq.html#availability"
+        },
+        {
+            title: "Sizing",
+            url: "/shopfaq.html#sizes"
+        },
+        {
+            title: "Care",
+            url: "/shopfaq.html#care"
+        },
+        {
+            title: "Shipping",
+            url: "/shopfaq.html#shipping"
+        },
+        {
+            title: "Customs &amp; Tariffs",
+            url: "/shopfaq.html#duties"
+        }
+    ]
+};
+
 
 var siteMap = [
     {
@@ -381,6 +461,9 @@ function createStyledList(jsonArray) {
 var res = '<ul class="list-styled mb-6 font-size-sm">';
     for (var i = 0; i < jsonArray.length; i++ ) {
         var item = jsonArray[ i ];
+        if  (item.title === undefined) {
+            continue;
+        }
         res += '<li class="list-styled-item"><a class="list-styled-link" href="' + item.url + '">' + item.title + '</a></li>';
     }
     res +=  '</ul>';
@@ -391,6 +474,9 @@ function createDropdownColumn(itemLists, colCls){
     var res = '<div class="' + colCls + '">';
     for( var i = 0; i < itemLists.length; i++ ) {
         var item = itemLists[ i ];
+        if (item.title === undefined) {
+            continue;
+        }
         res += '<div class="' + (i === 0 ? "mb-5" : "my-5") + ' font-weight-bold">';
         if  ( item.url !== undefined ) {
             res += '<a href="' + item.url + '">';
@@ -450,20 +536,19 @@ function createMegaMenuImage(item) {
 }
 
 function createShopMM() {
-    return "";
+    var col1 = createDropdownColumn([shop, faqs], "col-12");
+    return createMinWidthDDCard([col1], "200px", false);
 }
 
 function createLookMM() {
-    var col1 = createDropdownColumn([lotm], "col-6 col-md");
-    var col2 = createDropdownColumn([ramp], "col-6 col-md");
-    var col3 = createDropdownColumn([moods], "col-6 col-md");
-    var col4 = createDropdownColumn([archives], "col-6 col-md");
-    return createFullWidthDDCard([col1, col2, col3, col4]);
+    var col1 = createDropdownColumn([lotm, ramp], "col-6");
+    var col2 = createDropdownColumn([moods], "col-6");
+    return createMinWidthDDCard([col1, col2], "360px", false);
 }
 
 function createBlogDD () {
     var col1 = createDropdownColumn([atelier], "col-6");
-    var col2 = createDropdownColumn([origin], "col-6");
+    var col2 = createDropdownColumn([origin, archives], "col-6");
     return createMinWidthDDCard([col1, col2], "360px", true);
 }
 
@@ -480,7 +565,7 @@ function createTopNav() {
     res += createShopMM();
     res += '</li>';
 
-    res += '<li class="nav-item dropdown position-static"><a class="nav-link" data-toggle="dropdown" href="#">Look</a>'
+    res += '<li class="nav-item dropdown"><a class="nav-link" data-toggle="dropdown" href="#">Look</a>'
     res += createLookMM();
     res += '</li>';
 
@@ -551,7 +636,9 @@ function createItemCard(item) {
         res += item.imageHTML;
     }
     res += '<div class="card-body px-0 pt-6 pb-4">';
-    res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"><i class="fe fe-arrow-right ml-2"></i></a></h6>';
+    if  (item.url !== undefined) {
+        res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"><i class="fe fe-arrow-right ml-2"></i></a></h6>';
+    }
     res += '<p class="mb-1">' + item.lede + '</p>';
     res += '</div></div>';
     return res;
@@ -561,7 +648,9 @@ function createSection(pages) {
     var brkColCls = "col-md-4";
     var res = '<section class="pt-5 pb-3"><div class="container"><div class="row">';
     for (var i = 0; i < pages.sub.length; i++) {
-        res += '<div class="col-12 ' + brkColCls + '">' +  createItemCard(pages.sub[ i ]) + '</div>';
+        res += '<div class="col-12 ' + brkColCls + '">';
+        res += createItemCard(pages.sub[ i ]);
+        res += '</div>';
     }
     res += '</div></div></section>';
     return res;

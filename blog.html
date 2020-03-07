@@ -5,18 +5,17 @@ description: A blog about the atelier, the team, the process of creation, collab
 keywords: blog, what's new, ootd, collaborations, stories
 ---
 <h1><%- locals.title %></h1>
-<section class="pt-5 pb-3">
-<p>A blog about the atelier, the team, the process of creation, collaborations, clients etc.</p>
-</section>
 <ul class="nav nav-tabs nav-justified">
 <script>
     document.write(getTabItem("Atelier Tales", "atelier", getUrlVars()["t"] == "a" || getUrlVars()["t"] === undefined));
-    document.write(getTabItem("Origin", "origin", getUrlVars()["t"] == "o"));
+    document.write(getTabItem("My Journey", "origin", getUrlVars()["t"] == "o"));
+    document.write(getTabItem("Look Back", "lookback", getUrlVars()["t"] == "l"));
 </script>
 </ul>
 <div class="tab-content">
 <script>
     document.write(getTabContent(createSection(atelier), "atelier", getUrlVars()["t"] == "a" || getUrlVars()["t"] === undefined));
     document.write(getTabContent(createSection(origin), "origin", getUrlVars()["t"] == "o"));
+    document.write(getTabContent(createSection(archives), "lookback", getUrlVars()["t"] == "l"));
 </script>
 </div>
