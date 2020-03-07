@@ -1,8 +1,6 @@
 var moods = {
     title: "Moods",
-    url: "",
-    lede: "",
-    imageURL: "",
+    url: "/look.html?t=m",
     sub: [
         {
             title: "Summer Dreams",
@@ -30,49 +28,70 @@ var moods = {
         }
     ]
 };
-    
-var archives = {
-    title: "Look Back",
-    sub: [
-        {
-            title: "Look!",
-            url: "/look.html",
-            lede: '<strong><a href="/look.html">Look-of-the-Moment</a></strong> - Off-shoulder knit top with one of my signature Artwear skirts - The Naksha.',
-            imageURL: "/g/look/nkshofstp.jpg"
-        }
-    ]
-};
 
 var ramp = {
     title: "Ramp",
+    url: "/look.html?t=r",
     sub: [
         {
-            title: "Look!",
-            url: "/look.html",
-            lede: '<strong><a href="/look.html">Look-of-the-Moment</a></strong> - Off-shoulder knit top with one of my signature Artwear skirts - The Naksha.',
-            imageURL: "/g/look/nkshofstp.jpg"
+            title: 'Move~in',
+            url: '/look/wc.html',
+            lede: 'Casual Looks featuring my Woven Canvas Ts',
+            imageURL: "/look/ramp/wcw2.jpg"
         }
     ]
 };
 
 var lotm = {
     title: "Look!",
-    url: "/look.html",
-    lede: '<strong><a href="/look.html">Look-of-the-Moment</a></strong> - Off-shoulder knit top with one of my signature Artwear skirts - The Naksha.',
-    imageURL: "/g/look/nkshofstp.jpg",
+    url: "/look.html?t=p",
     sub: [
+        {
+            lede: 'Off-shoulder knit top with one of my signature Artwear skirts - The Naksha.',
+            imageURL: "/g/look/nkshofstp.jpg"
+        },
+        {
+            lede: 'New! Black &amp; Silver spandex creation with deep handwoven neckline.',
+            imageURL: "/g/look/bwspndnew.jpg"
+        },
+        {
+            lede: 'All set to trick-or-treat in Kitty Mask with hand-embroidered sequins, Peekaboo Top and Jeggings.',
+            imageURL: "/g/look/Halloween.jpg"
+        },
+        {
+            title: 'Look-of-the-Month',
+            url: '/look/lotm.html',
+            lede: 'How we started our impromptu Look-of-the-Moment series of images',
+            imageURL: "/g/look/look01.jpg"
+        }
     ]
 };
 
-var lines = {
+var archives = {
+    title: "Look Back",
+    url: "/blog.html?t=l",
+    sub: [
+        {
+            title: "Delta &amp; Naksha",
+            url: "/blog/lb/dnn.html",
+            lede: 'Older images of the Delta Dress and Naksha Scarf',
+            imageURL: "/blog/lb/lb3.jpg"
+        },
+        {
+            title: "Happy Everyday",
+            url: "/blog/lb/hed.html",
+            lede: 'Some interesting designs from early work on my Happy Everyday line.',
+            imageURL: "/blog/lb/hed2.jpg"
+        }
+    ]
 };
 
 var origin = {
-        title: "Origin",
+        title: "My Journey",
         url: "/blog.html?t=o",
         sub: [
             {
-                title: "My Journey",
+                title: "The Rangoli Story",
                 url: "/journey/myjourney.html",
                 lede: '<strong>The Rangoli Journey</strong> Over the years, I have told <a href="/journey/myjourney.html">this story in bits and pieces to clients and friends</a>, who kept asking why it was not on the website.....',
                 imageURL: "/journey/PremaStory.jpg"
@@ -163,6 +182,12 @@ var atelier = {
             imageURL: "/blog/oldtown.jpg"
         },
         {
+            title: "Vignettes",
+            url: "/atelier/vignettes.html",
+            lede: '',
+            imageURL: ""
+        },
+        {
             title: "Fashion Week",
             url: "/fw/fashionweek.html",
             lede: 'In September, I put together my first ever fashion show at <strong><a href="/fw/fashionweek.html">Fashion Week Pondicherry!</a></strong>',
@@ -202,9 +227,21 @@ var atelier = {
 };
 
 var clients = {
-    title: "Happy 😃 Clients",
+    title: "Real People",
     url: "/about.html?a=c&#about-tabs",
     sub: [
+        {
+            title: "Curators",
+            url: "/people/curators.html",
+            lede: "A trio of curators that like my designs",
+            imageURL: "/g/look/look02.jpg"
+        },
+        {
+            title: "Ibiza Living!",
+            url: "/people/resortwear.html",
+            lede: "At a beach resort on Ibiza",
+            imageURL: ""
+        },
         {
             title: "Birthday Boy",
             url: "/blog/bdayboy.html",
@@ -222,19 +259,19 @@ var about = {
             title: "Essence",
             url: '/essence.html',
             lede: 'The Essence of my Way',
-            imageHTML: ''
+            imageURL: '/g/premabydinh.jpg'
         },
         {
             title: "Inspiration",
             url: '/beauty.html',
             lede: 'The Beauty of the Tangail Handloom Tradition',
-            imageHTML: ''
+            imageURL: '/g/w/IMG_0093.jpg'
         },
         {
             title: "Visit",
             url: '/visitus.html',
             lede: 'How to visit our locations',
-            imageHTML: ''
+            imageURL: ''
         }
     ]
 };
@@ -295,6 +332,61 @@ var buzz = {
     ]
 };
 
+var shop = {
+        title: "Shop",
+        url: "/shop.html",
+        sub: [
+        {
+            title: "Woven Canvas",
+            url: "/fabricartT.html"
+        },
+        {
+            title: "Dip-Dye Scarf",
+            url: "/products/scarves/dipdye.html"
+        },
+        {
+            title: "Kagera Tie",
+            url: "/products/ties/kagera.html"
+        },
+        {
+            title: "Champagne Bottle Bag",
+            url: "/products/home/champagnebag.html"
+        }
+    ]
+};
+
+var faqs = {
+        title: "Shop FAQ",
+        url: "/shopfaq.html",
+        sub: [
+        {
+            title: "Colours",
+            url: "/shopfaq.html#colours"
+        },
+        {
+            title: "Availability",
+            url: "/shopfaq.html#availability"
+        },
+        {
+            title: "Sizing",
+            url: "/shopfaq.html#sizes"
+        },
+        {
+            title: "Care",
+            url: "/shopfaq.html#care"
+        },
+        {
+            title: "Shipping",
+            url: "/shopfaq.html#shipping"
+        },
+        {
+            title: "Customs &amp; Tariffs",
+            url: "/shopfaq.html#duties"
+        }
+    ]
+};
+
+
 var siteMap = [
     {
         sub: [
@@ -318,6 +410,39 @@ var siteMap = [
     about,
     buzz
 ];
+
+function createSqPanelImageList(panelNumArr) {
+    var res = [];
+    for (var i = 0; i < panelNumArr.length; i++) {
+        res.push({imageURL: "/tbc/sqIC/IC" + panelNumArr[i] + ".jpg"});
+    }
+    return res;
+}
+
+
+function createPanelCarousel() {
+    var panelNums = [545,548,549,552,565,571];
+    var panelImgs  =  createSqPanelImageList(panelNums);
+    return createCarousel("car-panels", panelImgs);
+}
+
+function selectFeature(section) {
+    var len = section.sub.length;
+    var rndI = Math.floor(Math.random() * len);
+    return section.sub[ rndI ];
+}
+
+function selectFeatures(sections) {
+    var items = [];
+    var pars = [];
+    for (var i = 0; i < sections.length; i++ ) {
+        var sec = sections[ i ];
+        var sel = selectFeature(sec);
+        items.push(sel);
+        pars.push(sec);
+    }
+    return [items, pars];
+}
 
 function createBreadCrumb(location) {
     var path = location;
@@ -345,9 +470,12 @@ function createBreadCrumbLevels(level1, level2) {
 }
 
 function createStyledList(jsonArray) {
-var res = '<ul class="list-styled mb7 font-size-sm">';
+var res = '<ul class="list-styled mb-6 font-size-sm">';
     for (var i = 0; i < jsonArray.length; i++ ) {
         var item = jsonArray[ i ];
+        if  (item.title === undefined) {
+            continue;
+        }
         res += '<li class="list-styled-item"><a class="list-styled-link" href="' + item.url + '">' + item.title + '</a></li>';
     }
     res +=  '</ul>';
@@ -358,6 +486,9 @@ function createDropdownColumn(itemLists, colCls){
     var res = '<div class="' + colCls + '">';
     for( var i = 0; i < itemLists.length; i++ ) {
         var item = itemLists[ i ];
+        if (item.title === undefined) {
+            continue;
+        }
         res += '<div class="' + (i === 0 ? "mb-5" : "my-5") + ' font-weight-bold">';
         if  ( item.url !== undefined ) {
             res += '<a href="' + item.url + '">';
@@ -374,40 +505,80 @@ function createDropdownColumn(itemLists, colCls){
 }
 
 function createDropdownCard(cols) {
-    var  res  = '<div class="dropdown-menu" style="min-width: 420px;"><div class="card card-lg"><div class="card-body"><div class="row">';
+    var  res  = '<div class="card card-lg"><div class="card-body"><div class="row">';
     for (var i = 0; i < cols.length; i++) {
         res += cols[ i ];
     }
-    res += '</div></div></div></div>';
+    res += '</div></div></div>';
     return res;
 }
 
-function createLookDD () {
-    var col1 = createDropdownColumn([atelier], "col-6");
-    var col2 = createDropdownColumn([origin], "col-6");
-    return createDropdownCard([col1, col2]);
+function createMinWidthDDCard(cols, width, alignRight) {
+    var  res  = '<div class="dropdown-menu' + (alignRight ? " dropdown-menu-right" : "") + '" style="min-width: ' + width +';">';
+    res += createDropdownCard(cols);
+    res += '</div>';
+    return res;
+}
+
+function createFullWidthDDCard(cols)  {
+    var  res  = '<div class="dropdown-menu w-100"><div class="container">';
+    res += createDropdownCard(cols);
+    res += '</div></div>';
+    return res;    
+}
+
+function createMegaMenuSection(item) {
+    return '<div class="col-6 col-md">\
+    <div class="mb-5 font-weight-bold">' + item.title + '</div>'
+    + createStyledList(item.sub) + '</div>';
+}
+
+function createMegaMenuImage(item) {
+    return '<div class="col-4 d-none d-lg-block">\
+    <div class="card">\
+        <img class="card-img" src="' + item.imageURL + '" alt="...">\
+        <div class="card-img-overlay bg-dark-0 bg-hover align-items-center">\
+            <div class="text-center">\
+            <a class="btn btn-white stretched-link" href="' + item.url + '">'
+                + item.title  + '<i class="fe fe-arrow-right ml-2"></i></a>\
+            </div>\
+        </div>\
+    </div>\
+    </div>';
+}
+
+function createShopMM() {
+    var col1 = createDropdownColumn([shop, faqs], "col-12");
+    return createMinWidthDDCard([col1], "200px", false);
+}
+
+function createLookMM() {
+    var col1 = createDropdownColumn([lotm, ramp], "col-6");
+    var col2 = createDropdownColumn([moods], "col-6");
+    return createMinWidthDDCard([col1, col2], "360px", false);
 }
 
 function createBlogDD () {
     var col1 = createDropdownColumn([atelier], "col-6");
-    var col2 = createDropdownColumn([origin], "col-6");
-    return createDropdownCard([col1, col2]);
+    var col2 = createDropdownColumn([origin, archives], "col-6");
+    return createMinWidthDDCard([col1, col2], "360px", true);
 }
 
 function createAboutDD () {
     var col1 = createDropdownColumn([about, clients], "col-6");
     var col2 = createDropdownColumn([buzz], "col-6");
-    return createDropdownCard([col1, col2]);
+    return createMinWidthDDCard([col1, col2], "330px", true);
 }
 
-function createDropDowns() {
-    var res = '<ul class="nav nav-justified">';
+function createTopNav() {
+    var res = '<ul class="nav nav-justified pt-0 pb-1">';
     
     res += '<li class="nav-item dropdown"><a class="nav-link" data-toggle="dropdown" href="#">Shop</a>';
+    res += createShopMM();
     res += '</li>';
 
-    res += '<li class="nav-item dropdown"><a class="nav-link" data-toggle="dropdown" href="#">Look!</a>';
-    res += createLookDD();
+    res += '<li class="nav-item dropdown"><a class="nav-link" data-toggle="dropdown" href="#">Look</a>'
+    res += createLookMM();
     res += '</li>';
 
     res += '<li class="nav-item dropdown"><a class="nav-link" data-toggle="dropdown" href="#">Blog</a>';
@@ -421,6 +592,7 @@ function createDropDowns() {
     res += '</ul>';
     return res;
 }
+
 
 function pfisig() {
     return '<strong>Prema Florence Isaac</strong>';
@@ -446,8 +618,25 @@ function getTabContent(content, id, isActive) {
         + '</div>';
 }
 
+function createFeatureItemCard(item, section) {
+    var res = '<div class="card mb-2">';
+    if ( item.imageURL !== undefined) {
+        res += '<div class="embed-responsive embed-responsive-1by1">';
+        res += '<img src="' + item.imageURL + '" alt="' + item.title  + '" class="embed-responsive-item" style="object-fit: cover">';
+        res += '</div>';
+    } else if (item.imageHTML !== undefined ) {
+        res += item.imageHTML;
+    }
+    res += '<div class="card-body px-0 pt-6 pb-4">';
+    res += '<div class="card-subtitle mb-1"><a class="text-muted" href="'  + section.url + '">' + section.title +'</a></div>';
+    res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"><i class="fe fe-arrow-right ml-2"></i></a></h6>';
+    res += '<p class="mb-1">' + item.lede + '</p>';
+    res += '</div></div>';
+    return res;
+}
+
 function createItemCard(item) {
-    var res = '<div class="card mb-7 mb-md-0">';
+    var res = '<div class="card mb-2">';
     if ( item.badge !== undefined ) {
         res += '<div class="badge badge-white card-badge card-badge-left text-uppercase">' + item.badge + '</div>';
     }
@@ -458,28 +647,40 @@ function createItemCard(item) {
     } else if (item.imageHTML !== undefined ) {
         res += item.imageHTML;
     }
-    res += '<div class="card-body px-0 py-7">';
-    res += '<h5 class="card-title mb-3">' + item.title + '<a  href="' + item.url + '"><i class="fe fe-arrow-right ml-2"></i></a></h5>';
-    res += '<p class="mb-2">' + item.lede + '</p>';
+    res += '<div class="card-body px-0 pt-6 pb-4">';
+    if  (item.url !== undefined) {
+        res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"><i class="fe fe-arrow-right ml-2"></i></a></h6>';
+    }
+    res += '<p class="mb-1">' + item.lede + '</p>';
     res += '</div></div>';
     return res;
 }
-    
-function createCardColumn(item, brkColCls) {
-    return '<div class="col-12 ' + brkColCls + '">' +  createItemCard(item) + '</div>';
-}
 
-function createCards(pages)  {
-    var res = "";
-    var items = pages.sub;
-    for (var i = 0; i < items.length; i++) {
-        res += createCardColumn(items[ i ], "col-md-4");
+function createSection(pages) {
+    var brkColCls = "col-md-4";
+    var res = '<section class="pt-5 pb-3"><div class="container"><div class="row">';
+    for (var i = 0; i < pages.sub.length; i++) {
+        res += '<div class="col-12 ' + brkColCls + '">';
+        res += createItemCard(pages.sub[ i ]);
+        res += '</div>';
     }
+    res += '</div></div></section>';
     return res;
 }
-    
-function createSection(pages) {
-    return '<section class="pt-5 pb-3"><div class="container"><div class="row">' + createCards(pages) + '</div></div></section>';
+
+function createRelated(header, items, sections) {
+    var brkColCls = "col-md-4";
+    var res = '<h5>' + header + '</h5><section class="pt-4"><div class="container"><div class="row">';
+    for (var i = 0; i < items.length; i++) {
+        res += '<div class="col-12 ' + brkColCls + '">' +  createFeatureItemCard(items[ i ], sections[ i ]) + '</div>';
+    }
+    res += '</div></div></section>';
+    return res;
+}
+
+function createFeatures(header) {
+    var res = selectFeatures([atelier, origin, moods]);
+    return createRelated(header, res[0], res[1]);
 }
 
 function createCarousel(carId, carItems) {
@@ -589,18 +790,18 @@ function twitterShareInit() {
 
 function pfiTopMenu (location) {
     return shareInit() +
-        '<div class="rwell">\
-            <p class="text-center"><small><strong>Distinctive Designs . Fusion Flair . Textile Treasures</strong></small></p>\
-    </div>'+ '<div class="container">'
+        '<div class="rwell text-center">\
+            <small><strong>Distinctive Designs . Fusion Flair . Textile Treasures</strong></small>\
+    </div>'+ '<div class="container p-0">'
     +
-'<div><a href="/index.html"><img src="/g/pfilogo1710.svg" alt="Prema Florence Isaac" class="img-fluid center-block" width="1000px"></a></div>'
-        + createDropDowns() + '</div>' + createBreadCrumb(location);
+'<div class="text-center px-3 pt-3 pb-2"><a href="/index.html"><img src="/g/pfilogo2002.svg" alt="Prema Florence Isaac" class="img-fluid" width="1000px"></a></div>'
+        + createTopNav() + '</div>' + createBreadCrumb(location);
 }
 
 function kimTopMenu (location) {
     return shareInit() +
         '<div class="container"><div class="item text-center"><div style="padding-top: 1ex; padding-bottom: 1ex"><a href="/kidinmi.html"><img src="/g/kimlogo.svg" alt="KidInMi" class="img-fluid center-block" width="300px"></a></div></div>'
-        + createDropDowns() + '</div>';
+        + createTopNav() + '</div>';
 }
 
 function creatFBShareBtn(location) {
@@ -617,6 +818,10 @@ function creatTweetBtn(location) {
     return '<a class="twitter-share-button" href="https://twitter.com/intent/tweet?url=' + encodeURI(fullPath) + '" data-size="large">Tweet</a>';
 }
 
+function createINBtn(location) {
+    return '<script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script><script type="IN/Share" data-url="' + location + '"></script>';
+}
+
 function createMCSignup() {
     return '<center><div class="form-group">\
 <form action="https://premaflorenceisaac.us12.list-manage.com/subscribe/post?u=66ac2e4e6cda6ea157ef47afd&amp;id=0c8cc89a5b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>\
@@ -627,17 +832,20 @@ function createMCSignup() {
 }
 
 function createShareBar(location) {
-    return '<div class="container"><div class="row" style="padding-top: 1.5ex; padding-bottom: 0.5ex">\
-        <div class="col text-center">'
-        + creatFBShareBtn(location) + 
-        '</div>\
-        <div class="col text-center">\
-            <a data-pin-do="buttonBookmark" data-pin-tall="true" data-pin-round="true" href="https://www.pinterest.com/pin/create/button/"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_32.png"/>Save</a>\
-        </div>\
-        <div class="col text-center">'
-           + creatTweetBtn(location) +
-        '</div>\
-    </div></div>';
+    return '<div class="container mb-5"><div style="display: flex; justify-content: space-between;">'
+        + '<span>'  
+        + creatFBShareBtn(location)
+        + '</span>'
+        + '<span>'  
+        + '<a data-pin-do="buttonBookmark" data-pin-tall="true" data-pin-round="true" href="https://www.pinterest.com/pin/create/button/"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_32.png"/>Save</a>'
+        + '</span>'
+        + '<span>'  
+           + creatTweetBtn(location)
+        + '</span>'
+        + '<span>'  
+           + createINBtn(location) 
+        + '</span>'
+        + '</div></div>';
 }
 
 function botNav(botImgTag, location) {
@@ -645,31 +853,23 @@ function botNav(botImgTag, location) {
     '<div class="rwell">\
             <p class="text-center"><strong>Light . Beauty . Freedom</strong></p>\
     </div>\
-    <div class="container-fluid">\
-        <center><div class="row" style="padding-bottom: 1em">\
+    <div class="container">\
+        <div class="pb-2"><center><div class="row">\
             <div class="col-sm-6">\
-        Instagram <i class="fa fa-instagram"></i>: <a href="https://www.instagram.com/_prema.florence.isaac_/">@_prema.florence.isaac_</a>\
+        Instagram <i class="fa fa-instagram"></i>: <a href="https://www.instagram.com/_prema.florence.isaac_/">@_prema.florence.isaac_</a><br>\
+        Facebook <i class="fa fa-facebook-square"></i>: <a href="https://www.facebook.com/rangolibyprema">@rangolibyprema</a><br>\
+        Mail <i class="fa fa-envelope-o"></i>: <a href="mailto:premaflorenceisaac@gmail.com">prema.florence.isaac@gmail.com</a><br>\
+        WhatsApp <i class="fa fa-whatsapp"></i>: <a href="tel:+919443362528">+919443362528</a>\
             </div>\
             <div class="col-sm-6">\
-        Facebook <i class="fa fa-facebook-square"></i>: <a href="https://www.facebook.com/rangolibyprema">@rangolibyprema</a>\
+                    Visit <i class="fa fa-map-marker"></i>: <a href="https://goo.gl/maps/rszKWi3P7xM2">Rangoli Atelier<br>Aurosarjan Complex, Auroshilpam<br>Auroville 605101<br>Tamil Nadu, India</a>\
             </div>\
-        </div></center>\
-        <center><div class="row" style="padding-bottom: 1em">\
-            <div class="col-sm-6">\
-            <p>\
-        EMail: <a href="mailto:premaflorenceisaac@gmail.com">prema.florence.isaac@gmail.com</a><br>\
-        WhatsApp: <a href="tel:+919443362528">+919443362528</a>\
-            </p>\
-            </div>\
-            <div class="col-sm-6">\
-                    <i class="fa fa-map-marker"></i> <a href="https://goo.gl/maps/rszKWi3P7xM2">Rangoli Atelier<br>Aurosarjan Complex, Auroshilpam<br>Auroville 605101, Tamil Nadu, India</a>\
-            </div>\
-        </div></center>\
+        </div></center></div>\
         <center>Sign up for our (few-times-a-year) newsletter.<br>' + createMCSignup() + '</center>\
         <p class="text-center">'
     + botImgTag +
         '</p>\
-        <p class="text-right">&copy; 2015-2020 Prema Florence Isaac</p>\
+        <p class="text-right">&copy; 2015 - 2020 Prema Florence Isaac</p>\
     </div>'
     ;
 }
