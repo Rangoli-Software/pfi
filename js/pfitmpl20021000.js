@@ -33,6 +33,12 @@ var ramp = {
     title: "Ramp",
     url: "/look.html?t=r",
     sub: [
+        {
+            title: 'Move~in',
+            url: '/look/wc.html',
+            lede: 'Casual Looks featuring my Woven Canvas Ts',
+            imageURL: "/look/ramp/wcw2.jpg"
+        }
     ]
 };
 
@@ -222,7 +228,7 @@ var clients = {
             title: "Curators",
             url: "/people/curators.html",
             lede: "A trio of curators that like my designs",
-            imageURL: ""
+            imageURL: "/g/look/look02.jpg"
         },
         {
             title: "Ibiza Living!",
