@@ -36,7 +36,7 @@ var ramp = {
         {
             title: 'Va-Va Voom',
             url: '/look/vvv.html',
-            lede: '',
+            lede: 'Distinctive Designs in Treasured Textiles',
             imageURL: "/look/ramp/em.jpg"
         },
         {
@@ -240,13 +240,13 @@ var clients = {
             title: "Curators",
             url: "/people/curators.html",
             lede: "A trio of curators that like my designs",
-            imageURL: "/g/look/look02.jpg"
+            imageURL: "/people/mmib.jpg"
         },
         {
             title: "Ibiza Living!",
             url: "/people/resortwear.html",
             lede: "At a beach resort on Ibiza",
-            imageURL: ""
+            imageURL: "/people/ibgirl.jpg"
         },
         {
             title: "Birthday Boy",
@@ -277,7 +277,7 @@ var about = {
             title: "Visit",
             url: '/visitus.html',
             lede: 'How to visit our locations',
-            imageURL: ''
+            imageURL: '/atelier/mib.jpg'
         }
     ]
 };
