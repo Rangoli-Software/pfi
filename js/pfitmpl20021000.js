@@ -237,6 +237,12 @@ var clients = {
     url: "/about.html?a=c&#about-tabs",
     sub: [
         {
+            title: "#oneofakind",
+            url: "/people/oneofakind.html",
+            lede: "The #oneofakind persons that are wearing my Woven Canvases",
+            imageURL: "/people/mmib.jpg"
+        },
+        {
             title: "Curators",
             url: "/people/curators.html",
             lede: "A trio of curators that like my designs",
@@ -635,7 +641,9 @@ function createFeatureItemCard(item, section) {
     }
     res += '<div class="card-body px-0 pt-6 pb-4">';
     res += '<div class="card-subtitle mb-1"><a class="text-muted" href="'  + section.url + '">' + section.title +'</a></div>';
-    res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"><i class="fe fe-arrow-right ml-2"></i></a></h6>';
+    if  ( item.url !== undefined ) {
+        res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"><i class="fe fe-arrow-right ml-2"></i></a></h6>';
+    }
     res += '<p class="mb-1">' + item.lede + '</p>';
     res += '</div></div>';
     return res;
@@ -676,16 +684,26 @@ function createSection(pages) {
 
 function createRelated(header, items, sections) {
     var brkColCls = "col-md-4";
-    var res = '<h5>' + header + '</h5><section class="pt-4"><div class="container"><div class="row">';
+    var res = '<div class="container mb-5"><h5>' + header + '</h5><section class="pt-4"><div class="container"><div class="row">';
     for (var i = 0; i < items.length; i++) {
         res += '<div class="col-12 ' + brkColCls + '">' +  createFeatureItemCard(items[ i ], sections[ i ]) + '</div>';
     }
-    res += '</div></div></section>';
+    res += '</div></div></section></div>';
     return res;
 }
 
+function pickSection(section) {
+    var len = section.length;
+    var rndI = Math.floor(Math.random() * len);
+    return section[ rndI ];
+}
+
+function selectSections() {
+    return [pickSection([atelier, origin]), pickSection([about, buzz, archives, lotm]), pickSection([moods, ramp, clients])];
+}
+
 function createFeatures(header) {
-    var res = selectFeatures([atelier, origin, moods]);
+    var res = selectFeatures(selectSections());
     return createRelated(header, res[0], res[1]);
 }
 
@@ -855,7 +873,7 @@ function createShareBar(location) {
 }
 
 function botNav(botImgTag, location) {
-    return createShareBar(location) +
+    return createFeatures("Featured Stories") +  createShareBar(location) +
     '<div class="rwell">\
             <p class="text-center"><strong>Light . Beauty . Freedom</strong></p>\
     </div>\
