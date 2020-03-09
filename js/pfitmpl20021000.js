@@ -420,7 +420,11 @@ var siteMap = [
     atelier,
     clients,
     about,
-    buzz
+    buzz,
+    moods,
+    ramp,
+    archives,
+    lotm
 ];
 
 function createSqPanelImageList(panelNumArr) {
@@ -552,7 +556,7 @@ function createMegaMenuImage(item) {
         <div class="card-img-overlay bg-dark-0 bg-hover align-items-center">\
             <div class="text-center">\
             <a class="btn btn-white stretched-link" href="' + item.url + '">'
-                + item.title  + '<i class="fe fe-arrow-right ml-2"></i></a>\
+                + item.title  + '<i class="fa fa-arrow-right ml-2"></i></a>\
             </div>\
         </div>\
     </div>\
@@ -642,7 +646,7 @@ function createFeatureItemCard(item, section) {
     res += '<div class="card-body px-0 pt-6 pb-4">';
     res += '<div class="card-subtitle mb-1"><a class="text-muted" href="'  + section.url + '">' + section.title +'</a></div>';
     if  ( item.url !== undefined ) {
-        res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"><i class="fe fe-arrow-right ml-2"></i></a></h6>';
+        res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"><i class="fa fa-arrow-right ml-2"></i></a></h6>';
     }
     res += '<p class="mb-1">' + item.lede + '</p>';
     res += '</div></div>';
@@ -663,7 +667,7 @@ function createItemCard(item) {
     }
     res += '<div class="card-body px-0 pt-6 pb-4">';
     if  (item.url !== undefined) {
-        res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"><i class="fe fe-arrow-right ml-2"></i></a></h6>';
+        res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"><i class="fa fa-arrow-right ml-2"></i></a></h6>';
     }
     res += '<p class="mb-1">' + item.lede + '</p>';
     res += '</div></div>';
@@ -683,7 +687,7 @@ function createSection(pages) {
 }
 
 function createRelated(header, items, sections) {
-    var brkColCls = "col-md-4";
+    var brkColCls = "col-sm-6 col-md-3";
     var res = '<div class="container mb-5"><h5>' + header + '</h5><section class="pt-4"><div class="container"><div class="row">';
     for (var i = 0; i < items.length; i++) {
         res += '<div class="col-12 ' + brkColCls + '">' +  createFeatureItemCard(items[ i ], sections[ i ]) + '</div>';
@@ -699,7 +703,7 @@ function pickSection(section) {
 }
 
 function selectSections() {
-    return [pickSection([atelier, origin]), pickSection([about, buzz, archives, lotm]), pickSection([moods, ramp, clients])];
+    return [atelier, pickSection([about, buzz, archives, lotm]), pickSection([moods, ramp, clients]), origin];
 }
 
 function createFeatures(header) {
