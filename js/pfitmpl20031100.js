@@ -5,25 +5,25 @@ var moods = {
         {
             title: "Summer Dreams",
             url: "/summerdreams.html",
-            lede: "<a href='/summerdreams.html'><strong>Summer Dreams</strong> - A line in Black, Ivory and Silver</a>, in P.F.I. Tangail using the finest Bengal cotton, lustrous Madka and Mysore silks.",
+            lede: "<strong>Summer Dreams</strong> - A line in Black, Ivory and Silver, in P.F.I. Tangail using the finest Bengal cotton, lustrous Madka and Mysore silks.",
             imageURL: "/products/summerdreams/Line.jpg"
         },
         {
             title: "Vagabond",
             url: "/vagabond.html",
-            lede: "<a href='/vagabond.html'>The <strong>Vagabond</strong></a>: A capsule in a bio-washed, hand-spun, hand-loomed khadi and P.F.I. tangail - inspired by the travelers and mavericks of the world.....",
+            lede: "The <strong>Vagabond</strong>: A capsule in a bio-washed, hand-spun, hand-loomed khadi and P.F.I. tangail - inspired by the travelers and mavericks of the world.....",
             imageURL: "/products/vagabond/KohBoy.jpg"
         },
         {
             title: "Holy Days",
             url: "/holydaysreboot.html",
-            lede: "<a href='/holydaysreboot.html'><strong>Holy Days Reboot</strong></a> - A multi-layered boho re-imagining of our classic one-of-a-kind line of sari-based <strong>ArtWear</strong>.",
+            lede: "A multi-layered boho re-imagining of our classic one-of-a-kind line of sari-based <strong>Art Wear</strong>.",
             imageURL: "/products/holydaysreboot/KaftanS.jpg"
         },
         {
             title: "It's Magic!",
             url: "/itsmagic.html",
-            lede: "The <a href='/itsmagic.html'><strong>It's Magic</strong> capsule</a> of colourful, <strong>reversible</strong> children's garments in 100% Voile de Cotton",
+            lede: "The <strong>It's Magic</strong> capsule of colourful, <strong>reversible</strong> children's garments in 100% Voile de Cotton",
             imageURL: "/products/itsmagic/Balloon.jpg"
         }
     ]
@@ -53,7 +53,7 @@ var lotm = {
     url: "/look.html?t=p",
     sub: [
         {
-            lede: 'Off-shoulder knit top with one of my signature Artwear skirts - The Naksha.',
+            lede: 'Off-shoulder knit top with one of my signature Art Wear skirts - The Naksha.',
             imageURL: "/g/look/nkshofstp.jpg"
         },
         {
@@ -97,9 +97,9 @@ var origin = {
         url: "/blog.html?t=o",
         sub: [
             {
-                title: "The Rangoli Story",
+                title: "Prema's Story",
                 url: "/journey/myjourney.html",
-                lede: '<strong>The Rangoli Journey</strong> Over the years, I have told <a href="/journey/myjourney.html">this story in bits and pieces to clients and friends</a>, who kept asking why it was not on the website.....',
+                lede: 'Over the years, I have told this story in bits and pieces to clients and friends, who kept asking why it was not on the website.....',
                 imageURL: "/journey/PremaStory.jpg"
             },
             {
@@ -141,13 +141,13 @@ var origin = {
             {
                 title: "Art Wear",
                 url: "/journey/artwear.html",
-                lede: 'The origin story of my one-of-a-kind ArtWear line',
+                lede: 'The origin story of my one-of-a-kind Art Wear line',
                 imageURL: "/g/aw/HDRKaftan1AW.jpg"
             },
             {
                 title: "P.F.I. Tangail",
                 url: "/journey/pfifabrics.html",
-                lede: '<strong>A Bouquet of Borders!</strong> How and Why I created my own line of fabrics: <strong><a href="/journey/pfifabrics.html">P.F.I. Tangail</a></strong>',
+                lede: '<strong>A Bouquet of Borders!</strong> How and Why I created my own line of fabrics: <strong>P.F.I. Tangail</strong>',
                 imageURL: "/journey/PreciousI.jpg"
             },
             {
@@ -196,37 +196,37 @@ var atelier = {
         {
             title: "Fashion Week",
             url: "/fw/fashionweek.html",
-            lede: 'In September, I put together my first ever fashion show at <strong><a href="/fw/fashionweek.html">Fashion Week Pondicherry!</a></strong>',
+            lede: 'In September, I put together my first ever fashion show at <strong>Fashion Week Pondicherry!</strong>',
             imageURL: "/fw/finale.jpg"
         },
         {
             title: "Dream Team",
             url: "/atelier/dreamteam.html",
-            lede: '<a href="/atelier/dreamteam.html">My work family</a> - they are a big part of what makes my Rangoli Atelier tick!',
+            lede: 'My work family - they are a big part of what makes my Rangoli Atelier tick!',
             imageURL: "/atelier/PFW.jpg"
         },
         {
             title: "Tapestries!",
             url: "/tapestries/tapestries.html",
-            lede: 'An <a href="/tapestries/tapestries.html">artistic collaboration</a> with Montreal photographer <strong>Jérémi Poulin</strong>',
+            lede: 'An artistic collaboration with Montreal photographer <strong>Jérémi Poulin</strong>',
             imageURL: "/tapestries/JP-7374.jpg"
         },
         {
             title: "Tangail Art",
             url: "/tangailcollage.html",
-            lede: 'Some time ago, I started creating <a href="/tangailcollage.html"><strong>one-of-a-kind, numbered collages</strong></a> using borders from my <strong>Treasure Trove</strong>...',
+            lede: 'Some time ago, I started creating <strong>one-of-a-kind, numbered Woven Canvases</strong> using borders from my <strong>Treasure Trove</strong>...',
             imageURL: "/g/blog/CllgPrcSq.jpg"
         },
         {
             title: "Pranayama",
             url: "/atelier/pranayama.html",
-            lede: 'We are sharing some pictures we recently received of <a href="/atelier/pranayama.html">the morning Pranayama sessions</a> at the atelier.',
+            lede: 'We are sharing some pictures we recently received of the morning Pranayama sessions at the atelier.',
             imageURL: "/atelier/PranSq.jpg"
         },
         {
             title: "KidinMi Launch",
             url: "/kidinmi.html",
-            lede: 'After 10 years on the drawing boards, I am finally ready to launch my <a href="/kidinmi.html">new kids label!! - <strong>KidinMi</strong></a>',
+            lede: 'After 10 years on the drawing boards, I am finally ready to launch my new kids label!! - <strong>KidinMi</strong>',
             imageURL: "/g/kimgphsimp.svg"
         }
     ]
@@ -236,12 +236,6 @@ var clients = {
     title: "Real People",
     url: "/about.html?a=c&#about-tabs",
     sub: [
-        {
-            title: "#oneofakind",
-            url: "/people/oneofakind.html",
-            lede: "The #oneofakind persons that are wearing my Woven Canvases",
-            imageURL: "/people/mmib.jpg"
-        },
         {
             title: "Curators",
             url: "/people/curators.html",
@@ -288,6 +282,12 @@ var about = {
     ]
 };
 
+var buzzTL = {
+    title: "Buzzing...",
+    url: "/about.html?a=b&#about-tabs",
+    sub: []
+};
+
 var buzz = {
     title: "Buzzing...",
     url: "/about.html?a=b&#about-tabs",
@@ -308,19 +308,19 @@ var buzz = {
         {
             title: "Yves Story",
             url: "https://www.linkedin.com/pulse/prema-florence-isaac-yves-richez-ph-d-/",
-            lede: 'Yves also wrote a short piece about our meeting on LinkedIn - <a hef="https://www.linkedin.com/pulse/prema-florence-isaac-yves-richez-ph-d-/" target="_blank">Meeting with Prema Florence Isaac, creative and entrepreneur in India.</a>',
+            lede: 'Yves also wrote a short piece about our meeting on LinkedIn - Meeting with Prema Florence Isaac, creative and entrepreneur in India.',
             imageURL: "https://www.talentreveal.com/uploads/3/1/2/1/31219479/talentreveallogo2018.png"
         },
         {
             title: "Alia ૐ",
             url: "https://aliaom.com/alia-yoga-prema-design-auroville/",
-            lede: "Check out the blog article of <a href=\"https://aliaom.com/\">AliaOm ૐ Yoga de la Femme</a>, women's yoga teacher and my meeting with her.",
-            imageURL: "https://aliaom.com/wp-content/uploads/2019/10/Alia-Prema-Sri-Kailasanathar-Pink-Temple.jpg"
+            lede: "Check out the blog article of Alia M'Hamdi, women's yoga teacher, about our meeting and her visit to the atelier.",
+            imageURL: "https://aliaom.com/wp-content/uploads/2017/03/Alia-@-The-Pink-Temple-Auroville-India.jpg"
         },
         {
             title: "Lila",
             url: "https://lila.lt/en/2018/12/prema-florence-isaac-at-first-i-look-within/",
-            lede: 'Here is <a href="https://lila.lt/en/2018/12/prema-florence-isaac-at-first-i-look-within/">the first part of a story in Lila Magazine</a>. I was interviewed by the wonderful journalist Ginta Gaivenyte.',
+            lede: 'Here is the first part of a story in Lila Magazine. I was interviewed by the wonderful journalist Ginta Gaivenyte.',
             imageURL: "https://lila.lt/wp-content/uploads/sites/10/2018/07/lila_logo_sviesa.png"
         },
         {
@@ -332,13 +332,13 @@ var buzz = {
         {
             title: "Erika Lernot",
             url: "http://www.lesvoyagesderika.fr/mon-look-reves-de-cuba-by-rangoli/",
-            lede: '<strong>Mon look - Reves de Cuba</strong> - a <a href="http://www.lesvoyagesderika.fr/mon-look-reves-de-cuba-by-rangoli/" target="_blank">blog by Erika Lernot</a>, singer and traveler, who modeled our <a href="summerdreams.html">A Midsummer Nights Dream</a> Mood.',
+            lede: '<strong>Mon look - Reves de Cuba</strong> - a blog by Erika Lernot, singer and traveler, who modeled our <a href="summerdreams.html">A Midsummer Nights Dream</a> Mood.',
             imageURL: "https://i1.wp.com/www.lesvoyagesderika.fr/wp-content/uploads/2015/11/Erika-tet-mare-.jpg?zoom=2&resize=666%2C352"
         },
         {
             title: "The Hindu",
             url: "https://www.thehindu.com/features/metroplus/fashion/Ethically-swish/article16881597.ece",
-            lede: '<strong>Ethically Swish</strong> - a story about Prema in <a href="https://www.thehindu.com/features/metroplus/fashion/Ethically-swish/article16881597.ece" target="_blank">The Hindu</a>',
+            lede: '<strong>Ethically Swish</strong> - a story about Prema in The Hindu',
             imageURL: "https://www.thehindu.com/migration_catalog/article16861703.ece/ALTERNATES/FREE_660/MP16_RANGOLI.JPG"
         }
     ]
@@ -371,30 +371,6 @@ var faqs = {
         title: "Shop FAQ",
         url: "/shopfaq.html",
         sub: [
-        {
-            title: "Colours",
-            url: "/shopfaq.html#colours"
-        },
-        {
-            title: "Availability",
-            url: "/shopfaq.html#availability"
-        },
-        {
-            title: "Sizing",
-            url: "/shopfaq.html#sizes"
-        },
-        {
-            title: "Care",
-            url: "/shopfaq.html#care"
-        },
-        {
-            title: "Shipping",
-            url: "/shopfaq.html#shipping"
-        },
-        {
-            title: "Customs &amp; Tariffs",
-            url: "/shopfaq.html#duties"
-        }
     ]
 };
 
@@ -411,7 +387,7 @@ var siteMap = [
                 url: "/about.html"
             },
             {
-                title: "Look!",
+                title: "Look",
                 url: "/look.html"
             }
         ]
@@ -424,8 +400,27 @@ var siteMap = [
     moods,
     ramp,
     archives,
-    lotm
+    lotm,
+    shop
 ];
+
+function getHostName(url) {
+    var match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
+    if (match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) {
+    return match[2];
+    }
+    else {
+        return null;
+    }
+}
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
 
 function createSqPanelImageList(panelNumArr) {
     var res = [];
@@ -475,8 +470,8 @@ function createBreadCrumb(location) {
 }            
 
 function createBreadCrumbLevels(level1, level2) {
-    var res = '<nav class="py-5"><div class="container"><div class="row"><div class="col-12"><ol class="breadcrumb mb-0 font-size-xs text-gray-400">';
-    res +='<li class="breadcrumb-item"><a class="text-gray-400" href="index.html">Home</a></li>';
+    var res = '<nav class="py-2"><div class="container"><div class="row"><div class="col-12"><ol class="breadcrumb mb-0 font-size-xs text-gray-400">';
+    res +='<li class="breadcrumb-item"><a class="text-gray-400" href="/index.html">Home</a></li>';
     if ( level1.title !== undefined ) {
         res +='<li class="breadcrumb-item"><a class="text-gray-400" href="' + level1.url + '">' + level1.title + '</a></li>';
     }
@@ -492,7 +487,7 @@ var res = '<ul class="list-styled mb-6 font-size-sm">';
         if  (item.title === undefined) {
             continue;
         }
-        res += '<li class="list-styled-item"><a class="list-styled-link" href="' + item.url + '">' + item.title + '</a></li>';
+        res += '<li class="list-styled-item"><a class="list-styled-link" href="' + item.url + '"' +  (getHostName(item.url) === null ? "" : ' target="_blank"') + '>' + item.title + (getHostName(item.url) === null ? "" :  ' <i class="fa fa-external-link"></i>') + '</a></li>';
     }
     res +=  '</ul>';
     return res; 
@@ -507,11 +502,19 @@ function createDropdownColumn(itemLists, colCls){
         }
         res += '<div class="' + (i === 0 ? "mb-5" : "my-5") + ' font-weight-bold">';
         if  ( item.url !== undefined ) {
-            res += '<a href="' + item.url + '">';
+            if  (getHostName(item.url) === null) {
+                res += '<a href="' + item.url + '">';
+            } else {
+                res += '<a href="' + item.url + '" target="_blank">';
+            }
         }
         res += item.title;
         if  ( item.url !== undefined ) {
-            res += '</a>';
+            if  (getHostName(item.url) === null) {
+                res += '</a>';
+            } else {
+                res += '<i class="fa fa-external-link-alt"></i></a>';
+            }
         }
         res += '</div>';
         res += createStyledList(item.sub);
@@ -521,7 +524,7 @@ function createDropdownColumn(itemLists, colCls){
 }
 
 function createDropdownCard(cols) {
-    var  res  = '<div class="card card-lg"><div class="card-body"><div class="row">';
+    var  res  = '<div class="card"><div class="card-body"><div class="row">';
     for (var i = 0; i < cols.length; i++) {
         res += cols[ i ];
     }
@@ -565,29 +568,28 @@ function createMegaMenuImage(item) {
 
 function createShopMM() {
     var col1 = createDropdownColumn([shop, faqs], "col-12");
-    return createMinWidthDDCard([col1], "200px", false);
+    return createMinWidthDDCard([col1], "190px", false);
 }
 
 function createLookMM() {
     var col1 = createDropdownColumn([lotm, ramp], "col-6");
     var col2 = createDropdownColumn([moods], "col-6");
-    return createMinWidthDDCard([col1, col2], "360px", false);
+    return createMinWidthDDCard([col1, col2], "305px", true);
 }
 
 function createBlogDD () {
     var col1 = createDropdownColumn([atelier], "col-6");
     var col2 = createDropdownColumn([origin, archives], "col-6");
-    return createMinWidthDDCard([col1, col2], "360px", true);
+    return createMinWidthDDCard([col1, col2], "345px", true);
 }
 
 function createAboutDD () {
-    var col1 = createDropdownColumn([about, clients], "col-6");
-    var col2 = createDropdownColumn([buzz], "col-6");
-    return createMinWidthDDCard([col1, col2], "330px", true);
+    var col1 = createDropdownColumn([about, buzzTL, clients], "col-12");
+    return createMinWidthDDCard([col1], "145px", true);
 }
 
 function createTopNav() {
-    var res = '<ul class="nav nav-justified pt-0 pb-1">';
+    var res = '<ul class="nav nav-justified py-0">';
     
     res += '<li class="nav-item dropdown"><a class="nav-link" data-toggle="dropdown" href="#">Shop</a>';
     res += createShopMM();
@@ -614,14 +616,6 @@ function pfisig() {
     return '<strong>Prema Florence Isaac</strong>';
 }
 
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
-}
-    
 function getTabItem(title, id, isActive) {
     return '<li class="nav-item"><a class="nav-link' +
         (isActive ? ' active' : '') + '"  data-toggle="tab" href="#' + id + '" role="tab">' + title + '</a></li>';
@@ -646,7 +640,7 @@ function createFeatureItemCard(item, section) {
     res += '<div class="card-body px-0 pt-6 pb-4">';
     res += '<div class="card-subtitle mb-1"><a class="text-muted" href="'  + section.url + '">' + section.title +'</a></div>';
     if  ( item.url !== undefined ) {
-        res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"><i class="fa fa-arrow-right ml-2"></i></a></h6>';
+        res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"' +(getHostName(item.url) === null ? '' : ' target="_blank"') +  '><i class="fa ' + (getHostName(item.url) === null ? 'fa-arrow-right' : 'fa-external-link') + ' ml-2"></i></a></h6>';
     }
     res += '<p class="mb-1">' + item.lede + '</p>';
     res += '</div></div>';
@@ -667,7 +661,7 @@ function createItemCard(item) {
     }
     res += '<div class="card-body px-0 pt-6 pb-4">';
     if  (item.url !== undefined) {
-        res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"><i class="fa fa-arrow-right ml-2"></i></a></h6>';
+        res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"' +(getHostName(item.url) === null ? '' : ' target="_blank"') +  '><i class="fa ' + (getHostName(item.url) === null ? 'fa-arrow-right' : 'fa-external-link') + ' ml-2"></i></a></h6>';
     }
     res += '<p class="mb-1">' + item.lede + '</p>';
     res += '</div></div>';
@@ -690,7 +684,7 @@ function createRelated(header, items, sections) {
     var brkColCls = "col-sm-6 col-md-3";
     var res = '<div class="container mb-5"><h5>' + header + '</h5><section class="pt-4"><div class="container"><div class="row">';
     for (var i = 0; i < items.length; i++) {
-        res += '<div class="col-12 ' + brkColCls + '">' +  createFeatureItemCard(items[ i ], sections[ i ]) + '</div>';
+        res += '<div class="col-6 ' + brkColCls + '">' +  createFeatureItemCard(items[ i ], sections[ i ]) + '</div>';
     }
     res += '</div></div></section></div>';
     return res;
@@ -820,16 +814,16 @@ function pfiTopMenu (location) {
     return shareInit() +
         '<div class="rwell text-center">\
             <small><strong>Distinctive Designs . Fusion Flair . Textile Treasures</strong></small>\
-    </div>'+ '<div class="container p-0">'
-    +
-'<div class="text-center px-3 pt-3 pb-2"><a href="/index.html"><img src="/g/pfilogo2002.svg" alt="Prema Florence Isaac" class="img-fluid" width="1000px"></a></div>'
+    </div>'+ '<div class="container p-0">' + '<div class="text-center px-3 pt-3 pb-2"><a href="/index.html"><img src="/g/pfilogo2002.svg" alt="Prema Florence Isaac" class="img-fluid" width="1000px"></a></div>'
         + createTopNav() + '</div>' + createBreadCrumb(location);
 }
 
 function kimTopMenu (location) {
     return shareInit() +
-        '<div class="container"><div class="item text-center"><div style="padding-top: 1ex; padding-bottom: 1ex"><a href="/kidinmi.html"><img src="/g/kimlogo.svg" alt="KidInMi" class="img-fluid center-block" width="300px"></a></div></div>'
-        + createTopNav() + '</div>';
+        '<div class="rwell text-center">\
+            <small><strong>Distinctive Designs . Fusion Flair . Textile Treasures</strong></small></div>'  + '<div class="container p-0">'
+    + '<div class="item text-center px-3 pt-3 pb-2"><a href="/kidinmi.html"><img src="/g/kimlogo.svg" alt="KidInMi" class="img-fluid" width="300px"></a></div>'
+        + createTopNav() + '</div>'  + createBreadCrumb(location);
 }
 
 function creatFBShareBtn(location) {

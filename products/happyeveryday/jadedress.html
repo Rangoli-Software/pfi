@@ -25,7 +25,7 @@ function createImagePanel(id, images) {
 }
 
 function createColourPanel(name, options, selIdx) {
-    var res = '<p class="mb-4">Color: <strong id="colorCaption">Colours</strong></p><div class="mb-8 ml-n1">';
+    var res = '<p class="mb-4">Colour: <strong id="colorCaption">Colours</strong></p><div class="mb-8 ml-n1">';
     for (var i = 0; i < options.length;  i++) {
         var opt =  options[i];
         res += '<div class="custom-control custom-control-inline custom-control-img"><input type="radio" class="custom-control-input" id="' + name + i + '" name="' + name + '" data-toggle="form-caption" data-target="#colorCaption" value="' + opt.colourName +  '"' + (selIdx == i ? " checked" : "") + '><label class="custom-control-label" for="' + name + i + '"><span class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url(' + opt.imageURL + ');"></span></label></div>';

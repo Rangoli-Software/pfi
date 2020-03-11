@@ -1,16 +1,4 @@
 <script type="text/javascript">
-function inches2cm (x) {
-    return (Math.round(10 * 2.54 * x) / 10).toFixed(0);
-}
-
-function cm2inches (x) {
-    return (Math.round(10 * x / 2.54) / 10).toFixed(0);
-}
-
-function identity (x) {
-    return x;
-}
-
 var TSHIRT_SKU = "AWTSHT1604Je";
 
 var sizes = ["S", "M", "L", "XL", "XXL"];
@@ -45,7 +33,6 @@ var dimensionsInches = {
     };
 var dimensionVariationInches = 0.5;
 
-
 var dimensionWidths = [29, 35, 29];
 
 function createSizingTable(units) {
@@ -55,8 +42,7 @@ function createSizingTable(units) {
             rem -= dimensionWidths[i];
         }
         var unTxt = (units == "in" ? " inches" :  "  cm")
-        var table = '<div class="table-responsive"><table class="dim-table table table-bordered table-hover table-sm mb-0 text-center" style="padding: 6px;"><caption><strong>Measurements (in' + unTxt + ')</strong><br>Variation can be up to +/- ' + fn(dimensionVariationInches) + unTxt + '</caption><thead>\
-                <tr><td class="text-left" width="' + rem + '%"><strong>Size</strong></td>';
+        var table = '<div class="table-responsive"><table class="dim-table table table-bordered table-hover table-sm mb-0 text-center" style="padding: 6px;"><caption><strong>Measurements (in' + unTxt + ')</strong><br>Variation can be up to +/- ' + fn(dimensionVariationInches) + unTxt + '</caption><thead><tr><td class="text-left" width="' + rem + '%"><strong>Size</strong></td>';
         for (var i = 0; i < dimensionWidths.length; i++) {
             table += '<td width="' + dimensionWidths[i] + '%"><strong>' + dimensionNames[i] + '</strong></td>';
         }
@@ -292,28 +278,13 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
             init: function(shop) {
                 this.allCartC = createAllCartComponents(shop, this);
             },
-            getSizeField: function(i) {
-                var num = this.visiblePanels.getDescriptor(i).number;
-                var scid = "#" + createSizeCheckID(num) + " input[type='radio']:checked";
-                var sel = $(scid);
-                if (sel.length != 0) {
-                    return sel.attr('value');
-                } else if ($('#SizeSelect').length != 0) {
-                    return $('#SizeSelect').val();
-                } else {
-                    return null;
-                }
-            },
             createPanelItem: function(i, size) {
                 var panel = this.visiblePanels.getDescriptor(i);
                 var product = this.visiblePanels.product;
                 return createItem(product, product.inrPrice, size, panel.fabricColour, 1, panel.number, panel.imageURL, true);
             },
             addToCart: function(i) {
-                var size = this.getSizeField(i);
-                if (size === null) {
-                    return false;
-                }
+                var size = this.getSelectedSize();
                 var item = this.createPanelItem(i, size);
                 return this.allCartC.addToCart(item);
             },
@@ -403,9 +374,9 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
     }
 
 </script>
-<h3>
+<h4>
     Woven Canvas T
-</h3>
+</h4>
 <div class="item">
     <figure>
         <img src="/fabricart/TShirtColl.jpg" class="figure-img img-fluid center-block" />
@@ -483,14 +454,14 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
     <div class="col-md-6 offset-md-3">
     </div>
 </div>
-<h6>Buy Now</h6>
+<h5>Buy Now</h5>
     <p>These are the panels that are currrently available. The entire series, including the panels that have already been collected, can be viewed <a href="/tangailcollage.html#fullseries">here</a>. As new panels are created, they will be numbered and listed here for sale.</p>
 <p>Our unisex T-shirts are crew-neck and regular-fit, made of soft bio-washed, 100% cotton (160 gsm weight).
 </p>
 <p> Select a T-Shirt size (see the size chart below for dimensions) and colour to find what works for you. When you order your one-of-a-kind numbered collage, it will be stitched on to a T-shirt and shipped to you.
 </p>
 <form>
-    <h6>The Panels</h6>
+    <h5>The Panels</h5>
     <div class="row align-items-center">
         <div class="col-6 text-center">
             <script>
@@ -518,11 +489,8 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
 </form>
 <section class="pt-7"><div class="container"><div class="row"><div class="col-12">
     <div class="nav nav-tabs nav-overflow justify-content-start justify-content-md-center border-bottom">
-        <a class="nav-link active" data-toggle="tab" href="#sizing">
-            Sizing
-        </a>
-        <a class="nav-link" data-toggle="tab" href="#care">
-            Care
+        <a class="nav-link active" data-toggle="tab" href="#details">
+            Details
         </a>
         <a class="nav-link" data-toggle="tab" href="#shipping">
             Availability
@@ -531,7 +499,8 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
     <div class="tab-content">
 
     
-        <div class="tab-pane fade show active" id="sizing"><div class="item">
+        <div class="tab-pane fade show active" id="details"><div class="item">
+            <h6>Sizing</h6>
             <div class="row align-items-center">
                 <div class="col-md-4 text-center py-5">
                     <img src="/fabricart/TSizing1.jpg" class="img-fluid center-block"/>
@@ -553,11 +522,7 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
                     </div>
                 </div>
             </div>
-
-        </div></div>
-
-        <div class="tab-pane fade" id="care"><div class="item py-5">
-
+                <h6>Wash Care</h6>
 <p>Each border in every panel has been individually tested for colour-fastness and colour-fixed in some cases, so there will be no colour-bleeding with normal washing.</p>
 <p>For wash-care and other pre-purchase information take a look at our <a href="shopfaq.html">Shop FAQ</a>.</p>
 

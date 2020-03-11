@@ -1,13 +1,3 @@
-const FX = {
-    "AUD": 48.265389058532485,
-    "CAD": 50.82485626325613,
-    "CHF": 68.42746776792909,
-    "EUR": 77.27572509845051,
-    "GBP": 89.26396909553185,
-    "INR": 1,
-    "USD": 67.93478999999999
-};
-
 var shopRevisionVersion = "2019032200";
 
 var cmData = [
@@ -32,7 +22,7 @@ var cmData = [
 ['Robe Tank - Jersey', 'TNKDRS1803Je', '', '', '/tmp/RobeTank.jpg', ''],
 ['Stone Necklace', 'SNCKLC1709GS', '', '', '', ''],
 ['Zip-Strap Bag - Trims', 'CHPTBG1808Kh', '', '', '', ''],
-['FabricArt on T', 'AWTSHT1604Je', '0.2', '1.3', '/fabricart/TShirtColl.jpg', 'TRUE'],
+['Woven Canvas on T', 'AWTSHT1604Je', '0.2', '1.3', '/fabricart/TShirtColl.jpg', 'TRUE'],
 ['Kagera Tie', 'KAGTIE1601Kh', '0.094', '1.3', '/products/ties/Black.jpg', 'FALSE'],
 ['Gypsy Skirt', 'SSEKMD1501PP', '0.275', '1.4', '', 'TRUE'],
 ['Naksha Skirt', 'NKSHMD1501PP', '0.3', '1.4', '', 'TRUE'],
