@@ -20,6 +20,7 @@ permalink: "<%- page.inputPath.substring(1) %>"
 <% } %>
 <%- content %>
 </div>
+<script> document.write(storyBrowser()); </script>
 <% if ( locals.prerender ) { %>
 <%- pfi.botMenu(page.inputPath.substring(1)) %>
 <%- pfi.scriptSrcs() %>

@@ -4,10 +4,10 @@ title: Tangail Art
 description: Collages created from my treasure-trove of vintage hand-woven Tangail sari borders
 keywords: vintage, fabric art, textile art, artwork, collage art, abstract art, modern art, quilting, patchwork, art collectors
 ---
-<script type="text/javascript" src="/tbc/tbc20010900.js"></script>
+<script type="text/javascript" src="/tbc/tbc20031100.js"></script>
 <script>
     function createPanel(img, text, bgcolor, fgcolor) {
-        return '<div class="item" style="background-color: ' + bgcolor + '; padding-top: 2.5ex; padding-bottom: 1.5ex; border-width: thick; border-color: white">\
+        return '<div class="col-sm-4" style="background-color: ' + bgcolor + '; padding-top: 2.5ex; padding-bottom: 1.5ex; border-width: thick; border-color: white">\
     <div class="row">\
         <div class="col-10 offset-1">\
             <figure>\
@@ -21,29 +21,44 @@ keywords: vintage, fabric art, textile art, artwork, collage art, abstract art, 
     function createRowPanel(row) {
         var bgcolor = row[2] === "Black" ? "black" : "white";
         var fgcolor = row[2] === "Black" ? "white" : "black";
-        var text = "# " + row[0] + '<br>' + row[4] + " cm. x " + row[3] + " cm.";
+        var text = "# " + row[0];
+        if ( row[4] !== "") {
+            text += '<br>' + row[4] + " cm. x " + row[3] + " cm.";
+        }
         if (row[5] === "") {
-            text += '<br><a href="/fabricartT.html">Available</a> to Collect'
+            if (row[8] === "") {
+                text += '<br><a href="/fabricartT.html">Available</a> to Collect';
+            } else {
+                text += '<br>On Exhibit at Curator';
+            }
         } else {
             text += (row[5] === "" ? "" : "<br>Collected in " + row[5]) +
                 (row[6] === "" ? "" : " by " + row[6]);
         }
         return createPanel(row[1], text, bgcolor, fgcolor);
     }
-
-    function createAllPanels(ld) {
-        var ret = "";
-        var rowIdx = ld.length - 1;
-        var max2ColRows = Math.floor(ld.length / 2);
-        for (var i = 0; i < max2ColRows; i++) {
-            ret += createRowPanel(ld[rowIdx]);
-            ret += createRowPanel(ld[rowIdx - 1]);
-            rowIdx = rowIdx - 2;
+    
+    function filterPanels(ld) {
+        var res = [];
+        for(var i  = 0; i < ld.length; i++) {
+            var row =  ld[ i ];
+            if ( row[2] === "" )
+                continue;
+            res.push(row);
         }
-        if ( 0 <= rowIdx ) {
-            ret += createRowPanel(ld[rowIdx]);
+        return res;
+    }
+
+    function createNPanels(ld, s, n) {
+        var ret = "";
+        for (var i = s; n > 0 && i >= 0; i--, n--) {
+            ret += createRowPanel(ld[i]);
         }
         return ret;
+    }
+
+    function createAllPanels(ld) {
+        return createNPanels(ld, ld.length - 1, 9);
     }
 </script>
 <h4>Tangail Art</h4>
@@ -78,6 +93,8 @@ keywords: vintage, fabric art, textile art, artwork, collage art, abstract art, 
 </div>
 <h5 id="fullseries">The Series</h5>
 <p>To celebrate the 50th anniversary of Auroville, which coincided with the launch of this line, we decided to number the first collage 50 1, or 501. The sequence then continues roughly in the order that I created them.</p>
+<div id="AllPanels" class="row">
 <script>
-    document.write(createAllPanels(colListData));
+    document.write(createAllPanels(filterPanels(colListData)));
 </script>
+</div>
