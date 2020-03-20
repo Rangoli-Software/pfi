@@ -233,7 +233,7 @@ var atelier = {
 };
 
 var clients = {
-    title: "Real People",
+    title: "Friends",
     url: "/about.html?a=c&#about-tabs",
     sub: [
         {
@@ -713,8 +713,10 @@ function createCarousel(carId, carItems) {
     }
     res += '</ol><div class="carousel-inner">';
     for (i = 0; i < carItems.length; i++) {
+        var itm = carItems[i];
         res += '<div class="carousel-item' + (i == 0 ? ' active' : '') + '">'
-                + '<img class="d-block w-100" src="' + carItems[i].imageURL + '">'
+                + '<img class="d-block img-fluid" src="' + itm.imageURL +  '"' +  (itm.width !== undefined ?  'width="' + itm.width +  '"' : "") +
+            (itm.height !== undefined ?  'height="' + itm.height +  '"' : "") + '>'
                 + '</div>';
     }
     res += '</div>\
@@ -814,7 +816,7 @@ function pfiTopMenu (location) {
     return shareInit() +
         '<div class="rwell text-center">\
             <small><strong>Distinctive Designs . Fusion Flair . Textile Treasures</strong></small>\
-    </div>'+ '<div class="container p-0">' + '<div class="text-center px-3 pt-3 pb-2"><a href="/index.html"><img src="/g/pfilogo2002.svg" alt="Prema Florence Isaac" class="img-fluid" width="1000px"></a></div>'
+    </div>'+ '<div class="container p-0">' + '<div class="text-center px-3 pt-3 pb-2"><a href="/index.html"><img src="/g/pfilogo2002.svg" alt="Prema Florence Isaac" class="img-fluid" width="1000px" height="71.5px"></a></div>'
         + createTopNav() + '</div>' + createBreadCrumb(location);
 }
 
@@ -822,7 +824,7 @@ function kimTopMenu (location) {
     return shareInit() +
         '<div class="rwell text-center">\
             <small><strong>Distinctive Designs . Fusion Flair . Textile Treasures</strong></small></div>'  + '<div class="container p-0">'
-    + '<div class="item text-center px-3 pt-3 pb-2"><a href="/kidinmi.html"><img src="/g/kimlogo.svg" alt="KidInMi" class="img-fluid" width="300px"></a></div>'
+    + '<div class="item text-center px-3 pt-3 pb-2"><a href="/kidinmi.html"><img src="/g/kimlogo.svg" alt="KidInMi" class="img-fluid" width="300px" height="139.14px"></a></div>'
         + createTopNav() + '</div>'  + createBreadCrumb(location);
 }
 
@@ -900,14 +902,12 @@ function botNav(botImgTag, location) {
     ;
 }
 
-
-
 function kimBotMenu(location) {
-    return botNav('<img src="/g/kimgphsimp.svg" alt="KidinMi Graphic" class="img-fluid center-block" width="300px">', location);
+    return botNav('<img src="/g/kimgphsimp.svg" alt="KidinMi Graphic" class="img-fluid center-block" width="300px" height="300px">', location);
 }
 
 function botMenu(location) {
-    return botNav('<img src="/g/since199900.svg" alt="Rangoli Graphic" class="img-fluid center-block" width="300px">', location);
+    return botNav('<img src="/g/since199900.svg" alt="Rangoli Graphic" class="img-fluid center-block" width="300px" height="300px">', location);
 }
 
 function scriptSrcs() {
@@ -926,6 +926,7 @@ return '<div class="modal fade" id="shopping-cart" tabindex="-1" role="dialog" a
 function getShopHeader() {
 return '<div class="container"> <div class="row py-1"> <div class="col-12"><div id="currencies" class="text-left float-left" style="font-size: 12px"><span data-currency="INR" id="currencies-inr">INR(&#8377;)</span><span data-currency="GBP" id="currencies-gbp">GBP(&pound;)</span> <span data-currency="EUR" id="currencies-eur">EUR(&euro;)</span> <span data-currency="USD" id="currencies-usd">USD(&dollar;)</span></div><div id="shop-cart-summary" class="text-right float-right" style="font-size: 12px"> <a id="sc-edit-id" class="disabled" aria-disabled="true" type="button" data-toggle="modal" data-target="#shopping-cart"> <i class="fa fa-shopping-cart"></i> (<span class="sc-badge-items">0</span>) <span class="sc-non-empty" style="display:none"> - </span> <span class="sc-currency-string sc-non-empty" style="display:none"><i class="fa fa-inr"></i></span> <span class="sc-total sc-non-empty" style="display:none">0</span> </a> <div class="item sc-item-list" style="display: none"> </div></div></div></div></div>';
 }
+
 
 module.exports = {
     createCarousel: createCarousel,

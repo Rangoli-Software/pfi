@@ -233,7 +233,7 @@ var atelier = {
 };
 
 var clients = {
-    title: "Real People",
+    title: "Friends",
     url: "/about.html?a=c&#about-tabs",
     sub: [
         {
@@ -713,8 +713,10 @@ function createCarousel(carId, carItems) {
     }
     res += '</ol><div class="carousel-inner">';
     for (i = 0; i < carItems.length; i++) {
+        var itm = carItems[i];
         res += '<div class="carousel-item' + (i == 0 ? ' active' : '') + '">'
-                + '<img class="d-block w-100" src="' + carItems[i].imageURL + '">'
+                + '<img class="d-block img-fluid" src="' + itm.imageURL +  '"' +  (itm.width !== undefined ?  'width="' + itm.width +  '"' : "") +
+            (itm.height !== undefined ?  'height="' + itm.height +  '"' : "") + '>'
                 + '</div>';
     }
     res += '</div>\
@@ -814,7 +816,7 @@ function pfiTopMenu (location) {
     return shareInit() +
         '<div class="rwell text-center">\
             <small><strong>Distinctive Designs . Fusion Flair . Textile Treasures</strong></small>\
-    </div>'+ '<div class="container p-0">' + '<div class="text-center px-3 pt-3 pb-2"><a href="/index.html"><img src="/g/pfilogo2002.svg" alt="Prema Florence Isaac" class="img-fluid" width="1000px"></a></div>'
+    </div>'+ '<div class="container p-0">' + '<div class="text-center px-3 pt-3 pb-2"><a href="/index.html"><img src="/g/pfilogo2002.svg" alt="Prema Florence Isaac" class="img-fluid" width="1000px" height="71.5px"></a></div>'
         + createTopNav() + '</div>' + createBreadCrumb(location);
 }
 
@@ -822,7 +824,7 @@ function kimTopMenu (location) {
     return shareInit() +
         '<div class="rwell text-center">\
             <small><strong>Distinctive Designs . Fusion Flair . Textile Treasures</strong></small></div>'  + '<div class="container p-0">'
-    + '<div class="item text-center px-3 pt-3 pb-2"><a href="/kidinmi.html"><img src="/g/kimlogo.svg" alt="KidInMi" class="img-fluid" width="300px"></a></div>'
+    + '<div class="item text-center px-3 pt-3 pb-2"><a href="/kidinmi.html"><img src="/g/kimlogo.svg" alt="KidInMi" class="img-fluid" width="300px" height="139.14px"></a></div>'
         + createTopNav() + '</div>'  + createBreadCrumb(location);
 }
 
@@ -900,14 +902,12 @@ function botNav(botImgTag, location) {
     ;
 }
 
-
-
 function kimBotMenu(location) {
-    return botNav('<img src="/g/kimgphsimp.svg" alt="KidinMi Graphic" class="img-fluid center-block" width="300px">', location);
+    return botNav('<img src="/g/kimgphsimp.svg" alt="KidinMi Graphic" class="img-fluid center-block" width="300px" height="300px">', location);
 }
 
 function botMenu(location) {
-    return botNav('<img src="/g/since199900.svg" alt="Rangoli Graphic" class="img-fluid center-block" width="300px">', location);
+    return botNav('<img src="/g/since199900.svg" alt="Rangoli Graphic" class="img-fluid center-block" width="300px" height="300px">', location);
 }
 
 function scriptSrcs() {

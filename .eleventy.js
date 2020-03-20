@@ -29,7 +29,8 @@ return {
         "woff2",
         "png",
         "svg",
-        "js"
+        "js",
+        "toml"
     ],
     htmlTemplateEngine: "ejs",
     passThroughFileCopy: true
