@@ -1,0 +1,22 @@
+---
+layout: shop
+title: Happy Everyday in a Pigmented Universe
+---
+<script>
+var imgSfx = ['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15'];
+function createImg(sfx) {
+    return '<img class="img-fluid" src="/products/happyeveryday/mood/hedm-' + sfx + '.jpg" width="1620" height="1080">';
+}
+function createAll() {
+    var res = "";
+    for(var i = 0; i < imgSfx.length; i++) {
+        res += createImg(imgSfx[i]);
+    }
+    return res;
+}
+</script>
+<figure>
+<script>
+    document.write(createAll());
+</script>
+</figure>

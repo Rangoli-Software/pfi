@@ -1,0 +1,48 @@
+---
+layout: shop
+title: Happy Everyday Shop
+---
+<script src="hed.js"></script>
+<script>
+function createShoppingCard(summary) {
+    res = '<div class="col-6 col-md-4">';
+    res += '<div class="card">'
+    + '<div class="card-img"><div class="card-img-hover">'
+    + '<img class="card-img-top card-img-back img-fluid" src="' + summary.images[1] + '" width="1000" height="1500">'
+    + '<img class="card-img-top card-img-front img-fluid" src="' + summary.images[0] + '" width="1000" height="1500">'
+    + '</div></div>';
+    res += '<div class="card-body px-0 pt-6 pb-4">';
+    res += '<div class="card-subtitle mb-1"><span class="sc-item text-muted" data-field="price" data-vsku="' + summary.sku +'"></span></div>';
+    if  ( summary.url !== undefined ) {
+        res += '<h6 class="card-title mb-2">' + summary.title + '<a  href="' + summary.url + '"' +  '><i class="fa fa-arrow-right ml-2"></i></a></h6>';
+    }
+    res += '<p class="mb-1">' + summary.lede + '</p>';
+    res += '</div>';
+    res += '</div>';
+    res += '</div>';
+    return res;
+}
+    
+function getTitle(fname) {
+    return fname[0].toUpperCase() + fname.slice(1);
+}
+
+function createCards(fname) {
+    var res = '<h6>' + getTitle(fname) + '</h6><div class="row">';
+    var skus = hed_catalog[fname];
+    for (var i = 0; i < skus.length; i++) {
+        sku = skus[i];
+        var summary = hed_catalog.getSummary(sku);
+        if ( summary === null ) {
+            continue;
+        }
+        res +=  createShoppingCard(summary);
+    }
+    res += '</div>';
+    return res;
+}
+</script>
+<h4>Happy Everyday Shop</h4>
+<script>
+    document.write(createCards("pants") + createCards("tops") + createCards("overtops") + createCards("dresses"));
+</script>

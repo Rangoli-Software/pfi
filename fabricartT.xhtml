@@ -368,11 +368,6 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
     function onSelectionChange() {
         pageComponent.onSelectionChange();
     }
-
-    function onCurrencyChange(shop) {
-        pageComponent.setShop(shop);
-    }
-
 </script>
 <h4>
     Woven Canvas T
@@ -477,21 +472,22 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
         <a class="nav-link active" data-toggle="tab" href="#details">
             Details
         </a>
+        <a class="nav-link" data-toggle="tab" href="#care">
+            Care
+        </a>
         <a class="nav-link" data-toggle="tab" href="#shipping">
-            Availability
+            Shipping
         </a>
     </div>
     <div class="tab-content">
-
-    
-        <div class="tab-pane fade show active" id="details"><div class="item">
+        <div class="tab-pane fade show active" id="details"><div class="item py-5">
             <h6>Sizing</h6>
             <div class="row align-items-center">
-                <div class="col-md-4 text-center py-5">
+                <div class="col-md-4 text-center">
                     <img src="/fabricart/TSizing1.jpg" class="img-fluid center-block"/>
                 </div>
                 <div class="col-md-8 text-center py-5">
-                    <div class="btn-group btn-group-toggle ml-auto py-5" data-toggle="buttons">
+                    <div class="btn-group btn-group-toggle ml-auto" data-toggle="buttons">
                     <label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 active">
                         <input type="radio" name="SizeChartUnits" value="in" onclick="onUnitChange()" checked>IN
                     </label>
@@ -507,19 +503,15 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
                     </div>
                 </div>
             </div>
-                <h6>Wash Care</h6>
-<p>Each border in every panel has been individually tested for colour-fastness and colour-fixed in some cases, so there will be no colour-bleeding with normal washing.</p>
-<p>For wash-care and other pre-purchase information take a look at our <a href="shopfaq.html">Shop FAQ</a>.</p>
-
         </div></div>
 
+        <div class="tab-pane fade" id="care"><div class="item py-5">
+<div class="row"><div class="col-md-4"><ul><li>Do Not Soak</li><li>Turn Inside-Out</li><li>Machine Wash Cold</li><li>Mild Detergent</li><li>Gentle Cycle</li><li>Do Not Bleach</li><li>Dry In Shade</li><li>Medium Iron</li></ul></div><div class="col-md-8"><p>Each border in every panel has been individually tested for colour-fastness and colour-fixed in some cases, so there will be no colour-bleeding with normal washing.</p></div></div>
+        </div></div>
         <div class="tab-pane fade" id="shipping"><div class="item py-5">
-
-<p>Since our garments are on sale in several physical locations in addition to the website, there is a small chance that the one-of-a-kind item that you have selected has already been sold. In this case, we will let you select another item of the same kind, or refund your purchase price, as you prefer.</p>
-
-        </div></div>
-
-    </div>
+<script>document.write(getShippingInfoUL(['Since our Woven Canvases are on sale in several physical locations in addition to the website, there is a small chance that the canvas that you have selected has already been sold. In this case, we will let you select another canvas, or refund your purchase price, as you prefer.']));</script>
+</div></div>
+</div>
 </div></div></div></section>
 <section>
 <h6>Corporate Gifts</h6>
