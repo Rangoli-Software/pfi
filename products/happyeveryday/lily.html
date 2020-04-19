@@ -18,11 +18,6 @@ var dimensionsCm = {
     ]
 };
 
-var skuInfo = {
-    SKU: "WNDRPA1709Kh",
-    sizes: ['Free']
-};
-
 var variants = [
 {
     colourName: "Magenta",
@@ -38,38 +33,35 @@ var variants = [
             url: "/products/happyeveryday/lily/magenta-r.jpg",
         }
     ]
+},
+{
+    colourName: "Calm Tan",
+    vid: "CW2",
+    images: [
+        {
+            url: "/products/happyeveryday/lily/tan-f.jpg",
+        },
+        {
+            url: "/products/happyeveryday/lily/tan-b.jpg",
+        },
+        {
+            url: "/products/happyeveryday/lily/tan-r.jpg",
+        }
+    ]
 }
 ];
 
-var sizer = createSizeChartr(hed_sizing_pant);
-var dimensioner = createDimensioner("cm", dimensionNames, dimensionsCm, styleImagePath);
-
-var prodEntry = getProductCatalog().getProduct(skuInfo.SKU);
-
-var pageComponent = createPageComponent(createProductInfo(skuInfo, prodEntry, variants), dimensioner, sizer, hed_lookbook);
-
-$(document).ready(onDocumentReady);
+var skuInfo = {
+    SKU: "WNDRPA1709Kh",
+    sizes: ['Free'],
+    getFabric(varidx) {
+        return "Khadi";
+    },
+    getColourName(varidx) {
+        return variants[varidx].colourName;
+    },
+    description: 'Happy Everyday - means more fun silhouettes to wear in your daily routine. Featuring a carefree pant, with a wide elastic on the waist to fit different sizes. These pants are cut in a breathable 100% khadi. The colour options vary from vibrant to neutral to cater to every taste. The magenta exaggerates this relaxed silhouette while the calm tan brings it down a notch. Pair it with a crop top or a shirt, these pants will work with every length and style.',
+    garmentDetails: '<li>Elastic waist</li><li>Wide hem</li><li>Adjustable hem with string</li><li>Slips on</li>'
+};
 </script>
-<section>
-    <link rel="stylesheet" href="/shopper-1.0.3/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
-<script>
-    document.write(getSizeModal(pageComponent.createRenderer(loadShopWithParam()).createSizingPanel()));
-</script>
-    <div class="container">
-        <div class="row" id="prodPanel">
-            <script>
- document.write(pageComponent.createRenderer(loadShopWithParam()).createImageDiv(0));
- document.write(pageComponent.createRenderer(loadShopWithParam()).createInfoDiv(0, 1));
-            </script>
-        </div>
-    </div>
-</section>
-<script>
- document.write(renderProductDetails(
-     '<p>Happy Everyday - means more fun silhouettes to wear in your daily routine. Featuring a carefree pant, with a wide elastic on the waist to fit different sizes. These pants are cut in a breathable 100% khadi. The colour options vary from vibrant to neutral to cater to every taste. The magenta exaggerates this relaxed silhouette while the calm tan brings it down a notch. Pair it with a crop top or a shirt, these pants will work with every length and style.</p>',
-     '<div class="row"><div class="col-md-6"><h6>Garment</h6><ul>'
-     + '<li>Elastic waist</li><li>Wide hem</li><li>Adjustable hem with string</li><li>Slips on</li>'
-     + '</ul></div><div class="col-md-6"><h6>Fabric</h6><ul>'
-     + '<li>100% cotton khadi</li>'
-     + '</ul></div></div>'));
-</script>
+<% include product.xhtml %>

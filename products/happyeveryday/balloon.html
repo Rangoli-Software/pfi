@@ -3,8 +3,6 @@ layout: product
 funnel: ViewContent
 title: Balloon Pant
 ---
-<script src="prod.js"></script>
-<script src="hed.js"></script>
 <script>
 var styleImagePath = "/products/happyeveryday/balloon/sizing.jpg"
 var dimensionNames = ["A. Length", "B. Waist", "C. Hem"];
@@ -14,11 +12,6 @@ var dimensionsCm = {
         30,
         10
     ]
-};
-
-var skuInfo = {
-    SKU: "BALLPA1501Vo",
-    sizes: ['Free']
 };
 
 var variants = [
@@ -34,40 +27,55 @@ var variants = [
         },
         {
             url: "/products/happyeveryday/balloon/magenta-r.jpg",
+        },
+        {
+            url: "/products/happyeveryday/balloon/magenta-d1.jpg",
+        },
+        {
+            url: "/products/happyeveryday/balloon/magenta-d2.jpg",
+        },
+        {
+            url: "/products/happyeveryday/balloon/magenta-d3.jpg",
+        }
+    ]
+},
+{
+    colourName: "Calm Tan",
+    vid: "CW3",
+    images: [
+        {
+            url: "/products/happyeveryday/balloon/tan-f.jpg",
+        },
+        {
+            url: "/products/happyeveryday/balloon/tan-b.jpg",
+        },
+        {
+            url: "/products/happyeveryday/balloon/tan-r.jpg",
+        },
+        {
+            url: "/products/happyeveryday/balloon/tan-d1.jpg",
+        },
+        {
+            url: "/products/happyeveryday/balloon/tan-d2.jpg",
+        },
+        {
+            url: "/products/happyeveryday/balloon/tan-d3.jpg",
         }
     ]
 }
 ];
 
-var sizer = createSizeChartr(hed_sizing_pant);
-var dimensioner = createDimensioner("cm", dimensionNames, dimensionsCm, styleImagePath);
-
-var prodEntry = getProductCatalog().getProduct(skuInfo.SKU);
-
-var pageComponent = createPageComponent(createProductInfo(skuInfo, prodEntry, variants), dimensioner, sizer, hed_lookbook);
-
-$(document).ready(onDocumentReady);
+var skuInfo = {
+    SKU: "BALLPA1501Vo",
+    sizes: ['Free'],
+    getFabric(varidx) {
+        return "Voile";
+    },
+    getColourName(varidx) {
+        return variants[varidx].colourName;
+    },
+    description: 'Happy Everyday - means more fun silhouettes to wear in your daily routine. Featuring a carefree pant, with a wide elastic on the waist to fit different sizes. These pants are cut in a breathable 100% cotton voile which is gathered at the waist and hem and needs no ironing. The colour options vary from vibrant to neutral to cater to every taste. The candy red, magenta and electric blue exaggerate this voluminous silhouette while the calm tan brings it down a notch. Pair it with a crop top or a tunic, these pants will work with every length and style.',
+    garmentDetails: '<li>Elastic waist with drawstring</li><li>Calf-length</li><li>Two side pockets</li>'
+}
 </script>
-<section>
-    <link rel="stylesheet" href="/shopper-1.0.3/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
-<script>
-    document.write(getSizeModal(pageComponent.createRenderer(loadShopWithParam()).createSizingPanel()));
-</script>
-    <div class="container">
-        <div class="row" id="prodPanel">
-            <script>
- document.write(pageComponent.createRenderer(loadShopWithParam()).createImageDiv(0));
- document.write(pageComponent.createRenderer(loadShopWithParam()).createInfoDiv(0, 1));
-            </script>
-        </div>
-    </div>
-</section>
-<script>
- document.write(renderProductDetails(
-     '<p>Happy Everyday - means more fun silhouettes to wear in your daily routine. Featuring a carefree pant, with a wide elastic on the waist to fit different sizes. These pants are cut in a breathable 100% cotton voile which is gathered at the waist and hem and needs no ironing. The colour options vary from vibrant to neutral to cater to every taste. The candy red, magenta and electric blue exaggerate this voluminous silhouette while the calm tan brings it down a notch. Pair it with a crop top or a tunic, these pants will work with every length and style.</p>',
-     '<div class="row"><div class="col-md-6"><h6>Garment</h6><ul>'
-     + '<li>Elastic waist with drawstring</li><li>Calf-length</li><li>Two side pockets</li>'
-     + '</ul></div><div class="col-md-6"><h6>Fabric</h6><ul>'
-     + '<li>100% cotton khadi</li>'
-     + '</ul></div></div>'));
-</script>
+<% include product.xhtml %>

@@ -43,15 +43,40 @@ var dimensionsCm = {
     ]
 };
 
-var skuInfo = {
-    SKU: "OVTPLO1501Vo",
-    sizes: ['S', 'M', 'L', 'XL']
-};
-
 var variants = [
 {
-    colourName: "Blue",
+    colourName: "Magenta",
     vid: "CW1",
+    images: [
+        {
+            url: "/products/happyeveryday/lovertop/magenta-f.jpg",
+        },
+        {
+            url: "/products/happyeveryday/lovertop/magenta-b.jpg",
+        },
+        {
+            url: "/products/happyeveryday/lovertop/magenta-r.jpg",
+        }
+    ]
+},
+{
+    colourName: "Candy Red",
+    vid: "CW2",
+    images: [
+        {
+            url: "/products/happyeveryday/lovertop/red-f.jpg",
+        },
+        {
+            url: "/products/happyeveryday/lovertop/red-b.jpg",
+        },
+        {
+            url: "/products/happyeveryday/lovertop/red-r.jpg",
+        }
+    ]
+},
+{
+    colourName: "Electric Blue",
+    vid: "CW3",
     images: [
         {
             url: "/products/happyeveryday/lovertop/blue-f.jpg",
@@ -63,38 +88,38 @@ var variants = [
             url: "/products/happyeveryday/lovertop/blue-r.jpg",
         }
     ]
+},
+{
+    colourName: "Calm Tan",
+    vid: "CW4",
+    images: [
+        {
+            url: "/products/happyeveryday/lovertop/tan-f.jpg",
+        },
+        {
+            url: "/products/happyeveryday/lovertop/tan-b.jpg",
+        },
+        {
+            url: "/products/happyeveryday/lovertop/tan-r.jpg",
+        }
+    ]
 }
 ];
 
-var sizer = createSizeChartr(hed_sizing_top);
-var dimensioner = createDimensioner("cm", dimensionNames, dimensionsCm, styleImagePath);
-
-var prodEntry = getProductCatalog().getProduct(skuInfo.SKU);
-
-var pageComponent = createPageComponent(createProductInfo(skuInfo, prodEntry, variants), dimensioner, sizer, hed_lookbook);
-
-$(document).ready(onDocumentReady);
+var skuInfo = {
+    SKU: "OVTPLO1501Vo",
+    sizes: ['S', 'M', 'L', 'XL'],
+    getFabric(varidx) {
+        if ( varidx == 3) {
+            return "Khadi";
+        }
+        return "Voile";
+    },
+    getColourName(varidx) {
+        return variants[varidx].colourName;
+    },
+    description: 'Blocking of bold hues in tropical fabrics to infuse simplicity and design in everyday life is the core of Happy Everyday. This overtop is particularly inspired by the warm climate of the beach town that is Auroville. The light 100% cotton voile protects from the extreme heat and acts as a coverup in the chilly evenings. Tie-up the front flaps over a maxi dress or a top and bottoms to add a tonal layer, its magenta will add life to the lazy summers.',
+    garmentDetails: '<li>3/4 Sleeves</li><li>front tie-up</li><li>Slips on</li>'
+};
 </script>
-<section>
-    <link rel="stylesheet" href="/shopper-1.0.3/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
-<script>
-    document.write(getSizeModal(pageComponent.createRenderer(loadShopWithParam()).createSizingPanel()));
-</script>
-    <div class="container">
-        <div class="row" id="prodPanel">
-            <script>
- document.write(pageComponent.createRenderer(loadShopWithParam()).createImageDiv(0));
- document.write(pageComponent.createRenderer(loadShopWithParam()).createInfoDiv(0, 1));
-            </script>
-        </div>
-    </div>
-</section>
-<script>
- document.write(renderProductDetails(
-     '<p>Blocking of bold hues in tropical fabrics to infuse simplicity and design in everyday life is the core of Happy Everyday. This overtop is particularly inspired by the warm climate of the beach town that is Auroville. The light 100% cotton voile protects from the extreme heat and acts as a coverup in the chilly evenings. Tie-up the front flaps over a maxi dress or a top and bottoms to add a tonal layer, its magenta will add life to the lazy summers.</p>',
-     '<div class="row"><div class="col-md-6"><h6>Garment</h6><ul>'
-     + '<li>3/4 Sleeves</li><li>front tie-up</li><li>Slips on</li>'
-     + '</ul></div><div class="col-md-6"><h6>Fabric</h6><ul>'
-     + '<li>100% cotton voile</li>'
-     + '</ul></div></div>'));
-</script>
+<% include product.xhtml %>

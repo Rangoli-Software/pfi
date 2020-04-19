@@ -35,15 +35,10 @@ var dimensionsCm = {
     ]
 };
 
-var skuInfo = {
-    SKU: "VAMPAL1708Kh",
-    sizes: ['S', 'M', 'L', 'XL']
-};
-
 var variants = [
 {
     colourName: "Calm Tan",
-    vid: "CW0",
+    vid: "CW1",
     images: [
         {
             url: "/products/happyeveryday/sideslit/tan-f.jpg",
@@ -53,39 +48,43 @@ var variants = [
         },
         {
             url: "/products/happyeveryday/sideslit/tan-r.jpg",
+        },
+        {
+            url: "/products/happyeveryday/sideslit/tan-l.jpg",
+        }
+    ]
+},
+{
+    colourName: "Magenta",
+    vid: "CW2",
+    images: [
+        {
+            url: "/products/happyeveryday/sideslit/magenta-f.jpg",
+        },
+        {
+            url: "/products/happyeveryday/sideslit/magenta-b.jpg",
+        },
+        {
+            url: "/products/happyeveryday/sideslit/magenta-r.jpg",
+        },
+        {
+            url: "/products/happyeveryday/sideslit/magenta-l.jpg",
         }
     ]
 }
 ];
-var sizer = createSizeChartr(hed_sizing_top);
-var dimensioner = createDimensioner("cm", dimensionNames, dimensionsCm, styleImagePath);
 
-var prodEntry = getProductCatalog().getProduct(skuInfo.SKU);
-
-var pageComponent = createPageComponent(createProductInfo(skuInfo, prodEntry, variants), dimensioner, sizer, hed_lookbook);
-    
-$(document).ready(onDocumentReady);
+var skuInfo = {
+    SKU: "VAMPAL1708Kh",
+    sizes: ['S', 'M', 'L', 'XL'],
+    getFabric(varidx) {
+        return "Khadi";
+    },
+    getColourName(varidx) {
+        return variants[varidx].colourName;
+    },
+    description: 'Our Happy Everyday collection includes casual pieces like this asymmetrical tunic. Its A-line cut with a side slit makes it easier to pair with different bottoms and gives an interesting colour blocking. This basic round neck and the sleeveless top in pink Khadi is an ode to the kurta with a contemporary touch. The vibrant magenta lifts up the minimal silhouette and 100% cotton Khadi keeps it cool in summers.  Pair it with your salwar, trousers or palazzos - it\'s versatility will make you wear it often.',
+    garmentDetails: '<li>Round neck</li><li>Sleeveless</li><li>A-line with a slit on the left</li><li>Asymmetrical hem</li><li>Slips on</li>'
+};
 </script>
-<section>
-    <link rel="stylesheet" href="/shopper-1.0.3/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
-<script>
-    document.write(getSizeModal(pageComponent.createRenderer(loadShopWithParam()).createSizingPanel()));
-</script>
-    <div class="container">
-        <div class="row" id="prodPanel">
-            <script>
- document.write(pageComponent.createRenderer(loadShopWithParam()).createImageDiv(0));
- document.write(pageComponent.createRenderer(loadShopWithParam()).createInfoDiv(0, 1));
-            </script>
-        </div>
-    </div>
-</section>
-<script>
- document.write(renderProductDetails(
-     '<p>Our Happy Everyday collection includes casual pieces like this asymmetrical tunic. Its A-line cut with a side slit makes it easier to pair with different bottoms and gives an interesting colour blocking. This basic round neck and the sleeveless top in pink Khadi is an ode to the kurta with a contemporary touch. The vibrant magenta lifts up the minimal silhouette and 100% cotton Khadi keeps it cool in summers.  Pair it with your salwar, trousers or palazzos - it\'s versatility will make you wear it often.</p>',
-     '<div class="row"><div class="col-md-6"><h6>Garment</h6><ul>'
-     + '<li>Round neck</li><li>Sleeveless</li><li>A-line with a slit on the left</li><li>Asymmetrical hem</li><li>Slips on</li>'
-     + '</ul></div><div class="col-md-6"><h6>Fabric</h6><ul>'
-     + '<li>100% cotton voile</li>'
-     + '</ul></div></div>'));
-</script>
+<% include product.xhtml %>

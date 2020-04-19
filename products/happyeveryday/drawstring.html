@@ -39,15 +39,25 @@ var dimensionsCm = {
     ]
 };
 
-var skuInfo = {
-    SKU: "DRAWPA1609Kh",
-    sizes: ['S', 'M', 'L', 'XL']
-};
-
 var variants = [
 {
-    colourName: "Tan",
+    colourName: "Magenta",
     vid: "CW1",
+    images: [
+        {
+            url: "/products/happyeveryday/drawstring/magenta-f.jpg",
+        },
+        {
+            url: "/products/happyeveryday/drawstring/magenta-b.jpg",
+        },
+        {
+            url: "/products/happyeveryday/drawstring/magenta-r.jpg",
+        }
+    ]
+},
+{
+    colourName: "Calm Tan",
+    vid: "CW2",
     images: [
         {
             url: "/products/happyeveryday/drawstring/tan-f.jpg",
@@ -62,35 +72,17 @@ var variants = [
 }
 ];
 
-var sizer = createSizeChartr(hed_sizing_pant);
-var dimensioner = createDimensioner("cm", dimensionNames, dimensionsCm, styleImagePath);
-
-var prodEntry = getProductCatalog().getProduct(skuInfo.SKU);
-
-var pageComponent = createPageComponent(createProductInfo(skuInfo, prodEntry, variants), dimensioner, sizer, hed_lookbook);
-
-$(document).ready(onDocumentReady);
+var skuInfo = {
+    SKU: "DRAWPA1609Kh",
+    sizes: ['S', 'M', 'L', 'XL'],
+    getFabric(varidx) {
+        return "Khadi";
+    },
+    getColourName(varidx) {
+        return variants[varidx].colourName;
+    },
+    description: 'Another lounge pants from our Happy Everyday collection with a twist. The adjustable drawstring on the waist makes it easier to slip in and move around. This wide-legged pants are cut in 100% cotton khadi. Pair it with our flared Trapeze Top, a shirt, crop top or a tank top - it will work from day to night, from morning meetings to an evening stroll. These pants are available in a vibrant solid magenta and a neutral calm tan, which fits every personality and makes it even more wearable.',
+    garmentDetails: '<li>Drawstring waist</li><li>Full length</li><li>Wide hem</li>'
+};
 </script>
-<section>
-    <link rel="stylesheet" href="/shopper-1.0.3/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
-<script>
-    document.write(getSizeModal(pageComponent.createRenderer(loadShopWithParam()).createSizingPanel()));
-</script>
-    <div class="container">
-        <div class="row" id="prodPanel">
-            <script>
- document.write(pageComponent.createRenderer(loadShopWithParam()).createImageDiv(0));
- document.write(pageComponent.createRenderer(loadShopWithParam()).createInfoDiv(0, 1));
-            </script>
-        </div>
-    </div>
-</section>
-<script>
- document.write(renderProductDetails(
-     '<p>Another lounge pants from our Happy Everyday collection with a twist. The adjustable drawstring on the waist makes it easier to slip in and move around. This wide-legged pants are cut in 100% cotton khadi. Pair it with our flared Trapeze Top, a shirt, crop top or a tank top - it will work from day to night, from morning meetings to an evening stroll. These pants are available in a vibrant solid magenta and a neutral calm tan, which fits every personality and makes it even more wearable.</p>',
-     '<div class="row"><div class="col-md-6"><h6>Garment</h6><ul>'
-     + '<li>Drawstring waist</li><li>Full length</li><li>Wide hem</li>'
-     + '</ul></div><div class="col-md-6"><h6>Fabric</h6><ul>'
-     + '<li>100% cotton khadi</li>'
-     + '</ul></div></div>'));
-</script>
+<% include product.xhtml %>

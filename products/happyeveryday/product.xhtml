@@ -1,0 +1,33 @@
+<script src="prod.js"></script>
+<script src="hed.js"></script>
+<script>
+var sizer = createSizeChartr(hed_sizing_pant);
+var dimensioner = createDimensioner("cm", dimensionNames, dimensionsCm, styleImagePath);
+
+var prodEntry = getProductCatalog().getProduct(skuInfo.SKU);
+
+var pageComponent = createPageComponent(createProductInfo(skuInfo, prodEntry, variants), dimensioner, sizer, hed_lookbook);
+
+$(document).ready(onDocumentReady);
+</script>
+<section>
+    <link rel="stylesheet" href="/shopper-1.0.3/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
+<script>
+    document.write(getSizeModal(pageComponent.createRenderer(loadShopWithParam()).createSizingPanel()));
+</script>
+    <div class="container">
+        <div class="row" id="prodPanel">
+            <script>
+ document.write(pageComponent.createRenderer(loadShopWithParam()).createImageDiv(0));
+ document.write(pageComponent.createRenderer(loadShopWithParam()).createInfoDiv(0, 1));
+            </script>
+        </div>
+    </div>
+</section>
+<script>
+ document.write(renderProductDetails(
+     '<p>'+ skuInfo.description + '</p>',
+     '<div class="row"><div class="col-md-6 offset-md-3"><ul>'
+     + skuInfo.garmentDetails
+     + '</ul></div></div>'));
+</script>

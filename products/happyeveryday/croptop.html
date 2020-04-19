@@ -3,8 +3,6 @@ layout: product
 funnel: ViewContent
 title: Crop Top
 ---
-<script src="prod.js"></script>
-<script src="hed.js"></script>
 <script>
 var styleImagePath = "/products/happyeveryday/croptop/sizing.jpg"
 var dimensionNames = ["A. Length", "B. Bust", "C. Armhole"];
@@ -31,11 +29,6 @@ var dimensionsCm = {
     ]
 };
 
-var skuInfo = {
-    SKU: "CRPTOP1805Kh",
-    sizes: ['S', 'M', 'L', 'XL']
-};
-
 var variants = [
 {
     colourName: "Magenta",
@@ -51,38 +44,68 @@ var variants = [
             url: "/products/happyeveryday/croptop/magenta-r.jpg",
         }
     ]
+},
+{
+    colourName: "Electric Blue",
+    vid: "CW2",
+    images: [
+        {
+            url: "/products/happyeveryday/croptop/blue-f.jpg",
+        },
+        {
+            url: "/products/happyeveryday/croptop/blue-b.jpg",
+        },
+        {
+            url: "/products/happyeveryday/croptop/blue-r.jpg",
+        }
+    ]
+},
+{
+    colourName: "Candy Red",
+    vid: "CW3",
+    images: [
+        {
+            url: "/products/happyeveryday/croptop/red-f.jpg",
+        },
+        {
+            url: "/products/happyeveryday/croptop/red-b.jpg",
+        },
+        {
+            url: "/products/happyeveryday/croptop/red-r.jpg",
+        }
+    ]
+},
+{
+    colourName: "Calm Tan",
+    vid: "CW4",
+    images: [
+        {
+            url: "/products/happyeveryday/croptop/tan-f.jpg",
+        },
+        {
+            url: "/products/happyeveryday/croptop/tan-b.jpg",
+        },
+        {
+            url: "/products/happyeveryday/croptop/tan-r.jpg",
+        }
+    ]
 }
 ];
 
-var sizer = createSizeChartr(hed_sizing_top);
-var dimensioner = createDimensioner("cm", dimensionNames, dimensionsCm, styleImagePath);
-
-var prodEntry = getProductCatalog().getProduct(skuInfo.SKU);
-
-var pageComponent = createPageComponent(createProductInfo(skuInfo, prodEntry, variants), dimensioner, sizer, hed_lookbook);
-
-$(document).ready(onDocumentReady);
+var skuInfo = {
+    SKU: "CRPTOP1805Kh",
+    sizes: ['S', 'M', 'L', 'XL'],
+    getFabric(varidx) {
+        if ( varidx == 3) {
+            return "Khadi";
+        }
+        return "Voile";
+    },
+    getColourName(varidx) {
+        return variants[varidx].colourName;
+    },
+    description: 'Our Happy Everyday collection is all about bold colour blocking of modern silhouettes. This boxy crop top is fun to pair with different bottoms. It\'s a round neck, sleeveless and has an elastic in the back which makes the top flattering to wear. The magenta lifts up the minimal cut and 100% cotton voile keeps it breezy in summers. Pair it with our Balloon Pants, your own culottes, trousers, skirts or basically anything - it\'s versatility will make you wear it often.',
+    garmentDetails: '<li>Round neck</li><li>Sleeveless</li><li>Boxy cut</li><li>Elastic in the back</li><li>Slips on</li>'
+};
 </script>
-<section>
-    <link rel="stylesheet" href="/shopper-1.0.3/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
-<script>
-    document.write(getSizeModal(pageComponent.createRenderer(loadShopWithParam()).createSizingPanel()));
-</script>
-    <div class="container">
-        <div class="row" id="prodPanel">
-            <script>
- document.write(pageComponent.createRenderer(loadShopWithParam()).createImageDiv(0));
- document.write(pageComponent.createRenderer(loadShopWithParam()).createInfoDiv(0, 1));
-            </script>
-        </div>
-    </div>
-</section>
-<script>
- document.write(renderProductDetails(
-     '<p>Our Happy Everyday collection is all about bold colour blocking of modern silhouettes. This boxy crop top is fun to pair with different bottoms. It\'s a round neck, sleeveless and has an elastic in the back which makes the top flattering to wear. The magenta lifts up the minimal cut and 100% cotton voile keeps it breezy in summers. Pair it with our Balloon Pants, your own culottes, trousers, skirts or basically anything - it\'s versatility will make you wear it often.</p>',
-     '<div class="row"><div class="col-md-6"><h6>Garment</h6><ul>'
-     + '<li>Round neck</li><li>Sleeveless</li><li>Boxy cut</li><li>Elastic in the back</li><li>Slips on</li>'
-     + '</ul></div><div class="col-md-6"><h6>Fabric</h6><ul>'
-     + '<li>100% cotton voile</li>'
-     + '</ul></div></div>'));
-</script>
+<% include product.xhtml %>

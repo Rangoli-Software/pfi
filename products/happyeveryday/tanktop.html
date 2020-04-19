@@ -43,11 +43,6 @@ var dimensionsCm = {
     ]
 };
 
-var skuInfo = {
-    SKU: "TNKTPS1805Kh",
-    sizes: ['S', 'M', 'L', 'XL']
-};
-
 var variants = [
 {
     colourName: "Magenta",
@@ -63,38 +58,35 @@ var variants = [
             url: "/products/happyeveryday/tanktop/magenta-r.jpg",
         }
     ]
+},{
+    colourName: "Calm Tan",
+    vid: "CW2",
+    images: [
+        {
+            url: "/products/happyeveryday/tanktop/tan-f.jpg",
+        },
+        {
+            url: "/products/happyeveryday/tanktop/tan-b.jpg",
+        },
+        {
+            url: "/products/happyeveryday/tanktop/tan-r.jpg",
+        }
+    ]
 }
+
 ];
 
-var sizer = createSizeChartr(hed_sizing_top);
-var dimensioner = createDimensioner("cm", dimensionNames, dimensionsCm, styleImagePath);
-
-var prodEntry = getProductCatalog().getProduct(skuInfo.SKU);
-
-var pageComponent = createPageComponent(createProductInfo(skuInfo, prodEntry, variants), dimensioner, sizer, hed_lookbook);
-
-$(document).ready(onDocumentReady);
+var skuInfo = {
+    SKU: "TNKTPS1805Kh",
+    sizes: ['S', 'M', 'L', 'XL'],
+    getFabric(varidx) {
+        return "Khadi";
+    },
+    getColourName(varidx) {
+        return variants[varidx].colourName;
+    },
+    description: 'This classic top from our Happy Everyday edit is cut in a 100% cotton khadi to make the everyday heat more endurable. The boxy feel of the top gives an interesting silhouette when paired with pyjamas, trousers or skirts. It\'s sleeveless, has a round neck and an elastic in the back to make it easy to slip on. The magenta brightens the otherwise subtle top. Pair it with our Balloon Pants, your own culottes, trousers, skirts or basically anything - it\'s versatility will make you wear it often.',
+    garmentDetails: '<li>Round neck</li><li>Sleeveless</li><li>Boxy cut</li><li>Elastic in the back</li><li>Slips on</li>'
+};
 </script>
-<section>
-    <link rel="stylesheet" href="/shopper-1.0.3/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
-<script>
-    document.write(getSizeModal(pageComponent.createRenderer(loadShopWithParam()).createSizingPanel()));
-</script>
-    <div class="container">
-        <div class="row" id="prodPanel">
-            <script>
- document.write(pageComponent.createRenderer(loadShopWithParam()).createImageDiv(0));
- document.write(pageComponent.createRenderer(loadShopWithParam()).createInfoDiv(0, 1));
-            </script>
-        </div>
-    </div>
-</section>
-<script>
- document.write(renderProductDetails(
-     '<p>This classic top from our Happy Everyday edit is cut in a 100% cotton khadi to make the everyday heat more endurable. The boxy feel of the top gives an interesting silhouette when paired with pyjamas, trousers or skirts. It\'s sleeveless, has a round neck and an elastic in the back to make it easy to slip on. The magenta brightens the otherwise subtle top. Pair it with our Balloon Pants, your own culottes, trousers, skirts or basically anything - it\'s versatility will make you wear it often.</p>',
-     '<div class="row"><div class="col-md-6"><h6>Garment</h6><ul>'
-     + '<li>Round neck</li><li>Sleeveless</li><li>Boxy cut</li><li>Elastic in the back</li><li>Slips on</li>'
-     + '</ul></div><div class="col-md-6"><h6>Fabric</h6><ul>'
-     + '<li>100% cotton khadi</li>'
-     + '</ul></div></div>'));
-</script>
+<% include product.xhtml %>

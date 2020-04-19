@@ -35,14 +35,9 @@ var dimensionsCm = {
     ]
 };
 
-var skuInfo = {
-    SKU: "LITLAY1708Vo",
-    sizes: ['S', 'M', 'L', 'XL']
-};
-
 var variants = [
 {
-    colourName: "Red",
+    colourName: "Candy Red",
     vid: "CW1",
     images: [
         {
@@ -61,37 +56,62 @@ var variants = [
             url: "/products/happyeveryday/layer/red-d2.jpg",
         }
     ]
+},
+{
+    colourName: "Electric Blue",
+    vid: "CW2",
+    images: [
+        {
+            url: "/products/happyeveryday/layer/blue-f.jpg",
+        },
+        {
+            url: "/products/happyeveryday/layer/blue-b.jpg",
+        },
+        {
+            url: "/products/happyeveryday/layer/blue-r.jpg",
+        },
+        {
+            url: "/products/happyeveryday/layer/blue-d1.jpg",
+        },
+        {
+            url: "/products/happyeveryday/layer/blue-d2.jpg",
+        }
+    ]
+},
+{
+    colourName: "Candy Red on Magenta",
+    vid: "CW3",
+    images: [
+        {
+            url: "/products/happyeveryday/layer/magenta-f.jpg",
+        },
+        {
+            url: "/products/happyeveryday/layer/magenta-b.jpg",
+        },
+        {
+            url: "/products/happyeveryday/layer/magenta-r.jpg",
+        },
+        {
+            url: "/products/happyeveryday/layer/magenta-d1.jpg",
+        },
+        {
+            url: "/products/happyeveryday/layer/magenta-d2.jpg",
+        }
+    ]
 }
 ];
-var sizer = createSizeChartr(hed_sizing_top);
-var dimensioner = createDimensioner("cm", dimensionNames, dimensionsCm, styleImagePath);
 
-var prodEntry = getProductCatalog().getProduct(skuInfo.SKU);
-
-var pageComponent = createPageComponent(createProductInfo(skuInfo, prodEntry, variants), dimensioner, sizer, hed_lookbook);
-    
-$(document).ready(onDocumentReady);
+var skuInfo = {
+    SKU: "LITLAY1708Vo",
+    sizes: ['S', 'M', 'L', 'XL'],
+    getFabric(varidx) {
+        return "Voile";
+    },
+    getColourName(varidx) {
+        return variants[varidx].colourName;
+    },
+    description: 'Happy Everyday" - as the name suggests, this vibrant dress is made for your daytime routine, depending on what you pair it with. The 100% cotton voile feels light on the skin, especially in summers. The A-line silhouette with side slits makes it easier to move around. The lively candy red on magenta lifts up the simple round neck and a sleeveless dress. The dresses can also be worn separately with your own pair of trousers, denim or palazzos underneath.',
+    garmentDetails: '<li>Round neck</li><li>Sleeveless</li><li>A-line with side slits</li><li>Slips on</li>'
+};
 </script>
-<section>
-    <link rel="stylesheet" href="/shopper-1.0.3/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
-<script>
-    document.write(getSizeModal(pageComponent.createRenderer(loadShopWithParam()).createSizingPanel()));
-</script>
-    <div class="container">
-        <div class="row" id="prodPanel">
-            <script>
- document.write(pageComponent.createRenderer(loadShopWithParam()).createImageDiv(0));
- document.write(pageComponent.createRenderer(loadShopWithParam()).createInfoDiv(0, 1));
-            </script>
-        </div>
-    </div>
-</section>
-<script>
- document.write(renderProductDetails(
-     '<p>"Happy Everyday" - as the name suggests, this vibrant dress is made for your daytime routine, depending on what you pair it with. The 100% cotton voile feels light on the skin, especially in summers. The A-line silhouette with side slits makes it easier to move around. The lively candy red on magenta lifts up the simple round neck and a sleeveless dress. The dresses can also be worn separately with your own pair of trousers, denim or palazzos underneath.</p>',
-     '<div class="row"><div class="col-md-6"><h6>Garment</h6><ul>'
-     + '<li>Round neck</li><li>Sleeveless</li><li>A-line with side slits</li><li>Slips on</li>'
-     + '</ul></div><div class="col-md-6"><h6>Fabric</h6><ul>'
-     + '<li>100% cotton voile</li>'
-     + '</ul></div></div>'));
-</script>
+<% include product.xhtml %>

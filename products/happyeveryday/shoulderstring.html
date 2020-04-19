@@ -35,16 +35,10 @@ var dimensionsCm = {
     ]
 };
 
-var skuInfo = {
-    title: "Shoulder String Dress",
-    SKU: "LTSDSL1501Vo",
-    sizes: ['S', 'M', 'L', 'XL']
-};
-
 var variants = [
 {
     colourName: "Electric Blue",
-    vid: "CW0",
+    vid: "CW1",
     images: [
         {
             url: "/products/happyeveryday/shldrstrng/blue-f-1.jpg",
@@ -54,6 +48,21 @@ var variants = [
         },
         {
             url: "/products/happyeveryday/shldrstrng/blue-r-1.jpg",
+        }
+    ]
+},
+{
+    colourName: "Candy Red",
+    vid: "CW2",
+    images: [
+        {
+            url: "/products/happyeveryday/shldrstrng/red-f-1.jpg",
+        },
+        {
+            url: "/products/happyeveryday/shldrstrng/red-b-1.jpg",
+        },
+        {
+            url: "/products/happyeveryday/shldrstrng/red-r-1.jpg",
         }
     ]
 },
@@ -72,51 +81,19 @@ var variants = [
         }
     ]
 },
-{
-    colourName: "Candy Red",
-    vid: "CW2",
-    images: [
-        {
-            url: "/products/happyeveryday/shldrstrng/red-f-1.jpg",
-        },
-        {
-            url: "/products/happyeveryday/shldrstrng/red-b-1.jpg",
-        },
-        {
-            url: "/products/happyeveryday/shldrstrng/red-r-1.jpg",
-        }
-    ]
-}
 ];
-var sizer = createSizeChartr(hed_sizing_top);
-var dimensioner = createDimensioner("cm", dimensionNames, dimensionsCm, styleImagePath);
 
-var prodEntry = getProductCatalog().getProduct(skuInfo.SKU);
-
-var pageComponent = createPageComponent(createProductInfo(skuInfo, prodEntry, variants), dimensioner, sizer, hed_lookbook);
-    
-$(document).ready(onDocumentReady);
+var skuInfo = {
+    SKU: "LTSDSL1501Vo",
+    sizes: ['S', 'M', 'L', 'XL'],
+    getFabric(varidx) {
+        return "Voile";
+    },
+    getColourName(varidx) {
+        return variants[varidx].colourName;
+    },
+    description: 'A summer dress from our \'Happy Everyday\' collection featuring an A-line cut, V neck with delicate shoulder straps and side pockets. Elastic in the back and drawstring in the front makes the same dress wearable by different sizes. The dress and lining are cut in 100% cotton voile to keep it light and breezy in summers. The electric blue will make you stand out in the daytime and evening mood.The dress can also be worn as a long tunic, with trousers or straight fit pants underneath.',
+    garmentDetails: '<li>V neck</li><li>Shoulder straps</li><li>A-line with a straight hem</li><li>Drawstring fastening in the front</li><li>Elastic in the back</li><li>Slips on</li>'
+};
 </script>
-<section>
-    <link rel="stylesheet" href="/shopper-1.0.3/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
-<script>
-    document.write(getSizeModal(pageComponent.createRenderer(loadShopWithParam()).createSizingPanel()));
-</script>
-    <div class="container">
-        <div class="row" id="prodPanel">
-            <script>
- document.write(pageComponent.createRenderer(loadShopWithParam()).createImageDiv(0));
- document.write(pageComponent.createRenderer(loadShopWithParam()).createInfoDiv(0, 1));
-            </script>
-        </div>
-    </div>
-</section>
-<script>
- document.write(renderProductDetails(
-     '<p>A summer dress from our \'Happy Everyday\' collection featuring an A-line cut, V neck with delicate shoulder straps and side pockets. Elastic in the back and drawstring in the front makes the same dress wearable by different sizes. The dress and lining are cut in 100% cotton voile to keep it light and breezy in summers. The electric blue will make you stand out in the daytime and evening mood.The dress can also be worn as a long tunic, with trousers or straight fit pants underneath.</p>',
-     '<div class="row"><div class="col-md-6"><h6>Garment</h6><ul>'
-     + '<li>V neck</li><li>Shoulder straps</li><li>A-line with a straight hem</li><li>Drawstring fastening in the front</li><li>Elastic in the back</li><li>Slips on</li>'
-     + '</ul></div><div class="col-md-6"><h6>Fabric</h6><ul>'
-     + '<li>100% cotton voile</li>'
-     + '</ul></div></div>'));
-</script>
+<% include product.xhtml %>

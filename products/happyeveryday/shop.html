@@ -16,20 +16,17 @@ function createShoppingCard(summary) {
     if  ( summary.url !== undefined ) {
         res += '<h6 class="card-title mb-2">' + summary.title + '<a  href="' + summary.url + '"' +  '><i class="fa fa-arrow-right ml-2"></i></a></h6>';
     }
-    res += '<p class="mb-1">' + summary.lede + '</p>';
+//    res += '<p class="mb-1">' + summary.lede + '</p>';
     res += '</div>';
     res += '</div>';
     res += '</div>';
     return res;
 }
     
-function getTitle(fname) {
-    return fname[0].toUpperCase() + fname.slice(1);
-}
-
 function createCards(fname) {
-    var res = '<h6>' + getTitle(fname) + '</h6><div class="row">';
+    var brkColCls = "col-md-4";
     var skus = hed_catalog[fname];
+    var res = '<section class="pt-5 pb-3"><div class="container"><div class="row">';
     for (var i = 0; i < skus.length; i++) {
         sku = skus[i];
         var summary = hed_catalog.getSummary(sku);
@@ -38,11 +35,24 @@ function createCards(fname) {
         }
         res +=  createShoppingCard(summary);
     }
-    res += '</div>';
+    res += '</div></div></section>';
     return res;
 }
 </script>
 <h4>Happy Everyday Shop</h4>
+<ul class="nav nav-tabs nav-justified">
 <script>
-    document.write(createCards("pants") + createCards("tops") + createCards("overtops") + createCards("dresses"));
+    document.write(getTabItem("Pants", "pants", getUrlVars()["t"] == "p" || getUrlVars()["t"] === undefined));
+    document.write(getTabItem("Tops", "tops", getUrlVars()["t"] == "t"));
+    document.write(getTabItem("Jackets", "overtops", getUrlVars()["t"] == "o"));
+    document.write(getTabItem("Dresses", "dresses", getUrlVars()["t"] == "d"));
 </script>
+</ul>
+<div class="tab-content">
+<script>
+    document.write(getTabContent(createCards("pants"), "pants", getUrlVars()["t"] == "p" || getUrlVars()["t"] === undefined));
+    document.write(getTabContent(createCards("tops"), "tops", getUrlVars()["t"] == "t"));
+    document.write(getTabContent(createCards("overtops"), "overtops", getUrlVars()["t"] == "o"));
+    document.write(getTabContent(createCards("dresses"), "dresses", getUrlVars()["t"] == "d"));
+</script>
+</div>
