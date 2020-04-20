@@ -86,6 +86,9 @@ var variants = [
 var skuInfo = {
     SKU: "OVTPSH1501Vo",
     sizes: ['S', 'M', 'L', 'XL'],
+    getSizeChart() {
+        return hed_sizing_top;
+    },
     getFabric(varidx) {
         if ( variants[varidx].vid == "CW4") {
             return "Khadi";

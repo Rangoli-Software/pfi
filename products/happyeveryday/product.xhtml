@@ -1,7 +1,7 @@
 <script src="prod.js"></script>
 <script src="hed.js"></script>
 <script>
-var sizer = createSizeChartr(hed_sizing_pant);
+var sizer = createSizeChartr(skuInfo.getSizeChart());
 var dimensioner = createDimensioner("cm", dimensionNames, dimensionsCm, styleImagePath);
 
 var prodEntry = getProductCatalog().getProduct(skuInfo.SKU);

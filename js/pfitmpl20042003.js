@@ -3,6 +3,12 @@ var moods = {
     url: "/look.html?t=m",
     sub: [
         {
+            title: "Happy Everyday",
+            url: "/products/happyeveryday/hediapu.html",
+            lede: "Happy Everyday in a Pigmented Universe",
+            imageURL: "/products/happyeveryday/mood/hedm-04.jpg"
+        },
+        {
             title: "Summer Dreams",
             url: "/summerdreams.html",
             lede: "<strong>Summer Dreams</strong> - A line in Black, Ivory and Silver, in P.F.I. Tangail using the finest Bengal cotton, lustrous Madka and Mysore silks.",
@@ -232,6 +238,19 @@ var atelier = {
     ]
 };
 
+var lookbook = {
+    title: "Look Books",
+    url: "/about.html?a=l&#about-tabs",
+    sub: [
+        {
+            title: "Happy Everyday",
+            url: "/products/happyeveryday/looks.html",
+            lede: "Look Book for my Happy Everyday Line",
+            imageURL: "/products/happyeveryday/balloon/magenta-d1.jpg"
+        },
+    ]
+}
+
 var clients = {
     title: "Friends",
     url: "/about.html?a=c&#about-tabs",
@@ -349,6 +368,10 @@ var shop = {
         url: "/shop.html",
         sub: [
         {
+            title: "Happy Everyday",
+            url: "/products/happyeveryday/shop.html"
+        },
+        {
             title: "Woven Canvas",
             url: "/fabricartT.html"
         },
@@ -395,6 +418,7 @@ var siteMap = [
     origin,
     atelier,
     clients,
+    lookbook,
     about,
     buzz,
     moods,
@@ -584,7 +608,7 @@ function createBlogDD () {
 }
 
 function createAboutDD () {
-    var col1 = createDropdownColumn([about, buzzTL, clients], "col-12");
+    var col1 = createDropdownColumn([about, buzzTL, clients, lookbook], "col-12");
     return createMinWidthDDCard([col1], "145px", true);
 }
 
@@ -697,7 +721,7 @@ function pickSection(section) {
 }
 
 function selectSections() {
-    return [atelier, pickSection([about, buzz, archives, lotm]), pickSection([moods, ramp, clients]), origin];
+    return [atelier, pickSection([about, buzz, archives, lotm, lookbook]), pickSection([moods, ramp, clients]), origin];
 }
 
 function createFeatures(header) {

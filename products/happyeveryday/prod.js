@@ -57,7 +57,7 @@ function createProductRenderer(shop, prodInfo, dimensioner, sizer, looks) {
         createSizingPanel: function () {
             var imgHTML = '<img src="' + this.dimensioner.imagePath + '" class="img-fluid center-block"/>';
             return '<h6>International Sizing</h6>' + this.sizer.createSizeChart(this.skuInfo.sizes) +
-            '<h6 class="mb-0">Garment Measurements</h6>' + this.dimensioner.createMeasurementsPanel("in", this.skuInfo.sizes);
+            '<p>The sizing chart above is only approximate. Please check the actual garment measurements below to find your size. Please email us at prema.florence.isaac@gmail.com or WhatsApp +919443362528 for further queries or to customize your order.</p><h6 class="mb-0">Garment Measurements</h6>' + this.dimensioner.createMeasurementsPanel("in", this.skuInfo.sizes);
         },
         createImageCarousel: function (varIdx) {
             var variant = this.variants[varIdx];
@@ -108,9 +108,14 @@ function createProductRenderer(shop, prodInfo, dimensioner, sizer, looks) {
         createQuantityDiv: function () {
             return '<select class="custom-select"><option value="1" selected>1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>';
         },
+        getCategoryURL: function() {
+            var res = "shop.html";
+            var cat = hed_catalog.getCategory(this.skuInfo.SKU);
+            return res + (cat === null ? "" : "?t=" + cat[0]); 
+        },
         createInfoDiv: function (varIdx, szIdx) {
             return '<div class="col-12 col-md-5 pl-lg-10">'
-                + '<div class="row mb-1"><div class="col"><a class="text-muted" href="shop.html">Happy Everyday</a></div></div>' 
+                + '<div class="row mb-1"><div class="col"><a class="text-muted" href="' + this.getCategoryURL() + '">Happy Everyday</a></div></div>' 
                 + '<h4 class="mb-2">' + this.product.name + '</h4>'
                 + '<div class="mb-7 text-gray-400"><span class="ml-1 font-size-h5 font-weight-bold">' +
                 this.getPriceHTML() + '</span></div>' +

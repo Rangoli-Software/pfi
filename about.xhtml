@@ -55,12 +55,14 @@
 <ul class="nav nav-tabs nav-justified">
 <script>
     document.write(getTabItem(clients.title, "clients", getUrlVars()["a"] == "c" || getUrlVars()["a"] === undefined));
+    document.write(getTabItem("Look Books", "lookbooks", getUrlVars()["a"] == "l"));
     document.write(getTabItem("Buzzing...", "buzzing", getUrlVars()["a"] == "b"));
 </script>
 </ul>
 <div class="tab-content">
 <script>
     document.write(getTabContent(createSection(clients), "clients", getUrlVars()["a"] == "c" || getUrlVars()["a"] === undefined));
+    document.write(getTabContent(createSection(lookbook), "lookbooks", getUrlVars()["a"] == "l"));
     document.write(getTabContent(createSection(buzz), "buzzing", getUrlVars()["a"] == "b"));
 </script>
 </div>

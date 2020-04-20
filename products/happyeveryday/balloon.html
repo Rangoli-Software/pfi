@@ -68,6 +68,9 @@ var variants = [
 var skuInfo = {
     SKU: "BALLPA1501Vo",
     sizes: ['Free'],
+    getSizeChart() {
+        return hed_sizing_pant;
+    },
     getFabric(varidx) {
         return "Voile";
     },
