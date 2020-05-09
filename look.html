@@ -7,7 +7,8 @@ keywords: ootd, potd, lotd
 <h4><%- locals.title %></h4>
 <ul class="nav nav-tabs nav-justified">
 <script>
-    document.write(getTabItem("Look!", "look", getUrlVars()["t"] == "p" || getUrlVars()["t"] === undefined));
+    document.write(getTabItem("Prema", "look", getUrlVars()["t"] == "p" || getUrlVars()["t"] === undefined));
+    document.write(getTabItem("Friends", "friends", getUrlVars()["t"] == "f"));
     document.write(getTabItem("Ramp", "ramp", getUrlVars()["t"] == "r"));
     document.write(getTabItem("Moods", "moods", getUrlVars()["t"] == "m"));
 </script>
@@ -15,6 +16,7 @@ keywords: ootd, potd, lotd
 <div class="tab-content">
 <script>
     document.write(getTabContent(createSection(lotm), "look", getUrlVars()["t"] == "p" || getUrlVars()["t"] === undefined));
+    document.write(getTabContent(createSection(clients), "friends", getUrlVars()["t"] == "f"));
     document.write(getTabContent(createSection(ramp), "ramp", getUrlVars()["t"] == "r"));
     document.write(getTabContent(createSection(moods), "moods", getUrlVars()["t"] == "m"));
 </script>

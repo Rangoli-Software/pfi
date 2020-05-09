@@ -1,4 +1,3 @@
-<h1 id="aboutus">About Us</h1>
 <section>
 <div class="row">
     <div class="col col-12 col-sm-6">
@@ -48,21 +47,18 @@
     </div>
 </div>
 </section>
-<script>
-    document.write(createSection(about));
-</script>
 <div id="about-tabs"></div>
 <ul class="nav nav-tabs nav-justified">
 <script>
-    document.write(getTabItem(clients.title, "clients", getUrlVars()["a"] == "c" || getUrlVars()["a"] === undefined));
+    document.write(getTabItem("Values", "values", getUrlVars()["a"] == "v"));
     document.write(getTabItem("Look Books", "lookbooks", getUrlVars()["a"] == "l"));
-    document.write(getTabItem("Buzzing...", "buzzing", getUrlVars()["a"] == "b"));
+    document.write(getTabItem("Buzzing...", "buzzing", getUrlVars()["a"] == "b" || getUrlVars()["a"] === undefined));
 </script>
 </ul>
 <div class="tab-content">
 <script>
-    document.write(getTabContent(createSection(clients), "clients", getUrlVars()["a"] == "c" || getUrlVars()["a"] === undefined));
+    document.write(getTabContent(createSection(about), "values", getUrlVars()["a"] == "v"));
     document.write(getTabContent(createSection(lookbook), "lookbooks", getUrlVars()["a"] == "l"));
-    document.write(getTabContent(createSection(buzz), "buzzing", getUrlVars()["a"] == "b"));
+    document.write(getTabContent(createSection(buzz), "buzzing", getUrlVars()["a"] == "b" || getUrlVars()["a"] === undefined));
 </script>
 </div>

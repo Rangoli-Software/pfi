@@ -2,14 +2,14 @@
 layout: shop
 title: Happy Everyday Shop
 ---
-<script src="hed.js"></script>
+<script src="/js/pfihed20050800.js"></script>
 <script>
-function createShoppingCard(summary) {
+function createShoppingCard(summary, images) {
     res = '<div class="col-6 col-md-4">';
     res += '<div class="card">'
     + '<div class="card-img"><div class="card-img-hover">'
-    + '<img class="card-img-top card-img-back img-fluid" src="' + summary.images[1] + '" width="1000" height="1500">'
-    + '<img class="card-img-top card-img-front img-fluid" src="' + summary.images[0] + '" width="1000" height="1500">'
+    + '<img class="card-img-top card-img-back img-fluid" src="' + images[1].url + '" width="1000" height="1500">'
+    + '<img class="card-img-top card-img-front img-fluid" src="' + images[0].url + '" width="1000" height="1500">'
     + '</div></div>';
     res += '<div class="card-body px-0 pt-6 pb-4">';
     res += '<div class="card-subtitle mb-1"><span class="sc-item text-muted" data-field="price" data-vsku="' + summary.sku +'"></span></div>';
@@ -33,7 +33,9 @@ function createCards(fname) {
         if ( summary === null ) {
             continue;
         }
-        res +=  createShoppingCard(summary);
+        var vnts = hed_catalog.getProduct(sku).variants;
+        var images = [vnts.getImage(0,0),vnts.getImage(0,1)];
+        res +=  createShoppingCard(summary, images);
     }
     res += '</div></div></section>';
     return res;

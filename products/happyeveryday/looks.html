@@ -2,16 +2,16 @@
 layout: shop
 title: Happy Everyday Looks
 ---
-<script src="hed.js"></script>
+<script src="/js/pfihed20050800.js"></script>
 <script>
 function createLookRow(i) {
     var lk = hed_lookbook.looks[i];
     var res = '<div class="row mb-7">';
     res += '<div class="col-6">';
-    res += '<img class="img-fluid" src="' + hed_lookbook.getImagePath(i) + '" width="1000" height="1498">';
+    res += '<img class="img-fluid" src="' + hed_lookbook.getImagePath(lk.title) + '" width="1000" height="1498">';
     res += '</div>';
     res += '<div class="col-6">';
-    res += '<img class="img-fluid" src="' + hed_lookbook.getImageLeft(i) + '" width="1000" height="1498">';
+    res += '<img class="img-fluid" src="' + hed_lookbook.getImageLeft(lk.title) + '" width="1000" height="1498">';
     res += '</div>';
     res += '</div>';
     var styles = hed_lookbook.looks[ i ].styles;

@@ -34,39 +34,136 @@ var dimensionsInches = {
 var dimensionVariationInches = 0.5;
 
 var dimensionWidths = [29, 35, 29];
-
-function createSizingTable(units) {
-        var fn = units == "in" ? identity : inches2cm;
-        var rem = 100;
-        for (var i = 0; i < dimensionWidths.length; i++) {
-            rem -= dimensionWidths[i];
-        }
-        var unTxt = (units == "in" ? " inches" :  "  cm")
-        var table = '<div class="table-responsive"><table class="dim-table table table-bordered table-hover table-sm mb-0 text-center" style="padding: 6px;"><caption><strong>Measurements (in' + unTxt + ')</strong><br>Variation can be up to +/- ' + fn(dimensionVariationInches) + unTxt + '</caption><thead><tr><td class="text-left" width="' + rem + '%"><strong>Size</strong></td>';
-        for (var i = 0; i < dimensionWidths.length; i++) {
-            table += '<td width="' + dimensionWidths[i] + '%"><strong>' + dimensionNames[i] + '</strong></td>';
-        }
-        table += '</tr></thead><tbody>';
-        for (var i = 0; i < sizes.length; i++) {
-            var size = sizes[i];
-            var dims = dimensionsInches[size];
-            table += '<tr><td class="text-left">' + size + '</td>';
-            for (var j = 0; j < dimensionNames.length; j++) {
-                subdim = dims[j];
-                table += '<td>' + fn(subdim) + '</td>';
-            }
-            table += '</tr>'
-        }
-        table += '</tbody></table></div>';
-        return table;
-    }
     
+var dimensioner = createDimensioner("in", dimensionNames, dimensionsInches, "/fabricart/TSizing1.jpg", dimensionVariationInches);
+
 function onUnitChange() {
     $('#SizeTable').empty();
     var selRadio = $("input[name='SizeChartUnits']:checked");
     var units = selRadio.val();
-    var table = createSizingTable(units);
+    var table = dimensioner.createSizingTable(units, sizes);
     $(table).appendTo('#SizeTable');
+}
+
+var mens_sizing = {
+    sizeGeo: ["US", "UK", "EU"],
+    capGeo: ["US", "UK", "EU / FR"],
+    chart: {
+    S: {
+        US: [38],
+        UK: [38],
+        EU: [48],
+    },
+    M: {
+        US: [40],
+        UK: [40],
+        EU: [50],
+    },
+    L: {
+        US: [42],
+        UK: [42],
+        EU: [52],
+    },
+    XL: {
+        US: [44],
+        UK: [44],
+        EU: [54],
+    },
+    XXL : {
+        US: [46],
+        UK: [46],
+        EU: [56],
+    }
+    }
+}
+
+var womens_sizing = {
+    sizeGeo: ["US", "UK", "EU", "IT"],
+    capGeo: ["US", "UK", "EU / FR", "IT"],
+    chart: {
+    S: {
+        US: [8],
+        UK: [12],
+        EU: [40],
+        IT: [44],
+    },
+    M: {
+        US: [10],
+        UK: [14],
+        EU: [42],
+        IT: [46],
+    },
+    L: {
+        US: [12],
+        UK: [16],
+        EU: [44],
+        IT: [48],
+    },
+    XL: {
+        US: [14],
+        UK: [18],
+        EU: [46],
+        IT: [50],
+    },
+    XXL : {
+        US: [16],
+        UK: [20],
+        EU: [48],
+        IT: [52],
+    }
+    }
+}
+
+function createUnisexSizeChartr() {
+    return {
+        chartrs: [createSizeChartr(mens_sizing), createSizeChartr(womens_sizing)],
+        tableId: 'IntlSizing',
+        radioName: 'GenderVal',
+        eventFnStr: 'OnGenderChange()',
+        radios: [{
+            value: 'men',
+            text: "Men",
+        },
+        {
+            value: 'women',
+            text: "Women",
+        }],
+        createButton(rad, isActive) {
+            return '<label class="btn btn-xxs btn-outline-dark font-size-xxxs rounded-0 ' + (isActive ? "active" : "") + '"><input type="radio" name="' + this.radioName + '" value="' + rad.value + '" onclick="' + this.eventFnStr + '"' + (isActive ? ' checked' : '') + '>' + rad.text + '</label>';
+        },
+        createSexSelectorChart: function (idx, sizes) {
+            return '<div class="row align-items-center"><div class="col-12 text-center py-5"><div class="btn-group btn-group-toggle ml-auto py-5" data-toggle="buttons">' + this.createButton(this.radios[0], idx == 0) + this.createButton(this.radios[1], idx == 1) + '</div>' + '<div id="' + this.tableId + '">' + this.createSelectedChart(idx, sizes) + '</div></div></div>';
+        },
+        createSelectedChart: function (idx, sizes) {
+            return this.chartrs[idx].createSizeChart(sizes);
+        },
+        getIndex: function(value) {
+            for(var i = 0; i < this.radios.length; i++) {
+                if ( value == this.radios[i].value) {
+                    return i;
+                }
+            }
+            return -1;
+        },
+        onChange: function() {
+            $('#' + this.tableId + '').empty();
+            var selRadio = $("input[name='" + this.radioName + "']:checked");
+            var idx = this.getIndex(selRadio.val())
+            var table = this.createSelectedChart(idx, sizes);
+            $(table).appendTo('#' + this.tableId + '');
+        }
+    };
+}
+
+var sizer = createUnisexSizeChartr();
+    
+function OnGenderChange() {
+    sizer.onChange();
+}
+
+function createSizingPanel () {
+    return '<h6>International Sizing</h6>' + sizer.createSexSelectorChart(0, sizes) +
+        '<p>The sizing chart above is only approximate. Please check the actual garment measurements below to find your size. Please email us at prema.florence.isaac@gmail.com or WhatsApp +919443362528 if you have further questions or wish to customize your order.</p><h6 class="mb-0">Garment Measurements</h6>' + dimensioner.createMeasurementsPanel("in", sizes);
 }
 
 var sizingData = {
@@ -271,8 +368,9 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
         };
     }
 
-    function createPageComponent(tlpc) {
+    function createPageComponent(catalog) {
         return {
+            catalog: catalog,
             allCartC: null,
             visiblePanels: null,
             init: function(shop) {
@@ -322,6 +420,17 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
             setShop: function(shop) {
                 this.allCartC.setShop(shop);
             },
+            updateItemPrices: function() {
+                var elts =$('.sc-item');
+                var that = this;
+                elts.each(function(index) {
+                    var sku = $(this).data('vsku');
+                    var prod =  that.catalog.getProduct(sku);
+                    $(this).empty();
+                    var html = that.allCartC.shop.getPriceHTML(prod);
+                    $(this).append(html);
+                });
+            },
             onSelectionChange() {
                 this.unregisterATCListeners();
                 $('#fabricartpanel-list .btn').off('click');
@@ -338,6 +447,7 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
                 var listHTML = listRenderer.createAllPanels();
                 $(listHTML).appendTo('#fabricartpanel-list');
                 this.registerATCListeners();
+                this.updateItemPrices();
             },
             getFilteredPanels(valColour, valSize) {
                 var product = getProductCatalog().getProduct(TSHIRT_SKU);
@@ -356,7 +466,7 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
         let searchParams = new URLSearchParams(window.location.search);
         var cur = searchParams.has('cur') ? searchParams.get('cur') : null;
         let shop = loadShop(cur);
-        pageComponent = createPageComponent(shop);
+        pageComponent = createPageComponent(getProductCatalog());
         pageComponent.init(shop);
     }
 
@@ -373,6 +483,9 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
     Woven Canvas T
 </h4>
 <div class="item">
+    <script>
+        document.write(getSizeModal(createSizingPanel()));
+    </script>
     <figure>
         <img src="/fabricart/TShirtColl.jpg" class="figure-img img-fluid center-block" width="1500" height="1200"/>
     </figure>
@@ -469,10 +582,7 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
 </form>
 <section class="pt-7"><div class="container"><div class="row"><div class="col-12">
     <div class="nav nav-tabs nav-overflow justify-content-start justify-content-md-center border-bottom">
-        <a class="nav-link active" data-toggle="tab" href="#details">
-            Details
-        </a>
-        <a class="nav-link" data-toggle="tab" href="#care">
+        <a class="nav-link active" data-toggle="tab" href="#care">
             Care
         </a>
         <a class="nav-link" data-toggle="tab" href="#shipping">
@@ -480,32 +590,7 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
         </a>
     </div>
     <div class="tab-content">
-        <div class="tab-pane fade show active" id="details"><div class="item py-5">
-            <h6>Sizing</h6>
-            <div class="row align-items-center">
-                <div class="col-md-4 text-center">
-                    <img src="/fabricart/TSizing1.jpg" class="img-fluid center-block"/>
-                </div>
-                <div class="col-md-8 text-center py-5">
-                    <div class="btn-group btn-group-toggle ml-auto" data-toggle="buttons">
-                    <label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 active">
-                        <input type="radio" name="SizeChartUnits" value="in" onclick="onUnitChange()" checked>IN
-                    </label>
-                    <label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 ml-2">
-                        <input type="radio" name="SizeChartUnits" value="cm" onclick="onUnitChange()">CM
-                    </label>
-                    </div>
-
-                    <div id="SizeTable">
-                    <script>
-                        document.write(createSizingTable("in"));
-                    </script>
-                    </div>
-                </div>
-            </div>
-        </div></div>
-
-        <div class="tab-pane fade" id="care"><div class="item py-5">
+        <div class="tab-pane fade show active" id="care"><div class="item py-5">
 <div class="row"><div class="col-md-4"><ul><li>Do Not Soak</li><li>Turn Inside-Out</li><li>Machine Wash Cold</li><li>Mild Detergent</li><li>Gentle Cycle</li><li>Do Not Bleach</li><li>Dry In Shade</li><li>Medium Iron</li></ul></div><div class="col-md-8"><p>Each border in every panel has been individually tested for colour-fastness and colour-fixed in some cases, so there will be no colour-bleeding with normal washing.</p></div></div>
         </div></div>
         <div class="tab-pane fade" id="shipping"><div class="item py-5">
@@ -515,7 +600,7 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
 </div></div></div></section>
 <section>
 <h6>Corporate Gifts</h6>
-<p>These panels make fantastic corporate gifts. Please email us if you would like to order a batch of panels for corporate gifting to team members or executives. If you like, we can also attach them to your corporate branded t-shirts.</p>
+<p>These panels make fantastic corporate gifts. Please email us if you would like to order a group of panels for corporate gifting to team members or executives. If you like, we can also attach them to corporate branded t-shirts that you provide.</p>
 </section>
 <div class="item">
     <p><strong>Models: Shajin Kalathingal, Gulshan Gupta, Kartik Samuel Isaac. Photography by Mathilde Hauser</strong></p>

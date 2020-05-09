@@ -3,7 +3,7 @@ const terser = require("terser");
 
 module.exports = function(eleventyConfig) {
 eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
-    if( outputPath.endsWith(".html") || outputPath.endsWith(".ejs")) {
+    if( outputPath.endsWith(".html") ) {
       let minified = htmlmin.minify(content, {
           useShortDoctype: true,
           removeComments: true,
@@ -14,6 +14,9 @@ eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
           minifyCSS: true
       });
       return minified;
+    }
+    if( outputPath.endsWith(".js") ) {
+      return terser.minify(content,{}).code;
     }
     return content;
   });

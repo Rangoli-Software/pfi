@@ -67,9 +67,6 @@
 /products/anotherway/*.jpg
 	Cache-Control: public, max-age=31536000,  immutable
 
-/products/happyeveryday/*.jpg
-	Cache-Control: public, max-age=31536000,  immutable
-
 /products/holydays/*.jpg
 	Cache-Control: public, max-age=31536000,  immutable
 

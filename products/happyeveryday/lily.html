@@ -3,68 +3,7 @@ layout: product
 funnel: ViewContent
 title: Pineapple Lily Pant
 ---
-<script src="prod.js"></script>
-<script src="hed.js"></script>
 <script>
-var styleImagePath = "/products/happyeveryday/lily/sizing-1.jpg"
-var dimensionNames = ["A. Length", "B. Waist", "C. Crotch", "D. Hips", "E. Hem"];
-var dimensionsCm = {
-    Free: [
-        84,
-        64,
-        90,
-        140,
-        86
-    ]
-};
-
-var variants = [
-{
-    colourName: "Magenta",
-    vid: "CW1",
-    images: [
-        {
-            url: "/products/happyeveryday/lily/magenta-f.jpg",
-        },
-        {
-            url: "/products/happyeveryday/lily/magenta-b.jpg",
-        },
-        {
-            url: "/products/happyeveryday/lily/magenta-r.jpg",
-        }
-    ]
-},
-{
-    colourName: "Calm Tan",
-    vid: "CW2",
-    images: [
-        {
-            url: "/products/happyeveryday/lily/tan-f.jpg",
-        },
-        {
-            url: "/products/happyeveryday/lily/tan-b.jpg",
-        },
-        {
-            url: "/products/happyeveryday/lily/tan-r.jpg",
-        }
-    ]
-}
-];
-
-var skuInfo = {
-    SKU: "WNDRPA1709Kh",
-    sizes: ['Free'],
-    getSizeChart() {
-        return hed_sizing_pant;
-    },
-    getFabric(varidx) {
-        return "Khadi";
-    },
-    getColourName(varidx) {
-        return variants[varidx].colourName;
-    },
-    description: 'Happy Everyday - means more fun silhouettes to wear in your daily routine. Featuring a carefree pant, with a wide elastic on the waist to fit different sizes. These pants are cut in a breathable 100% khadi. The colour options vary from vibrant to neutral to cater to every taste. The magenta exaggerates this relaxed silhouette while the calm tan brings it down a notch. Pair it with a crop top or a shirt, these pants will work with every length and style.',
-    garmentDetails: '<li>Elastic waist</li><li>Wide hem</li><li>Adjustable hem with string</li><li>Slips on</li>'
-};
+var prodSKU = "WNDRPA1709Kh";
 </script>
 <% include product.xhtml %>

@@ -1,12 +1,10 @@
-<script src="prod.js"></script>
-<script src="hed.js"></script>
+<script src="/js/pfihed20050800.js"></script>
 <script>
-var sizer = createSizeChartr(skuInfo.getSizeChart());
-var dimensioner = createDimensioner("cm", dimensionNames, dimensionsCm, styleImagePath);
+var prodJSON = hed_catalog.getProduct(prodSKU);
+var sizer = createSizeChartr(prodJSON.skuInfo.getSizeChart());
+var dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath);
 
-var prodEntry = getProductCatalog().getProduct(skuInfo.SKU);
-
-var pageComponent = createPageComponent(createProductInfo(skuInfo, prodEntry, variants), dimensioner, sizer, hed_lookbook);
+var pageComponent = createPageComponent(prodJSON, dimensioner, sizer, hed_lookbook, getProductCatalog());
 
 $(document).ready(onDocumentReady);
 </script>
@@ -26,8 +24,8 @@ $(document).ready(onDocumentReady);
 </section>
 <script>
  document.write(renderProductDetails(
-     '<p>'+ skuInfo.description + '</p>',
+     '<p>'+ prodJSON.skuInfo.description + '</p>',
      '<div class="row"><div class="col-md-6 offset-md-3"><ul>'
-     + skuInfo.garmentDetails
+     + prodJSON.skuInfo.garmentDetails
      + '</ul></div></div>'));
 </script>

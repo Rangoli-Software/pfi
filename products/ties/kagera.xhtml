@@ -100,8 +100,9 @@
         return "scpp-" + num;
     }
 
-    function createPageComponent(product, ties) {
+    function createPageComponent(product, ties, catalog) {
         return {
+            catalog: catalog,
             product: product,
             ties: ties,
             allCartC: null,
@@ -113,11 +114,23 @@
                 var item = this.ties.getItem(i);
                 return this.allCartC.addToCart(item);
             },
+            updateItemPrices: function() {
+                var elts =$('.sc-item');
+                var that = this;
+                elts.each(function(index) {
+                    var sku = $(this).data('vsku');
+                    var prod =  that.catalog.getProduct(sku);
+                    $(this).empty();
+                    var html = that.allCartC.shop.getPriceHTML(prod);
+                    $(this).append(html);
+                });
+            },
             onDocumentReady: function () {
                 this.init();
                 this.onSelectionChange();
             },
             onSelectionChange: function() {
+                this.updateItemPrices();
                 var tiesRenderer = createTiesRenderer(this.allCartC.shop, {}, this.ties)
                 for( var i = 0; i < tieListData.length; i++ ) {
                     var idString = "#" + createPurchasePanelID(i);
@@ -136,10 +149,11 @@
         };
     }
 
-    var product = getProductCatalog().getProduct(TIE_SKU);
+    var catalog = getProductCatalog();
+    var product = catalog.getProduct(TIE_SKU);
     var ties = createTiesObject(tieListData, product);
 
-    var tlpc = createPageComponent(product, ties);
+    var tlpc = createPageComponent(product, ties, catalog);
 
     function onDocumentReady() {
         tlpc.onDocumentReady();
