@@ -1,0 +1,166 @@
+---
+layout: product
+funnel: ViewContent
+title: Face Mask
+---
+<script type="text/javascript" src="fm/fmlist.js"></script>
+<script>
+    function createFMList(listdata, product) {
+        return {
+            base: listdata,
+            product: product,
+            getNumItems: function() {
+                return this.base.length;
+            },
+            getId: function(i) {
+                return this.base[i][0];
+            },
+            getDescriptor: function(i) {
+                return createFMDescriptor(this.base[i]);
+            },
+            getItem: function(i, size) {
+                var desc = this.getDescriptor(i);
+                return createItem(product, product.inrPrice, size, desc.fabricColour, 1, desc.number, desc.imageURL, true);
+            },
+            filterUnsoldPanels: function () {
+                var nList = [];
+                for(var i = 0; i <= this.base.length - 1; i++) {
+                    if (this.base[ i ][ 5 ] === "" && this.base[ i ][ 8 ] === "") {
+                        nList.push(this.base[ i ]);
+                    }
+                }
+                return createFMList(nList, this.product);
+            },
+            filterOnColour: function(color) {
+                var nList = [];
+                for(var i = 0; i <= this.base.length - 1; i++) {
+                    if (this.base[ i ][ 2 ] === color) {
+                        nList.push(this.base[ i ]);
+                    }
+                }
+                return createFMList(nList, this.product);
+            },
+            filterOnSize: function(size) {
+                var nList = [];
+                for(var i = 0; i <= this.base.length - 1; i++) {
+                    var arr = this.base[ i ];
+                    var recSize = arr[ 7 ];
+                    if ( recSize == '' ) {
+                        var width = parseFloat(arr[ 4 ]);
+                        if (worksWithSize(width, size)) {
+                            nList.push(arr);
+                        }
+                    } else {
+                        if ( recSize == size ) {
+                            nList.push(arr);
+                        }
+                    }
+                }
+                return createFMList(nList, this.product);
+            }
+        };
+    }
+
+    function createHTMLList(arr) {
+        var res = '';
+        for(var i = 0; i < arr.length; i++) {
+            res += '<li>' + arr[i] + '</li>';
+        }
+        return res;
+    }
+    var prodData = {
+        imageFile: "sizing.jpg",
+        dimensionNames: ["A. Width", "B. Height"],
+        dimensionsCm: {
+            Free: [
+                90,
+                30,
+            ]
+        },
+        data: [{
+            vid: "CW1",
+            images: ["many-1", "many-2", "b-f", "b-b", "b-l"]
+        }],
+        sizes: ['Free'],
+        description: 'The fabric for these face covers come from my Treasure Trove of Tangail sari offcuts, hand-woven in the finest cotton and silk. Each mask features a lining and a pocket in hand-woven khadi cotton in a contrasting colour. The elastic ear bands will help the mask fit firmly and provide full coverage from nose to chin. The 3 light layers avoid heat-trapping while keeping you safe in style. You can fill the pocket with your own surgical mask, filter, herbs or essential oil of your choice. One size fits most.',
+        garmentDetails: createHTMLList(['Non-medical grade','3 layers','Built-in pocket','Comfortable elastic ear bands','Freesize (29 x 15 cms.)','Provides full coverage from nose to chin']),
+    }
+
+    function createProductJSON(sku, basePath, prodData, sizingChart) {
+        return {
+            product: getProductCatalog().getProduct(sku),
+            styleImagePath: basePath + prodData.imageFile,
+            dimensionNames: prodData.dimensionNames,
+            dimensionsCm: prodData.dimensionsCm,
+            variants: {
+                getFabric: function(varidx) {
+                    return prodData.getFabric(varidx);
+                },
+                getColourName: function(varidx) {
+                    return this.data[varidx].colourName;
+                },
+                getBasePath: function() {
+                    return basePath;
+                },
+                getNumImages: function(vidx) {
+                    var vnt = this.data[vidx];
+                    return vnt.images.length;
+                },
+                getImage: function(vidx, iidx) {
+                    var vnt = this.data[vidx];
+                    return {
+                        url: this.getBasePath() + vnt.images[iidx] + ".jpg"
+                    }
+                },
+                data: prodData.data
+            },
+            skuInfo: {
+                SKU: sku,
+                sizes: prodData.sizes,
+                getSizeChart: function() {
+                    return sizingChart;
+                },
+                description: prodData.description,
+                garmentDetails: prodData.garmentDetails
+            }
+        }
+    }
+
+    const washcareHTML = "<ul><li>Wash before first and every use</li><li>Do not soak</li><li>Machine Wash Cold</li><li>Mild Detergent</li><li>Gentle Cycle</li><li>Do Not Bleach</li><li>Dry In Shade</li></ul>";
+
+    const shippingHTML = getShippingInfoUL(['If the item is in stock, it will be ready to ship within 1 business day of your order.']);
+
+    const infoHTML = '<ul><li><strong>#artwear - each mask is unique - one-of-a-kind</strong></li><li>Non-surgical</li><li>Has pocket / sleeve to insert surgical filter</li><li>Washable and re-usable</li><li>Outer layer of <a href="/journey/treasuretrove.html">vintage Tangail handloom</a></li><li>2 inner layers of soft handloom</li><li>Ear-loops of fabric-covered elastic</li><li><strong>No returns or exchanges</strong></li><li>Scroll down to add individual masks to the shopping cart</li></ul>';
+
+    const productCatalog = getProductCatalog();
+    const prodJSON = createProductJSON('FACEMK2005Ta','/products/accessories/fm/', prodData, null);
+    const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath);
+    var productComponentFactory = createFMProdCompFactory(prodJSON, dimensioner, getProductCatalog(), infoHTML);
+    var productComponent = productComponentFactory.createRenderer(loadShopWithParam())
+
+    var items = createFMList(fmListData, prodJSON.product);
+    var itemsComponent = createFMItemsComponent(items, productComponentFactory);
+    const pageComponent = createFMPageComponent(productCatalog, itemsComponent);
+
+    $(document).ready(onDocumentReady);
+</script>
+<section>
+    <script>
+        document.write(getSizeModal(productComponent.createSizingPanel()));
+    </script>
+    <div class="container">
+        <script>
+            document.write(productComponent.createProductDiv(0, 0));
+        </script>
+    </div>
+</section>
+<script>
+    document.write(renderProductDetails(
+        '<p>'+ prodJSON.skuInfo.description + '</p>',
+        '<ul>'
+        + prodJSON.skuInfo.garmentDetails
+        + '</ul>',
+        washcareHTML,
+        shippingHTML));
+    document.write(itemsComponent.createDiv());
+</script>

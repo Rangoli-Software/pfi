@@ -40,6 +40,12 @@ const ramp = {
     url: "/look.html?t=r",
     sub: [
         {
+            title: 'Balearic Boho',
+            url: '/look/bc.html',
+            lede: 'Boho chic on the Balearic island of Ibiza',
+            imageURL: "/look/ramp/j201.jpg"
+        },
+        {
             title: 'Va-Va Voom',
             url: '/look/vvv.html',
             lede: 'Distinctive Designs in Treasured Textiles',
@@ -256,6 +262,18 @@ const clients = {
     url: "/look.html?t=f",
     sub: [
         {
+            title: "#oneofakind",
+            url: "/people/oneofakind.html",
+            lede: "The unique individuals who have collected my woven canvases",
+            imageURL: "/people/ooak/sl02.jpg"
+        },
+        {
+            title: "#artwear",
+            url: "/people/artwear.html",
+            lede: "Images of friends wearing my signature ArtWear silhouettes",
+            imageURL: "/people/EricaNaksha1.jpg"
+        },
+        {
             title: "Curators",
             url: "/people/curators.html",
             lede: "A trio of curators that like my designs",
@@ -368,11 +386,15 @@ const shop = {
         url: "/shop.html",
         sub: [
         {
+            title: "Face Mask",
+            url: "/products/accessories/facemask.html"
+        },
+        {
             title: "Happy Everyday",
             url: "/products/happyeveryday/shop.html"
         },
         {
-            title: "Woven Canvas",
+            title: "Woven Canvas T Shirt",
             url: "/fabricartT.html"
         },
         {
@@ -412,6 +434,10 @@ const siteMap = [
             {
                 title: "Look",
                 url: "/look.html"
+            },
+            {
+                title: "Shop",
+                url: "/shop.html"
             }
         ]
     },
@@ -428,6 +454,7 @@ const siteMap = [
     shop
 ];
 
+
 const merchInfo = [
 {
     SKU: 'AWTSHT1604Je',
@@ -435,6 +462,13 @@ const merchInfo = [
     url: '/fabricartT.html',
     ledes: ['A one-of-a-kind T-shirt for that unique individual!'],
     images: [{url: '/fabricart/TShirtColl.jpg'},{url: '/fabricart/ManWhiteS.jpg'},{url: '/fabricart/GirlBlackS.jpg'}]
+},
+{
+    SKU: 'FACEMK2005Ta',
+    title: 'Handloom Face Mask',
+    url: '/products/accessories/facemask.html',
+    ledes: [""],
+    images: [{url: '/products/accessories/fm/many-1.jpg'},{url: '/products/accessories/fm/many-2.jpg'}]
 },
 {
     SKU: 'DPDYSF1501PT',
@@ -456,6 +490,48 @@ const merchInfo = [
     url: "/products/home/champagnebag.html",
     ledes: ['The perfect gift bag for that exclusive vintage'],
     images: [{url: '/products/home/CBCCMD.jpg'},{url: '/products/home/CBCGMD.jpg'},{url: '/products/home/CBMBMD.jpg'}]
+},
+{
+    SKU: 'CRPTOP1805Kh',
+    title: 'Bougainvillea Crop Top',
+    url: "/products/happyeveryday/croptop.html",
+    ledes: ['Basic summer top'],
+    images: [{url: '/products/happyeveryday/mood/mch-1.jpg'},{url: '/products/happyeveryday/mood/mch-4.jpg'},{url: '/products/happyeveryday/mood/mch-6.jpg'}]
+},
+{
+    SKU: 'VAMPAL1708Kh',
+    title: 'Twiggy Side Slit Top',
+    url: "/products/happyeveryday/sideslit.html",
+    ledes: ['Handwoven khadi to lighten up your summers'],
+    images: [{url: '/products/happyeveryday/mood/mch-2.jpg'},{url: '/products/happyeveryday/mood/mch-7.jpg'}]
+},
+{
+    SKU: 'OVTPLO1501Vo',
+    title: 'Long Floating Overlayer',
+    url: "/products/happyeveryday/lovertop.html",
+    ledes: ['Light breezy jacket for spring'],
+    images: [{url: '/products/happyeveryday/mood/mch-3.jpg'},{url: '/products/happyeveryday/mood/mch-5.jpg'}]
+},
+{
+    SKU: 'BERMPA1609Kh',
+    title: 'Wild Pansy Pants',
+    url: "/products/happyeveryday/bermuda.html",
+    ledes: ['Casual pants to work and lounge in'],
+    images: [{url: '/products/happyeveryday/mood/mch-4.jpg'}]
+},
+{
+    SKU: 'LTSDSL1501Vo',
+    title: 'Butterfly Pea Shoulder String Dress',
+    url: "/products/happyeveryday/shoulderstring.html",
+    ledes: ['A dress that works from dawn to dusk'],
+    images: [{url: '/products/happyeveryday/mood/mch-5.jpg'}]
+},
+{
+    SKU: 'BALLPA1501Vo',
+    title: 'Balloon Flower Pants',
+    url: "/products/happyeveryday/balloon.html",
+    ledes: ['Everyday basics for every mood'],
+    images: [{url: '/products/happyeveryday/mood/mch-6.jpg'}]
 }
 ];
 
@@ -535,23 +611,27 @@ function createBreadCrumb(location) {
     var path = location;
     for (var i = 0; i < siteMap.length; i++) {
         var level1 = siteMap[ i ];
+        if ( level1)
         for (var j = 0; j < level1.sub.length; j++) {
             var level2 = level1.sub[ j ];
             if ( level2.url == path ) {
-                return createBreadCrumbLevels(level1, level2);
+                return createBreadCrumbLevels([level1, level2]);
             }
         }
     }
     return "";
 }            
 
-function createBreadCrumbLevels(level1, level2) {
+function createBreadCrumbLevels(levels) {
     var res = '<nav class="py-2"><div class="container"><div class="row"><div class="col-12"><ol class="breadcrumb mb-0 font-size-xs text-gray-400">';
     res +='<li class="breadcrumb-item"><a class="text-gray-400" href="/index.html">Home</a></li>';
-    if ( level1.title !== undefined ) {
-        res +='<li class="breadcrumb-item"><a class="text-gray-400" href="' + level1.url + '">' + level1.title + '</a></li>';
+    for(var i = 0; i < levels.length - 1; i++) {
+        var level = levels[i];
+        if ( level.title !== undefined ) {
+            res +='<li class="breadcrumb-item"><a class="text-gray-400" href="' + level.url + '">' + level.title + '</a></li>';
+        }
     }
-    res +='<li class="breadcrumb-item active">' + level2.title + '</a></li>';
+    res +='<li class="breadcrumb-item active">' + levels[levels.length - 1].title + '</a></li>';
     res += '</ol></div></div></div></nav>';
     return res;
 }
@@ -648,8 +728,8 @@ function createShopMM() {
 }
 
 function createLookMM() {
-    var col1 = createDropdownColumn([lotm, clients, ramp], "col-6");
-    var col2 = createDropdownColumn([moods], "col-6");
+    var col1 = createDropdownColumn([lotm, moods], "col-6");
+    var col2 = createDropdownColumn([clients, ramp], "col-6");
     return createMinWidthDDCard([col1, col2], "305px", true);
 }
 
@@ -756,14 +836,30 @@ function createSection(pages) {
     return res;
 }
 
-function createRelated(header, merch, items, sections) {
+function shuffle(array) {
+  var currentIndex = array.length;
+  while (0 !== currentIndex) {
+    var randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    var temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
+
+function createRelated(header, merch, items, sections, orderidxs) {
     var brkColCls = "col-sm-6 col-md-3";
     var res = '<div class="container mb-5"><section class="pt-4"><h5>' + header + '</h5><div class="row">';
+    var ordI = 0;
+    orderidxs = shuffle(orderidxs);
     for (var i = 0; i < merch.length; i++) {
-        res += '<div class="col-6 ' + brkColCls + '">' +  createMerchandisingCard(merch[ i ]) + '</div>';
+        res += '<div class="col-6 ' + brkColCls + " order-" + orderidxs[ordI] + '">' +  createMerchandisingCard(merch[ i ]) + '</div>';
+        ordI++;
     }
     for (var i = 0; i < items.length; i++) {
-        res += '<div class="col-6 ' + brkColCls + '">' +  createFeatureItemCard(items[ i ], sections[ i ]) + '</div>';
+        res += '<div class="col-6 ' + brkColCls +  " order-" + orderidxs[ordI] + '">' +  createFeatureItemCard(items[ i ], sections[ i ]) + '</div>';
+        ordI++;
     }
     res += '</div></section></div>';
     return res;
@@ -776,23 +872,37 @@ function pickSection(section) {
 }
 
 function selectSections() {
-    return [pickSection([atelier, origin]), pickSection([about, buzz, archives, lotm, lookbook]), pickSection([moods, ramp, clients])];
+    return [pickSection([atelier, origin]), pickSection([about, buzz, archives, lotm, lookbook, moods, ramp, clients])];
 }
 
-function pickMerch() {
-    var len = merchInfo.length;
+function filterMerch(skus) {
+    var res = [];
+    for(var i = 0; i < merchInfo.length; i++) {
+        var val = merchInfo[i];
+        if (skus.includes(val.SKU)) {
+            res.push(val);
+        }
+    }
+    return res;
+}
+
+function pickMerch(skus) {
+    var flt = filterMerch(skus);
+    var len = flt.length;
     var rndI = Math.floor(Math.random() * len);
-    return merchInfo[ rndI ];
+    return flt[ rndI ];
 }
 
 function selectMerch() {
-    return [pickMerch()];
+    var hedSKUs = ['BERMPA1609Kh','BALLPA1501Vo','CRPTOP1805Kh','OVTPLO1501Vo','VAMPAL1708Kh','LTSDSL1501Vo'];
+    var restSKUs = ['AWTSHT1604Je','DPDYSF1501PT','KAGTIE1601Kh','CHMPGN1501JL'];
+    return [pickMerch(hedSKUs), pickMerch(restSKUs)];
 }
 
 function createFeatures(header) {
     var res = selectFeatures(selectSections());
     var mch = selectMerch();
-    return createRelated(header, mch, res[0], res[1]);
+    return createRelated(header, mch, res[0], res[1],[1,4,7,10]);
 }
 
 function createCarousel(carId, carItems) {
@@ -1088,12 +1198,13 @@ function createDimensioner(units, dimensionNames, dimensions, imagePath, dimVari
         dimVariation: dimVariation,
         imagePath: imagePath,
         tableId: 'SizeTable',
+        unitFieldName: 'SizeChartUnits',
         eventFnStr: 'onUnitChange()',
         createMeasurementsPanel: function (units, sizes) {
             return '<div class="row align-items-center"><div class="col-md-4 text-center py-5"><img src="' + this.imagePath + '" class="img-fluid center-block"/></div><div class="col-md-8 text-center py-5">' + this.createMeasurementsTable(units, sizes) + '</div></div>'
         },
         createMeasurementsTable: function (units, sizes) {
-            return '<div class="btn-group btn-group-toggle ml-auto py-5" data-toggle="buttons"><label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 active"><input type="radio" name="SizeChartUnits" value="in" onclick="' + this.eventFnStr + '" checked>IN</label><label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 ml-2"><input type="radio" name="SizeChartUnits" value="cm" onclick="' + this.eventFnStr + '">CM</label></div>' + '<div id="' + this.tableId + '">' + this.createSizingTable(units, sizes) + '</div>';
+            return '<div class="btn-group btn-group-toggle ml-auto py-5" data-toggle="buttons"><label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 active"><input type="radio" name="' + this.unitFieldName + '" value="in" onclick="' + this.eventFnStr + '" checked>IN</label><label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 ml-2"><input type="radio" name="' + this.unitFieldName + '" value="cm" onclick="' + this.eventFnStr + '">CM</label></div>' + '<div id="' + this.tableId + '">' + this.createSizingTable(units, sizes) + '</div>';
         },
         createSizingTable: function (units, sizes) {
             var fn = (units === this.dimensionUnits) ? identity : (units == "in" ? cm2inches : inches2cm);
@@ -1137,4 +1248,35 @@ function getSizeModal(contents) {
     return '<div class="modal fade" id="modalSizeChart" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg" role="document"><div class="modal-content"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button><div class="modal-header line-height-fixed font-size-lg"><strong class="mx-auto">Sizing</strong></div><div class="modal-body border-bottom">'
     + contents +
         '</div></div></div></div>';
+}
+
+function createAddToCartButton(id) {
+    return '<button id="' + id + '" class="btn btn-warning btn-sm" type="button"><span class="fa fa-cart-plus"></span> Add to Cart</button>';
+}
+
+function createSiteMapGenerator(path) {
+    return {
+        path: path,
+        createSMNode: function(node) {
+            var res = "";
+            if ( node.url !== undefined && getHostName(node.url) === null) {
+                res += "<url><loc>" + this.path + node.url + "</loc></url>";
+            };
+            if ( node.sub !== undefined) {
+                res += this.createSM(node.sub);
+            }
+            return res;
+        },
+        createSM: function(nodeArr) {
+            var res = "";
+            for(var i = 0; i < nodeArr.length; i++) {
+                res += this.createSMNode(nodeArr[i]);
+            }
+            return res;
+        }
+    };
+}
+
+function createSM(path) {
+    return createSiteMapGenerator(path).createSM(siteMap);
 }

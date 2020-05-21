@@ -1,31 +1,31 @@
-<script src="/js/pfihed20050800.js"></script>
+<script src="/js/pfihed20051601.js"></script>
 <script>
-var prodJSON = hed_catalog.getProduct(prodSKU);
-var sizer = createSizeChartr(prodJSON.skuInfo.getSizeChart());
-var dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath);
-
-var pageComponent = createPageComponent(prodJSON, dimensioner, sizer, hed_lookbook, getProductCatalog());
+const prodJSON = hed_catalog.getProduct(prodSKU);
+const sizer = createSizeChartr(prodJSON.skuInfo.getSizeChart());
+const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath);
+var rendererFactory = createHEDRendererFactory(prodJSON, dimensioner, sizer, hed_lookbook, hed_catalog, getProductCatalog());
+const pageComponent = createPageComponent(prodJSON, getProductCatalog(), rendererFactory);
 
 $(document).ready(onDocumentReady);
+    document.write(pageComponent.createRenderer(loadShopWithParam()).getBreadCrumb());
 </script>
 <section>
-    <link rel="stylesheet" href="/shopper-1.0.3/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
 <script>
     document.write(getSizeModal(pageComponent.createRenderer(loadShopWithParam()).createSizingPanel()));
 </script>
     <div class="container">
-        <div class="row" id="prodPanel">
-            <script>
- document.write(pageComponent.createRenderer(loadShopWithParam()).createImageDiv(0));
- document.write(pageComponent.createRenderer(loadShopWithParam()).createInfoDiv(0, 1));
-            </script>
-        </div>
+    <script>
+ document.write(pageComponent.createRenderer(loadShopWithParam()).createProductDiv(0, 0));
+    </script>
     </div>
 </section>
 <script>
  document.write(renderProductDetails(
      '<p>'+ prodJSON.skuInfo.description + '</p>',
-     '<div class="row"><div class="col-md-6 offset-md-3"><ul>'
+     '<ul>'
      + prodJSON.skuInfo.garmentDetails
-     + '</ul></div></div>'));
+     + '</ul>',
+     hed_washcareHTML,
+     hed_shippingHTML
+ ));
 </script>

@@ -4,8 +4,11 @@ permalink: "<%- page.inputPath.substring(1) %>"
 <!DOCTYPE html>
 <html lang="en">
 <% include partials/head %>
+<link rel="stylesheet" href="/shopper-1.0.3/libs/flickity/dist/flickity.min.css">
+<link rel="stylesheet" href="/shopper-1.0.3/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/shopper-1.0.3/libs/flickity-fade/flickity-fade.css">
+<script src="/js/pfiprod20052100.js"></script>
 <body>
-<script src="/js/pfiprod20050900.js"></script>
 <% if ( locals.prerender ) { %>
 <%- pfi.getShopHeader() %>
 <%- pfi.pfiTopMenu(page.inputPath.substring(1)) %>

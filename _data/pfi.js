@@ -1,7 +1,13 @@
-var moods = {
+const moods = {
     title: "Moods",
     url: "/look.html?t=m",
     sub: [
+        {
+            title: "Pigmented Universe",
+            url: "/products/happyeveryday/pigmenteduniverse.html",
+            lede: "Happy Everyday in a Pigmented Universe",
+            imageURL: "/products/happyeveryday/mood/hedm-04.jpg"
+        },
         {
             title: "Summer Dreams",
             url: "/summerdreams.html",
@@ -29,10 +35,16 @@ var moods = {
     ]
 };
 
-var ramp = {
+const ramp = {
     title: "Ramp",
     url: "/look.html?t=r",
     sub: [
+        {
+            title: 'Balearic Boho',
+            url: '/look/bc.html',
+            lede: 'Boho chic on the Balearic island of Ibiza',
+            imageURL: "/look/ramp/j201.jpg"
+        },
         {
             title: 'Va-Va Voom',
             url: '/look/vvv.html',
@@ -48,8 +60,8 @@ var ramp = {
     ]
 };
 
-var lotm = {
-    title: "Look!",
+const lotm = {
+    title: "Prema",
     url: "/look.html?t=p",
     sub: [
         {
@@ -73,7 +85,7 @@ var lotm = {
     ]
 };
 
-var archives = {
+const archives = {
     title: "Look Back",
     url: "/blog.html?t=l",
     sub: [
@@ -92,7 +104,7 @@ var archives = {
     ]
 };
 
-var origin = {
+const origin = {
         title: "My Journey",
         url: "/blog.html?t=o",
         sub: [
@@ -159,7 +171,7 @@ var origin = {
         ]
     };
 
-var atelier = {
+const atelier = {
     title: "Atelier Tales",
     url: "/blog.html?t=a",
     sub: [
@@ -232,10 +244,35 @@ var atelier = {
     ]
 };
 
-var clients = {
-    title: "Friends",
-    url: "/about.html?a=c&#about-tabs",
+const lookbook = {
+    title: "Look Books",
+    url: "/about.html?a=l&#about-tabs",
     sub: [
+        {
+            title: "Happy Everyday",
+            url: "/products/happyeveryday/looks.html",
+            lede: "Look Book for my Happy Everyday Line",
+            imageURL: "/products/happyeveryday/blln/magenta-d1.jpg"
+        },
+    ]
+}
+
+const clients = {
+    title: "Friends",
+    url: "/look.html?t=f",
+    sub: [
+        {
+            title: "#oneofakind",
+            url: "/people/oneofakind.html",
+            lede: "The unique individuals who have collected my woven canvases",
+            imageURL: "/people/ooak/sl02.jpg"
+        },
+        {
+            title: "#artwear",
+            url: "/people/artwear.html",
+            lede: "Images of friends wearing my signature ArtWear silhouettes",
+            imageURL: "/people/EricaNaksha1.jpg"
+        },
         {
             title: "Curators",
             url: "/people/curators.html",
@@ -257,7 +294,7 @@ var clients = {
     ]
 };
 
-var about = {
+const about = {
     title: "About",
     url: "/about.html",
     sub: [
@@ -282,13 +319,13 @@ var about = {
     ]
 };
 
-var buzzTL = {
+const buzzTL = {
     title: "Buzzing...",
     url: "/about.html?a=b&#about-tabs",
     sub: []
 };
 
-var buzz = {
+const buzz = {
     title: "Buzzing...",
     url: "/about.html?a=b&#about-tabs",
     lede: 'Media coverage, both traditional and new.',
@@ -344,12 +381,16 @@ var buzz = {
     ]
 };
 
-var shop = {
+const shop = {
         title: "Shop",
         url: "/shop.html",
         sub: [
         {
-            title: "Woven Canvas",
+            title: "Happy Everyday",
+            url: "/products/happyeveryday/shop.html"
+        },
+        {
+            title: "Woven Canvas T Shirt",
             url: "/fabricartT.html"
         },
         {
@@ -367,7 +408,7 @@ var shop = {
     ]
 };
 
-var faqs = {
+const faqs = {
         title: "Shop FAQ",
         url: "/shopfaq.html",
         sub: [
@@ -375,7 +416,7 @@ var faqs = {
 };
 
 
-var siteMap = [
+const siteMap = [
     {
         sub: [
             {
@@ -389,12 +430,17 @@ var siteMap = [
             {
                 title: "Look",
                 url: "/look.html"
+            },
+            {
+                title: "Shop",
+                url: "/shop.html"
             }
         ]
     },
     origin,
     atelier,
     clients,
+    lookbook,
     about,
     buzz,
     moods,
@@ -403,6 +449,101 @@ var siteMap = [
     lotm,
     shop
 ];
+
+
+const merchInfo = [
+{
+    SKU: 'AWTSHT1604Je',
+    title: 'Woven Canvas T Shirt',
+    url: '/fabricartT.html',
+    ledes: ['A one-of-a-kind T-shirt for that unique individual!'],
+    images: [{url: '/fabricart/TShirtColl.jpg'},{url: '/fabricart/ManWhiteS.jpg'},{url: '/fabricart/GirlBlackS.jpg'}]
+},
+{
+    SKU: 'DPDYSF1501PT',
+    title: 'Dip-Dye Scarf',
+    url: '/products/scarves/dipdye.html',
+    ledes: ["A gorgeous example of the Tangail Weavers' Craft"],
+    images: [{url: '/products/scarves/TurbanMood.jpg'},{url: '/products/scarves/ShawlMood.jpg'}]
+},
+{
+    SKU: 'KAGTIE1601Kh',
+    title: 'Kagera Tie',
+    url: '/products/ties/kagera.html',
+    ledes: ['Artsy, hand-woven, hand-crafted Neckwear','For the gentleman of refined taste - a two-tone khadi tie with a border of treasured tangail'],
+    images: [{url: '/products/ties/Black.jpg'},{url: '/products/ties/Red.jpg'}]
+},
+{
+    SKU: 'CHMPGN1501JL',
+    title: 'Champagne Bottle Bag',
+    url: "/products/home/champagnebag.html",
+    ledes: ['The perfect gift bag for that exclusive vintage'],
+    images: [{url: '/products/home/CBCCMD.jpg'},{url: '/products/home/CBCGMD.jpg'},{url: '/products/home/CBMBMD.jpg'}]
+},
+{
+    SKU: 'CRPTOP1805Kh',
+    title: 'Bougainvillea Crop Top',
+    url: "/products/happyeveryday/croptop.html",
+    ledes: ['Basic summer top'],
+    images: [{url: '/products/happyeveryday/mood/mch-1.jpg'},{url: '/products/happyeveryday/mood/mch-4.jpg'},{url: '/products/happyeveryday/mood/mch-6.jpg'}]
+},
+{
+    SKU: 'VAMPAL1708Kh',
+    title: 'Twiggy Side Slit Top',
+    url: "/products/happyeveryday/sideslit.html",
+    ledes: ['Handwoven khadi to lighten up your summers'],
+    images: [{url: '/products/happyeveryday/mood/mch-2.jpg'},{url: '/products/happyeveryday/mood/mch-7.jpg'}]
+},
+{
+    SKU: 'OVTPLO1501Vo',
+    title: 'Long Floating Overlayer',
+    url: "/products/happyeveryday/lovertop.html",
+    ledes: ['Light breezy jacket for spring'],
+    images: [{url: '/products/happyeveryday/mood/mch-3.jpg'},{url: '/products/happyeveryday/mood/mch-5.jpg'}]
+},
+{
+    SKU: 'BERMPA1609Kh',
+    title: 'Wild Pansy Pants',
+    url: "/products/happyeveryday/bermuda.html",
+    ledes: ['Casual pants to work and lounge in'],
+    images: [{url: '/products/happyeveryday/mood/mch-4.jpg'}]
+},
+{
+    SKU: 'LTSDSL1501Vo',
+    title: 'Butterfly Pea Shoulder String Dress',
+    url: "/products/happyeveryday/shoulderstring.html",
+    ledes: ['A dress that works from dawn to dusk'],
+    images: [{url: '/products/happyeveryday/mood/mch-5.jpg'}]
+},
+{
+    SKU: 'BALLPA1501Vo',
+    title: 'Balloon Flower Pants',
+    url: "/products/happyeveryday/balloon.html",
+    ledes: ['Everyday basics for every mood'],
+    images: [{url: '/products/happyeveryday/mood/mch-6.jpg'}]
+}
+];
+
+function createMerchandisingCard(item) {
+    var res = '<div class="card mb-2">';
+    var len = item.images.length;
+    var rndI = Math.floor(Math.random() * len);
+    var img = item.images[rndI];
+    res += '<div class="embed-responsive embed-responsive-1by1">';
+    res += '<img src="' + img.url + '" alt="' + item.title  + '" class="embed-responsive-item" style="object-fit: cover">';
+    res += '</div>';
+    res += '<div class="card-body px-0 pt-6 pb-4">';
+    res += '<div class="card-subtitle mb-1"><span class="sc-item" data-field="price" data-vsku="' + item.SKU +'"></span></div>';
+    if  ( item.url !== undefined ) {
+        res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"><i class="fa fa-arrow-right ml-2"></i></a></h6>';
+    }
+    len = item.ledes.length;
+    rndI = Math.floor(Math.random() * len);
+    var lede = item.ledes[rndI];
+    res += '<p class="mb-1">' + lede + '</p>';
+    res += '</div></div>';
+    return res;
+}
 
 function getHostName(url) {
     var match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
@@ -459,23 +600,27 @@ function createBreadCrumb(location) {
     var path = location;
     for (var i = 0; i < siteMap.length; i++) {
         var level1 = siteMap[ i ];
+        if ( level1)
         for (var j = 0; j < level1.sub.length; j++) {
             var level2 = level1.sub[ j ];
             if ( level2.url == path ) {
-                return createBreadCrumbLevels(level1, level2);
+                return createBreadCrumbLevels([level1, level2]);
             }
         }
     }
     return "";
 }            
 
-function createBreadCrumbLevels(level1, level2) {
+function createBreadCrumbLevels(levels) {
     var res = '<nav class="py-2"><div class="container"><div class="row"><div class="col-12"><ol class="breadcrumb mb-0 font-size-xs text-gray-400">';
     res +='<li class="breadcrumb-item"><a class="text-gray-400" href="/index.html">Home</a></li>';
-    if ( level1.title !== undefined ) {
-        res +='<li class="breadcrumb-item"><a class="text-gray-400" href="' + level1.url + '">' + level1.title + '</a></li>';
+    for(var i = 0; i < levels.length - 1; i++) {
+        var level = levels[i];
+        if ( level.title !== undefined ) {
+            res +='<li class="breadcrumb-item"><a class="text-gray-400" href="' + level.url + '">' + level.title + '</a></li>';
+        }
     }
-    res +='<li class="breadcrumb-item active">' + level2.title + '</a></li>';
+    res +='<li class="breadcrumb-item active">' + levels[levels.length - 1].title + '</a></li>';
     res += '</ol></div></div></div></nav>';
     return res;
 }
@@ -572,8 +717,8 @@ function createShopMM() {
 }
 
 function createLookMM() {
-    var col1 = createDropdownColumn([lotm, ramp], "col-6");
-    var col2 = createDropdownColumn([moods], "col-6");
+    var col1 = createDropdownColumn([lotm, moods], "col-6");
+    var col2 = createDropdownColumn([clients, ramp], "col-6");
     return createMinWidthDDCard([col1, col2], "305px", true);
 }
 
@@ -584,7 +729,7 @@ function createBlogDD () {
 }
 
 function createAboutDD () {
-    var col1 = createDropdownColumn([about, buzzTL, clients], "col-12");
+    var col1 = createDropdownColumn([about, buzzTL, lookbook], "col-12");
     return createMinWidthDDCard([col1], "145px", true);
 }
 
@@ -680,13 +825,32 @@ function createSection(pages) {
     return res;
 }
 
-function createRelated(header, items, sections) {
+function shuffle(array) {
+  var currentIndex = array.length;
+  while (0 !== currentIndex) {
+    var randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    var temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
+
+function createRelated(header, merch, items, sections, orderidxs) {
     var brkColCls = "col-sm-6 col-md-3";
-    var res = '<div class="container mb-5"><h5>' + header + '</h5><section class="pt-4"><div class="container"><div class="row">';
-    for (var i = 0; i < items.length; i++) {
-        res += '<div class="col-6 ' + brkColCls + '">' +  createFeatureItemCard(items[ i ], sections[ i ]) + '</div>';
+    var res = '<div class="container mb-5"><section class="pt-4"><h5>' + header + '</h5><div class="row">';
+    var ordI = 0;
+    orderidxs = shuffle(orderidxs);
+    for (var i = 0; i < merch.length; i++) {
+        res += '<div class="col-6 ' + brkColCls + " order-" + orderidxs[ordI] + '">' +  createMerchandisingCard(merch[ i ]) + '</div>';
+        ordI++;
     }
-    res += '</div></div></section></div>';
+    for (var i = 0; i < items.length; i++) {
+        res += '<div class="col-6 ' + brkColCls +  " order-" + orderidxs[ordI] + '">' +  createFeatureItemCard(items[ i ], sections[ i ]) + '</div>';
+        ordI++;
+    }
+    res += '</div></section></div>';
     return res;
 }
 
@@ -697,12 +861,37 @@ function pickSection(section) {
 }
 
 function selectSections() {
-    return [atelier, pickSection([about, buzz, archives, lotm]), pickSection([moods, ramp, clients]), origin];
+    return [pickSection([atelier, origin]), pickSection([about, buzz, archives, lotm, lookbook, moods, ramp, clients])];
+}
+
+function filterMerch(skus) {
+    var res = [];
+    for(var i = 0; i < merchInfo.length; i++) {
+        var val = merchInfo[i];
+        if (skus.includes(val.SKU)) {
+            res.push(val);
+        }
+    }
+    return res;
+}
+
+function pickMerch(skus) {
+    var flt = filterMerch(skus);
+    var len = flt.length;
+    var rndI = Math.floor(Math.random() * len);
+    return flt[ rndI ];
+}
+
+function selectMerch() {
+    var hedSKUs = ['BERMPA1609Kh','BALLPA1501Vo','CRPTOP1805Kh','OVTPLO1501Vo','VAMPAL1708Kh','LTSDSL1501Vo'];
+    var restSKUs = ['AWTSHT1604Je','DPDYSF1501PT','KAGTIE1601Kh','CHMPGN1501JL'];
+    return [pickMerch(hedSKUs), pickMerch(restSKUs)];
 }
 
 function createFeatures(header) {
     var res = selectFeatures(selectSections());
-    return createRelated(header, res[0], res[1]);
+    var mch = selectMerch();
+    return createRelated(header, mch, res[0], res[1],[1,4,7,10]);
 }
 
 function createCarousel(carId, carItems) {
@@ -873,7 +1062,7 @@ function createShareBar(location) {
 }
 
 function storyBrowser() {
-    return createFeatures("Featured Stories");
+    return createFeatures("Featured");
 }
 
 function botNav(botImgTag, location) {
@@ -927,7 +1116,157 @@ function getShopHeader() {
 return '<div class="container"> <div class="row py-1"> <div class="col-12"><div id="currencies" class="text-left float-left" style="font-size: 12px"><span data-currency="INR" id="currencies-inr">INR(&#8377;)</span><span data-currency="GBP" id="currencies-gbp">GBP(&pound;)</span> <span data-currency="EUR" id="currencies-eur">EUR(&euro;)</span> <span data-currency="USD" id="currencies-usd">USD(&dollar;)</span></div><div id="shop-cart-summary" class="text-right float-right" style="font-size: 12px"> <a id="sc-edit-id" class="disabled" aria-disabled="true" type="button" data-toggle="modal" data-target="#shopping-cart"> <i class="fa fa-shopping-cart"></i> (<span class="sc-badge-items">0</span>) <span class="sc-non-empty" style="display:none"> - </span> <span class="sc-currency-string sc-non-empty" style="display:none"><i class="fa fa-inr"></i></span> <span class="sc-total sc-non-empty" style="display:none">0</span> </a> <div class="item sc-item-list" style="display: none"> </div></div></div></div></div>';
 }
 
+function createSizeRadio(name, idPfx, val, i, checked) {
+    return '<div class="custom-control custom-control-inline custom-control-size mb-2"><input type="radio" class="custom-control-input" name="' + name   +'" id="' + idPfx + i + '" value="' +  val  + '"' + (checked ? 'checked="checked" ' : '') +  ' onclick="onSelectionChange()"><label class="custom-control-label" for="' + idPfx + i + '">' + val +'</label></div>';
+}
+
+function createSizeOptions(radName, label, vals, selIdx) {
+    var id = radName + "Group";
+    var res = '<div class="form-group"><label for="' + id + '">' + label + ':</label> <span id="' +  id + '" class="mb-2">';
+    var idPfx = radName + "ID";
+    for (var i = 0; i < vals.length; i++) {
+        res += createSizeRadio(radName, idPfx, vals[i], i, (i == selIdx));
+    }
+    res += '</span><a class="ml-3" data-toggle="modal" href="#modalSizeChart">Size chart</a></div>';
+    return  res;
+}  
+
+function getShippingInfoUL(points) {
+    var res = '<ul>';
+    for(var i = 0; i < points.length; i++) {
+        res += '<li>' + points[i] + '</li>';
+    }
+    res += '<li>We will notify you by email / WhatsApp when your item is dispatched  and send you the tracking id.</li><li>Within India we will courier your item, which  will reach you within 2-3 business days of dispatch.</li><li>Our recommended international shipping method is India Post, which will reach almost anywhere in the world within 7-15 business days from dispatch.</li><li>We can also courier items anywhere in the world in 3-5 business days after dispatch.</li><li>Shipping time estimates <strong>do not</strong> include delays due to customs and other formalities at the port of entry.</li>';
+    res += '</ul>';
+    return res;
+}
+
+function createSizeChartr(sizing) {
+    return {
+        sizeGeo: sizing.sizeGeo,
+        capGeo: sizing.capGeo,
+        sizingChart: sizing.chart,
+        createSizeChart: function(sizes) {
+            var nCols = sizes.length + 1;
+            var szWidth = Math.floor(100 / nCols);
+            var rem = 100 - (sizes.length * szWidth);
+
+            var table = '<div class="table-responsive mb-7"><table class="dim-table table table-bordered table-hover table-sm mb-0 text-center" style="padding: 6px;">';
+
+            table += '<thead><tr><td class="text-left" width="' + rem + '%"><strong>Size</strong></td>';
+            for (var i = 0; i < sizes.length; i++) {
+                var sz = sizes[i];
+                table += '<td width="' + szWidth + '%"><strong>' + sz + '</strong></td>';
+            }
+            table += '</tr></thead><tbody>';
+            for (var i = 0; i < this.sizeGeo.length; i++) {
+                var szG = this.sizeGeo[i];
+                table += '<tr><td class="text-left">' + this.capGeo[i] + '</td>';
+                for (var j = 0; j < sizes.length; j++) {
+                    var sz = sizes[j];
+                    var chart = this.sizingChart[ sz ];
+                    if ( chart === undefined ) {
+                        continue;
+                    }
+                    var szGeo = chart[szG];
+                    table += '<td>' + szGeo[0] + (szGeo.length > 1 ? '-' + szGeo[1] : "") + '</td>';
+                }
+                table += '</tr>'
+            }
+            table += '</tbody></table></div>';
+            return table;
+        }
+    }
+}
+
+function createDimensioner(units, dimensionNames, dimensions, imagePath, dimVariation) {
+    return {
+        dimensionUnits: units,
+        dimensionNames: dimensionNames,
+        dimensions: dimensions,
+        dimVariation: dimVariation,
+        imagePath: imagePath,
+        tableId: 'SizeTable',
+        eventFnStr: 'onUnitChange()',
+        createMeasurementsPanel: function (units, sizes) {
+            return '<div class="row align-items-center"><div class="col-md-4 text-center py-5"><img src="' + this.imagePath + '" class="img-fluid center-block"/></div><div class="col-md-8 text-center py-5">' + this.createMeasurementsTable(units, sizes) + '</div></div>'
+        },
+        createMeasurementsTable: function (units, sizes) {
+            return '<div class="btn-group btn-group-toggle ml-auto py-5" data-toggle="buttons"><label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 active"><input type="radio" name="SizeChartUnits" value="in" onclick="' + this.eventFnStr + '" checked>IN</label><label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 ml-2"><input type="radio" name="SizeChartUnits" value="cm" onclick="' + this.eventFnStr + '">CM</label></div>' + '<div id="' + this.tableId + '">' + this.createSizingTable(units, sizes) + '</div>';
+        },
+        createSizingTable: function (units, sizes) {
+            var fn = (units === this.dimensionUnits) ? identity : (units == "in" ? cm2inches : inches2cm);
+
+            var szWidth = Math.floor(75 / sizes.length);
+            var rem = 100 - (sizes.length * szWidth);
+
+            var unTxt = (units == "in" ? " inches" : "  cm")
+            var table = '<div class="table-responsive"><table class="dim-table table table-bordered table-hover table-sm mb-0 text-center" style="padding: 6px;"><caption><strong>Measurements (in' + unTxt + ')</strong>' + (this.dimVariation === undefined ? "" : "<br>Variation can be up to +/- " + fn(this.dimVariation) + unTxt) + '</caption>';
+
+            table += '<thead><tr><td class="text-left" width="' + rem + '%"><strong>Size</strong></td>';
+            for (var i = 0; i < sizes.length; i++) {
+                var sz = sizes[i];
+                if (this.dimensions[sz] === undefined)  {
+                    continue;
+                }
+                table += '<td width="' + szWidth + '%"><strong>' + sz + '</strong></td>';
+            }
+            table += '</tr></thead><tbody>';
+            for (i = 0; i < this.dimensionNames.length; i++) {
+                var dimName = this.dimensionNames[i];
+                table += '<tr><td class="text-left">' + dimName + '</td>';
+                for (var j = 0; j < sizes.length; j++) {
+                    var sz = sizes[j];
+                    var dims = this.dimensions[sz];
+                    if (dims === undefined)  {
+                        continue;
+                    }
+                    var dim = dims[i];
+                    table += '<td>' + fn(dim) + '</td>';
+                }
+                table += '</tr>'
+            }
+            table += '</tbody></table></div>';
+            return table;
+        }
+    };
+}
+
+function getSizeModal(contents) {
+    return '<div class="modal fade" id="modalSizeChart" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg" role="document"><div class="modal-content"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button><div class="modal-header line-height-fixed font-size-lg"><strong class="mx-auto">Sizing</strong></div><div class="modal-body border-bottom">'
+    + contents +
+        '</div></div></div></div>';
+}
+
+function createSiteMapGenerator(path) {
+    return {
+        path: path,
+        createSMNode: function(node) {
+            var res = "";
+            if ( node.url !== undefined && getHostName(node.url) === null) {
+                res += "<url><loc>" + this.path + node.url + "</loc></url>";
+            };
+            if ( node.sub !== undefined) {
+                res += this.createSM(node.sub);
+            }
+            return res;
+        },
+        createSM: function(nodeArr) {
+            var res = "";
+            for(var i = 0; i < nodeArr.length; i++) {
+                res += this.createSMNode(nodeArr[i]);
+            }
+            return res;
+        }
+    };
+}
+
+function createSM(path) {
+    return createSiteMapGenerator(path).createSM(siteMap);
+}
+
 module.exports = {
+    createSM: createSM,
     createCarousel: createCarousel,
     gaInit: gaInit,
     gaFunnel: gaFunnel,
