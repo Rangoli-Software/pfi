@@ -3,7 +3,9 @@ permalink: "{{ page.fileSlug }}.html"
 ---
 <!DOCTYPE html>
 <html lang="en">
+<head>
 <% include partials/head %>
+</head>
 <body>
 <% if ( locals.prerender ) { %>
 <%- pfi.pfiTopMenu(page.inputPath.substring(1) %>

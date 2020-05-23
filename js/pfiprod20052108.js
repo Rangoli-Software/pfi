@@ -8,31 +8,46 @@ function createSquareProductCarousel(variants) {
             return this.getPanelId() + "-Nav";
         },
         createImageCarousel: function (varIdx) {
-            return this.createImagePanel(varIdx) 
-                + this.createImageNav(varIdx);
+            return '<div class="col-12">' + this.createImagePanel(varIdx) 
+                + this.createImageNav(varIdx) + '</div>';
         },
         createImageNav: function (varIdx) {
-            var res = '<div class="flickity-nav mx-n2 mb-10 mb-md-0" data-flickity=\'{"asNavFor": "#' + this.getPanelId() + '", "contain": true, "wraparound": false}\' id="' + this.getNavId() + '">';
+            var res = '<div class="flickity-nav mx-n2 mb-2" data-flickity=\'{"asNavFor": "#' + this.getPanelId() + '", "contain": true, "wrapAround": false, "cellAlign": "center"}\' id="' + this.getNavId() + '">';
             var i = 0;
             for (; i < this.variants.getNumImages(varIdx); i++) {
                 var img = this.variants.getImage(varIdx, i);
-                res += '<div class="col-12 px-2" style="max-width: 113px;"><img class="img-fluid" src="' + img.url + '"></div>';
+                res += '<div class="col-12 px-1" style="max-width: 80px;"><img class="img-fluid" src="' + img.url + '"></div>';
             }
             res += '</div>';
             return res;
         },
         createImagePanel: function (varIdx) {
-            var res = '<div class="card"><div class="mb-4" data-flickity=\'{"draggable": false, "fade": true}\' id="' + this.getPanelId() + '">';
+            var res = '<div class="card"><div class="mb-2" data-flickity=\'{"draggable": false, "fade": true}\' id="' + this.getPanelId() + '">';
             for (var i = 0; i < this.variants.getNumImages(varIdx); i++) {
                 var img = this.variants.getImage(varIdx, i);
-//                res += '<a href="' + img.url + '" data-fancybox><img src="' + img.url + '" class="card-img-top"></a>';
-                res += '<div class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url(' + img.url + ');"></div>';
+                res += '<a href="' + img.url + '" data-fancybox><img src="' + img.url + '" class="card-img-top"></a>';
             }
             res += '</div></div>';
             return res;
         },
         update: function() {
-            
+            var panelId = this.getPanelId();
+            var eltCarousel = $('#' + panelId);
+            eltCarousel.flickity({
+                draggable: false,
+                fade: true
+            });
+
+            var navId = this.getNavId();
+            var eltNav = $('#' + navId);
+            eltNav.flickity({
+                asNavFor: '#' + panelId,
+                contain: true,
+                wrapAround: false,
+                cellAlign: 'center'
+            });
+
+            $('[data-fancybox]').fancybox({});
         }
     };
 }
@@ -244,7 +259,7 @@ function createItemAdder(prodInfo, variantSelector) {
             return Number(selOpt.val());
         },
         createDiv: function() {
-            return '<div class="form-row mb-7"><div class="col-12 col-lg-auto">'
+            return '<div class="form-row mb-4"><div class="col-12 col-lg-auto">'
                 + this.createQuantityDiv()
                 + '</div><div class="col-12 col-lg">'
                 + this.createAddToCartButton()
@@ -406,7 +421,7 @@ function createProductComponent(basePanelr, sizePanelr, carousel, variantSelecto
             this.carousel.update();
         },
         createImageDiv: function (varIdx) {
-            return '<div class="form-row mb-10 mb-md-0" id="prodImages">' +
+            return '<div class="form-row mb-4" id="prodImages">' +
                 this.carousel.createImageCarousel(varIdx) +
                 '</div>';
         },
@@ -499,9 +514,8 @@ function createFMItemsComponent(items, productComponentFactory) {
     };
 }
 
-function createFMProdCompFactory(prodInfo, dimensioner, catalog, html) {
+function createFMProdCompFactory(prodInfo, dimensioner, catalog, html, carousel) {
     var sizePanelr = createSizePanelr(prodInfo.skuInfo, dimensioner, null);
-    var carousel = createSquareProductCarousel(prodInfo.variants);
     var variantSelector = createSizeOnlySelector(prodInfo.skuInfo, prodInfo.variants);
     var itemAdder = createHTMLViewer(html);
     var relatedviewer = createEmptyViewer();
@@ -617,19 +631,42 @@ function createFMPageComponent(catalog, itemsComponent) {
 }
 
 function renderProductDetails(summary, detailsHTML, washcareHTML, shippingInfoHTML) {
-    return '<section class="pt-7"><div class="container"><div class="row"><div class="col-12">' +
-        '<div class="nav nav-tabs nav-overflow justify-content-start justify-content-md-center border-bottom"><a class="nav-link active" data-toggle="tab" href="#description">Summary</a><a class="nav-link" data-toggle="tab" href="#details">Details</a><a class="nav-link" data-toggle="tab" href="#care">Care</a><a class="nav-link" data-toggle="tab" href="#shipping">Shipping</a></div>' 
-        + '<div class="tab-content">'
-        + '<div class="tab-pane fade show active" id="description"><div class="item py-5">' + summary + '</div></div>' 
-        + '<div class="tab-pane fade" id="details"><div class="item py-5">' + detailsHTML 
-        + '</div></div>' 
-        + '<div class="tab-pane fade" id="care"><div class="item py-5">' + washcareHTML 
-        + '</div></div>' +
-        '<div class="tab-pane fade" id="shipping"><div class="item py-5">' 
-        + shippingInfoHTML
-        + '</div></div>'
-        + '</div>'
-        + '</div></div></div></section>';
+    var res= '<section class="pt-7"><div class="container"><div class="row"><div class="col-12"><div class="nav nav-tabs nav-overflow justify-content-start justify-content-md-center border-bottom">';
+    if ( summary !== null ) {
+        res += '<a class="nav-link active" data-toggle="tab" href="#description">Summary</a>';
+    }
+    if ( detailsHTML !== null ) {
+        res += '<a class="nav-link" data-toggle="tab" href="#details">Details</a>';
+    }
+    if ( washcareHTML !== null) {
+        res += '<a class="nav-link" data-toggle="tab" href="#care">Care</a>';
+    }
+    if ( shippingInfoHTML !== null ) {
+        res += '<a class="nav-link" data-toggle="tab" href="#shipping">Shipping</a>';
+    }
+    res += '</div><div class="tab-content">';
+    if ( summary !== null ) {
+        res += '<div class="tab-pane fade show active" id="description"><div class="item py-5">'
+            + summary
+            + '</div></div>';
+    }
+    if ( detailsHTML !== null ) {
+        res += '<div class="tab-pane fade" id="details"><div class="item py-5">'
+            + detailsHTML 
+            + '</div></div>';
+    }
+    if ( washcareHTML !== null) {
+        res += '<div class="tab-pane fade" id="care"><div class="item py-5">' 
+            + washcareHTML 
+            + '</div></div>';
+    }
+    if ( shippingInfoHTML !== null ) {
+        res += '<div class="tab-pane fade" id="shipping"><div class="item py-5">' 
+            + shippingInfoHTML
+            + '</div></div>';
+    }
+    res += '</div></div></div></div></section>';
+    return res;
 }
 
 function loadShopWithParam() {

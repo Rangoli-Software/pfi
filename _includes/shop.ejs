@@ -3,8 +3,11 @@ permalink: "<%- page.inputPath.substring(1) %>"
 ---
 <!DOCTYPE html>
 <html lang="en">
+<head>
 <% include partials/head %>
+</head>
 <body>
+<script>var pg_blacklist = [<%- "'" + page.inputPath.substring(1) + "'" %>];</script>
 <% if ( locals.prerender ) { %>
 <%- pfi.getShopHeader() %>
 <%- pfi.pfiTopMenu(page.inputPath.substring(1)) %>
@@ -30,7 +33,7 @@ permalink: "<%- page.inputPath.substring(1) %>"
     $(document).ready(onDocumentReady);
 </script>
 </div>
-<script> document.write(storyBrowser()); </script>
+<script> document.write(storyBrowser(pg_blacklist)); </script>
 <% if ( locals.prerender ) { %>
 <%- pfi.botMenu(page.inputPath.substring(1)) %>
 <%- pfi.scriptSrcs() %>

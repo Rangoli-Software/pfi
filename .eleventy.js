@@ -30,6 +30,7 @@ return {
         "ttf",
         "woff",
         "woff2",
+        "ico",
         "png",
         "svg",
         "js",

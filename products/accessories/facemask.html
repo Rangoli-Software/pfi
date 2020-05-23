@@ -79,11 +79,11 @@ title: Face Mask
         },
         data: [{
             vid: "CW1",
-            images: ["many-1", "many-2", "b-f", "b-b", "b-l"]
+            images: ["many-1", "b-f", "b-b", "b-l", "many-2"]
         }],
         sizes: ['Free'],
         description: 'The fabric for these face covers come from my Treasure Trove of Tangail sari offcuts, hand-woven in the finest cotton and silk. Each mask features a lining and a pocket in hand-woven khadi cotton in a contrasting colour. The elastic ear bands will help the mask fit firmly and provide full coverage from nose to chin. The 3 light layers avoid heat-trapping while keeping you safe in style. You can fill the pocket with your own surgical mask, filter, herbs or essential oil of your choice. One size fits most.',
-        garmentDetails: createHTMLList(['Non-medical grade','3 layers','Built-in pocket','Comfortable elastic ear bands','Freesize (29 x 15 cms.)','Provides full coverage from nose to chin']),
+        garmentDetails: '<ul><li>#artwear - each mask is <strong>unique - one-of-a-kind</strong></li><li>Non-surgical</li><li>Has pocket / sleeve to insert surgical filter</li><li>Washable and re-usable</li><li>Outer layer of <a href="/journey/treasuretrove.html">vintage Tangail</a></li><li>2 inner layers of soft washed Khadi</li><li>Ear-loops of fabric-covered elastic</li><li>Full coverage from nose to chin</li><li><strong>No returns or exchanges</strong></li><li>Scroll down to add individual masks to the shopping cart</li></ul>',
     }
 
     function createProductJSON(sku, basePath, prodData, sizingChart) {
@@ -130,12 +130,11 @@ title: Face Mask
 
     const shippingHTML = getShippingInfoUL(['If the item is in stock, it will be ready to ship within 1 business day of your order.']);
 
-    const infoHTML = '<ul><li><strong>#artwear - each mask is unique - one-of-a-kind</strong></li><li>Non-surgical</li><li>Has pocket / sleeve to insert surgical filter</li><li>Washable and re-usable</li><li>Outer layer of <a href="/journey/treasuretrove.html">vintage Tangail handloom</a></li><li>2 inner layers of soft handloom</li><li>Ear-loops of fabric-covered elastic</li><li><strong>No returns or exchanges</strong></li><li>Scroll down to add individual masks to the shopping cart</li></ul>';
-
     const productCatalog = getProductCatalog();
     const prodJSON = createProductJSON('FACEMK2005Ta','/products/accessories/fm/', prodData, null);
     const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath);
-    var productComponentFactory = createFMProdCompFactory(prodJSON, dimensioner, getProductCatalog(), infoHTML);
+    var carousel = createSquareProductCarousel(prodJSON.variants);
+    var productComponentFactory = createFMProdCompFactory(prodJSON, dimensioner, getProductCatalog(), prodJSON.skuInfo.garmentDetails, carousel);
     var productComponent = productComponentFactory.createRenderer(loadShopWithParam())
 
     var items = createFMList(fmListData, prodJSON.product);
@@ -143,11 +142,9 @@ title: Face Mask
     const pageComponent = createFMPageComponent(productCatalog, itemsComponent);
 
     $(document).ready(onDocumentReady);
+    document.write(getSizeModal(productComponent.createSizingPanel()));
 </script>
 <section>
-    <script>
-        document.write(getSizeModal(productComponent.createSizingPanel()));
-    </script>
     <div class="container">
         <script>
             document.write(productComponent.createProductDiv(0, 0));
@@ -157,10 +154,14 @@ title: Face Mask
 <script>
     document.write(renderProductDetails(
         '<p>'+ prodJSON.skuInfo.description + '</p>',
-        '<ul>'
-        + prodJSON.skuInfo.garmentDetails
-        + '</ul>',
+        null,
         washcareHTML,
         shippingHTML));
     document.write(itemsComponent.createDiv());
+
+
+    var articles = [origin.sub[5], origin.sub[6], origin.sub[7], origin.sub[8]];
+    var sections = [origin, origin, origin, origin];
+    pg_blacklist = pg_blacklist.concat([articles[0].url, articles[1].url, articles[2].url, articles[3].url]);
+    document.write(createRelated('Related', null, articles, sections,[1,4,7,10]));
 </script>
