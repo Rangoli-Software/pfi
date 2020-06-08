@@ -23,7 +23,10 @@ const cmData = [
 ['Stone Necklace', 'SNCKLC1709GS', '', '', '', ''],
 ['Zip-Strap Bag - Trims', 'CHPTBG1808Kh', '', '', '', ''],
 ['Gypsy Skirt', 'SSEKMD1501PP', '0.275', '1.4', '', 'TRUE'],
-['Naksha Skirt', 'NKSHMD1501PP', '0.3', '1.4', '', 'TRUE'],
+['Naksha Skirt - Micro', 'NKSHMC1512PP', '0.3', '1.4', '', 'TRUE'],
+['Naksha Skirt - Mini', 'NKSHMI1501PP', '0.3', '1.4', '', 'TRUE'],
+['Naksha Skirt - Midi', 'NKSHMD1501PP', '0.3', '1.4', '', 'TRUE'],
+['Naksha Skirt - Minuit', 'NKSHMU1501PP', '0.3', '1.4', '', 'TRUE'],
 ['Test Live Trans', 'TESTIT0000Hi', '', '', '', 'FALSE'],
 ['Woven Canvas on T Shirt', 'AWTSHT1604Je', '0.2', '1.3', '/fabricart/TShirtColl.jpg', 'TRUE'],
 ['Kagera Tie', 'KAGTIE1601Kh', '0.094', '1.3', '/products/ties/Black.jpg', 'FALSE'],
@@ -43,7 +46,7 @@ const cmData = [
 ['Jodhpur Pants', 'JODHPA1708Kh', '0.2', '1.4', '/products/happyeveryday/jodhpur.html', 'FALSE'],
 ['Floating Overlayer', 'OVTPSH1501Vo', '0.2', '1.4', '/products/happyeveryday/shovertop.html', 'FALSE'],
 ['Long Floating Overlayer', 'OVTPLO1501Vo', '0.2', '1.4', '/products/happyeveryday/lovertop.html', 'FALSE'],
-['Handloom Face Mask', 'FACEMK2005Ta', '0.075', '1.1', '/products/accessories/facemask.html', 'TRUE'],
+['Handloom Face Mask', 'FACEMK2005Ta', '0.0095', '1.2', '/products/accessories/facemask.html', 'TRUE'],
 ];
 
 const plData = [
@@ -67,4 +70,8 @@ const plData = [
     ['OVTPSH1501Vo', 1700],
     ['OVTPLO1501Vo', 2000],
     ['FACEMK2005Ta', 700],
+    ['NKSHMC1512PP', 6000],
+    ['NKSHMI1501PP', 9150],
+    ['NKSHMD1501PP', 9500],
+    ['NKSHMU1501PP', 10150],
 ];

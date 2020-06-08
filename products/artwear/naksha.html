@@ -1,0 +1,185 @@
+---
+layout: product
+funnel: ViewContent
+title: Artwear Naksha Skirt
+description: Our Art Wear Naksha Skirt. Each piece is one of a kind.
+keywords: skirt, vintage sari border, fabric art, artwear, women's wear
+---
+<script type="text/javascript" src="skirts/nklist.js"></script>
+<script>
+    const washcareHTML = "<ul><li>Wash before first use</li><li>Do not soak</li><li>Hand Wash</li><li>Mild Detergent</li><li>Do Not Bleach</li><li>Dry In Shade</li></ul>";
+
+    const shippingHTML = getShippingInfoUL(['If the item is in stock, it will be ready to ship within 1 business day of your order.']);
+
+function createSKUs(factory) {
+    return {
+        factory: factory,
+        data: [
+            {SKU: 'NKSHMD1501PP', text: 'Midi', image: 'md/3'},
+            {SKU: 'NKSHMU1501PP', text: 'Minuit', image: 'mu/7'}
+        ],
+        getImage: function(vidx) {
+            var vnt = this.data[vidx];
+            return {
+                url: this.factory.base + vnt.image + ".jpg"
+            }
+        },
+    };
+}
+   
+function createSKUSelector(skus) {
+    return {
+        skus: skus,
+        divId: 'skuSelector',
+        skuRadioName: "skuRadio",
+        getSKUIdx: function (sku) {
+            for (var i = 0; i < this.skus.data.length; i++) {
+                var variant = this.skus.data[i];
+                if (variant.SKU == sku) {
+                    return i;
+                }
+            }
+            return -1;
+        },
+        getSelectedSKU: function () {
+            var selRadio = $("input[name='" + this.skuRadioName + "']:checked");
+            return selRadio.val();
+        },
+        createSKUPanel: function (name, varIdx) {
+            var res = '<div class="mb-4 ml-n1">';
+            for (var i = 0; i < this.skus.data.length; i++) {
+                var opt = this.skus.data[i];
+                res += '<div class="custom-control custom-control-inline custom-control-img"><input type="radio" onclick="onSKUChange(\'' + opt.SKU + '\')" class="custom-control-input" id="' + name + i + '" name="' + name + '" value="' + opt.SKU + '"' + (varIdx == i ? " checked" : "") + '><label class="custom-control-label" for="' + name + i + '"><span class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url(' + this.skus.getImage(i).url + ');"></span></label></div>';
+            }
+            res += '</div>';
+            return res;
+        },
+        createDiv: function(varIdx) {
+            var res = '<form id="' + this.divId + '"><div class="row align-items-center">'
+            res += '<div class="col-12 text-center">'
+                + 'Length: <strong>' + this.skus.data[varIdx].text + '</strong> ' + this.createSKUPanel(this.skuRadioName, varIdx)
+                + '</div>'
+                + '</div></form>';
+            return res;
+        },
+        updateSelection: function () {
+            var varIdx = this.getCatIdx(this.getSelectedSKU());
+            $('#' + this.divId).replaceWith(this.createDiv(varIdx));
+        }
+    }
+}
+
+function createNakshaCardCreator() {
+    return {
+        colClasses: 'col-12 col-sm-6 col-md-4',
+        createCard: function(itemDesc, prodDesc, btnId, priceHTML) {
+            var res = '<div class="card mb-2">';
+            var nI = itemDesc.getNumImages();
+            res += '<a href="' + itemDesc.getImagePath(0) + '" data-fancybox><img src="' + itemDesc.getImagePath(0) + '" alt="' + prodDesc.name  + '" class="img-fluid" width="1000" height="1000"></a>';
+            res += '<div class="card-body px-0 pt-2 pb-4 text-center">';
+            res += '<div class="card-subtitle mb-3"><span>' + priceHTML + '</span></div>';
+            res += createAddToCartButton(btnId);
+            res += '</div></div>';
+            return res;
+        }
+    };
+}
+
+function createUICFactory(factory, colSelData, prodDataFactoryFn, browseInfo) {
+    var skus = createSKUs(factory);
+    var skuSelector = createSKUSelector(skus);
+    return {
+        factory: factory,
+        colSelData: colSelData,
+        prodDataFactoryFn: prodDataFactoryFn,
+        skuSelector: skuSelector,
+        browseInfo: browseInfo,
+        createGenerator: function(sku) {
+            var factory = this.factory.createSKU(sku);
+            var prodData = this.prodDataFactoryFn(sku);
+            var prodJSON = createUIProductJSON(sku, factory.base, prodData, null);
+            var skuSelViewer = createHTMLViewer(skuSelector.createDiv(skuSelector.getSKUIdx(sku)));
+            var detailViewer = createHTMLViewer(prodJSON.skuInfo.garmentDetails);
+            var storyViewer = this.browseInfo.getStoryViewer();
+            var viewerFactory = {
+                create: function() {
+                    return createCatenatedViewer([skuSelViewer, detailViewer, storyViewer]);
+                }
+            };
+            return createComponentGenerator(factory, prodJSON, viewerFactory, this.colSelData, false, createNakshaCardCreator());
+        }
+    }
+}
+
+function createProdData(sku) {
+    return {
+        imageFile: "sizing.jpg",
+        dimensionNames: ["A. Waist", "B. Length"],
+        dimensionsCm: {
+            Free: [
+                [64, 72],
+                [82]
+            ]
+        },
+        data: [{
+            vid: "AW",
+            images: ["pr-f", "pr-tw", "pr-d1", "pr-d2"]
+        }],
+        sizes: ['Free'],
+        description: 'As the name suggests, each ArtWear Naksha is a one-of-a-kind piece, unique and exclusive</p><p>The perfect fusion of traditional Tangail textile in a modern western silhouette, the Naksha skirt is a multi-paneled, crushed skirt. Made of sheer 100% cotton fabrics, the skirt offers comfort, playfulness and complete freedom of movement. It suits every age group from teenagers (we even have a kids\' Naksha) to seniors.</p><p>Each Artwear Naksha skirt is cut from a single Tangail / Jamdani sari. The skirt is lined with Voile de Coton, to create our signature light-layer effect.</p><p>The waist band is made up of 7 rows of elastic stitched into. It takes a skilled tailor most of a day to craft the waist. The result is a snug, comfortable fit',
+        garmentDetails: '',
+    };
+}
+    
+    var browseInfo = createBrowseInfo(
+        [
+            [[origin, '/journey/artwear.html'],[origin, '/journey/salsa.html'],[clients, '/people/resortwear.html']],[[clients, '/people/artwear.html'],[clients, '/people/curators.html']]
+        ],
+        [1,1],
+        pg_blacklist
+    );
+    pg_blacklist = pg_blacklist.concat(browseInfo.getFlattenedURLs());
+
+    var nakshaFactory = createNakshaSKUsFactory('/products/artwear/skirts/');
+    var uicFactory = createUICFactory(
+        nakshaFactory,
+        [
+            {colourName: 'Neutrals', image: '2'},
+            {colourName: 'Reds', image: '3'},
+            {colourName: 'Greens', image: '4'},
+            {colourName: 'Blues', image: '1'}
+        ],
+        createProdData,
+        browseInfo
+    );
+
+    var icGen = uicFactory.createGenerator('NKSHMD1501PP');
+    var itemsComponent = icGen.createUIC(loadShopWithParam());
+    var itemCategorySelector = itemsComponent.itemCategorySelector;
+    const pageComponent = createUIPageComponent(getProductCatalog(), itemsComponent, uicFactory);
+
+    var productComponent = itemsComponent.productComponent;
+
+    $(document).ready(onDocumentReady);
+    document.write(getSizeModal(productComponent.createSizingPanel()));
+</script>
+<section>
+    <div class="container">
+        <script>
+            document.write(productComponent.createProductDiv(0, 0));
+        </script>
+    </div>
+</section>
+<script>
+    document.write(renderProductDetails(
+        '<p>'+ icGen.prodJSON.skuInfo.description + '</p>',
+        null,
+        washcareHTML,
+        shippingHTML));
+</script>
+<h6>Buy Now</h6>
+<p>These are the individual skirts that are currently available for sale. Use the colour selector to look for specific matching colours.</p>
+<script>
+    document.write(itemCategorySelector.createDiv(itemCategorySelector.categories.getRandomIdx(),0));
+    document.write(itemsComponent.createDiv());
+</script>

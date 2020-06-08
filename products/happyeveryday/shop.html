@@ -40,7 +40,21 @@ function createCards(fname) {
     res += '</div></div></section>';
     return res;
 }
+
+var imgSfx = ['01','04','07','08','15'];
+
+function createBanner() {
+    var len = imgSfx.length;
+    var rndI = Math.floor(Math.random() * len);
+    var sfx = imgSfx[ rndI ];
+    return '<img class="img-fluid" src="/products/happyeveryday/mood/sld-' + sfx + '.jpg" width="1500" height="1000">';
+}
 </script>
+<figure>
+<script>
+    document.write(createBanner());
+</script>
+</figure>
 <ul class="nav nav-tabs nav-justified">
 <script>
     document.write(getTabItem("Pants", "pants", getUrlVars()["t"] == "p" || getUrlVars()["t"] === undefined));

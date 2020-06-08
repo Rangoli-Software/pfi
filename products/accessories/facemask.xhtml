@@ -1,0 +1,86 @@
+<script type="text/javascript" src="fm/fmlist20060500.js"></script>
+<script>
+    var prodData = {
+        imageFile: "sizing.jpg",
+        dimensionNames: ["A. Width", "B. Height"],
+        dimensionsCm: {
+            Free: [
+                29,
+                15,
+            ]
+        },
+        data: [{
+            vid: "CW1",
+            images: ["many-1", "b-f", "b-b", "b-l", "many-2"]
+        }],
+        sizes: ['Free'],
+        description: 'The fabric for these face masks come from my <a href="/journey/treasuretrove.html">Treasure Trove</a> of Tangail sari offcuts, hand-woven in the finest cotton and silk. Each mask features a lining and a pocket in hand-woven khadi cotton in a contrasting colour. The elastic ear bands will help the mask fit firmly and provide full coverage from nose to chin. The 3 layers avoid heat-trapping while keeping you safe in style and comfort. You can fill the pocket / sleeve with your own surgical mask / filter, herbs or a pad with a few drops of essential oil. One size fits most.',
+        garmentDetails: '<ul><li>#artwear - each mask is <strong>unique - one-of-a-kind</strong></li><li>Outer layer of <a href="/journey/treasuretrove.html">vintage Tangail</a></li><li>2 inner layers of soft washed Khadi</li><li>Universal Size</li><li>Ear-loops of fabric-covered elastic</li><li>Full coverage from nose to chin</li><li>Non-surgical - but has pocket / sleeve to insert surgical filter</li><li>Washable and re-usable</li><li>No returns or exchanges</li><li>Scroll down to shop individual masks</li></ul>',
+    }
+    
+    const washcareHTML = "<ul><li>Wash before first use</li><li>Do not soak</li><li>Hand Wash</li><li>Mild Detergent</li><li>Do Not Bleach</li><li>Dry In Shade</li></ul>";
+
+    const shippingHTML = getShippingInfoUL(['If the item is in stock, it will be ready to ship within 1 business day of your order.']);
+
+    var browseInfo = createBrowseInfo(
+        [
+            [[origin, '/journey/artwear.html'],[origin, '/journey/treasuretrove.html']],[[clients, '/look/gg.html']]
+        ],
+        [1,1],
+        pg_blacklist
+    );
+    pg_blacklist = pg_blacklist.concat(browseInfo.getFlattenedURLs());
+
+    const productCatalog = getProductCatalog();
+
+    var factory = getFaceMaskFactory();
+    var prodJSON = createUIProductJSON('FACEMK2005Ta',factory.base, prodData, null);
+    var detailViewer = createHTMLViewer(prodJSON.skuInfo.garmentDetails);
+    var storyViewer = browseInfo.getStoryViewer();
+    var viewerFactory = {
+        create: function() {
+            return createCatenatedViewer([detailViewer, storyViewer]);
+        }
+    };
+    var cardCreator = createUICardCreator();
+    var componentGenerator = createComponentGenerator(
+        factory, prodJSON, viewerFactory,
+        [
+                {colourName: 'Neutrals', image: 'greys'},
+                {colourName: 'Reds', image: 'reds-1'},
+                {colourName: 'Greens', image: 'greens'},
+                {colourName: 'Blues', image: 'blues'}
+        ],
+        true,
+        cardCreator
+    );
+
+    var itemsComponent = componentGenerator.createUIC(loadShopWithParam());
+    var itemCategorySelector = itemsComponent.itemCategorySelector;
+    const pageComponent = createUIPageComponent(productCatalog, itemsComponent);
+
+    var productComponent = itemsComponent.productComponent;
+
+    $(document).ready(onDocumentReady);
+    document.write(getSizeModal(productComponent.createSizingPanel()));
+</script>
+<section>
+    <div class="container">
+        <script>
+            document.write(productComponent.createProductDiv(0, 0));
+        </script>
+    </div>
+</section>
+<script>
+    document.write(renderProductDetails(
+        '<p>'+ prodJSON.skuInfo.description + '</p>',
+        null,
+        washcareHTML,
+        shippingHTML));
+</script>
+<h6>Buy Now</h6>
+<p>These are the individual masks that are currently available for sale. Use the colour selector to look for specific matching colours.</p>
+<script>
+    document.write(itemCategorySelector.createDiv(itemCategorySelector.categories.getRandomIdx(),0));
+    document.write(itemsComponent.createDiv());
+</script>

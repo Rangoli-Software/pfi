@@ -1,38 +1,41 @@
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta http-equiv="cache-control" content="no-cache" />
-    <% if ( locals.description ) { %>
-    <meta name="description" content="<%- description %>" />
-    <% } %>
-    <% if ( locals.keywords ) { %>
-    <meta name="keywords" content="<%- keywords + " , " + config.siteKeywords %>" />
-    <% } else { %>
-    <meta name="keywords" content="<%- config.siteKeywords %>" />
-    <% } %>
-    <title>
-        <%- title %>
-    </title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta http-equiv="cache-control" content="no-cache" />
+<% if ( locals.description ) { %>
+<meta name="description" content="<%- description %>" />
+<% } %>
+<% if ( locals.keywords ) { %>
+<meta name="keywords" content="<%- keywords + " , " + config.siteKeywords %>" />
+<% } else { %>
+<meta name="keywords" content="<%- config.siteKeywords %>" />
+<% } %>
+<title>
+    <%- title %>
+</title>
 
-    <link rel="stylesheet" href="https://indestructibletype.com/fonts/Jost.css" type="text/css" charset="utf-8" />
-    <link href="/shopper-1.0.3/css/theme.min.css" rel="stylesheet" />
-    <link href="/js/pfi20032400.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://indestructibletype.com/fonts/Jost.css" type="text/css" charset="utf-8" />
+<link href="/shopper-1.0.3/css/theme.min.css" rel="stylesheet" />
+<link href="/js/pfi20032400.css" rel="stylesheet" />
 
-    <script type="text/javascript" src="/js/pfiglobs20051801.js"></script>
-    <script type="text/javascript" src="/js/pfitmpl20052301.js"></script>
-    <script type="text/javascript" src="/nc/pfifx20.js"></script>
-    <script type="text/javascript" src="/js/pfishop20041100.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/pfiglobs20060500.js"></script>
+<script type="text/javascript" src="/js/pfitmpl20060501.js"></script>
+<script type="text/javascript" src="/nc/pfifx20.js"></script>
+<script type="text/javascript" src="/js/pfishop20041100.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
 <% if ( config.isProduction && config.isGA ) { %>
     <script async src="https://www.googletagmanager.com/gtag/js?id=<%- config.gaCode %>"></script>
 <% } %>
-    <% if ( config.isProduction) { %>
-        <% var funnel = (locals.funnel ? locals.funnel : "PageView") %>
-        <% if ( config.isGA ) { %>
-            <%- pfi.gaInit(config.gaCode, pfi.gaFunnel(funnel)) %>
-        <% } %>
-        <% if ( config.isFB ) { %>
-            <%- pfi.fbInit(config.fbCode, pfi.fbFunnel(funnel)) %>
-        <% } %>
+<% if ( config.isProduction) { %>
+    <% var funnel = (locals.funnel ? locals.funnel : "PageView") %>
+    <% if ( config.isGA ) { %>
+        <%- pfi.gaInit(config.gaCode, pfi.gaFunnel(funnel)) %>
     <% } %>
+    <% if ( config.isFB ) { %>
+        <%- pfi.fbInit(config.fbCode, pfi.fbFunnel(funnel)) %>
+    <% } %>
+<% } %>

@@ -65,6 +65,24 @@ const lotm = {
     url: "/look.html?t=p",
     sub: [
         {
+            title: "Breezy Beach",
+            url: "/look/bb.html",
+            lede: 'A trio of recent designs',
+            imageURL: "/look/prema/ss03.jpg"
+        },
+        {
+            title: "Florence in Florence",
+            url: "/blog/finf.html",
+            lede: 'Notes from a short holiday in Florence.',
+            imageURL: "/blog/FlorDuomo.jpg"
+        },
+        {
+            title: "Tapestries!",
+            url: "/tapestries/tapestries.html",
+            lede: 'An artistic collaboration with Montreal photographer <strong>Jérémi Poulin</strong>',
+            imageURL: "/tapestries/JP-7374.jpg"
+        },
+        {
             lede: 'Off-shoulder knit top with one of my signature Art Wear skirts - The Naksha.',
             imageURL: "/g/look/nkshofstp.jpg"
         },
@@ -148,7 +166,7 @@ const origin = {
                 title: "Treasure Trove",
                 url: "/journey/treasuretrove.html",
                 lede: 'How I wound up creating a treasure trove of vintage tangail borders',
-                imageHTML: "<script>document.write(createPanelCarousel())</scr" + "ipt>"
+                imageScript: "createWovenCanvasImage()"
             },
             {
                 title: "Art Wear",
@@ -175,12 +193,6 @@ const atelier = {
     title: "Atelier Tales",
     url: "/blog.html?t=a",
     sub: [
-        {
-            title: "Florence in Florence",
-            url: "/blog/finf.html",
-            lede: 'Notes from a short holiday in Florence.',
-            imageURL: "/blog/FlorDuomo.jpg"
-        },
         {
             title: "Vilnius Artists",
             url: "/blog/vilartists.html",
@@ -216,12 +228,6 @@ const atelier = {
             url: "/atelier/dreamteam.html",
             lede: 'My work family - they are a big part of what makes my Rangoli Atelier tick!',
             imageURL: "/atelier/PFW.jpg"
-        },
-        {
-            title: "Tapestries!",
-            url: "/tapestries/tapestries.html",
-            lede: 'An artistic collaboration with Montreal photographer <strong>Jérémi Poulin</strong>',
-            imageURL: "/tapestries/JP-7374.jpg"
         },
         {
             title: "Tangail Art",
@@ -261,6 +267,12 @@ const clients = {
     title: "Friends",
     url: "/look.html?t=f",
     sub: [
+        {
+            title: "Gangsta Gal",
+            url: "/look/gg.html",
+            lede: "Fun with Face Masks",
+            imageURL: "/look/friends/gg-aqua.jpg"
+        },
         {
             title: "#oneofakind",
             url: "/people/oneofakind.html",
@@ -386,6 +398,10 @@ const shop = {
         url: "/shop.html",
         sub: [
         {
+            title: "Face Mask",
+            url: "/products/accessories/facemask.html"
+        },
+        {
             title: "Happy Everyday",
             url: "/products/happyeveryday/shop.html"
         },
@@ -458,6 +474,13 @@ const merchInfo = [
     url: '/fabricartT.html',
     ledes: ['A one-of-a-kind T-shirt for that unique individual!'],
     images: [{url: '/fabricart/TShirtColl.jpg'},{url: '/fabricart/ManWhiteS.jpg'},{url: '/fabricart/GirlBlackS.jpg'}]
+},
+{
+    SKU: 'FACEMK2005Ta',
+    title: 'Handloom Face Mask',
+    url: '/products/accessories/facemask.html',
+    ledes: ["#oneofakind facemask to keep you safe in style and comfort"],
+    images: [{url: '/people/nfm01.jpg'},{url: '/people/nfm02.jpg'},{url: '/people/nfm03.jpg'}]
 },
 {
     SKU: 'DPDYSF1501PT',
@@ -572,10 +595,14 @@ function createSqPanelImageList(panelNumArr) {
 }
 
 
-function createPanelCarousel() {
+function createWovenCanvasImage() {
     var panelNums = [545,548,549,552,565,571];
     var panelImgs  =  createSqPanelImageList(panelNums);
-    return createCarousel("car-panels", panelImgs);
+//    return createCarousel("car-panels", panelImgs);
+    var len = panelImgs.length;
+    var rndI = Math.floor(Math.random() * len);
+    var itm = panelImgs[rndI];
+    return '<img class="d-block img-fluid" src="' + itm.imageURL +  '" alt="Woven Canvas #' + panelNums[rndI] + '">';
 }
 
 function selectFeature(section) {
@@ -584,12 +611,15 @@ function selectFeature(section) {
     return section.sub[ rndI ];
 }
 
-function selectFeatures(sections) {
+function selectFeatures(sections, blacklist) {
     var items = [];
     var pars = [];
     for (var i = 0; i < sections.length; i++ ) {
         var sec = sections[ i ];
         var sel = selectFeature(sec);
+        while (blacklist.includes(sel.url)) {
+            sel = selectFeature(sec);
+        }
         items.push(sel);
         pars.push(sec);
     }
@@ -719,13 +749,13 @@ function createShopMM() {
 function createLookMM() {
     var col1 = createDropdownColumn([lotm, moods], "col-6");
     var col2 = createDropdownColumn([clients, ramp], "col-6");
-    return createMinWidthDDCard([col1, col2], "305px", true);
+    return createMinWidthDDCard([col1, col2], "345px", true);
 }
 
 function createBlogDD () {
-    var col1 = createDropdownColumn([atelier], "col-6");
-    var col2 = createDropdownColumn([origin, archives], "col-6");
-    return createMinWidthDDCard([col1, col2], "345px", true);
+    var col1 = createDropdownColumn([atelier, archives], "col-6");
+    var col2 = createDropdownColumn([origin], "col-6");
+    return createMinWidthDDCard([col1, col2], "320px", true);
 }
 
 function createAboutDD () {
@@ -781,6 +811,8 @@ function createFeatureItemCard(item, section) {
         res += '</div>';
     } else if (item.imageHTML !== undefined ) {
         res += item.imageHTML;
+    } else if (item.imageScript !== undefined ) {
+        res += eval(item.imageScript);
     }
     res += '<div class="card-body px-0 pt-6 pb-4">';
     res += '<div class="card-subtitle mb-1"><a class="text-muted" href="'  + section.url + '">' + section.title +'</a></div>';
@@ -803,6 +835,8 @@ function createItemCard(item) {
         res += '</div>';
     } else if (item.imageHTML !== undefined ) {
         res += item.imageHTML;
+    } else if (item.imageScript !== undefined ) {
+        res += eval(item.imageScript);
     }
     res += '<div class="card-body px-0 pt-6 pb-4">';
     if  (item.url !== undefined) {
@@ -842,9 +876,11 @@ function createRelated(header, merch, items, sections, orderidxs) {
     var res = '<div class="container mb-5"><section class="pt-4"><h5>' + header + '</h5><div class="row">';
     var ordI = 0;
     orderidxs = shuffle(orderidxs);
+    if ( merch !== null) {
     for (var i = 0; i < merch.length; i++) {
         res += '<div class="col-6 ' + brkColCls + " order-" + orderidxs[ordI] + '">' +  createMerchandisingCard(merch[ i ]) + '</div>';
         ordI++;
+    }
     }
     for (var i = 0; i < items.length; i++) {
         res += '<div class="col-6 ' + brkColCls +  " order-" + orderidxs[ordI] + '">' +  createFeatureItemCard(items[ i ], sections[ i ]) + '</div>';
@@ -864,33 +900,35 @@ function selectSections() {
     return [pickSection([atelier, origin]), pickSection([about, buzz, archives, lotm, lookbook, moods, ramp, clients])];
 }
 
-function filterMerch(skus) {
+function filterMerch(skus, blacklist) {
     var res = [];
     for(var i = 0; i < merchInfo.length; i++) {
         var val = merchInfo[i];
         if (skus.includes(val.SKU)) {
-            res.push(val);
+            if ( ! blacklist.includes(val.url) ) {
+                res.push(val);
+            }
         }
     }
     return res;
 }
 
-function pickMerch(skus) {
-    var flt = filterMerch(skus);
+function pickMerch(skus, blacklist) {
+    var flt = filterMerch(skus, blacklist);
     var len = flt.length;
     var rndI = Math.floor(Math.random() * len);
     return flt[ rndI ];
 }
 
-function selectMerch() {
+function selectMerch(blacklist) {
     var hedSKUs = ['BERMPA1609Kh','BALLPA1501Vo','CRPTOP1805Kh','OVTPLO1501Vo','VAMPAL1708Kh','LTSDSL1501Vo'];
-    var restSKUs = ['AWTSHT1604Je','DPDYSF1501PT','KAGTIE1601Kh','CHMPGN1501JL'];
-    return [pickMerch(hedSKUs), pickMerch(restSKUs)];
+    var restSKUs = ['FACEMK2005Ta','AWTSHT1604Je','DPDYSF1501PT','KAGTIE1601Kh','CHMPGN1501JL'];
+    return [pickMerch(hedSKUs, blacklist), pickMerch(restSKUs, blacklist)];
 }
 
-function createFeatures(header) {
-    var res = selectFeatures(selectSections());
-    var mch = selectMerch();
+function createFeatures(header, blacklist) {
+    var res = selectFeatures(selectSections(), blacklist);
+    var mch = selectMerch(blacklist);
     return createRelated(header, mch, res[0], res[1],[1,4,7,10]);
 }
 
@@ -1045,7 +1083,7 @@ function createMCSignup() {
 }
 
 function createShareBar(location) {
-    return '<div class="container mb-5"><div style="display: flex; justify-content: space-between;">'
+    return '<div class="container mb-5"><p>If you like this page, please help us spread the word by sharing 🙏🏾 ❤️</p><div style="display: flex; justify-content: space-between;">'
         + '<span>'  
         + creatFBShareBtn(location)
         + '</span>'
@@ -1061,8 +1099,8 @@ function createShareBar(location) {
         + '</div></div>';
 }
 
-function storyBrowser() {
-    return createFeatures("Featured");
+function storyBrowser(blacklist) {
+    return createFeatures("Featured", blacklist);
 }
 
 function botNav(botImgTag, location) {
@@ -1120,14 +1158,15 @@ function createSizeRadio(name, idPfx, val, i, checked) {
     return '<div class="custom-control custom-control-inline custom-control-size mb-2"><input type="radio" class="custom-control-input" name="' + name   +'" id="' + idPfx + i + '" value="' +  val  + '"' + (checked ? 'checked="checked" ' : '') +  ' onclick="onSelectionChange()"><label class="custom-control-label" for="' + idPfx + i + '">' + val +'</label></div>';
 }
 
-function createSizeOptions(radName, label, vals, selIdx) {
+function createSizeOptions(radName, label, vals, selIdx, cap) {
     var id = radName + "Group";
     var res = '<div class="form-group"><label for="' + id + '">' + label + ':</label> <span id="' +  id + '" class="mb-2">';
     var idPfx = radName + "ID";
+    var caption = (cap === undefined || cap === null) ? 'Size chart' : cap;
     for (var i = 0; i < vals.length; i++) {
         res += createSizeRadio(radName, idPfx, vals[i], i, (i == selIdx));
     }
-    res += '</span><a class="ml-3" data-toggle="modal" href="#modalSizeChart">Size chart</a></div>';
+    res += '</span><a class="ml-3" data-toggle="modal" href="#modalSizeChart">' + caption + '</a></div>';
     return  res;
 }  
 
@@ -1187,12 +1226,13 @@ function createDimensioner(units, dimensionNames, dimensions, imagePath, dimVari
         dimVariation: dimVariation,
         imagePath: imagePath,
         tableId: 'SizeTable',
+        unitFieldName: 'SizeChartUnits',
         eventFnStr: 'onUnitChange()',
         createMeasurementsPanel: function (units, sizes) {
             return '<div class="row align-items-center"><div class="col-md-4 text-center py-5"><img src="' + this.imagePath + '" class="img-fluid center-block"/></div><div class="col-md-8 text-center py-5">' + this.createMeasurementsTable(units, sizes) + '</div></div>'
         },
         createMeasurementsTable: function (units, sizes) {
-            return '<div class="btn-group btn-group-toggle ml-auto py-5" data-toggle="buttons"><label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 active"><input type="radio" name="SizeChartUnits" value="in" onclick="' + this.eventFnStr + '" checked>IN</label><label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 ml-2"><input type="radio" name="SizeChartUnits" value="cm" onclick="' + this.eventFnStr + '">CM</label></div>' + '<div id="' + this.tableId + '">' + this.createSizingTable(units, sizes) + '</div>';
+            return '<div class="btn-group btn-group-toggle ml-auto py-5" data-toggle="buttons"><label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 active"><input type="radio" name="' + this.unitFieldName + '" value="in" onclick="' + this.eventFnStr + '" checked>IN</label><label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 ml-2"><input type="radio" name="' + this.unitFieldName + '" value="cm" onclick="' + this.eventFnStr + '">CM</label></div>' + '<div id="' + this.tableId + '">' + this.createSizingTable(units, sizes) + '</div>';
         },
         createSizingTable: function (units, sizes) {
             var fn = (units === this.dimensionUnits) ? identity : (units == "in" ? cm2inches : inches2cm);
@@ -1238,6 +1278,10 @@ function getSizeModal(contents) {
         '</div></div></div></div>';
 }
 
+function createAddToCartButton(id) {
+    return '<button id="' + id + '" class="btn btn-warning btn-block" type="button"><span class="fa fa-cart-plus"></span> Add to Cart</button>';
+}
+
 function createSiteMapGenerator(path) {
     return {
         path: path,
@@ -1264,6 +1308,7 @@ function createSiteMapGenerator(path) {
 function createSM(path) {
     return createSiteMapGenerator(path).createSM(siteMap);
 }
+
 
 module.exports = {
     createSM: createSM,

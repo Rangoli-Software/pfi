@@ -65,6 +65,12 @@ const lotm = {
     url: "/look.html?t=p",
     sub: [
         {
+            title: "Breezy Beach",
+            url: "/look/bb.html",
+            lede: 'A trio of recent designs',
+            imageURL: "/look/prema/ss03.jpg"
+        },
+        {
             title: "Florence in Florence",
             url: "/blog/finf.html",
             lede: 'Notes from a short holiday in Florence.',
@@ -160,7 +166,7 @@ const origin = {
                 title: "Treasure Trove",
                 url: "/journey/treasuretrove.html",
                 lede: 'How I wound up creating a treasure trove of vintage tangail borders',
-                imageHTML: "<script>document.write(createPanelCarousel())</scr" + "ipt>"
+                imageScript: "createWovenCanvasImage()"
             },
             {
                 title: "Art Wear",
@@ -261,6 +267,12 @@ const clients = {
     title: "Friends",
     url: "/look.html?t=f",
     sub: [
+        {
+            title: "Gangsta Gal",
+            url: "/look/gg.html",
+            lede: "Fun with Face Masks",
+            imageURL: "/look/friends/gg-aqua.jpg"
+        },
         {
             title: "#oneofakind",
             url: "/people/oneofakind.html",
@@ -386,6 +398,10 @@ const shop = {
         url: "/shop.html",
         sub: [
         {
+            title: "Naksha Skirt",
+            url: "/products/artwear/naksha.html"
+        },
+        {
             title: "Face Mask",
             url: "/products/accessories/facemask.html"
         },
@@ -454,6 +470,15 @@ const siteMap = [
     shop
 ];
 
+function getSubEntry(item, url) {
+    for(var i = 0; i < item.sub.length; i++) {
+        var entry = item.sub[ i ];
+        if (entry.url == url) {
+            return entry;
+        }
+    }
+    return null;
+}
 
 const merchInfo = [
 {
@@ -464,10 +489,17 @@ const merchInfo = [
     images: [{url: '/fabricart/TShirtColl.jpg'},{url: '/fabricart/ManWhiteS.jpg'},{url: '/fabricart/GirlBlackS.jpg'}]
 },
 {
+    SKU: 'NKSHMD1501PP',
+    title: 'ArtWear Naksha Skirt',
+    url: '/products/artwear/naksha.html',
+    ledes: ["#oneofakind skirt for all ages and sizes!"],
+    images: [{url: '/people/mmib.jpg'},{url: '/people/slkb.jpg'},{url: '/people/ibgirl.jpg'}]
+},
+{
     SKU: 'FACEMK2005Ta',
     title: 'Handloom Face Mask',
     url: '/products/accessories/facemask.html',
-    ledes: ["#oneofakind facemask to keep you safe in style"],
+    ledes: ["#oneofakind facemask to keep you safe in style and comfort"],
     images: [{url: '/people/nfm01.jpg'},{url: '/people/nfm02.jpg'},{url: '/people/nfm03.jpg'}]
 },
 {
@@ -583,10 +615,14 @@ function createSqPanelImageList(panelNumArr) {
 }
 
 
-function createPanelCarousel() {
+function createWovenCanvasImage() {
     var panelNums = [545,548,549,552,565,571];
     var panelImgs  =  createSqPanelImageList(panelNums);
-    return createCarousel("car-panels", panelImgs);
+//    return createCarousel("car-panels", panelImgs);
+    var len = panelImgs.length;
+    var rndI = Math.floor(Math.random() * len);
+    var itm = panelImgs[rndI];
+    return '<img class="d-block img-fluid" src="' + itm.imageURL +  '" alt="Woven Canvas #' + panelNums[rndI] + '">';
 }
 
 function selectFeature(section) {
@@ -795,6 +831,8 @@ function createFeatureItemCard(item, section) {
         res += '</div>';
     } else if (item.imageHTML !== undefined ) {
         res += item.imageHTML;
+    } else if (item.imageScript !== undefined ) {
+        res += eval(item.imageScript);
     }
     res += '<div class="card-body px-0 pt-6 pb-4">';
     res += '<div class="card-subtitle mb-1"><a class="text-muted" href="'  + section.url + '">' + section.title +'</a></div>';
@@ -817,6 +855,8 @@ function createItemCard(item) {
         res += '</div>';
     } else if (item.imageHTML !== undefined ) {
         res += item.imageHTML;
+    } else if (item.imageScript !== undefined ) {
+        res += eval(item.imageScript);
     }
     res += '<div class="card-body px-0 pt-6 pb-4">';
     if  (item.url !== undefined) {
@@ -1063,7 +1103,7 @@ function createMCSignup() {
 }
 
 function createShareBar(location) {
-    return '<div class="container mb-5"><div style="display: flex; justify-content: space-between;">'
+    return '<div class="container mb-5"><p>If you like this page, please help us spread the word by sharing 🙏🏾 ❤️</p><div style="display: flex; justify-content: space-between;">'
         + '<span>'  
         + creatFBShareBtn(location)
         + '</span>'
@@ -1138,14 +1178,15 @@ function createSizeRadio(name, idPfx, val, i, checked) {
     return '<div class="custom-control custom-control-inline custom-control-size mb-2"><input type="radio" class="custom-control-input" name="' + name   +'" id="' + idPfx + i + '" value="' +  val  + '"' + (checked ? 'checked="checked" ' : '') +  ' onclick="onSelectionChange()"><label class="custom-control-label" for="' + idPfx + i + '">' + val +'</label></div>';
 }
 
-function createSizeOptions(radName, label, vals, selIdx) {
+function createSizeOptions(radName, label, vals, selIdx, cap) {
     var id = radName + "Group";
     var res = '<div class="form-group"><label for="' + id + '">' + label + ':</label> <span id="' +  id + '" class="mb-2">';
     var idPfx = radName + "ID";
+    var caption = (cap === undefined || cap === null) ? 'Size chart' : cap;
     for (var i = 0; i < vals.length; i++) {
         res += createSizeRadio(radName, idPfx, vals[i], i, (i == selIdx));
     }
-    res += '</span><a class="ml-3" data-toggle="modal" href="#modalSizeChart">Size chart</a></div>';
+    res += '</span><a class="ml-3" data-toggle="modal" href="#modalSizeChart">' + caption + '</a></div>';
     return  res;
 }  
 
