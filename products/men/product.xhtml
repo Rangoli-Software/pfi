@@ -1,0 +1,31 @@
+<script src="/js/pfimen20061800.js"></script>
+<script>
+const prodJSON = vb_catalog.getProduct(prodSKU);
+const sizer = createSizeChartr(prodJSON.skuInfo.getSizeChart());
+const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath);
+var rendererFactory = createVBComponentFactory(prodJSON, dimensioner, sizer, vb_catalog);
+const pageComponent = createPageComponent(prodJSON, getProductCatalog(), rendererFactory);
+
+$(document).ready(onDocumentReady);
+document.write(pageComponent.getBreadCrumb());
+</script>
+<section>
+<script>
+document.write(getSizeModal(pageComponent.createRenderer(loadShopWithParam()).createSizingPanel()));
+</script>
+    <div class="container">
+    <script>
+document.write(pageComponent.createRenderer(loadShopWithParam()).createProductDiv(0, 0));
+    </script>
+    </div>
+</section>
+<script>
+ document.write(renderProductDetails(
+     '<p>'+ prodJSON.skuInfo.description + '</p>',
+     '<ul>'
+     + prodJSON.skuInfo.garmentDetails
+     + '</ul>',
+     khadi_washcareHTML,
+     pret_shippingHTML
+ ));
+</script>

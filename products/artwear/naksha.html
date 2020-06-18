@@ -5,132 +5,256 @@ title: Artwear Naksha Skirt
 description: Our Art Wear Naksha Skirt. Each piece is one of a kind.
 keywords: skirt, vintage sari border, fabric art, artwear, women's wear
 ---
-<script type="text/javascript" src="skirts/nklist.js"></script>
+<script type="text/javascript" src="skirts/nklist20061800.js"></script>
 <script>
-    const washcareHTML = "<ul><li>Wash before first use</li><li>Do not soak</li><li>Hand Wash</li><li>Mild Detergent</li><li>Do Not Bleach</li><li>Dry In Shade</li></ul>";
+    const washcareHTML = "<ul><li>Do not soak</li><li>Hand Wash</li><li>Mild Detergent</li><li>Do Not Bleach</li><li>Dry In Shade</li></ul>";
 
     const shippingHTML = getShippingInfoUL(['If the item is in stock, it will be ready to ship within 1 business day of your order.']);
 
-function createSKUs(factory) {
-    return {
-        factory: factory,
-        data: [
-            {SKU: 'NKSHMD1501PP', text: 'Midi', image: 'md/3'},
-            {SKU: 'NKSHMU1501PP', text: 'Minuit', image: 'mu/7'}
-        ],
-        getImage: function(vidx) {
-            var vnt = this.data[vidx];
-            return {
-                url: this.factory.base + vnt.image + ".jpg"
-            }
-        },
-    };
-}
-   
-function createSKUSelector(skus) {
-    return {
-        skus: skus,
-        divId: 'skuSelector',
-        skuRadioName: "skuRadio",
-        getSKUIdx: function (sku) {
-            for (var i = 0; i < this.skus.data.length; i++) {
-                var variant = this.skus.data[i];
-                if (variant.SKU == sku) {
-                    return i;
+    function createSKUs(factory) {
+        return {
+            factory: factory,
+            data: [
+                {SKU: 'NKSHMC1512PP', text: 'Micro', image: 'microL'},
+                {SKU: 'NKSHMI1501PP', text: 'Mini', image: 'miniL'},
+                {SKU: 'NKSHMD1501PP', text: 'Midi', image: 'midiL'},
+                {SKU: 'NKSHMU1501PP', text: 'Minuit', image: 'minuitL'}
+            ],
+            getImage: function(vidx) {
+                var vnt = this.data[vidx];
+                return {
+                    url: this.factory.base + vnt.image + ".jpg"
                 }
+            },
+        };
+    }
+
+    function createSKUSelector(skus) {
+        return {
+            skus: skus,
+            divId: 'skuSelector',
+            skuRadioName: "skuRadio",
+            getSKUIdx: function (sku) {
+                for (var i = 0; i < this.skus.data.length; i++) {
+                    var variant = this.skus.data[i];
+                    if (variant.SKU == sku) {
+                        return i;
+                    }
+                }
+                return -1;
+            },
+            getSelectedSKU: function () {
+                var selRadio = $("input[name='" + this.skuRadioName + "']:checked");
+                return selRadio.val();
+            },
+            createSKUPanel: function (name, varIdx) {
+                var res = '<div class="mb-4 ml-n1">';
+                for (var i = 0; i < this.skus.data.length; i++) {
+                    var opt = this.skus.data[i];
+                    res += '<div class="custom-control custom-control-inline custom-control-img"><input type="radio" onclick="onSKUChange(\'' + opt.SKU + '\')" class="custom-control-input" id="' + name + i + '" name="' + name + '" value="' + opt.SKU + '"' + (varIdx == i ? " checked" : "") + '><label class="custom-control-label" for="' + name + i + '"><span class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url(' + this.skus.getImage(i).url + ');"></span></label></div>';
+                }
+                res += '</div>';
+                return res;
+            },
+            createDiv: function(varIdx) {
+                var res = '<form id="' + this.divId + '"><div class="row align-items-center">'
+                res += '<div class="col-12 text-center">'
+                    + 'Length: <strong>' + this.skus.data[varIdx].text + '</strong> ' + this.createSKUPanel(this.skuRadioName, varIdx)
+                    + '</div>'
+                    + '</div></form>';
+                return res;
             }
-            return -1;
-        },
-        getSelectedSKU: function () {
-            var selRadio = $("input[name='" + this.skuRadioName + "']:checked");
-            return selRadio.val();
-        },
-        createSKUPanel: function (name, varIdx) {
-            var res = '<div class="mb-4 ml-n1">';
-            for (var i = 0; i < this.skus.data.length; i++) {
-                var opt = this.skus.data[i];
-                res += '<div class="custom-control custom-control-inline custom-control-img"><input type="radio" onclick="onSKUChange(\'' + opt.SKU + '\')" class="custom-control-input" id="' + name + i + '" name="' + name + '" value="' + opt.SKU + '"' + (varIdx == i ? " checked" : "") + '><label class="custom-control-label" for="' + name + i + '"><span class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url(' + this.skus.getImage(i).url + ');"></span></label></div>';
-            }
-            res += '</div>';
-            return res;
-        },
-        createDiv: function(varIdx) {
-            var res = '<form id="' + this.divId + '"><div class="row align-items-center">'
-            res += '<div class="col-12 text-center">'
-                + 'Length: <strong>' + this.skus.data[varIdx].text + '</strong> ' + this.createSKUPanel(this.skuRadioName, varIdx)
-                + '</div>'
-                + '</div></form>';
-            return res;
-        },
-        updateSelection: function () {
-            var varIdx = this.getCatIdx(this.getSelectedSKU());
-            $('#' + this.divId).replaceWith(this.createDiv(varIdx));
         }
     }
-}
 
-function createNakshaCardCreator() {
-    return {
-        colClasses: 'col-12 col-sm-6 col-md-4',
-        createCard: function(itemDesc, prodDesc, btnId, priceHTML) {
-            var res = '<div class="card mb-2">';
-            var nI = itemDesc.getNumImages();
-            res += '<a href="' + itemDesc.getImagePath(0) + '" data-fancybox><img src="' + itemDesc.getImagePath(0) + '" alt="' + prodDesc.name  + '" class="img-fluid" width="1000" height="1000"></a>';
-            res += '<div class="card-body px-0 pt-2 pb-4 text-center">';
-            res += '<div class="card-subtitle mb-3"><span>' + priceHTML + '</span></div>';
-            res += createAddToCartButton(btnId);
-            res += '</div></div>';
-            return res;
-        }
+
+    var carouselFn = {
+        NKSHMC1512PP: createSquareImageCarousel,
+        NKSHMI1501PP: createSquareImageCarousel,
+        NKSHMD1501PP: createSquareImageCarousel,
+        NKSHMU1501PP: createPortraitImageCarousel
     };
-}
 
-function createUICFactory(factory, colSelData, prodDataFactoryFn, browseInfo) {
-    var skus = createSKUs(factory);
-    var skuSelector = createSKUSelector(skus);
-    return {
-        factory: factory,
-        colSelData: colSelData,
-        prodDataFactoryFn: prodDataFactoryFn,
-        skuSelector: skuSelector,
-        browseInfo: browseInfo,
-        createGenerator: function(sku) {
-            var factory = this.factory.createSKU(sku);
-            var prodData = this.prodDataFactoryFn(sku);
-            var prodJSON = createUIProductJSON(sku, factory.base, prodData, null);
-            var skuSelViewer = createHTMLViewer(skuSelector.createDiv(skuSelector.getSKUIdx(sku)));
-            var detailViewer = createHTMLViewer(prodJSON.skuInfo.garmentDetails);
-            var storyViewer = this.browseInfo.getStoryViewer();
-            var viewerFactory = {
-                create: function() {
-                    return createCatenatedViewer([skuSelViewer, detailViewer, storyViewer]);
-                }
-            };
-            return createComponentGenerator(factory, prodJSON, viewerFactory, this.colSelData, false, createNakshaCardCreator());
+    function createNakshaCardCreator(sku) {
+        return {
+            carouselFn: carouselFn[sku],
+            colClasses: 'col-12 col-sm-6',
+            createCard: function(images, btnId, priceHTML) {
+                var res = '<div class="card mb-2">';
+                res += '<div class="row"><div class="col-12"><div class="form-row mb-4">' + this.carouselFn(images, btnId).createImageCarousel() + '</div></div></div>';
+                res += '<div class="card-body px-0 pt-2 pb-4 text-center">';
+                res += '<div class="card-subtitle mb-3"><span>' + priceHTML + '</span></div>';
+                res += createAddToCartButton(btnId);
+                res += '</div></div>';
+                return res;
+            },
+            updateCard(images, id) {
+                this.carouselFn(images, id).update();
+            }
+        };
+    }
+
+    function createUICFactory(factory, colSelData, prodDataFactoryFn, browseInfo, sizingChart) {
+        var skus = createSKUs(factory);
+        var skuSelector = createSKUSelector(skus);
+        return {
+            factory: factory,
+            colSelData: colSelData,
+            prodDataFactoryFn: prodDataFactoryFn,
+            skuSelector: skuSelector,
+            browseInfo: browseInfo,
+            sizingChart: sizingChart,
+            createGenerator: function(sku) {
+                var factory = this.factory.createSKU(sku);
+                var prodData = this.prodDataFactoryFn(sku);
+                var prodJSON = createUIProductJSON(sku, factory.base, prodData, this.sizingChart[sku]);
+                var skuSelViewer = createHTMLViewer(skuSelector.createDiv(skuSelector.getSKUIdx(sku)));
+                var detailViewer = createHTMLViewer(prodJSON.skuInfo.garmentDetails);
+                var storyViewer = this.browseInfo.getStoryViewer();
+                var viewerFactory = {
+                    create: function() {
+                        return createCatenatedViewer([skuSelViewer, detailViewer, storyViewer]);
+                    }
+                };
+                return createComponentGenerator(factory, prodJSON, viewerFactory, this.colSelData, false, createNakshaCardCreator(sku));
+            }
         }
     }
-}
 
-function createProdData(sku) {
-    return {
-        imageFile: "sizing.jpg",
-        dimensionNames: ["A. Waist", "B. Length"],
-        dimensionsCm: {
+    const styDimensionsCm = {
+        NKSHMC1512PP: {
             Free: [
-                [64, 72],
-                [82]
+                52,
+                45,
+                240,
+                72,
+                90
             ]
         },
-        data: [{
-            vid: "AW",
-            images: ["pr-f", "pr-tw", "pr-d1", "pr-d2"]
-        }],
-        sizes: ['Free'],
-        description: 'As the name suggests, each ArtWear Naksha is a one-of-a-kind piece, unique and exclusive</p><p>The perfect fusion of traditional Tangail textile in a modern western silhouette, the Naksha skirt is a multi-paneled, crushed skirt. Made of sheer 100% cotton fabrics, the skirt offers comfort, playfulness and complete freedom of movement. It suits every age group from teenagers (we even have a kids\' Naksha) to seniors.</p><p>Each Artwear Naksha skirt is cut from a single Tangail / Jamdani sari. The skirt is lined with Voile de Coton, to create our signature light-layer effect.</p><p>The waist band is made up of 7 rows of elastic stitched into. It takes a skilled tailor most of a day to craft the waist. The result is a snug, comfortable fit',
-        garmentDetails: '',
+        NKSHMI1501PP:{
+            Free: [
+                62,
+                53,
+                336,
+                72,
+                130
+            ]
+        },
+        NKSHMD1501PP:{
+            Free: [
+                81,
+                72,
+                376,
+                72,
+                130
+            ]
+        },
+        NKSHMU1501PP: {
+            Free: [
+                102,
+                93,
+                392,
+                72,
+                130
+            ]
+        }
     };
-}
+
+    const nkshSizing = {
+        NKSHMC1512PP: {
+            sizeGeo: ["US", "UK", "EU", "IT", "GR", "JP", "RU"],
+            capGeo: ["US", "UK / AU / NZ", "EU / FR", "IT", "DE", "JP", "RU"],
+            chart: {
+                Free: {
+                    US: [6, 14],
+                    UK: [10, 18],
+                    EU: [38, 46],
+                    IT: [42, 50],
+                    GR: [36, 44],
+                    JP: [11, 19],
+                    RU: [44, 52]
+                }
+            }
+        },
+        NKSHMI1501PP:{
+            sizeGeo: ["US", "UK", "EU", "IT", "GR", "JP", "RU"],
+            capGeo: ["US", "UK / AU / NZ", "EU / FR", "IT", "DE", "JP", "RU"],
+            chart: {
+                Free: {
+                    US: [6, 30],
+                    UK: [10, 34],
+                    EU: [38, 52],
+                    IT: [42, 56],
+                    GR: [36, 50],
+                    JP: [11, 25],
+                    RU: [44, 58]
+                }
+            }
+        },
+        NKSHMD1501PP:{
+            sizeGeo: ["US", "UK", "EU", "IT", "GR", "JP", "RU"],
+            capGeo: ["US", "UK / AU / NZ", "EU / FR", "IT", "DE", "JP", "RU"],
+            chart: {
+                Free: {
+                    US: [6, 30],
+                    UK: [10, 34],
+                    EU: [38, 52],
+                    IT: [42, 56],
+                    GR: [36, 50],
+                    JP: [11, 25],
+                    RU: [44, 58]
+                }
+            }
+        },
+        NKSHMU1501PP: {
+            sizeGeo: ["US", "UK", "EU", "IT", "GR", "JP", "RU"],
+            capGeo: ["US", "UK / AU / NZ", "EU / FR", "IT", "DE", "JP", "RU"],
+            chart: {
+                Free: {
+                    US: [6, 30],
+                    UK: [10, 34],
+                    EU: [38, 52],
+                    IT: [42, 56],
+                    GR: [36, 50],
+                    JP: [11, 25],
+                    RU: [44, 58]
+                }
+            }
+        }
+    }
     
+    var nkshVariants = {
+        NKSHMC1512PP: {
+            vid: "AW",
+            images: ["micro", "5b-pr", "5c-pr", "5d-pr", "5e-pr"]
+        },
+        NKSHMI1501PP: {
+            vid: "AW",
+            images: ["mini","1b-pr", "1c-pr", "1d-pr", "1e-pr"]
+        },
+        NKSHMD1501PP: {
+            vid: "AW",
+            images: ["pr-f", "midi", "10b-pr", "10c-pr", "10e-pr"]
+        },
+        NKSHMU1501PP: {
+            vid: "AW",
+            images: ["minuit", "10b-pr", "10c-pr", "10d-pr", "10e-pr"]
+        },
+    }
+
+
+    function createProdData(sku) {
+        return {
+            imageFile: "sizing.jpg",
+            dimensionNames: ["A. Length", "B. Outer Layer Length", "C. Hem", "D. Waist - Relaxed", "E. Waist - Stretched"],
+            dimensionsCm: styDimensionsCm[sku],
+            data: [nkshVariants[sku]],
+            sizes: ['Free'],
+            description: '<p>Almost from the <a href="/journey/salsa.html">first days of my atelier</a>, The Naksha skirt has been my signature piece of <a href="/journey/artwear.html">ArtWear</a>, and an evergreen favourite with clients.</p><p>As the name suggests, each ArtWear Naksha is a <strong>one-of-a-kind piece, unique and exclusive.</strong></p><p>The perfect fusion of traditional Tangail textile in a modern western silhouette, the Naksha skirt is a multi-paneled, crushed skirt. Made of sheer 100% cotton fabrics, the skirt offers comfort, playfulness and complete freedom of movement. It suits every age group from teenagers (we even have a kids\' Naksha) to seniors.</p><p>Each Artwear Naksha skirt is cut from a single Tangail / Jamdani sari. The skirt is lined with a harmonizing hue of translucent Voile de Coton, to create our signature light-layer effect.</p><p>The waist band is made up of 7 rows of elastic stitched into . Because of the delicacy of Tangail fabric, it takes a skilled tailor most of a day to create this waistband. The result is a snug, comfortable fit</p><p>The Naksha is available in 4 lengths, Micro, Mini, Midi and Minuit. Because the waist-band is elastic, it is a free-size garment, fitting a range of waist measurements.</p>',
+            garmentDetails: '',
+        };
+    }
+
     var browseInfo = createBrowseInfo(
         [
             [[origin, '/journey/artwear.html'],[origin, '/journey/salsa.html'],[clients, '/people/resortwear.html']],[[clients, '/people/artwear.html'],[clients, '/people/curators.html']]
@@ -143,14 +267,14 @@ function createProdData(sku) {
     var nakshaFactory = createNakshaSKUsFactory('/products/artwear/skirts/');
     var uicFactory = createUICFactory(
         nakshaFactory,
-        [
-            {colourName: 'Neutrals', image: '2'},
-            {colourName: 'Reds', image: '3'},
-            {colourName: 'Greens', image: '4'},
-            {colourName: 'Blues', image: '1'}
-        ],
+        createColSelData('/products/artwear/skirts/',[
+            {colourName: 'Neutral', image: '1'},
+            {colourName: 'Violet-Yellow', image: '2'},
+            {colourName: 'Green-Indigo', image: '3'},
+        ]),
         createProdData,
-        browseInfo
+        browseInfo,
+        nkshSizing
     );
 
     var icGen = uicFactory.createGenerator('NKSHMD1501PP');
@@ -159,6 +283,7 @@ function createProdData(sku) {
     const pageComponent = createUIPageComponent(getProductCatalog(), itemsComponent, uicFactory);
 
     var productComponent = itemsComponent.productComponent;
+    var dimensioner = productComponent.sizePanelr.dimensioner;
 
     $(document).ready(onDocumentReady);
     document.write(getSizeModal(productComponent.createSizingPanel()));

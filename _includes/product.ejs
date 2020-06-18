@@ -8,9 +8,32 @@ permalink: "<%- page.inputPath.substring(1) %>"
 <link rel="stylesheet" href="/shopper-1.0.3/libs/flickity/dist/flickity.min.css">
 <link rel="stylesheet" href="/shopper-1.0.3/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
 <link rel="stylesheet" href="/shopper-1.0.3/libs/flickity-fade/flickity-fade.css">
-<script src="/js/pfiprod20060502.js"></script>
 </head>
 <body>
+<script>
+function loadShopWithParam() {
+    let searchParams = new URLSearchParams(window.location.search);
+    var cur = searchParams.has('cur') ? searchParams.get('cur') : null;
+    return loadShop(cur);
+}
+
+function onDocumentReady() {
+    pageComponent.init(loadShopWithParam());
+    pageComponent.onSelectionChange();
+}
+
+function onSelectionChange() {
+    pageComponent.onSelectionChange();
+}
+
+function onUnitChange() {
+    pageComponent.onUnitChange(dimensioner);
+}
+
+function onSKUChange(sku) {
+    pageComponent.onSKUChange(sku);
+}
+</script>
 <script>var pg_blacklist = [<%- "'" + page.inputPath.substring(1) + "'" %>];</script>
 <% if ( locals.prerender ) { %>
 <%- pfi.getShopHeader() %>

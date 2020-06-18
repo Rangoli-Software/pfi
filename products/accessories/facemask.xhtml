@@ -1,4 +1,4 @@
-<script type="text/javascript" src="fm/fmlist20060500.js"></script>
+<script type="text/javascript" src="fm/fmlist20060700.js"></script>
 <script>
     var prodData = {
         imageFile: "sizing.jpg",
@@ -45,12 +45,11 @@
     var cardCreator = createUICardCreator();
     var componentGenerator = createComponentGenerator(
         factory, prodJSON, viewerFactory,
-        [
-                {colourName: 'Neutrals', image: 'greys'},
-                {colourName: 'Reds', image: 'reds-1'},
-                {colourName: 'Greens', image: 'greens'},
-                {colourName: 'Blues', image: 'blues'}
-        ],
+        createColSelData(factory.base,[
+                {colourName: 'Neutral', image: 'neutrals-sm'},
+                {colourName: 'Violet - Yellow', image: 'v-to-y-sm'},
+                {colourName: 'Green - Indigo', image: 'g-to-i-sm'}
+        ]),
         true,
         cardCreator
     );
@@ -60,6 +59,7 @@
     const pageComponent = createUIPageComponent(productCatalog, itemsComponent);
 
     var productComponent = itemsComponent.productComponent;
+    var dimensioner = productComponent.sizePanelr.dimensioner;
 
     $(document).ready(onDocumentReady);
     document.write(getSizeModal(productComponent.createSizingPanel()));

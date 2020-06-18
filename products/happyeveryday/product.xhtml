@@ -1,13 +1,13 @@
-<script src="/js/pfihed20051601.js"></script>
+<script src="/js/pfihed20061800.js"></script>
 <script>
 const prodJSON = hed_catalog.getProduct(prodSKU);
 const sizer = createSizeChartr(prodJSON.skuInfo.getSizeChart());
 const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath);
-var rendererFactory = createHEDRendererFactory(prodJSON, dimensioner, sizer, hed_lookbook, hed_catalog, getProductCatalog());
+var rendererFactory = createHEDComponentFactory(prodJSON, dimensioner, sizer, hed_lookbook, hed_catalog, getProductCatalog());
 const pageComponent = createPageComponent(prodJSON, getProductCatalog(), rendererFactory);
 
 $(document).ready(onDocumentReady);
-    document.write(pageComponent.createRenderer(loadShopWithParam()).getBreadCrumb());
+    document.write(pageComponent.getBreadCrumb());
 </script>
 <section>
 <script>
@@ -25,7 +25,7 @@ $(document).ready(onDocumentReady);
      '<ul>'
      + prodJSON.skuInfo.garmentDetails
      + '</ul>',
-     hed_washcareHTML,
-     hed_shippingHTML
+     khadi_washcareHTML,
+     pret_shippingHTML
  ));
 </script>

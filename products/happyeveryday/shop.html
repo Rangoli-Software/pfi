@@ -2,7 +2,7 @@
 layout: shop
 title: Happy Everyday Shop
 ---
-<script src="/js/pfihed20051601.js"></script>
+<script src="/js/pfihed20061800.js"></script>
 <script>
 function createShoppingCard(summary, images) {
     res = '<div class="col-6 col-md-4">';
@@ -22,7 +22,7 @@ function createShoppingCard(summary, images) {
     res += '</div>';
     return res;
 }
-    
+
 function createCards(fname) {
     var brkColCls = "col-md-4";
     var skus = hed_catalog[fname];
@@ -33,12 +33,26 @@ function createCards(fname) {
         if ( summary === null ) {
             continue;
         }
-        var vnts = hed_catalog.getProduct(sku).variants;
-        var images = [vnts.getImage(0,0),vnts.getImage(0,1)];
+        var prod = hed_catalog.getProduct(sku);
+        var images = [prod.getImages(0).getImage(0),prod.getImages(0).getImage(1)];
         res +=  createShoppingCard(summary, images);
     }
     res += '</div></div></section>';
     return res;
+}
+
+function getBlacklist(fname) {
+    var blacklist = [];
+    var skus = hed_catalog[fname];
+    for (var i = 0; i < skus.length; i++) {
+        sku = skus[i];
+        var summary = hed_catalog.getSummary(sku);
+        if ( summary === null ) {
+            continue;
+        }
+        blacklist.push(summary.url);
+    }
+    return blacklist;
 }
 
 var imgSfx = ['01','04','07','08','15'];
@@ -69,5 +83,13 @@ function createBanner() {
     document.write(getTabContent(createCards("tops"), "tops", getUrlVars()["t"] == "t"));
     document.write(getTabContent(createCards("overtops"), "overtops", getUrlVars()["t"] == "o"));
     document.write(getTabContent(createCards("dresses"), "dresses", getUrlVars()["t"] == "d"));
+    
+    var blkP = getBlacklist("pants");
+    var blkT = getBlacklist("tops");
+    var blkO = getBlacklist("overtops");
+    var blkD = getBlacklist("dresses");
+    
+    var blacklist = blkP.concat(blkT).concat(blkO).concat(blkD);
+    pg_blacklist = pg_blacklist.concat(blacklist);
 </script>
 </div>

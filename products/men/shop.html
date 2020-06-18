@@ -1,0 +1,83 @@
+---
+layout: shop
+title: Men's Shop
+---
+<script src="/js/pfimen20061800.js"></script>
+<script>
+function createShoppingCard(prod, images) {
+    res = '<div class="col-6 col-md-4">';
+    res += '<div class="card">'
+    + '<div class="card-img">'
+    + '<img class="card-img-top card-img-front img-fluid" src="' + images[0].url + '" width="1000" height="1500">'
+    + '</div>';
+    res += '<div class="card-body px-0 pt-6 pb-4">';
+    res += '<div class="card-subtitle mb-1"><span class="sc-item" data-field="price" data-vsku="' + prod.product.sku +'"></span></div>';
+    if  ( prod.product.url !== undefined ) {
+        res += '<h6 class="card-title mb-2">' + prod.product.name + '<a  href="' + prod.product.url + '"' +  '><i class="fa fa-arrow-right ml-2"></i></a></h6>';
+    }
+//    res += '<p class="mb-1">' + summary.lede + '</p>';
+    res += '</div>';
+    res += '</div>';
+    res += '</div>';
+    return res;
+}
+
+function createCards(fname) {
+    var brkColCls = "col-md-4";
+    var skus = vb_catalog[fname];
+    var res = '<section class="pt-5 pb-3"><div class="container"><div class="row">';
+    for (var i = 0; i < skus.length; i++) {
+        sku = skus[i];
+        var prod = vb_catalog.getProduct(sku);
+        var images = [prod.getImages(0).getImage(0),prod.getImages(0).getImage(1)];
+        res +=  createShoppingCard(prod, images);
+    }
+    res += '</div></div></section>';
+    return res;
+}
+
+function getBlacklist(fname) {
+    var blacklist = [];
+    var skus = vb_catalog[fname];
+    for (var i = 0; i < skus.length; i++) {
+        sku = skus[i];
+        var prod = vb_catalog.getProduct(sku);
+        blacklist.push(prod.url);
+    }
+    return blacklist;
+}
+
+var imgSfx = ['01','04','07','08','15'];
+
+function createBanner() {
+    var len = imgSfx.length;
+    var rndI = Math.floor(Math.random() * len);
+    var sfx = imgSfx[ rndI ];
+    return '<img class="img-fluid" src="/products/happyeveryday/mood/sld-' + sfx + '.jpg" width="1500" height="1000">';
+}
+</script>
+<figure>
+<!--
+<script>
+    document.write(createBanner());
+</script>
+-->
+</figure>
+<ul class="nav nav-tabs nav-justified">
+<script>
+    document.write(getTabItem("Shirts", "tops", getUrlVars()["t"] == "s" || getUrlVars()["t"] === undefined));
+    document.write(getTabItem("Pants", "pants", getUrlVars()["t"] == "p"));
+</script>
+</ul>
+<div class="tab-content">
+<script>
+    document.write(getTabContent(createCards("shirts"), "tops", getUrlVars()["t"] == "s" || getUrlVars()["t"] === undefined)));
+    document.write(getTabContent(createCards("pants"), "pants", getUrlVars()["t"] == "p");
+    
+    var blkP = getBlacklist("shirts");
+    var blkT = getBlacklist("pants");
+
+    var blacklist = blkP.concat(blkT);
+    pg_blacklist = pg_blacklist.concat(blacklist);
+</script>
+</div>
