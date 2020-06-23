@@ -19,11 +19,15 @@ function loadShopWithParam() {
 
 function onDocumentReady() {
     pageComponent.init(loadShopWithParam());
-    pageComponent.onSelectionChange();
+    pageComponent.onReadyState();
 }
 
 function onSelectionChange() {
     pageComponent.onSelectionChange();
+}
+
+function onColourCategoryChange() {
+    pageComponent.onColourCategoryChange();
 }
 
 function onUnitChange() {

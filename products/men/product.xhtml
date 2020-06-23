@@ -1,4 +1,4 @@
-<script src="/js/pfimen20061800.js"></script>
+<script src="/js/pfimen20061801.js"></script>
 <script>
 const prodJSON = vb_catalog.getProduct(prodSKU);
 const sizer = createSizeChartr(prodJSON.skuInfo.getSizeChart());
@@ -7,15 +7,15 @@ var rendererFactory = createVBComponentFactory(prodJSON, dimensioner, sizer, vb_
 const pageComponent = createPageComponent(prodJSON, getProductCatalog(), rendererFactory);
 
 $(document).ready(onDocumentReady);
-document.write(pageComponent.getBreadCrumb());
 </script>
 <section>
 <script>
-document.write(getSizeModal(pageComponent.createRenderer(loadShopWithParam()).createSizingPanel()));
+var productComponent = pageComponent.createRenderer(loadShopWithParam());
+document.write(productComponent.getSizeModal());
 </script>
     <div class="container">
     <script>
-document.write(pageComponent.createRenderer(loadShopWithParam()).createProductDiv(0, 0));
+document.write(productComponent.createProductDiv(0, 0));
     </script>
     </div>
 </section>

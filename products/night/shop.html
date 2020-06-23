@@ -1,0 +1,83 @@
+---
+layout: shop
+title: Formals Shop
+---
+<script src="/js/pfinight20061802.js"></script>
+<script>
+    function createCatalogDisplay(catalog) {
+        return {
+            catalog: catalog,
+            createShoppingCard: function(prod, images) {
+                res = '<div class="col-6 col-md-4">';
+                res += '<div class="card">'
+                    + '<div class="card-img">'
+                    + '<img class="card-img-top card-img-front img-fluid" src="' + images[0].url + '" width="1000" height="1500">'
+                    + '</div>';
+                res += '<div class="card-body px-0 pt-6 pb-4">';
+                res += '<div class="card-subtitle mb-1"><span class="sc-item" data-field="price" data-vsku="' + prod.product.sku +'"></span></div>';
+                if  ( prod.product.url !== undefined ) {
+                    res += '<h6 class="card-title mb-2">' + prod.product.name + '<a  href="' + prod.product.url + '"' +  '><i class="fa fa-arrow-right ml-2"></i></a></h6>';
+                }
+                //    res += '<p class="mb-1">' + summary.lede + '</p>';
+                res += '</div>';
+                res += '</div>';
+                res += '</div>';
+                return res;
+            },
+            createCards: function(fname) {
+                var brkColCls = "col-md-4";
+                var skus = this.catalog[fname];
+                var res = '<section class="pt-5 pb-3"><div class="container"><div class="row">';
+                for (var i = 0; i < skus.length; i++) {
+                    sku = skus[i];
+                    var prod = this.catalog.getProduct(sku);
+                    var images = [prod.getImages(0).getImage(0),prod.getImages(0).getImage(1)];
+                    res +=  this.createShoppingCard(prod, images);
+                }
+                res += '</div></div></section>';
+                return res;
+            },
+            getBlackList: function(fname) {
+                var blacklist = [];
+                var skus = this.catalog[fname];
+                for (var i = 0; i < skus.length; i++) {
+                    sku = skus[i];
+                    var prod = this.catalog.getProduct(sku);
+                    blacklist.push(prod.url);
+                }
+                return blacklist;
+            }
+        }
+    }
+
+    var displayer = createCatalogDisplay(sd_catalog);
+</script>
+<ul class="nav nav-tabs nav-justified">
+    <script>
+        document.write(getTabItem("Dresses", "dresses", getUrlVars()["t"] == "d" || getUrlVars()["t"] === undefined));
+        document.write(getTabItem("Tops", "tops", getUrlVars()["t"] == "t"));
+        document.write(getTabItem("Pants", "pants", getUrlVars()["t"] == "p"));
+        document.write(getTabItem("Skirts", "skirts", getUrlVars()["t"] == "s"));
+        document.write(getTabItem("Shorts", "culottes", getUrlVars()["t"] == "c"));
+        document.write(getTabItem("Jackets", "overtops", getUrlVars()["t"] == "o"));
+    </script>
+</ul>
+<div class="tab-content">
+    <script>
+        document.write(getTabContent(displayer.createCards("dresses"), "dresses", getUrlVars()["t"] == "d" || getUrlVars()["t"] === undefined));
+        document.write(getTabContent(displayer.createCards("tops"), "tops", getUrlVars()["t"] == "t"));
+        document.write(getTabContent(displayer.createCards("pants"), "pants", getUrlVars()["t"] == "p"));
+        document.write(getTabContent(displayer.createCards("skirts"), "skirts", getUrlVars()["t"] == "s"));
+        document.write(getTabContent(displayer.createCards("culottes"), "culottes", getUrlVars()["t"] == "c"));
+        document.write(getTabContent(displayer.createCards("overtops"), "overtops", getUrlVars()["t"] == "o"));
+
+        var blk = displayer.getBlacklist("dresses");
+        blk = blk.concat(displayer.getBlacklist("tops"));
+        blk = blk.concat(displayer.getBlacklist("pants"));
+        blk = blk.concat(displayer.getBlacklist("skirts"));
+        blk = blk.concat(displayer.getBlacklist("culottes"));
+        blk = blk.concat(displayer.getBlacklist("overtops"));
+
+        pg_blacklist = pg_blacklist.concat(blk);
+    </script>
+</div>

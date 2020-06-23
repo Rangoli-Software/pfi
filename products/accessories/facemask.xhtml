@@ -38,6 +38,9 @@
     var detailViewer = createHTMLViewer(prodJSON.skuInfo.garmentDetails);
     var storyViewer = browseInfo.getStoryViewer();
     var viewerFactory = {
+        createPre: function() {
+            return createEmptyViewer();
+        },
         create: function() {
             return createCatenatedViewer([detailViewer, storyViewer]);
         }
@@ -56,13 +59,14 @@
 
     var itemsComponent = componentGenerator.createUIC(loadShopWithParam());
     var itemCategorySelector = itemsComponent.itemCategorySelector;
+    var sizeSelector = itemsComponent.sizeSelector;
     const pageComponent = createUIPageComponent(productCatalog, itemsComponent);
 
     var productComponent = itemsComponent.productComponent;
     var dimensioner = productComponent.sizePanelr.dimensioner;
 
     $(document).ready(onDocumentReady);
-    document.write(getSizeModal(productComponent.createSizingPanel()));
+    document.write(productComponent.getSizeModal());
 </script>
 <section>
     <div class="container">
@@ -71,16 +75,23 @@
         </script>
     </div>
 </section>
+<h6>Buy Now</h6>
+<p>These are the individual masks that are currently available for sale. Use the colour selector to look for specific matching colours.</p>
+<form><div class="row align-items-center">
+<div class="col-12 col-md-4 text-center">
+    <script>document.write(sizeSelector.createDiv(0));</script>
+</div>
+<div class="col-12 col-md-8 text-center">
+    <script>document.write(itemCategorySelector.createDiv(itemCategorySelector.categories.getFirstNonEmptyIdx(),0));</script>
+</div>
+</div></form>
+<script>
+    document.write(itemsComponent.createDiv());
+</script>
 <script>
     document.write(renderProductDetails(
         '<p>'+ prodJSON.skuInfo.description + '</p>',
         null,
         washcareHTML,
         shippingHTML));
-</script>
-<h6>Buy Now</h6>
-<p>These are the individual masks that are currently available for sale. Use the colour selector to look for specific matching colours.</p>
-<script>
-    document.write(itemCategorySelector.createDiv(itemCategorySelector.categories.getRandomIdx(),0));
-    document.write(itemsComponent.createDiv());
 </script>

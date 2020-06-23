@@ -1,0 +1,31 @@
+<script src="/js/pfinight20061802.js"></script>
+<script>
+const prodJSON = sd_catalog.getProduct(prodSKU);
+const sizer = createSizeChartr(prodJSON.skuInfo.getSizeChart());
+const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath);
+var rendererFactory = createSDComponentFactory(prodJSON, dimensioner, sizer, sd_catalog);
+const pageComponent = createPageComponent(prodJSON, getProductCatalog(), rendererFactory);
+
+$(document).ready(onDocumentReady);
+</script>
+<section>
+<script>
+var productComponent = pageComponent.createRenderer(loadShopWithParam());
+document.write(productComponent.getSizeModal());
+</script>
+    <div class="container">
+    <script>
+document.write(productComponent.createProductDiv(0, 0));
+    </script>
+    </div>
+</section>
+<script>
+ document.write(renderProductDetails(
+     '<p>'+ prodJSON.skuInfo.description + '</p>',
+     '<ul>'
+     + prodJSON.skuInfo.garmentDetails
+     + '</ul>',
+     tangail_washcareHTML,
+     surmesure_shippingHTML
+ ));
+</script>

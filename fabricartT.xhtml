@@ -513,7 +513,7 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
 </h4>
 <div class="item">
     <script>
-        document.write(getSizeModal(createSizingPanel()));
+        document.write(getSizeModalWithId('modalSizeChart', createSizingPanel()));
     </script>
     <figure>
         <img src="/fabricart/TShirtColl.jpg" class="figure-img img-fluid center-block" width="1500" height="1200"/>
@@ -587,7 +587,7 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
     <div class="row align-items-center">
         <div class="col-6 text-center">
             <script>
-                document.write(createSizeOptions("sizeRadio", "Sizes", ["S",  "M", "L", "XL", "XXL"], 1));
+                document.write(createSizeOptions("sizeRadio", "Sizes", ["S",  "M", "L", "XL", "XXL"], 1, createSizeModalToggle('modalSizeChart', 'Size Chart')));
             </script>
         </div>
         <div class="col-6 text-center">

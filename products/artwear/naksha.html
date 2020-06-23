@@ -5,7 +5,7 @@ title: Artwear Naksha Skirt
 description: Our Art Wear Naksha Skirt. Each piece is one of a kind.
 keywords: skirt, vintage sari border, fabric art, artwear, women's wear
 ---
-<script type="text/javascript" src="skirts/nklist20061800.js"></script>
+<script type="text/javascript" src="skirts/nklist20062000.js"></script>
 <script>
     const washcareHTML = "<ul><li>Do not soak</li><li>Hand Wash</li><li>Mild Detergent</li><li>Do Not Bleach</li><li>Dry In Shade</li></ul>";
 
@@ -15,10 +15,10 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
         return {
             factory: factory,
             data: [
-                {SKU: 'NKSHMC1512PP', text: 'Micro', image: 'microL'},
-                {SKU: 'NKSHMI1501PP', text: 'Mini', image: 'miniL'},
-                {SKU: 'NKSHMD1501PP', text: 'Midi', image: 'midiL'},
-                {SKU: 'NKSHMU1501PP', text: 'Minuit', image: 'minuitL'}
+                {SKU: 'NKSHMU1501PP', text: 'Minuit', image: 'minuitL', pxWidth: '65'},
+                {SKU: 'NKSHMD1501PP', text: 'Midi', image: 'midiL', pxWidth: '65'},
+                {SKU: 'NKSHMI1501PP', text: 'Mini', image: 'miniL2', pxWidth: '49'},
+                {SKU: 'NKSHMC1512PP', text: 'Micro', image: 'microL2', pxWidth: '48'}
             ],
             getImage: function(vidx) {
                 var vnt = this.data[vidx];
@@ -51,7 +51,11 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
                 var res = '<div class="mb-4 ml-n1">';
                 for (var i = 0; i < this.skus.data.length; i++) {
                     var opt = this.skus.data[i];
-                    res += '<div class="custom-control custom-control-inline custom-control-img"><input type="radio" onclick="onSKUChange(\'' + opt.SKU + '\')" class="custom-control-input" id="' + name + i + '" name="' + name + '" value="' + opt.SKU + '"' + (varIdx == i ? " checked" : "") + '><label class="custom-control-label" for="' + name + i + '"><span class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url(' + this.skus.getImage(i).url + ');"></span></label></div>';
+                    res += '<div class="custom-control custom-control-inline custom-control-img"><input type="radio" onclick="onSKUChange(\'' + opt.SKU + '\')" class="custom-control-input" id="' + name + i + '" name="' + name + '" value="' + opt.SKU + '"' + (varIdx == i ? " checked" : "") + '><label class="custom-control-label" for="' + name + i + '" style="width: ' + opt.pxWidth + 'px">'
+                    + '<img class="img-fluid" src="' + this.skus.getImage(i).url + '">'
+/*
+<span class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url(' + this.skus.getImage(i).url + ');"></span>*/
+                        + '</label></div>';
                 }
                 res += '</div>';
                 return res;
@@ -59,14 +63,13 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
             createDiv: function(varIdx) {
                 var res = '<form id="' + this.divId + '"><div class="row align-items-center">'
                 res += '<div class="col-12 text-center">'
-                    + 'Length: <strong>' + this.skus.data[varIdx].text + '</strong> ' + this.createSKUPanel(this.skuRadioName, varIdx)
+                    + this.createSKUPanel(this.skuRadioName, varIdx)
                     + '</div>'
                     + '</div></form>';
                 return res;
             }
         }
     }
-
 
     var carouselFn = {
         NKSHMC1512PP: createSquareImageCarousel,
@@ -112,11 +115,20 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
                 var detailViewer = createHTMLViewer(prodJSON.skuInfo.garmentDetails);
                 var storyViewer = this.browseInfo.getStoryViewer();
                 var viewerFactory = {
+                    createPre: function() {
+                        return skuSelViewer;
+                    },
                     create: function() {
-                        return createCatenatedViewer([skuSelViewer, detailViewer, storyViewer]);
+                        return createCatenatedViewer([detailViewer, storyViewer]);
                     }
                 };
                 return createComponentGenerator(factory, prodJSON, viewerFactory, this.colSelData, false, createNakshaCardCreator(sku));
+            },
+            updateURL: function(sku) {
+                var encoder = factory.encoder;
+                var urlModifier = factory.urlModifier;
+                var c = encoder.toCode(sku);
+                urlModifier.updateURL(c);
             }
         }
     }
@@ -226,19 +238,19 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
     var nkshVariants = {
         NKSHMC1512PP: {
             vid: "AW",
-            images: ["micro", "5b-pr", "5c-pr", "5d-pr", "5e-pr"]
+            images: ["1.1", "1.1a"]
         },
         NKSHMI1501PP: {
             vid: "AW",
-            images: ["mini","1b-pr", "1c-pr", "1d-pr", "1e-pr"]
+            images: ["1","1a"]
         },
         NKSHMD1501PP: {
             vid: "AW",
-            images: ["pr-f", "midi", "10b-pr", "10c-pr", "10e-pr"]
+            images: ["10", "10a"]
         },
         NKSHMU1501PP: {
             vid: "AW",
-            images: ["minuit", "10b-pr", "10c-pr", "10d-pr", "10e-pr"]
+            images: ["1", "1a"]
         },
     }
 
@@ -268,25 +280,30 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
     var uicFactory = createUICFactory(
         nakshaFactory,
         createColSelData('/products/artwear/skirts/',[
-            {colourName: 'Neutral', image: '1'},
-            {colourName: 'Violet-Yellow', image: '2'},
-            {colourName: 'Green-Indigo', image: '3'},
+            {colourName: 'Neutral', image: 'neutral'},
+            {colourName: 'Violet-Yellow', image: 'v-to-y'},
+            {colourName: 'Green-Indigo', image: 'g-to-i'},
         ]),
         createProdData,
         browseInfo,
         nkshSizing
     );
 
-    var icGen = uicFactory.createGenerator('NKSHMD1501PP');
+    var c = nakshaFactory.urlModifier.getCodeOrDefault();
+    nakshaFactory.urlModifier.updateURL(c);
+    var sku = nakshaFactory.encoder.toSKU(c)
+
+    var icGen = uicFactory.createGenerator(sku);
     var itemsComponent = icGen.createUIC(loadShopWithParam());
     var itemCategorySelector = itemsComponent.itemCategorySelector;
+    var sizeSelector = itemsComponent.sizeSelector;
     const pageComponent = createUIPageComponent(getProductCatalog(), itemsComponent, uicFactory);
 
     var productComponent = itemsComponent.productComponent;
     var dimensioner = productComponent.sizePanelr.dimensioner;
 
     $(document).ready(onDocumentReady);
-    document.write(getSizeModal(productComponent.createSizingPanel()));
+    document.write(productComponent.getSizeModal());
 </script>
 <section>
     <div class="container">
@@ -295,16 +312,23 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
         </script>
     </div>
 </section>
+<h6>Buy Now</h6>
+<p>These are the individual skirts that are currently available for sale. Use the colour selector to look for specific matching colours.</p>
+<form><div class="row align-items-center">
+<div class="col-12 col-md-4 text-center">
+    <script>document.write(sizeSelector.createDiv(0));</script>
+</div>
+<div class="col-12 col-md-8 text-center">
+    <script>document.write(itemCategorySelector.createDiv(itemCategorySelector.categories.getFirstNonEmptyIdx(),0));</script>
+</div>
+</div></form>
+<script>
+    document.write(itemsComponent.createDiv());
+</script>
 <script>
     document.write(renderProductDetails(
         '<p>'+ icGen.prodJSON.skuInfo.description + '</p>',
         null,
         washcareHTML,
         shippingHTML));
-</script>
-<h6>Buy Now</h6>
-<p>These are the individual skirts that are currently available for sale. Use the colour selector to look for specific matching colours.</p>
-<script>
-    document.write(itemCategorySelector.createDiv(itemCategorySelector.categories.getRandomIdx(),0));
-    document.write(itemsComponent.createDiv());
 </script>

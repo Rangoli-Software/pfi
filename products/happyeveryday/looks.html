@@ -2,7 +2,7 @@
 layout: shop
 title: Happy Everyday Looks
 ---
-<script src="/js/pfihed20061800.js"></script>
+<script src="/js/pfihed20061801.js"></script>
 <script>
 function createLookRow(i) {
     var lk = hed_lookbook.looks[i];
@@ -22,7 +22,7 @@ function createLookRow(i) {
         if ( i > 0 ) {
             res += ' &amp; '
         }
-        res += '<a href="' + entry.imageURL + '">' + entry.name + '</a>';
+        res += '<a href="' + entry.url + '">' + entry.name + '</a>';
     }
     res += '</p>';
     return res;

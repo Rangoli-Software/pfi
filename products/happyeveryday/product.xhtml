@@ -1,4 +1,4 @@
-<script src="/js/pfihed20061800.js"></script>
+<script src="/js/pfihed20061801.js"></script>
 <script>
 const prodJSON = hed_catalog.getProduct(prodSKU);
 const sizer = createSizeChartr(prodJSON.skuInfo.getSizeChart());
@@ -7,15 +7,15 @@ var rendererFactory = createHEDComponentFactory(prodJSON, dimensioner, sizer, he
 const pageComponent = createPageComponent(prodJSON, getProductCatalog(), rendererFactory);
 
 $(document).ready(onDocumentReady);
-    document.write(pageComponent.getBreadCrumb());
 </script>
 <section>
 <script>
-    document.write(getSizeModal(pageComponent.createRenderer(loadShopWithParam()).createSizingPanel()));
+    var prodComp = pageComponent.createRenderer(loadShopWithParam());
+    document.write(prodComp.getSizeModal());
 </script>
     <div class="container">
     <script>
- document.write(pageComponent.createRenderer(loadShopWithParam()).createProductDiv(0, 0));
+document.write(prodComp.createProductDiv(0, 0));
     </script>
     </div>
 </section>
