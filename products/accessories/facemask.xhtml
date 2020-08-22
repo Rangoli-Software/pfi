@@ -1,4 +1,4 @@
-<script type="text/javascript" src="fm/fmlist20060700.js"></script>
+<script type="text/javascript" src="fm/fmlist20062001.js"></script>
 <script>
     var prodData = {
         imageFile: "sizing.jpg",
@@ -11,7 +11,7 @@
         },
         data: [{
             vid: "CW1",
-            images: ["many-1", "b-f", "b-b", "b-l", "many-2"]
+            images: ["nfm01", "b-f", "b-b", "b-l", "many-1"]
         }],
         sizes: ['Free'],
         description: 'The fabric for these face masks come from my <a href="/journey/treasuretrove.html">Treasure Trove</a> of Tangail sari offcuts, hand-woven in the finest cotton and silk. Each mask features a lining and a pocket in hand-woven khadi cotton in a contrasting colour. The elastic ear bands will help the mask fit firmly and provide full coverage from nose to chin. The 3 layers avoid heat-trapping while keeping you safe in style and comfort. You can fill the pocket / sleeve with your own surgical mask / filter, herbs or a pad with a few drops of essential oil. One size fits most.',
@@ -38,8 +38,12 @@
     var detailViewer = createHTMLViewer(prodJSON.skuInfo.garmentDetails);
     var storyViewer = browseInfo.getStoryViewer();
     var viewerFactory = {
+        product: prodJSON.product,
         createPre: function() {
             return createEmptyViewer();
+        },
+        createBase: function(shop) {
+            return createBasePanelr(shop, this.product);
         },
         create: function() {
             return createCatenatedViewer([detailViewer, storyViewer]);
@@ -50,11 +54,12 @@
         factory, prodJSON, viewerFactory,
         createColSelData(factory.base,[
                 {colourName: 'Neutral', image: 'neutrals-sm'},
-                {colourName: 'Violet - Yellow', image: 'v-to-y-sm'},
-                {colourName: 'Green - Indigo', image: 'g-to-i-sm'}
+                {colourName: 'Purple to Yellow', image: 'v-to-y-sm'},
+                {colourName: 'Green to Violet', image: 'g-to-i-sm'}
         ]),
         true,
-        cardCreator
+        cardCreator,
+        ""
     );
 
     var itemsComponent = componentGenerator.createUIC(loadShopWithParam());

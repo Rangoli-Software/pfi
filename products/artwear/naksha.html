@@ -5,20 +5,20 @@ title: Artwear Naksha Skirt
 description: Our Art Wear Naksha Skirt. Each piece is one of a kind.
 keywords: skirt, vintage sari border, fabric art, artwear, women's wear
 ---
-<script type="text/javascript" src="skirts/nklist20062000.js"></script>
+<script type="text/javascript" src="skirts/nklist20081902.js"></script>
 <script>
-    const washcareHTML = "<ul><li>Do not soak</li><li>Hand Wash</li><li>Mild Detergent</li><li>Do Not Bleach</li><li>Dry In Shade</li></ul>";
+    const washcareHTML = "<ul><li>Do not soak</li><li>Hand Wash</li><li>Mild Detergent</li><li>Do Not Bleach</li><li>Dry In Shade</li><li>No Need to Iron</li><li>Follow this tie-up procedure to maintain the crushed look-and-feel</li></ul>";
 
-    const shippingHTML = getShippingInfoUL(['If the item is in stock, it will be ready to ship within 1 business day of your order.']);
+    const shippingHTML = getShippingInfoUL(['Since our Naksha skirts are on sale in several physical locations in addition to the website, there is a chance that the skirt that you have selected has already been sold. In this case, we will let you select another skirt, or refund your purchase price, as you prefer.']);
 
     function createSKUs(factory) {
         return {
             factory: factory,
             data: [
-                {SKU: 'NKSHMU1501PP', text: 'Minuit', image: 'minuitL', pxWidth: '65'},
-                {SKU: 'NKSHMD1501PP', text: 'Midi', image: 'midiL', pxWidth: '65'},
-                {SKU: 'NKSHMI1501PP', text: 'Mini', image: 'miniL2', pxWidth: '49'},
-                {SKU: 'NKSHMC1512PP', text: 'Micro', image: 'microL2', pxWidth: '48'}
+                {SKU: 'NKSHMU1501PP', text: 'Minuit', image: 'minuitL4', pxWidth: '65'},
+                {SKU: 'NKSHMD1501PP', text: 'Midi', image: 'midiL4', pxWidth: '59.28'},
+                {SKU: 'NKSHMI1501PP', text: 'Mini', image: 'miniL3', pxWidth: '48.88'},
+                {SKU: 'NKSHMC1512PP', text: 'Micro', image: 'microL4', pxWidth: '44.72'}
             ],
             getImage: function(vidx) {
                 var vnt = this.data[vidx];
@@ -53,18 +53,16 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
                     var opt = this.skus.data[i];
                     res += '<div class="custom-control custom-control-inline custom-control-img"><input type="radio" onclick="onSKUChange(\'' + opt.SKU + '\')" class="custom-control-input" id="' + name + i + '" name="' + name + '" value="' + opt.SKU + '"' + (varIdx == i ? " checked" : "") + '><label class="custom-control-label" for="' + name + i + '" style="width: ' + opt.pxWidth + 'px">'
                     + '<img class="img-fluid" src="' + this.skus.getImage(i).url + '">'
-/*
-<span class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url(' + this.skus.getImage(i).url + ');"></span>*/
-                        + '</label></div>';
+                    + '</label></div>';
                 }
                 res += '</div>';
                 return res;
             },
             createDiv: function(varIdx) {
                 var res = '<form id="' + this.divId + '"><div class="row align-items-center">'
-                res += '<div class="col-12 text-center">'
+                res += '<div class="col-12 text-center"><figure>'
                     + this.createSKUPanel(this.skuRadioName, varIdx)
-                    + '</div>'
+                    + '</figure></div>'
                     + '</div></form>';
                 return res;
             }
@@ -76,6 +74,13 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
         NKSHMI1501PP: createSquareImageCarousel,
         NKSHMD1501PP: createSquareImageCarousel,
         NKSHMU1501PP: createPortraitImageCarousel
+    };
+
+    var isProdPortrait = {
+        NKSHMC1512PP: true,
+        NKSHMI1501PP: true,
+        NKSHMD1501PP: true,
+        NKSHMU1501PP: true
     };
 
     function createNakshaCardCreator(sku) {
@@ -93,6 +98,9 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
             },
             updateCard(images, id) {
                 this.carouselFn(images, id).update();
+            },
+            getEmptyStatusHTML: function() {
+                return '<div class="alert alert-info" role="alert">There are no skirts that match your requirements.</div>';
             }
         };
     }
@@ -115,14 +123,23 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
                 var detailViewer = createHTMLViewer(prodJSON.skuInfo.garmentDetails);
                 var storyViewer = this.browseInfo.getStoryViewer();
                 var viewerFactory = {
+                    product: prodJSON.product,
                     createPre: function() {
                         return skuSelViewer;
+                    },
+                    createBase: function(shop) {
+                        var pl = factory.varPL;
+                        if ( pl === undefined ) {
+                            return createBasePanelr(shop, this.product);
+                        } else {
+                            return createBasePanelrRange(shop, this.product, pl);
+                        }
                     },
                     create: function() {
                         return createCatenatedViewer([detailViewer, storyViewer]);
                     }
                 };
-                return createComponentGenerator(factory, prodJSON, viewerFactory, this.colSelData, false, createNakshaCardCreator(sku));
+                return createComponentGenerator(factory, prodJSON, viewerFactory, this.colSelData, ! isProdPortrait[sku], createNakshaCardCreator(sku), "The model is 5 ft 3 in (160 cm).");
             },
             updateURL: function(sku) {
                 var encoder = factory.encoder;
@@ -238,31 +255,32 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
     var nkshVariants = {
         NKSHMC1512PP: {
             vid: "AW",
-            images: ["1.1", "1.1a"]
+            images: ["front", "back","side","detail1","detail2"]
         },
         NKSHMI1501PP: {
             vid: "AW",
-            images: ["1","1a"]
+            images: ["front", "back","side","detail1","detail2"]
         },
         NKSHMD1501PP: {
             vid: "AW",
-            images: ["10", "10a"]
+            images: ["front", "back","side","detail1","detail2"]
         },
         NKSHMU1501PP: {
             vid: "AW",
-            images: ["1", "1a"]
+            images: ["front", "back","side","detail1","detail2"]
         },
     }
 
 
     function createProdData(sku) {
+        var isMicro = (sku == 'NKSHMC1512PP')
         return {
             imageFile: "sizing.jpg",
-            dimensionNames: ["A. Length", "B. Outer Layer Length", "C. Hem", "D. Waist - Relaxed", "E. Waist - Stretched"],
+            dimensionNames: ["A. Length", "B. Outer Layer Length", "C. Hem", "D. Waist - Relaxed", "D. Waist - Stretched"],
             dimensionsCm: styDimensionsCm[sku],
             data: [nkshVariants[sku]],
             sizes: ['Free'],
-            description: '<p>Almost from the <a href="/journey/salsa.html">first days of my atelier</a>, The Naksha skirt has been my signature piece of <a href="/journey/artwear.html">ArtWear</a>, and an evergreen favourite with clients.</p><p>As the name suggests, each ArtWear Naksha is a <strong>one-of-a-kind piece, unique and exclusive.</strong></p><p>The perfect fusion of traditional Tangail textile in a modern western silhouette, the Naksha skirt is a multi-paneled, crushed skirt. Made of sheer 100% cotton fabrics, the skirt offers comfort, playfulness and complete freedom of movement. It suits every age group from teenagers (we even have a kids\' Naksha) to seniors.</p><p>Each Artwear Naksha skirt is cut from a single Tangail / Jamdani sari. The skirt is lined with a harmonizing hue of translucent Voile de Coton, to create our signature light-layer effect.</p><p>The waist band is made up of 7 rows of elastic stitched into . Because of the delicacy of Tangail fabric, it takes a skilled tailor most of a day to create this waistband. The result is a snug, comfortable fit</p><p>The Naksha is available in 4 lengths, Micro, Mini, Midi and Minuit. Because the waist-band is elastic, it is a free-size garment, fitting a range of waist measurements.</p>',
+            description: '<p>Almost from the <a href="/journey/salsa.html">earliest days of my atelier</a>, The Naksha skirt has been my signature piece of <a href="/journey/artwear.html">ArtWear</a>, and an evergreen favourite with clients. It is available in 4 lengths - Micro, Mini, Midi and Minuit.</p><p>As the name suggests, each ArtWear Naksha is a <strong>one-of-a-kind</strong> piece, <strong>unique and exclusive.</strong></p><p>The perfect fusion of traditional Tangail textile in a modern western silhouette, the Naksha is a multi-paneled, crushed skirt. Made of sheer 100% cotton fabrics, the skirt offers comfort, playfulness and complete freedom of movement. It suits every age group from teenagers (we even have a kids\' Naksha) to seniors. It can be worn with a variety of tops and t-shirts and is suitable for a range of occasions.</p><p>Each Artwear Naksha skirt is cut from a single Tangail / Jamdani sari. The skirt is lined with a harmonizing hue of translucent Voile de Coton to create my signature light-layer effect. It is made up of 16 fabric panels (12 on the Micro) which adds a lot of volume and flare. Because of the way the panels are cut, only 1 Minuit, Midi or Mini can be created from a single sari.</p><p>The waist band is made up of 9 rows of elastic (6 rows on the Micro). Because of the need for care while working with the delicate Tangail fabric, it can take a skilled tailor almost a full day of work to create this waistband. The result is a snug, comfortable fit, for a range of waist measurements.</p>',
             garmentDetails: '',
         };
     }
@@ -281,8 +299,8 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
         nakshaFactory,
         createColSelData('/products/artwear/skirts/',[
             {colourName: 'Neutral', image: 'neutral'},
-            {colourName: 'Violet-Yellow', image: 'v-to-y'},
-            {colourName: 'Green-Indigo', image: 'g-to-i'},
+            {colourName: 'Purple to Yellow', image: 'v-to-y'},
+            {colourName: 'Green to Violet', image: 'g-to-i'},
         ]),
         createProdData,
         browseInfo,
