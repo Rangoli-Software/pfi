@@ -225,9 +225,8 @@ const mvrkData = {
         }
     ],
     sizes: ['S', 'M', 'L', 'XL'],
-    description: '',
-    garmentDetails: ''
-
+    description: 'This Kurta is an ode to the travelers and mavericks of the world. The collar sits comfortably on high neck and the asymmetrical panels add jazz to the menswear. Its cut in a lightweight bio-washed khadi. The neutral palette of grey and balck is highlighted with golden P.F.I. Tangail.',
+    garmentDetails: '<li>High neckline</li><li>Asymmetrical</li><li>Short sleeves</li><li>Slips on</li>'
 };
 
 const nrgmData = {
@@ -251,9 +250,8 @@ const nrgmData = {
         }
     ],
     sizes: ['S', 'M', 'L', 'XL'],
-    description: '',
-    garmentDetails: ''
-
+    description: 'This basic short kurta is designed for ease and comfort. It has pintucks in the front and is cut in a bio-washed cotton khadi. It has a mandarin collar with front placket and side slits that make the kurta even more relaxed. An Indian kurta, with western sleeve cuffs and mandarin collar - this is a pertinent example of a how travel and culture would influence a Vagabond man. ',
+    garmentDetails: '<li>Short kurta</li><li>Mandarin collar</li><li>Full sleeves with cuff</li><li>Pintuck detail in the front</li>'
 };
 
 const pndyData = {
@@ -277,9 +275,8 @@ const pndyData = {
         }
     ],
     sizes: ['S', 'M', 'L', 'XL'],
-    description: '',
-    garmentDetails: ''
-
+    description: 'This lounge pants are inspired by the relaxed resort vibe of, well, Pondicherry. It has an adjustable drawstring and elastic at the waist. Its cut in biowashed cotton khadi and has a golden P.F.I. Tangail border at the hem.',
+    garmentDetails: '<li>Elastic and adjustable drawstring at the waist</li><li>P.F.I. Tangail border at hem</li><li>Side pockets</li>'
 };
 
 const ubudData = {
@@ -303,8 +300,8 @@ const ubudData = {
         }
     ],
     sizes: ['S', 'M', 'L', 'XL'],
-    description: '',
-    garmentDetails: ''
+    description: 'We took a streetwear silhouette and jazzed it up. This track pants are cut in cotton khadi and the asymmetrical striped panel is accentuated with golden P.F.I. Tangail to make a statement. The broad elastic sits comfortably at the waist and it has side pockets.',
+    garmentDetails: '<li>Elastic at the waist</li><li>Side pockets</li><li>Adjustable hem band with buttons</li>'
 
 };
 
@@ -380,7 +377,7 @@ function createProductDB() {
 const vb_catalog = {
     skus: ['ANGKRT1601Kh', 'ARAMPA1601Kh', 'KOHKRT1601Kh', 'MAVKRT1601Kh', 'NARKRT1601Kh', 'PNDPNT1601Kh', 'UBDPNT1601Kh'],
     shirts: ['ANGKRT1601Kh', 'KOHKRT1601Kh', 'MAVKRT1601Kh', 'NARKRT1601Kh'],
-    pants: ['ARAMPA1601Kh', 'PNDPNT1601Kh', 'UBDPNT1601Kh'],
+    pants: ['PNDPNT1601Kh', 'UBDPNT1601Kh'],
     getCategory: function (sku) {
         if (this.shirts.includes(sku)) {
             return "shirts";

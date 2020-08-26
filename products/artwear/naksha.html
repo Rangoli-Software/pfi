@@ -5,7 +5,7 @@ title: Artwear Naksha Skirt
 description: Our Art Wear Naksha Skirt. Each piece is one of a kind.
 keywords: skirt, vintage sari border, fabric art, artwear, women's wear
 ---
-<script type="text/javascript" src="skirts/nklist20081902.js"></script>
+<script type="text/javascript" src="skirts/nklist20082003.js"></script>
 <script>
     const washcareHTML = "<ul><li>Do not soak</li><li>Hand Wash</li><li>Mild Detergent</li><li>Do Not Bleach</li><li>Dry In Shade</li><li>No Need to Iron</li><li>Follow this tie-up procedure to maintain the crushed look-and-feel</li></ul>";
 
@@ -87,12 +87,17 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
         return {
             carouselFn: carouselFn[sku],
             colClasses: 'col-12 col-sm-6',
-            createCard: function(images, btnId, priceHTML) {
+            createCard: function(images, btnId, priceHTML, desc) {
                 var res = '<div class="card mb-2">';
                 res += '<div class="row"><div class="col-12"><div class="form-row mb-4">' + this.carouselFn(images, btnId).createImageCarousel() + '</div></div></div>';
                 res += '<div class="card-body px-0 pt-2 pb-4 text-center">';
+                res += '<div class="card-title mb-2"><span>' + desc.getCWDesc() + '</span></div>';
                 res += '<div class="card-subtitle mb-3"><span>' + priceHTML + '</span></div>';
-                res += createAddToCartButton(btnId);
+                if ( desc.isAvailable() ) {
+                    res += createAddToCartButton(btnId);
+                } else {
+                    res += '<div class="alert alert-primary text-center" role="alert">' + desc.getCollectedText() + '</div>';
+                }
                 res += '</div></div>';
                 return res;
             },
