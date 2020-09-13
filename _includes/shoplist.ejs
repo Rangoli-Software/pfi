@@ -1,0 +1,46 @@
+---
+permalink: "<%- page.inputPath.substring(1) %>"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<% include partials/head %>
+</head>
+<body>
+<script>var pg_blacklist = [<%- "'" + page.inputPath.substring(1) + "'" %>];</script>
+<% if ( locals.prerender ) { %>
+<%- pfi.getShopHeader() %>
+<%- pfi.pfiTopMenu(page.inputPath.substring(1)) %>
+<% } else { %>
+<script> document.write(getShopHeader()); </script>
+<script> document.write(pfiTopMenu(<%- '"' + page.inputPath.substring(1) + '"' %>)); </script>
+<% } %>
+<div class="container">
+<% if ( locals.prerender ) { %>
+<%- pfi.getShopTop() %>
+<% } else { %>
+<script> document.write(getShopTop()); </script>
+<% } %>
+<%- content %>
+<script>
+    var tlpc = createShopPageComponent();
+    var plc = createPageLevelComponent(tlpc);
+
+    function onDocumentReady() {
+        tlpc.onDocumentReady();
+        plc.initUI(tlpc);
+        plc.updateUI();
+    }
+    $(document).ready(onDocumentReady);
+</script>
+</div>
+<script> document.write(storyBrowser(pg_blacklist)); </script>
+<% if ( locals.prerender ) { %>
+<%- pfi.botMenu(page.inputPath.substring(1)) %>
+<%- pfi.scriptSrcs() %>
+<% } else { %>
+<script> document.write(botMenu(<%- '"' + page.inputPath.substring(1) + '"' %>)); </script>
+<script> document.write(scriptSrcs()); </script>
+<% } %>
+</body>
+</html>

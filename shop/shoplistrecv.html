@@ -1,0 +1,72 @@
+---
+layout: shoplist
+title: Shopping List
+---
+<script>
+function createCartRenderer(cart, shop) {
+    return {
+        cart: cart,
+        shop: shop,
+        createItem: function(item){
+            return '<li class="list-group-item"><div class="row align-items-center">'
+                + '<div class="col-3"><img src="' + item.imageURL + '" alt="..." class="img-fluid"></div>'
+                + '<div class="col"><div class="d-flex mb-2 font-weight-bold">'
+                    + item.getName() + '<span class="ml-auto">' + this.shop.getFXPriceHTML(item.price) + '</span>'
+                    + '</div><p class="mb-7 font-size-sm text-muted">'
+                    + item.getDescription()
+                    + '</p></div>'
+                + '</div></li>';
+        },
+        createItemList: function() {
+            var res = '<ul class="list-group list-group-lg list-group-flush-x mb-6">'
+            for ( var i = 0; i < this.cart.items.length ; i++ ) {
+                res += this.createItem(this.cart.items[i]);
+            }
+            res += '</ul>';
+            return res;
+        }
+    }
+}
+
+function createPageLevelComponent(tlpc) {
+    return {
+        tlpc: tlpc,
+        renderer: null,
+        initUI: function() {
+            var shop = tlpc.allCartC.shop;
+            var params = new URLSearchParams(window.location.search);
+            var enc = params.get('cart');
+            var cart = createCartObject(JSON.parse(decodeURIComponent(enc)));
+            this.renderer = createCartRenderer (cart, shop);
+        },
+        updateUI: function() {
+            $('.sc-shopping-list').html(this.renderer.createItemList());
+            var subTotal = this.renderer.shop.getTotal(this.renderer.cart);
+            var total = Math.round((subTotal) * 100) / 100;
+            $('.sc-total').text(total);
+        }
+    }
+}
+
+</script>
+<section class="pt-7 pb-12">
+    <h6>Shopping List</h6>
+    <div class="row">
+        <div class="sc-shopping-list col-12 col-md-7">
+        </div>
+        <div class="col-12 col-md-5 col-lg-4 offset-lg-1">
+            <div class="card mb-7 bg-light">
+                <div class="card-body">
+                <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x">
+                  <li class="list-group-item d-flex font-size-lg font-weight-bold">
+                    <span>Total</span> <span class="sc-total ml-auto font-size-sm"></span>
+                  </li>
+                  <li class="list-group-item font-size-sm text-center text-gray-500">
+                    Shipping cost calculated at Checkout *
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        </div>
+</section>
