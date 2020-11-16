@@ -1,9 +1,18 @@
-<script src="/js/pfinight20061802.js"></script>
 <script>
+const categorizer = {
+    getCategory: function(sku) {
+        var cc = sd_catalog.getCategory(sku);
+        if ( cc == "dresses" ) {
+            return "dresses";
+        } else {
+            return "nondresses";
+        }
+    }
+};
 const prodJSON = sd_catalog.getProduct(prodSKU);
 const sizer = createSizeChartr(prodJSON.skuInfo.getSizeChart());
 const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath);
-var rendererFactory = createSDComponentFactory(prodJSON, dimensioner, sizer, sd_catalog);
+var rendererFactory = createSDComponentFactory(prodJSON, dimensioner, sizer, categorizer);
 const pageComponent = createPageComponent(prodJSON, getProductCatalog(), rendererFactory);
 
 $(document).ready(onDocumentReady);

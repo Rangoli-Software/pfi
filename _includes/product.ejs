@@ -5,9 +5,8 @@ permalink: "<%- page.inputPath.substring(1) %>"
 <html lang="en">
 <head>
 <% include partials/head %>
-<link rel="stylesheet" href="/shopper-1.0.3/libs/flickity/dist/flickity.min.css">
-<link rel="stylesheet" href="/shopper-1.0.3/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
-<link rel="stylesheet" href="/shopper-1.0.3/libs/flickity-fade/flickity-fade.css">
+<% include partials/shoplist %>
+<% include partials/rest-head %>
 </head>
 <body>
 <script>
@@ -41,10 +40,21 @@ function onSKUChange(sku) {
 <script>var pg_blacklist = [<%- "'" + page.inputPath.substring(1) + "'" %>];</script>
 <% if ( locals.prerender ) { %>
 <%- pfi.getShopHeader() %>
-<%- pfi.pfiTopMenu(page.inputPath.substring(1)) %>
 <% } else { %>
 <script> document.write(getShopHeader()); </script>
+<% } %>
+<% if ( locals.prerender ) { %>
+<% if ( locals.brand ) { %>
+<%- pfi.kimTopMenu(page.inputPath.substring(1)) %>
+<% } else { %>
+<%- pfi.pfiTopMenu(page.inputPath.substring(1)) %>
+<% } %>
+<% } else { %>
+<% if ( locals.brand ) { %>
+<script> document.write(kimTopMenu(<%- '"' + page.inputPath.substring(1) + '"' %>)); </script>
+<% } else { %>
 <script> document.write(pfiTopMenu(<%- '"' + page.inputPath.substring(1) + '"' %>)); </script>
+<% } %>
 <% } %>
 <div class="container">
 <% if ( locals.prerender ) { %>
@@ -56,15 +66,23 @@ function onSKUChange(sku) {
 </div>
 <script> document.write(storyBrowser(pg_blacklist)); </script>
 <% if ( locals.prerender ) { %>
+<% if ( locals.brand ) { %>
+<%- pfi.kimBotMenu(page.inputPath.substring(1)) %>
+<% } else { %>
 <%- pfi.botMenu(page.inputPath.substring(1)) %>
-<%- pfi.scriptSrcs() %>
+<% } %>
+<% } else { %>
+<% if ( locals.brand ) { %>
+<script> document.write(kimBotMenu(<%- '"' + page.inputPath.substring(1) + '"' %>)); </script>
 <% } else { %>
 <script> document.write(botMenu(<%- '"' + page.inputPath.substring(1) + '"' %>)); </script>
+<% } %>
+<% } %>
+<% if ( locals.prerender ) { %>
+<%- pfi.scriptSrcs() %>
+<% } else { %>
 <script> document.write(scriptSrcs()); </script>
 <% } %>
-    <script src="/shopper-1.0.3/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-    <script src="/shopper-1.0.3/libs/flickity/dist/flickity.pkgd.min.js"></script>
-    <script src="/shopper-1.0.3/libs/flickity-fade/flickity-fade.js"></script>
-    <script src="/shopper-1.0.3/js/theme.min.js"></script>
+<% include partials/rest-foot %>
 </body>
 </html>

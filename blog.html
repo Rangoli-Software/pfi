@@ -4,17 +4,24 @@ title: Blog
 description: A blog about the atelier, the team, the process of creation, collaborations, clients etc.
 keywords: blog, what's new, ootd, collaborations, stories
 ---
+<script>
+    var tabber = createTabber(
+        ["Atelier Tales", "My Journey", "Look Back"],
+        ["atelier", "origin", "lookback"],
+        [createSection(atelier), createSection(origin), createSection(archives)],
+        ["a", "o", "l"],
+        "t",
+        "a"
+    );
+    tabber.enableDocumentReady();
+</script>
 <ul class="nav nav-tabs nav-justified">
 <script>
-    document.write(getTabItem("Atelier Tales", "atelier", getUrlVars()["t"] == "a" || getUrlVars()["t"] === undefined));
-    document.write(getTabItem("My Journey", "origin", getUrlVars()["t"] == "o"));
-    document.write(getTabItem("Look Back", "lookback", getUrlVars()["t"] == "l"));
+    document.write(tabber.createTabStrip());
 </script>
 </ul>
 <div class="tab-content">
 <script>
-    document.write(getTabContent(createSection(atelier), "atelier", getUrlVars()["t"] == "a" || getUrlVars()["t"] === undefined));
-    document.write(getTabContent(createSection(origin), "origin", getUrlVars()["t"] == "o"));
-    document.write(getTabContent(createSection(archives), "lookback", getUrlVars()["t"] == "l"));
+    document.write(tabber.createTabContents());
 </script>
 </div>

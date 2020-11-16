@@ -1,4 +1,3 @@
-<script type="text/javascript" src="fm/fmlist20082000.js"></script>
 <script>
     var prodData = {
         imageFile: "sizing.jpg",
@@ -15,7 +14,7 @@
         }],
         sizes: ['Free'],
         description: 'The fabric for these face masks come from my <a href="/journey/treasuretrove.html">Treasure Trove</a> of Tangail sari offcuts, hand-woven in the finest cotton and silk. Each mask features a lining and a pocket in hand-woven khadi cotton in a contrasting colour. The elastic ear bands will help the mask fit firmly and provide full coverage from nose to chin. The 3 layers avoid heat-trapping while keeping you safe in style and comfort. You can fill the pocket / sleeve with your own surgical mask / filter, herbs or a pad with a few drops of essential oil. One size fits most.',
-        garmentDetails: '<ul><li>#artwear - each mask is <strong>unique - one-of-a-kind</strong></li><li>Outer layer of <a href="/journey/treasuretrove.html">vintage Tangail</a></li><li>2 inner layers of soft washed Khadi</li><li>Universal Size</li><li>Ear-loops of fabric-covered elastic</li><li>Full coverage from nose to chin</li><li>Non-surgical - but has pocket / sleeve to insert surgical filter</li><li>Washable and re-usable</li><li>No returns or exchanges</li><li>Scroll down to shop individual masks</li></ul>',
+        garmentDetails: '<ul><li>each #artwear mask is <strong>unique - one-of-a-kind</strong></li><li>Outer layer of <a href="/journey/treasuretrove.html">vintage Tangail</a></li><li>2 inner layers of soft washed Khadi</li><li>Universal Size</li><li>Ear-loops of fabric-covered elastic</li><li>Full coverage from nose to chin</li><li>Non-surgical - but has pocket / sleeve to insert surgical filter</li><li>Washable and re-usable</li><li>No returns or exchanges</li><li>Scroll down to shop individual masks</li></ul>',
     }
     
     const washcareHTML = "<ul><li>Wash before first use</li><li>Do not soak</li><li>Hand Wash</li><li>Mild Detergent</li><li>Do Not Bleach</li><li>Dry In Shade</li></ul>";
@@ -33,8 +32,9 @@
 
     const productCatalog = getProductCatalog();
 
-    var factory = getFaceMaskFactory();
-    var prodJSON = createUIProductJSON('FACEMK2005Ta',factory.base, prodData, null);
+    var sku = 'FACEMK2005Ta';
+    var factory = getFaceMaskFactory(sku);
+    var prodJSON = createUIProductJSON(sku,factory.base, prodData, null);
     var detailViewer = createHTMLViewer(prodJSON.skuInfo.garmentDetails);
     var storyViewer = browseInfo.getStoryViewer();
     var viewerFactory = {

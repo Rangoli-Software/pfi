@@ -1,2 +1,343 @@
 [build]
 functions = "netlify-functions"
+
+[[headers]]
+for = "/shopper-1.0.3/libs/flickity/dist/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/shopper-1.0.3/libs/flickity-fade/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/shopper-1.0.3/libs/@fancyapps/fancybox/dist/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/js/*.css"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/js/*.js"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/atelier/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/blog/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/blog/joyofcolour/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/blog/lb/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/fabricart/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/friends/abbie/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/fw/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/g/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/g/aw/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/g/blog/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/g/kim/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/g/look/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/g/p/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/g/ss16/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/g/tmp/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/g/w/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/journey/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/look/moods/hed/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/look/ramp/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/people/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/people/ooak/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/accessories/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/accessories/fm/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/anotherway/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/artwear/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/artwear/skirts/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/artwear/skirts/mc/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/artwear/skirts/md/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/artwear/skirts/mi/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/artwear/skirts/mu/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/blln/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/bnr/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/brmda/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/crptp/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/drwstrg/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/jdhpr/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/lly/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/looks/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/lovrtop/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/lyr/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/mood/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/sdslt/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/shdrstrg/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/shvrtp/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/tnktp/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/happyeveryday/wngs/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/holydays/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/holydaysreboot/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/home/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/itsmagic/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/men/angkor/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/men/arambol/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/men/koh/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/men/mavericks/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/men/narigama/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/men/pondy/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/men/ubud/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/night/celia/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/night/cleoS/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/night/cleoT/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/night/emilia/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/night/helena/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/night/juliet/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/night/ophelia/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/night/portia/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/night/tamora/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/night/titania/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/night/viola/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/movein/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/scarves/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/scarves/dipdye/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/summerdreams/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/ties/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/vagabond/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/products/vagabond/Angkor/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/tapestries/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/tbc/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/tbc/sqIC/*.jpg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+for = "/g/*.svg"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"

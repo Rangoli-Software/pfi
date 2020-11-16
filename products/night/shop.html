@@ -1,8 +1,8 @@
 ---
 layout: shop
-title: Formals Shop
+lines: night
+title: Ce Soir
 ---
-<script src="/js/pfinight20061802.js"></script>
 <script>
     function createCatalogDisplay(catalog) {
         return {
@@ -37,7 +37,7 @@ title: Formals Shop
                 res += '</div></div></section>';
                 return res;
             },
-            getBlackList: function(fname) {
+            getBlacklist: function(fname) {
                 var blacklist = [];
                 var skus = this.catalog[fname];
                 for (var i = 0; i < skus.length; i++) {
@@ -51,33 +51,16 @@ title: Formals Shop
     }
 
     var displayer = createCatalogDisplay(sd_catalog);
+    var tabber = createTabber(
+        ["Dresses", "Tops / Skirts / Shorts"],
+        ["dresses", "nondresses"],
+        [displayer.createCards("dresses"), displayer.createCards("nondresses")],
+        ["d", "n"],
+        "t",
+        "d",
+        displayer
+    );
+    tabber.enableDocumentReady();
+    document.write(tabber.createTabbedSection());
+    pg_blacklist = pg_blacklist.concat(tabber.getBlacklist());
 </script>
-<ul class="nav nav-tabs nav-justified">
-    <script>
-        document.write(getTabItem("Dresses", "dresses", getUrlVars()["t"] == "d" || getUrlVars()["t"] === undefined));
-        document.write(getTabItem("Tops", "tops", getUrlVars()["t"] == "t"));
-        document.write(getTabItem("Pants", "pants", getUrlVars()["t"] == "p"));
-        document.write(getTabItem("Skirts", "skirts", getUrlVars()["t"] == "s"));
-        document.write(getTabItem("Shorts", "culottes", getUrlVars()["t"] == "c"));
-        document.write(getTabItem("Jackets", "overtops", getUrlVars()["t"] == "o"));
-    </script>
-</ul>
-<div class="tab-content">
-    <script>
-        document.write(getTabContent(displayer.createCards("dresses"), "dresses", getUrlVars()["t"] == "d" || getUrlVars()["t"] === undefined));
-        document.write(getTabContent(displayer.createCards("tops"), "tops", getUrlVars()["t"] == "t"));
-        document.write(getTabContent(displayer.createCards("pants"), "pants", getUrlVars()["t"] == "p"));
-        document.write(getTabContent(displayer.createCards("skirts"), "skirts", getUrlVars()["t"] == "s"));
-        document.write(getTabContent(displayer.createCards("culottes"), "culottes", getUrlVars()["t"] == "c"));
-        document.write(getTabContent(displayer.createCards("overtops"), "overtops", getUrlVars()["t"] == "o"));
-
-        var blk = displayer.getBlacklist("dresses");
-        blk = blk.concat(displayer.getBlacklist("tops"));
-        blk = blk.concat(displayer.getBlacklist("pants"));
-        blk = blk.concat(displayer.getBlacklist("skirts"));
-        blk = blk.concat(displayer.getBlacklist("culottes"));
-        blk = blk.concat(displayer.getBlacklist("overtops"));
-
-        pg_blacklist = pg_blacklist.concat(blk);
-    </script>
-</div>

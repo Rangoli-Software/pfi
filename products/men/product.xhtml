@@ -1,7 +1,7 @@
-<script src="/js/pfimen20082002.js"></script>
 <script>
 const prodJSON = vb_catalog.getProduct(prodSKU);
-const sizer = createSizeChartr(prodJSON.skuInfo.getSizeChart());
+const sc = prodJSON.skuInfo.getSizeChart();
+const sizer = sc !== null ? createSizeChartr(sc) : null;
 const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath);
 var rendererFactory = createVBComponentFactory(prodJSON, dimensioner, sizer, vb_catalog);
 const pageComponent = createPageComponent(prodJSON, getProductCatalog(), rendererFactory);

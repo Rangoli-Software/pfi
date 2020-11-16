@@ -1,0 +1,30 @@
+<script>
+const prodJSON = itsmagic.catalog.getProduct(prodSKU);
+const sizer = null;
+const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath);
+var rendererFactory = itsmagic.createComponentFactory(prodJSON, dimensioner, sizer, itsmagic.catalog);
+const pageComponent = createPageComponent(prodJSON, getProductCatalog(), rendererFactory);
+
+$(document).ready(onDocumentReady);
+</script>
+<section>
+<script>
+var productComponent = pageComponent.createRenderer(loadShopWithParam());
+document.write(productComponent.getSizeModal());
+</script>
+    <div class="container">
+    <script>
+document.write(productComponent.createProductDiv(0, 0));
+    </script>
+    </div>
+</section>
+<script>
+ document.write(renderProductDetails(
+     '<p>'+ prodJSON.skuInfo.description + '</p>',
+     '<ul>'
+     + prodJSON.skuInfo.garmentDetails
+     + '</ul>',
+     khadi_washcareHTML,
+     pret_shippingHTML
+ ));
+</script>

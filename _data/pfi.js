@@ -1,3 +1,5 @@
+const nkdtformatter = new Intl.DateTimeFormat('en-US',{month: 'long', year: 'numeric'});
+
 const moods = {
     title: "Moods",
     url: "/look.html?t=m",
@@ -194,6 +196,18 @@ const atelier = {
     url: "/blog.html?t=a",
     sub: [
         {
+            title: "Jamdani Lace",
+            url: "/blog/naksha2020.html",
+            lede: "The Jamdani Lace Naksha Capsule",
+            imageURL: "/products/artwear/skirts/mu/12.jpg"
+        },
+        {
+            title: "Joy of Colour",
+            url: "/blog/joyofcolour.html",
+            lede: "Expression of artistic vision through the joyful use of colour",
+            imageURL: "/blog/joyofcolour/f.jpg"
+        },
+        {
             title: "Vilnius Artists",
             url: "/blog/vilartists.html",
             lede: 'Visiting Vilnius  - Meeting some inspirational artists.',
@@ -268,6 +282,18 @@ const clients = {
     url: "/look.html?t=f",
     sub: [
         {
+            title: "#artwear",
+            url: "/people/artwear.html",
+            lede: "Images of friends wearing my signature Art Wear silhouettes",
+            imageURL: "/look/friends/2.jpg"
+        },
+        {
+            title: "Rainbow Girl",
+            url: "/look/abbie.html",
+            lede: "Collaborating with Abbie Stirrup",
+            imageURL: "/look/friends/tt.jpg"
+        },
+        {
             title: "Gangsta Gal",
             url: "/look/gg.html",
             lede: "Fun with Face Masks",
@@ -278,12 +304,6 @@ const clients = {
             url: "/people/oneofakind.html",
             lede: "The unique individuals who have collected my woven canvases",
             imageURL: "/people/ooak/sl02.jpg"
-        },
-        {
-            title: "#artwear",
-            url: "/people/artwear.html",
-            lede: "Images of friends wearing my signature ArtWear silhouettes",
-            imageURL: "/people/EricaNaksha1.jpg"
         },
         {
             title: "Curators",
@@ -355,12 +375,6 @@ const buzz = {
             imageHTML: '<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/UD5KhbKHvCI?start=5" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
         },
         {
-            title: "Yves Story",
-            url: "https://www.linkedin.com/pulse/prema-florence-isaac-yves-richez-ph-d-/",
-            lede: 'Yves also wrote a short piece about our meeting on LinkedIn - Meeting with Prema Florence Isaac, creative and entrepreneur in India.',
-            imageURL: "https://www.talentreveal.com/uploads/3/1/2/1/31219479/talentreveallogo2018.png"
-        },
-        {
             title: "Alia ૐ",
             url: "https://aliaom.com/alia-yoga-prema-design-auroville/",
             lede: "Check out the blog article of Alia M'Hamdi, women's yoga teacher, about our meeting and her visit to the atelier.",
@@ -398,11 +412,15 @@ const shop = {
     url: "/shop.html",
     sub: [
         {
+            title: "Ce Soir",
+            url: "/products/night/shop.html"
+        },
+        {
             title: "Vagabond",
             url: "/products/men/shop.html"
         },
         {
-            title: "Artwear Naksha Skirt",
+            title: "Art Wear Naksha Skirt",
             url: "/products/artwear/naksha.html?s=d"
         },
         {
@@ -486,6 +504,27 @@ function getSubEntry(item, url) {
 
 const merchInfo = [
     {
+        SKU: 'HLNDRS1505PT',
+        title: '',
+        url: '/products/night/helena.html',
+        ledes: [''],
+        images: [{url: '/look/moods/cs/helena.jpg'}]
+    },
+    {
+        SKU: 'JLTDRS1505PT',
+        title: '',
+        url: '/products/night/juliet.html',
+        ledes: [''],
+        images: [{url: '/look/moods/cs/juliet.jpg'}]
+    },
+    {
+        SKU: 'BKLLTS1505Je',
+        title: '',
+        url: '/products/night/tamora.html',
+        ledes: [''],
+        images: [{url: '/look/moods/cs/tamora.jpg'}]
+    },
+    {
         SKU: 'AWTSHT1604Je',
         title: 'Woven Canvas T Shirt',
         url: '/fabricartT.html',
@@ -494,28 +533,28 @@ const merchInfo = [
     },
     {
         SKU: 'NKSHMU1501PP',
-        title: 'ArtWear Naksha-Minuit',
+        title: 'Art Wear Naksha-Minuit',
         url: '/products/artwear/naksha.html?s=u',
         ledes: ["#oneofakind skirt for all ages and sizes!"],
         images: [{url: '/people/minm.jpg'}]
     },
     {
         SKU: 'NKSHMD1501PP',
-        title: 'ArtWear Naksha-Midi',
+        title: 'Art Wear Naksha-Midi',
         url: '/products/artwear/naksha.html?s=d',
         ledes: ["#oneofakind skirt for all ages and sizes!"],
         images: [{url: '/people/mmib.jpg'},{url: '/people/slkb.jpg'},{url: '/people/ibgirl.jpg'}]
     },
     {
         SKU: 'NKSHMI1501PP',
-        title: 'ArtWear Naksha-Mini',
+        title: 'Art Wear Naksha-Mini',
         url: '/products/artwear/naksha.html?s=i',
         ledes: ["#oneofakind skirt for all ages and sizes!"],
         images: [{url: '/people/EricaNaksha1.jpg'}]
     },
     {
         SKU: 'NKSHMC1512PP',
-        title: 'ArtWear Naksha-Micro',
+        title: 'Art Wear Naksha-Micro',
         url: '/products/artwear/naksha.html?s=c',
         ledes: ["#oneofakind skirt for all ages and sizes!"],
         images: [{url: '/people/ibpp.jpg'}]
@@ -550,24 +589,24 @@ const merchInfo = [
     },
     {
         SKU: 'CRPTOP1805Kh',
-        title: 'Bougainvillea Crop Top',
+        title: 'Crop Top',
         url: "/products/happyeveryday/croptop.html",
         ledes: ['Basic summer top'],
-        images: [{url: '/products/happyeveryday/mood/mch-1.jpg'},{url: '/products/happyeveryday/mood/mch-4.jpg'},{url: '/products/happyeveryday/mood/mch-6.jpg'}]
+        images: [{url: '/products/happyeveryday/mood/mch-1.jpg'}]
     },
     {
         SKU: 'VAMPAL1708Kh',
-        title: 'Twiggy Side Slit Top',
+        title: 'Side Slit Top',
         url: "/products/happyeveryday/sideslit.html",
         ledes: ['Handwoven khadi to lighten up your summers'],
         images: [{url: '/products/happyeveryday/mood/mch-2.jpg'},{url: '/products/happyeveryday/mood/mch-7.jpg'}]
     },
     {
         SKU: 'OVTPLO1501Vo',
-        title: 'Long Floating Overlayer',
+        title: 'Long Overtop',
         url: "/products/happyeveryday/lovertop.html",
         ledes: ['Light breezy jacket for spring'],
-        images: [{url: '/products/happyeveryday/mood/mch-3.jpg'},{url: '/products/happyeveryday/mood/mch-5.jpg'}]
+        images: [{url: '/products/happyeveryday/mood/mch-3.jpg'},{url: '/blog/joyofcolour/2.jpg'}]
     },
     {
         SKU: 'BERMPA1609Kh',
@@ -577,33 +616,34 @@ const merchInfo = [
         images: [{url: '/products/happyeveryday/mood/mch-4.jpg'}]
     },
     {
-        SKU: 'LTSDSL1501Vo',
-        title: 'Butterfly Pea Shoulder String Dress',
+        SKU: 'LTSDSL1501Kh',
+        title: 'String Dress',
         url: "/products/happyeveryday/shoulderstring.html",
         ledes: ['A dress that works from dawn to dusk'],
         images: [{url: '/products/happyeveryday/mood/mch-5.jpg'}]
     },
     {
         SKU: 'BALLPA1501Vo',
-        title: 'Balloon Flower Pants',
+        title: 'Balloon Pants',
         url: "/products/happyeveryday/balloon.html",
         ledes: ['Everyday basics for every mood'],
         images: [{url: '/products/happyeveryday/mood/mch-6.jpg'}]
     }
 ];
 
-function createMerchandisingCard(item) {
+function createMerchandisingCard(item, catalog) {
+    var title = catalog[ item.SKU ].name;
     var res = '<div class="card mb-2">';
     var len = item.images.length;
     var rndI = Math.floor(Math.random() * len);
     var img = item.images[rndI];
     res += '<div class="embed-responsive embed-responsive-1by1">';
-    res += '<img src="' + img.url + '" alt="' + item.title  + '" class="embed-responsive-item" style="object-fit: cover">';
+    res += '<img src="' + img.url + '" alt="' + title  + '" class="embed-responsive-item" style="object-fit: cover">';
     res += '</div>';
     res += '<div class="card-body px-0 pt-6 pb-4">';
     res += '<div class="card-subtitle mb-1"><span class="sc-item" data-field="price" data-vsku="' + item.SKU +'"></span></div>';
     if  ( item.url !== undefined ) {
-        res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"><i class="fa fa-arrow-right ml-2"></i></a></h6>';
+        res += '<h6 class="card-title mb-2">' + title + '<a  href="' + item.url + '"><i class="fa fa-arrow-right ml-2"></i></a></h6>';
     }
     len = item.ledes.length;
     rndI = Math.floor(Math.random() * len);
@@ -660,7 +700,6 @@ function createSqPanelImageList(panelNumArr) {
 function createWovenCanvasImage() {
     var panelNums = [545,548,549,552,565,571];
     var panelImgs  =  createSqPanelImageList(panelNums);
-    //    return createCarousel("car-panels", panelImgs);
     var len = panelImgs.length;
     var rndI = Math.floor(Math.random() * len);
     var itm = panelImgs[rndI];
@@ -824,8 +863,8 @@ function createLookMM() {
 }
 
 function createBlogDD () {
-    var col1 = createDropdownColumn([atelier, archives], "col-6");
-    var col2 = createDropdownColumn([origin], "col-6");
+    var col1 = createDropdownColumn([atelier], "col-6");
+    var col2 = createDropdownColumn([origin, archives], "col-6");
     return createMinWidthDDCard([col1, col2], "320px", true);
 }
 
@@ -872,6 +911,80 @@ function getTabContent(content, id, isActive) {
         + '" id="' + id + '" role="tabpanel">'
         + content
         + '</div>';
+}
+
+
+function createTabber(titles, ids, contents, vals, key, defaultVal, blacklister, bl_ids) {
+    return {
+        titles: titles,
+        ids: ids,
+        contents: contents,
+        vals: vals,
+        key: key,
+        defaultVal: defaultVal,
+        blacklister: blacklister,
+        bl_ids: bl_ids === undefined ? ids : bl_ids,
+        toId: function(val){
+            var i = this.vals.indexOf(val);
+            return this.ids[i];
+        },
+        toVal(id){
+            var i = this.ids.indexOf(id);
+            return this.vals[i];
+        },
+        updateURL: function (oldId, newId) {
+            if (oldId !== newId) {
+                modifyUrl(this.key, this.toVal(newId));
+            }
+        },
+        createTabbedSection: function() {
+            return '<ul class="nav nav-tabs nav-justified">'
+                + this.createTabStrip()
+                +'</ul><div class="tab-content">'
+                + this.createTabContents()
+                + '</div>';
+        },
+        createTabStrip: function() {
+            var res = "";
+            var urlVal = getUrlVars()[this.key];
+            for ( var i = 0; i < this.ids.length; i++ ) {
+                var isActive = (urlVal == this.vals[i]);
+                isActive = isActive || (this.vals[i] == this.defaultVal ? urlVal === undefined : false);
+                res += getTabItem(this.titles[i], this.ids[i], isActive);
+            } 
+            return res;
+        },
+        createTabContents: function() {
+            var res = "";
+            var urlVal = getUrlVars()[this.key];
+            for ( var i = 0; i < this.ids.length; i++ ) {
+                var isActive = (urlVal == this.vals[i]);
+                isActive = isActive || (this.vals[i] == this.defaultVal ? urlVal === undefined : false);
+                res += getTabContent(this.contents[i], this.ids[i], isActive);
+            } 
+            return res;
+        },
+        getBlacklist: function() {
+            if ( this.blacklister === undefined || this.blacklister === null) {
+                return [];
+            }
+            var res = [];
+            for ( var i = 0; i < this.ids.length; i++ ) {
+                res = res.concat(this.blacklister.getBlacklist(this.bl_ids[i]));
+            }
+            return res;
+        },
+        enableDocumentReady: function() {
+            var that = this;
+            $(document).ready(function(){
+                $("a[data-toggle=\"tab\"]").on('shown.bs.tab', function(e){
+                    var newId = $(e.target).attr("href").slice(1);
+                    var oldId = $(e.relatedTarget).attr("href").slice(1);
+                    that.updateURL(oldId, newId);
+                })
+            });
+        }
+    };
 }
 
 function createFeatureItemCard(item, section) {
@@ -943,13 +1056,14 @@ function shuffle(array) {
 }
 
 function createRelated(header, merch, items, sections, orderidxs) {
+    var catalog = createCatalog();
     var brkColCls = "col-sm-6 col-md-3";
     var res = '<div class="container mb-5"><section class="pt-4"><h5>' + header + '</h5><div class="row">';
     var ordI = 0;
     orderidxs = shuffle(orderidxs);
     if ( merch !== null) {
         for (var i = 0; i < merch.length && ordI < orderidxs.length; i++) {
-            res += '<div class="col-6 ' + brkColCls + " order-" + orderidxs[ordI] + '">' +  createMerchandisingCard(merch[ i ]) + '</div>';
+            res += '<div class="col-6 ' + brkColCls + " order-" + orderidxs[ordI] + '">' +  createMerchandisingCard(merch[ i ], catalog) + '</div>';
             ordI++;
         }
     }
@@ -992,8 +1106,8 @@ function pickMerch(skus, blacklist) {
 }
 
 function selectMerch(blacklist) {
-    var leftSKUs = ['OVTPLO1501Vo','VAMPAL1708Kh','LTSDSL1501Vo','DPDYSF1501PT','KAGTIE1601Kh','CHMPGN1501JL'];
-    var restSKUs = ['BERMPA1609Kh','BALLPA1501Vo','CRPTOP1805Kh','FACEMK2005Ta','AWTSHT1604Je'];
+    var leftSKUs = ['OVTPLO1501Vo','VAMPAL1708Kh','LTSDSL1501Kh','DPDYSF1501PT','KAGTIE1601Kh','CHMPGN1501JL','NKSHMD1501PP','NKSHMC1512PP'];
+    var restSKUs = ['BERMPA1609Kh','BALLPA1501Vo','CRPTOP1805Kh','FACEMK2005Ta','AWTSHT1604Je','NKSHMU1501PP','NKSHMI1501PP'];
     return [pickMerch(leftSKUs, blacklist), pickMerch(restSKUs, blacklist)];
 }
 

@@ -1,3 +1,15 @@
+<script>
+    var tabber = createTabber(
+        ["Values", "Look Books", "Buzzing..."],
+        ["values", "lookbooks", "buzzing"],
+        [createSection(about), createSection(lookbook), createSection(buzz)],
+        ["v", "l", "b"],
+        "a",
+        "b"
+    );
+    tabber.enableDocumentReady();
+</script>
+
 <section>
 <div class="row">
     <div class="col col-12 col-sm-6">
@@ -50,15 +62,11 @@
 <div id="about-tabs"></div>
 <ul class="nav nav-tabs nav-justified">
 <script>
-    document.write(getTabItem("Values", "values", getUrlVars()["a"] == "v"));
-    document.write(getTabItem("Look Books", "lookbooks", getUrlVars()["a"] == "l"));
-    document.write(getTabItem("Buzzing...", "buzzing", getUrlVars()["a"] == "b" || getUrlVars()["a"] === undefined));
+    document.write(tabber.createTabStrip());
 </script>
 </ul>
 <div class="tab-content">
 <script>
-    document.write(getTabContent(createSection(about), "values", getUrlVars()["a"] == "v"));
-    document.write(getTabContent(createSection(lookbook), "lookbooks", getUrlVars()["a"] == "l"));
-    document.write(getTabContent(createSection(buzz), "buzzing", getUrlVars()["a"] == "b" || getUrlVars()["a"] === undefined));
+    document.write(tabber.createTabContents());
 </script>
 </div>

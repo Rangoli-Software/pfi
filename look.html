@@ -4,19 +4,24 @@ title: Look
 description: Looks that feature my garments
 keywords: ootd, potd, lotd
 ---
+<script>
+    var tabber = createTabber(
+        ["Prema", "Friends", "Ramp", "Moods"],
+        ["look", "friends", "ramp", "moods"],
+        [createSection(lotm), createSection(clients), createSection(ramp), createSection(moods)],
+        ["p", "f", "r", "m"],
+        "t",
+        "p"
+    );
+    tabber.enableDocumentReady();
+</script>
 <ul class="nav nav-tabs nav-justified">
 <script>
-    document.write(getTabItem("Prema", "look", getUrlVars()["t"] == "p" || getUrlVars()["t"] === undefined));
-    document.write(getTabItem("Friends", "friends", getUrlVars()["t"] == "f"));
-    document.write(getTabItem("Ramp", "ramp", getUrlVars()["t"] == "r"));
-    document.write(getTabItem("Moods", "moods", getUrlVars()["t"] == "m"));
+    document.write(tabber.createTabStrip());
 </script>
 </ul>
 <div class="tab-content">
 <script>
-    document.write(getTabContent(createSection(lotm), "look", getUrlVars()["t"] == "p" || getUrlVars()["t"] === undefined));
-    document.write(getTabContent(createSection(clients), "friends", getUrlVars()["t"] == "f"));
-    document.write(getTabContent(createSection(ramp), "ramp", getUrlVars()["t"] == "r"));
-    document.write(getTabContent(createSection(moods), "moods", getUrlVars()["t"] == "m"));
+    document.write(tabber.createTabContents());
 </script>
 </div>

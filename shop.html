@@ -1,27 +1,83 @@
 ---
 layout: shop
-title: Shop
-description: Buy our creations directly from us on this website.
+display: true
+title: Shop by Line
+description: Buy our creations online!
 keywords: shop, catalog, online shopping,
 ---
-<div class="row">
 <script>
-function createShopItem(item) {
-    var res = '<div class="col-6 col-md-4">';
-    res += createMerchandisingCard(item);
-    res += '</div>';
-    return res;
+const imSKUs = ['PRNCDR1501Rv','KWAVDR1601Rv','KDHRDR1601Rv'];
+const hedSKUs = ['OVTPLO1501Vo','VAMPAL1708Kh','LTSDSL1501Kh','BERMPA1609Kh','BALLPA1501Vo','CRPTOP1805Kh'];
+const nightSKUs = ['HLNDRS1505PT','JLTDRS1505PT','BKLLTS1505Je'];
+const awSKUs = ['NKSHMD1501PP','NKSHMC1512PP','FACEMK2005Ta','AWTSHT1604Je','NKSHMU1501PP','NKSHMI1501PP'];
+const menSKUs = [];
+const accSKUs = ['DPDYSF1501PT','KAGTIE1601Kh','CHMPGN1501JL'];
+
+function createShopRenderer(isCarousel) {
+    return {
+        isCarousel: isCarousel,
+        catalog: createCatalog(),
+        createShopItem: function(item) {
+            var res = '<div class="col-6 col-md-4">';
+            res += createMerchandisingCard(item, this.catalog);
+            res += '</div>';
+            return res;
+        },
+        createCarouselItem: function(item) {
+            var res = '<div class="col" style="max-width: 240px;">';
+            res += createMerchandisingCard(item, this.catalog);
+            res += '</div>';
+            return res;
+        },
+        getMerchItem: function(sku) {
+            for (var i = 0; i < merchInfo.length; i++) {
+                var res = merchInfo[i];
+                if ( res.SKU == sku ) {
+                    return res;
+                }
+            }
+            return null;
+        },
+        createCarousel: function(skus) {
+            var res = '<div class="flickity-buttons-lg flickity-buttons-offset px-lg-12" data-flickity=\'{"prevNextButtons": true, "wrapAround": false}\'>';
+            var shf = shuffle(skus);
+            for (var i = 0; i < shf.length; i++) {
+                res += this.createCarouselItem(this.getMerchItem(shf[i]));
+            }
+            res += '</div>';
+            return res;
+        },
+        createList: function(skus) {
+            var res = '<div class="container"><div class="row">';
+            var shf = shuffle(skus);
+            for (var i = 0; i < shf.length; i++) {
+                res += this.createShopItem(this.getMerchItem(shf[i]));
+            }
+            res += '</div></div>';
+            return res;
+        },
+        createSection: function(title, skus) {
+            var res = '<section class="pt-0 pb-0">';
+            res += "<h5>" + title + "</h5>";
+            if ( this.isCarousel ) {
+                res += this.createCarousel(skus);
+            } else {
+                res += this.createList(skus);
+            }
+            res += '</section>';
+            return res;
+        }
+    };
 }
-function createItems() {
-    var res = '';
-    var shf = shuffle(merchInfo);
-    for (var i = 0; i < shf.length; i++) {
-        res += createShopItem(shf[i]);
-    }
-    return res;
-}
-document.write(createItems());
+
+var renderer = createShopRenderer(false);
 </script>
-</div>
+<script>
+    document.write(renderer.createSection("Art Wear", awSKUs));
+    document.write(renderer.createSection("It's Magic", imSKUs));
+    document.write(renderer.createSection("Ce Soir", nightSKUs));
+    document.write(renderer.createSection("Happy Everyday", hedSKUs));
+    document.write(renderer.createSection("Accessories", accSKUs));
+</script>
 <p>We have just started selling our designs on the website. Over time we will expand the range of items that you can purchase here.</p>
 <p>In the meantime, whether you are ordering for yourself, or for a shop, you can buy just about anything we design by emailing us with a list of items (or follow-up questions).</p>

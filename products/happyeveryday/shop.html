@@ -1,94 +1,87 @@
 ---
 layout: shop
+lines: hed
 title: Happy Everyday Shop
 ---
-<script src="/js/pfihed20083100.js"></script>
 <script>
-function createShoppingCard(summary, images) {
-    res = '<div class="col-6 col-md-4">';
-    res += '<div class="card">'
-    + '<div class="card-img">'
-    + '<img class="card-img-top img-fluid" src="' + images[0].url + '" width="1000" height="1500">'
-    + '</div>';
-    res += '<div class="card-body px-0 pt-6 pb-4">';
-    res += '<div class="card-subtitle mb-1"><span class="sc-item" data-field="price" data-vsku="' + summary.sku +'"></span></div>';
-    if  ( summary.url !== undefined ) {
-        res += '<h6 class="card-title mb-2">' + summary.title + '<a  href="' + summary.url + '"' +  '><i class="fa fa-arrow-right ml-2"></i></a></h6>';
+    function createDisplayer() {
+        return {
+            createShoppingCard: function(summary, images) {
+                res = '<div class="col-6 col-md-4">';
+                res += '<div class="card">'
+                    + '<div class="card-img">'
+                    + '<img class="card-img-top img-fluid" src="' + images[0].url + '" width="1000" height="1500">'
+                    + '</div>';
+                res += '<div class="card-body px-0 pt-6 pb-4">';
+                res += '<div class="card-subtitle mb-1"><span class="sc-item" data-field="price" data-vsku="' + summary.sku +'"></span></div>';
+                if  ( summary.url !== undefined ) {
+                    res += '<h6 class="card-title mb-2">' + summary.title + '<a  href="' + summary.url + '"' +  '><i class="fa fa-arrow-right ml-2"></i></a></h6>';
+                }
+                //    res += '<p class="mb-1">' + summary.lede + '</p>';
+                res += '</div>';
+                res += '</div>';
+                res += '</div>';
+                return res;
+            },
+            createCards: function(fname) {
+                var brkColCls = "col-md-4";
+                var skus = hed_catalog[fname];
+                var res = '<section class="pt-5 pb-3"><div class="container"><div class="row">';
+                for (var i = 0; i < skus.length; i++) {
+                    sku = skus[i];
+                    var summary = hed_catalog.getSummary(sku);
+                    if ( summary === null ) {
+                        continue;
+                    }
+                    var prod = hed_catalog.getProduct(sku);
+                    var images = [prod.getImages(0).getImage(0),prod.getImages(0).getImage(1)];
+                    res +=  this.createShoppingCard(summary, images);
+                }
+                res += '</div></div></section>';
+                return res;
+            },
+            getBlacklist: function(fname) {
+                var blacklist = [];
+                var skus = hed_catalog[fname];
+                for (var i = 0; i < skus.length; i++) {
+                    sku = skus[i];
+                    var summary = hed_catalog.getSummary(sku);
+                    if ( summary === null ) {
+                        continue;
+                    }
+                    blacklist.push(summary.url);
+                }
+                return blacklist;
+            }
+        };
     }
-//    res += '<p class="mb-1">' + summary.lede + '</p>';
-    res += '</div>';
-    res += '</div>';
-    res += '</div>';
-    return res;
-}
 
-function createCards(fname) {
-    var brkColCls = "col-md-4";
-    var skus = hed_catalog[fname];
-    var res = '<section class="pt-5 pb-3"><div class="container"><div class="row">';
-    for (var i = 0; i < skus.length; i++) {
-        sku = skus[i];
-        var summary = hed_catalog.getSummary(sku);
-        if ( summary === null ) {
-            continue;
-        }
-        var prod = hed_catalog.getProduct(sku);
-        var images = [prod.getImages(0).getImage(0),prod.getImages(0).getImage(1)];
-        res +=  createShoppingCard(summary, images);
+    var imgSfx = ['01','04','07','08','15'];
+
+    function createBanner() {
+        var len = imgSfx.length;
+        var rndI = Math.floor(Math.random() * len);
+        var sfx = imgSfx[ rndI ];
+        return '<img class="img-fluid" src="/products/happyeveryday/mood/sld-' + sfx + '.jpg" width="1500" height="1000">';
     }
-    res += '</div></div></section>';
-    return res;
-}
-
-function getBlacklist(fname) {
-    var blacklist = [];
-    var skus = hed_catalog[fname];
-    for (var i = 0; i < skus.length; i++) {
-        sku = skus[i];
-        var summary = hed_catalog.getSummary(sku);
-        if ( summary === null ) {
-            continue;
-        }
-        blacklist.push(summary.url);
-    }
-    return blacklist;
-}
-
-var imgSfx = ['01','04','07','08','15'];
-
-function createBanner() {
-    var len = imgSfx.length;
-    var rndI = Math.floor(Math.random() * len);
-    var sfx = imgSfx[ rndI ];
-    return '<img class="img-fluid" src="/products/happyeveryday/mood/sld-' + sfx + '.jpg" width="1500" height="1000">';
-}
+    var displayer = createDisplayer();
+    var tabber = createTabber(
+        ["Pants", "Tops", "Jackets", "Dresses"],
+        ["pants", "tops", "overtops", "dresses"],
+        [displayer.createCards("pants"), displayer.createCards("tops"), displayer.createCards("overtops"), displayer.createCards("dresses")],
+        ["p", "t", "o", "d"],
+        "t",
+        "p",
+        displayer
+    );
+    tabber.enableDocumentReady();
 </script>
 <figure>
-<script>
-    document.write(createBanner());
-</script>
+    <script>
+        document.write(createBanner());
+    </script>
 </figure>
-<ul class="nav nav-tabs nav-justified">
 <script>
-    document.write(getTabItem("Pants", "pants", getUrlVars()["t"] == "p" || getUrlVars()["t"] === undefined));
-    document.write(getTabItem("Tops", "tops", getUrlVars()["t"] == "t"));
-    document.write(getTabItem("Jackets", "overtops", getUrlVars()["t"] == "o"));
-    document.write(getTabItem("Dresses", "dresses", getUrlVars()["t"] == "d"));
+    document.write(tabber.createTabbedSection());
+    pg_blacklist = pg_blacklist.concat(tabber.getBlacklist());
 </script>
-</ul>
-<div class="tab-content">
-<script>
-    document.write(getTabContent(createCards("pants"), "pants", getUrlVars()["t"] == "p" || getUrlVars()["t"] === undefined));
-    document.write(getTabContent(createCards("tops"), "tops", getUrlVars()["t"] == "t"));
-    document.write(getTabContent(createCards("overtops"), "overtops", getUrlVars()["t"] == "o"));
-    document.write(getTabContent(createCards("dresses"), "dresses", getUrlVars()["t"] == "d"));
-    
-    var blkP = getBlacklist("pants");
-    var blkT = getBlacklist("tops");
-    var blkO = getBlacklist("overtops");
-    var blkD = getBlacklist("dresses");
-    
-    var blacklist = blkP.concat(blkT).concat(blkO).concat(blkD);
-    pg_blacklist = pg_blacklist.concat(blacklist);
-</script>
-</div>
