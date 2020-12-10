@@ -412,20 +412,20 @@ const shop = {
     url: "/shop.html",
     sub: [
         {
+            title: "Art Wear",
+            url: "/products/artwear/shop.html"
+        },
+        {
+            title: "It's Magic",
+            url: "/products/itsmagic/shop.html"
+        },
+        {
             title: "Ce Soir",
             url: "/products/night/shop.html"
         },
         {
             title: "Vagabond",
             url: "/products/men/shop.html"
-        },
-        {
-            title: "Art Wear Naksha Skirt",
-            url: "/products/artwear/naksha.html?s=d"
-        },
-        {
-            title: "Handloom Face Mask",
-            url: "/products/accessories/facemask.html"
         },
         {
             title: "Happy Everyday",
@@ -504,158 +504,174 @@ function getSubEntry(item, url) {
 
 const merchInfo = [
     {
+        SKU: 'LNKFTN1501Ja',
+        ledes: [''],
+        images: [{url: '/products/holydaysreboot/Kaftan.jpg'}]
+    },
+    {
+        SKU: 'LOTSDR1501Ja',
+        ledes: [''],
+        images: [{url: '/products/holydaysreboot/Lotus.jpg'}]
+    },
+    {
+        SKU: 'NKSHDR1501Ta',
+        ledes: [''],
+        images: [{url: '/look/ramp/j201.jpg'},{url: '/people/tmribzSq.jpg'}]    },
+    {
+        SKU: 'KLGTLY1601Rv',
+        ledes: [''],
+        images: [{url: '/products/itsmagic/LightLayer.jpg'}]
+    },
+    {
+        SKU: 'KGYPST1601Rv',
+        ledes: [''],
+        images: [{url: '/products/itsmagic/GypsySet.jpg'}]
+    },
+    {
+        SKU: 'KRAJPT1601Kh',
+        ledes: [''],
+        images: [{url: '/products/itsmagic/RajPantsSq2.jpg'}]
+    },
+    {
+        SKU: 'FAIRST2011Rv',
+        ledes: [''],
+        images: [{url: '/products/itsmagic/FairySet.jpg'}]
+    },
+    {
+        SKU: 'KBALPA1601Vo',
+        ledes: [''],
+        images: [{url: '/products/itsmagic/Balloon.jpg'}]
+    },
+    {
+        SKU: 'KRAJKT1601Rv',
+        ledes: [''],
+        images: [{url: '/products/itsmagic/RajKurta.jpg'},{url: '/products/itsmagic/RajBoy.jpg'}]
+    },
+    {
+        SKU: 'YUVRTC1601Rv',
+        ledes: [''],
+        images: [{url: '/products/itsmagic/Yuvraj.jpg'}]
+    },
+    {
+        SKU: 'HLFPNT1601Kh',
+        ledes: [''],
+        images: [{url: '/products/itsmagic/HalfPant.jpg'}]
+    },
+    {
+        SKU: 'KIDIKI1501Vi',
+        ledes: [''],
+        images: [{url: '/products/itsmagic/Kidikini.jpg'}]
+    },
+    {
+        SKU: 'PRNCDR1501Rv',
+        ledes: [''],
+        images: [{url: '/products/itsmagic/Princess.jpg'}]
+    },
+    {
+        SKU: 'KWAVDR1601Rv',
+        ledes: [''],
+        images: [{url: '/products/itsmagic/Wave.jpg'}]
+    },
+    {
+        SKU: 'KDHRDR1601Rv',
+        ledes: [''],
+        images: [{url: '/products/itsmagic/Dhara.jpg'}]
+    },
+    {
         SKU: 'HLNDRS1505PT',
-        title: '',
-        url: '/products/night/helena.html',
         ledes: [''],
         images: [{url: '/look/moods/cs/helena.jpg'}]
     },
     {
         SKU: 'JLTDRS1505PT',
-        title: '',
-        url: '/products/night/juliet.html',
         ledes: [''],
         images: [{url: '/look/moods/cs/juliet.jpg'}]
     },
     {
         SKU: 'BKLLTS1505Je',
-        title: '',
-        url: '/products/night/tamora.html',
         ledes: [''],
         images: [{url: '/look/moods/cs/tamora.jpg'}]
     },
     {
         SKU: 'AWTSHT1604Je',
-        title: 'Woven Canvas T Shirt',
-        url: '/fabricartT.html',
         ledes: ['A one-of-a-kind T-shirt for that unique individual!'],
         images: [{url: '/fabricart/TShirtColl.jpg'},{url: '/fabricart/ManWhiteS.jpg'},{url: '/fabricart/GirlBlackS.jpg'}]
     },
     {
         SKU: 'NKSHMU1501PP',
-        title: 'Art Wear Naksha-Minuit',
-        url: '/products/artwear/naksha.html?s=u',
-        ledes: ["#oneofakind skirt for all ages and sizes!"],
-        images: [{url: '/people/minm.jpg'}]
+        ledes: ["Full length #oneofakind skirt for all ages and sizes!"],
+        images: [{url: '/people/minm.jpg'},{url: '/look/friends/1.jpg'}]
     },
     {
         SKU: 'NKSHMD1501PP',
-        title: 'Art Wear Naksha-Midi',
-        url: '/products/artwear/naksha.html?s=d',
         ledes: ["#oneofakind skirt for all ages and sizes!"],
-        images: [{url: '/people/mmib.jpg'},{url: '/people/slkb.jpg'},{url: '/people/ibgirl.jpg'}]
+        images: [{url: '/people/mmib.jpg'},{url: '/people/slkb.jpg'},{url: '/people/ibgirl.jpg'},{url: '/look/friends/2.jpg'},{url: '/g/look/nkshofstp.jpg'}]
     },
     {
         SKU: 'NKSHMI1501PP',
-        title: 'Art Wear Naksha-Mini',
-        url: '/products/artwear/naksha.html?s=i',
-        ledes: ["#oneofakind skirt for all ages and sizes!"],
+        ledes: ["#oneofakind mini skirt for all ages and sizes!"],
         images: [{url: '/people/EricaNaksha1.jpg'}]
     },
     {
         SKU: 'NKSHMC1512PP',
-        title: 'Art Wear Naksha-Micro',
-        url: '/products/artwear/naksha.html?s=c',
-        ledes: ["#oneofakind skirt for all ages and sizes!"],
-        images: [{url: '/people/ibpp.jpg'}]
+        ledes: ["#oneofakind micro skirt for all ages and sizes!"],
+        images: [{url: '/people/nmnibz.jpg'}]
     },
     {
         SKU: 'FACEMK2005Ta',
-        title: 'Handloom Face Mask',
-        url: '/products/accessories/facemask.html',
         ledes: ["#oneofakind facemask to keep you safe in style and comfort"],
         images: [{url: '/people/nfm01.jpg'},{url: '/people/nfm02.jpg'},{url: '/people/nfm03.jpg'}]
     },
     {
         SKU: 'DPDYSF1501PT',
-        title: 'Dip-Dye Scarf',
-        url: '/products/scarves/dipdye.html',
         ledes: ["A gorgeous example of the Tangail Weavers' Craft"],
         images: [{url: '/products/scarves/TurbanMood.jpg'},{url: '/products/scarves/ShawlMood.jpg'}]
     },
     {
         SKU: 'KAGTIE1601Kh',
-        title: 'Kagera Tie',
-        url: '/products/ties/kagera.html',
         ledes: ['Artsy, hand-woven, hand-crafted Neckwear','For the gentleman of refined taste - a two-tone khadi tie with a border of treasured tangail'],
         images: [{url: '/products/ties/Black.jpg'},{url: '/products/ties/Red.jpg'}]
     },
     {
         SKU: 'CHMPGN1501JL',
-        title: 'Champagne Bottle Bag',
-        url: "/products/home/champagnebag.html",
         ledes: ['The perfect gift bag for that exclusive vintage'],
         images: [{url: '/products/home/CBCCMD.jpg'},{url: '/products/home/CBCGMD.jpg'},{url: '/products/home/CBMBMD.jpg'}]
     },
     {
         SKU: 'CRPTOP1805Kh',
-        title: 'Crop Top',
-        url: "/products/happyeveryday/croptop.html",
         ledes: ['Basic summer top'],
         images: [{url: '/products/happyeveryday/mood/mch-1.jpg'}]
     },
     {
         SKU: 'VAMPAL1708Kh',
-        title: 'Side Slit Top',
-        url: "/products/happyeveryday/sideslit.html",
         ledes: ['Handwoven khadi to lighten up your summers'],
         images: [{url: '/products/happyeveryday/mood/mch-2.jpg'},{url: '/products/happyeveryday/mood/mch-7.jpg'}]
     },
     {
         SKU: 'OVTPLO1501Vo',
-        title: 'Long Overtop',
-        url: "/products/happyeveryday/lovertop.html",
         ledes: ['Light breezy jacket for spring'],
         images: [{url: '/products/happyeveryday/mood/mch-3.jpg'},{url: '/blog/joyofcolour/2.jpg'}]
     },
     {
         SKU: 'BERMPA1609Kh',
-        title: 'Wild Pansy Pants',
-        url: "/products/happyeveryday/bermuda.html",
         ledes: ['Casual pants to work and lounge in'],
         images: [{url: '/products/happyeveryday/mood/mch-4.jpg'}]
     },
     {
         SKU: 'LTSDSL1501Kh',
-        title: 'String Dress',
-        url: "/products/happyeveryday/shoulderstring.html",
         ledes: ['A dress that works from dawn to dusk'],
         images: [{url: '/products/happyeveryday/mood/mch-5.jpg'}]
     },
     {
         SKU: 'BALLPA1501Vo',
-        title: 'Balloon Pants',
-        url: "/products/happyeveryday/balloon.html",
         ledes: ['Everyday basics for every mood'],
         images: [{url: '/products/happyeveryday/mood/mch-6.jpg'}]
     }
 ];
 
-function createMerchandisingCard(item, catalog) {
-    var title = catalog[ item.SKU ].name;
-    var res = '<div class="card mb-2">';
-    var len = item.images.length;
-    var rndI = Math.floor(Math.random() * len);
-    var img = item.images[rndI];
-    res += '<div class="embed-responsive embed-responsive-1by1">';
-    res += '<img src="' + img.url + '" alt="' + title  + '" class="embed-responsive-item" style="object-fit: cover">';
-    res += '</div>';
-    res += '<div class="card-body px-0 pt-6 pb-4">';
-    res += '<div class="card-subtitle mb-1"><span class="sc-item" data-field="price" data-vsku="' + item.SKU +'"></span></div>';
-    if  ( item.url !== undefined ) {
-        res += '<h6 class="card-title mb-2">' + title + '<a  href="' + item.url + '"><i class="fa fa-arrow-right ml-2"></i></a></h6>';
-    }
-    len = item.ledes.length;
-    rndI = Math.floor(Math.random() * len);
-    var lede = item.ledes[rndI];
-    res += '<p class="mb-1">' + lede + '</p>';
-    res += '</div></div>';
-    return res;
-}
-
 function getHostName(url) {
     var match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
-    if (match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) {
+    if (match !== null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) {
         return match[2];
     }
     else {
@@ -696,7 +712,6 @@ function createSqPanelImageList(panelNumArr) {
     return res;
 }
 
-
 function createWovenCanvasImage() {
     var panelNums = [545,548,549,552,565,571];
     var panelImgs  =  createSqPanelImageList(panelNums);
@@ -704,27 +719,6 @@ function createWovenCanvasImage() {
     var rndI = Math.floor(Math.random() * len);
     var itm = panelImgs[rndI];
     return '<img class="d-block img-fluid" src="' + itm.imageURL +  '" alt="Woven Canvas #' + panelNums[rndI] + '">';
-}
-
-function selectFeature(section) {
-    var len = section.sub.length;
-    var rndI = Math.floor(Math.random() * len);
-    return section.sub[ rndI ];
-}
-
-function selectFeatures(sections, blacklist) {
-    var items = [];
-    var pars = [];
-    for (var i = 0; i < sections.length; i++ ) {
-        var sec = sections[ i ];
-        var sel = selectFeature(sec);
-        while (blacklist.includes(sel.url)) {
-            sel = selectFeature(sec);
-        }
-        items.push(sel);
-        pars.push(sec);
-    }
-    return [items, pars];
 }
 
 function createBreadCrumb(location) {
@@ -913,17 +907,14 @@ function getTabContent(content, id, isActive) {
         + '</div>';
 }
 
-
-function createTabber(titles, ids, contents, vals, key, defaultVal, blacklister, bl_ids) {
+function createUrlVarSelector(titles, ids, vals, key, defaultVal) {
     return {
         titles: titles,
         ids: ids,
-        contents: contents,
         vals: vals,
         key: key,
         defaultVal: defaultVal,
-        blacklister: blacklister,
-        bl_ids: bl_ids === undefined ? ids : bl_ids,
+        length: ids.length,
         toId: function(val){
             var i = this.vals.indexOf(val);
             return this.ids[i];
@@ -937,6 +928,21 @@ function createTabber(titles, ids, contents, vals, key, defaultVal, blacklister,
                 modifyUrl(this.key, this.toVal(newId));
             }
         },
+        getURLValue: function() {
+            return getUrlVars()[this.key];
+        },
+        isActive: function(i) {
+            var v = this.getURLValue();
+            var isActive = (v == this.vals[i]);
+            return isActive || (this.vals[i] == this.defaultVal ? v === undefined : false);
+        }
+    }
+}
+
+function createTabber(uvSel, cardlists) {
+    return {
+        uvSel: uvSel,
+        cardlists: cardlists,
         createTabbedSection: function() {
             return '<ul class="nav nav-tabs nav-justified">'
                 + this.createTabStrip()
@@ -946,32 +952,20 @@ function createTabber(titles, ids, contents, vals, key, defaultVal, blacklister,
         },
         createTabStrip: function() {
             var res = "";
-            var urlVal = getUrlVars()[this.key];
-            for ( var i = 0; i < this.ids.length; i++ ) {
-                var isActive = (urlVal == this.vals[i]);
-                isActive = isActive || (this.vals[i] == this.defaultVal ? urlVal === undefined : false);
-                res += getTabItem(this.titles[i], this.ids[i], isActive);
+            var urlVal = uvSel.getURLValue();
+            for ( var i = 0; i < this.uvSel.length; i++ ) {
+                var isActive = uvSel.isActive(i);
+                res += getTabItem(this.uvSel.titles[i], this.uvSel.ids[i], isActive);
             } 
             return res;
         },
         createTabContents: function() {
             var res = "";
-            var urlVal = getUrlVars()[this.key];
-            for ( var i = 0; i < this.ids.length; i++ ) {
-                var isActive = (urlVal == this.vals[i]);
-                isActive = isActive || (this.vals[i] == this.defaultVal ? urlVal === undefined : false);
-                res += getTabContent(this.contents[i], this.ids[i], isActive);
+            var urlVal = uvSel.getURLValue();
+            for ( var i = 0; i < this.uvSel.ids.length; i++ ) {
+                var isActive = uvSel.isActive(i);
+                res += getTabContent(this.cardlists[i].createHTML(), this.uvSel.ids[i], isActive);
             } 
-            return res;
-        },
-        getBlacklist: function() {
-            if ( this.blacklister === undefined || this.blacklister === null) {
-                return [];
-            }
-            var res = [];
-            for ( var i = 0; i < this.ids.length; i++ ) {
-                res = res.concat(this.blacklister.getBlacklist(this.bl_ids[i]));
-            }
             return res;
         },
         enableDocumentReady: function() {
@@ -980,67 +974,11 @@ function createTabber(titles, ids, contents, vals, key, defaultVal, blacklister,
                 $("a[data-toggle=\"tab\"]").on('shown.bs.tab', function(e){
                     var newId = $(e.target).attr("href").slice(1);
                     var oldId = $(e.relatedTarget).attr("href").slice(1);
-                    that.updateURL(oldId, newId);
+                    that.uvSel.updateURL(oldId, newId);
                 })
             });
         }
     };
-}
-
-function createFeatureItemCard(item, section) {
-    var res = '<div class="card mb-2">';
-    if ( item.imageURL !== undefined) {
-        res += '<div class="embed-responsive embed-responsive-1by1">';
-        res += '<img src="' + item.imageURL + '" alt="' + item.title  + '" class="embed-responsive-item" style="object-fit: cover">';
-        res += '</div>';
-    } else if (item.imageHTML !== undefined ) {
-        res += item.imageHTML;
-    } else if (item.imageScript !== undefined ) {
-        res += eval(item.imageScript);
-    }
-    res += '<div class="card-body px-0 pt-6 pb-4">';
-    res += '<div class="card-subtitle mb-1"><a class="text-muted" href="'  + section.url + '">' + section.title +'</a></div>';
-    if  ( item.url !== undefined ) {
-        res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"' +(getHostName(item.url) === null ? '' : ' target="_blank"') +  '><i class="fa ' + (getHostName(item.url) === null ? 'fa-arrow-right' : 'fa-external-link') + ' ml-2"></i></a></h6>';
-    }
-    res += '<p class="mb-1">' + item.lede + '</p>';
-    res += '</div></div>';
-    return res;
-}
-
-function createItemCard(item) {
-    var res = '<div class="card mb-2">';
-    if ( item.badge !== undefined ) {
-        res += '<div class="badge badge-white card-badge card-badge-left text-uppercase">' + item.badge + '</div>';
-    }
-    if ( item.imageURL !== undefined) {
-        res += '<div class="embed-responsive embed-responsive-1by1">';
-        res += '<img src="' + item.imageURL + '" alt="' + item.title  + '" class="embed-responsive-item" style="object-fit: cover">';
-        res += '</div>';
-    } else if (item.imageHTML !== undefined ) {
-        res += item.imageHTML;
-    } else if (item.imageScript !== undefined ) {
-        res += eval(item.imageScript);
-    }
-    res += '<div class="card-body px-0 pt-6 pb-4">';
-    if  (item.url !== undefined) {
-        res += '<h6 class="card-title mb-2">' + item.title + '<a  href="' + item.url + '"' +(getHostName(item.url) === null ? '' : ' target="_blank"') +  '><i class="fa ' + (getHostName(item.url) === null ? 'fa-arrow-right' : 'fa-external-link') + ' ml-2"></i></a></h6>';
-    }
-    res += '<p class="mb-1">' + item.lede + '</p>';
-    res += '</div></div>';
-    return res;
-}
-
-function createSection(pages) {
-    var brkColCls = "col-md-4";
-    var res = '<section class="pt-5 pb-3"><div class="container"><div class="row">';
-    for (var i = 0; i < pages.sub.length; i++) {
-        res += '<div class="col-12 ' + brkColCls + '">';
-        res += createItemCard(pages.sub[ i ]);
-        res += '</div>';
-    }
-    res += '</div></div></section>';
-    return res;
 }
 
 function shuffle(array) {
@@ -1055,78 +993,16 @@ function shuffle(array) {
     return array;
 }
 
-function createRelated(header, merch, items, sections, orderidxs) {
-    var catalog = createCatalog();
-    var brkColCls = "col-sm-6 col-md-3";
-    var res = '<div class="container mb-5"><section class="pt-4"><h5>' + header + '</h5><div class="row">';
-    var ordI = 0;
-    orderidxs = shuffle(orderidxs);
-    if ( merch !== null) {
-        for (var i = 0; i < merch.length && ordI < orderidxs.length; i++) {
-            res += '<div class="col-6 ' + brkColCls + " order-" + orderidxs[ordI] + '">' +  createMerchandisingCard(merch[ i ], catalog) + '</div>';
-            ordI++;
-        }
-    }
-    for (var i = 0; i < items.length && ordI < orderidxs.length; i++) {
-        res += '<div class="col-6 ' + brkColCls +  " order-" + orderidxs[ordI] + '">' +  createFeatureItemCard(items[ i ], sections[ i ]) + '</div>';
-        ordI++;
-    }
-    res += '</div></section></div>';
-    return res;
-}
-
-function pickSection(section) {
-    var len = section.length;
-    var rndI = Math.floor(Math.random() * len);
-    return section[ rndI ];
-}
-
-function selectSections() {
-    return [pickSection([atelier, origin]), pickSection([about, buzz, archives, lotm, lookbook, moods, ramp, clients])];
-}
-
-function filterMerch(skus, blacklist) {
-    var res = [];
-    for(var i = 0; i < merchInfo.length; i++) {
-        var val = merchInfo[i];
-        if (skus.includes(val.SKU)) {
-            if ( ! blacklist.includes(val.url) ) {
-                res.push(val);
-            }
-        }
-    }
-    return res;
-}
-
-function pickMerch(skus, blacklist) {
-    var flt = filterMerch(skus, blacklist);
-    var len = flt.length;
-    var rndI = Math.floor(Math.random() * len);
-    return flt[ rndI ];
-}
-
-function selectMerch(blacklist) {
-    var leftSKUs = ['OVTPLO1501Vo','VAMPAL1708Kh','LTSDSL1501Kh','DPDYSF1501PT','KAGTIE1601Kh','CHMPGN1501JL','NKSHMD1501PP','NKSHMC1512PP'];
-    var restSKUs = ['BERMPA1609Kh','BALLPA1501Vo','CRPTOP1805Kh','FACEMK2005Ta','AWTSHT1604Je','NKSHMU1501PP','NKSHMI1501PP'];
-    return [pickMerch(leftSKUs, blacklist), pickMerch(restSKUs, blacklist)];
-}
-
-function createFeatures(header, blacklist) {
-    var res = selectFeatures(selectSections(), blacklist);
-    var mch = selectMerch(blacklist);
-    return createRelated(header, mch, res[0], res[1],[1,4,7,10]);
-}
-
 function createCarousel(carId, carItems) {
     var id = "carousel-" + carId;
     var res = '<div id="' + id + '" class="carousel slide" data-ride="carousel" data-interval="2500"><ol class="carousel-indicators">';
     for (var i = 0; i < carItems.length; i++) {
-        res += '<li data-target="#' + id + '" data-slide-to="' + i + '"' + (i == 0 ? '" class="active"' : '') + '></li>';
+        res += '<li data-target="#' + id + '" data-slide-to="' + i + '"' + (i === 0 ? '" class="active"' : '') + '></li>';
     }
     res += '</ol><div class="carousel-inner">';
     for (i = 0; i < carItems.length; i++) {
         var itm = carItems[i];
-        res += '<div class="carousel-item' + (i == 0 ? ' active' : '') + '">'
+        res += '<div class="carousel-item' + (i === 0 ? ' active' : '') + '">'
             + '<img class="d-block img-fluid" src="' + itm.imageURL +  '"' +  (itm.width !== undefined ?  'width="' + itm.width +  '"' : "") +
             (itm.height !== undefined ?  'height="' + itm.height +  '"' : "") + '>'
             + '</div>';
@@ -1227,7 +1103,7 @@ return t;\
 function pfiTopMenu (location) {
     return shareInit() +
         '<div class="rwell text-center">\
-<small><strong>Distinctive Designs . Fusion Flair . Textile Treasures</strong></small>\
+<strong>✂️ Atelier creations from📍 Auroville 🇮🇳</strong>\
 </div>'+ '<div class="container p-0">' + '<div class="text-center px-3 pt-3 pb-2"><a href="/index.html"><img src="/g/pfilogo2002.svg" alt="Prema Florence Isaac" class="img-fluid" width="1000px" height="71.5px"></a></div>'
     + createTopNav() + '</div>' + createBreadCrumb(location);
 }
@@ -1235,7 +1111,7 @@ function pfiTopMenu (location) {
 function kimTopMenu (location) {
     return shareInit() +
         '<div class="rwell text-center">\
-<small><strong>Distinctive Designs . Fusion Flair . Textile Treasures</strong></small></div>'  + '<div class="container p-0">'
+<strong>✂️ Atelier creations from📍 Auroville 🇮🇳</strong></div>'  + '<div class="container p-0">'
     + '<div class="item text-center px-3 pt-3 pb-2"><a href="/kidinmi.html"><img src="/g/kimlogo.svg" alt="KidInMi" class="img-fluid" width="300px" height="139.14px"></a></div>'
     + createTopNav() + '</div>'  + createBreadCrumb(location);
 }
@@ -1282,10 +1158,6 @@ function createShareBar(location) {
         + createINBtn(location) 
         + '</span>'
         + '</div></div>';
-}
-
-function storyBrowser(blacklist) {
-    return createFeatures("Featured", blacklist);
 }
 
 function botNav(botImgTag, location) {
@@ -1502,19 +1374,18 @@ function createSM(path) {
 }
 
 module.exports = {
-    createSM: createSM,
-    createCarousel: createCarousel,
-    gaInit: gaInit,
-    gaFunnel: gaFunnel,
-    fbInit: fbInit,
-    fbFunnel: fbFunnel,
-    storyBrowser: storyBrowser,
-    kimTopMenu: kimTopMenu,
-    pfiTopMenu: pfiTopMenu,
-    kimBotMenu: kimBotMenu,
-    botMenu: botMenu,
-    scriptSrcs: scriptSrcs,
-    pfisig: pfisig,
-    getShopTop: getShopTop,
-    getShopHeader: getShopHeader
+    createSM,
+    createCarousel,
+    gaInit,
+    gaFunnel,
+    fbInit,
+    fbFunnel,
+    kimTopMenu,
+    pfiTopMenu,
+    kimBotMenu,
+    botMenu,
+    scriptSrcs,
+    pfisig,
+    getShopTop,
+    getShopHeader
 }

@@ -5,15 +5,22 @@ description: A blog about the atelier, the team, the process of creation, collab
 keywords: blog, what's new, ootd, collaborations, stories
 ---
 <script>
-    var tabber = createTabber(
+    var displayer = createStoryDisplay();
+    var uvSel = createUrlVarSelector(
         ["Atelier Tales", "My Journey", "Look Back"],
         ["atelier", "origin", "lookback"],
-        [createSection(atelier), createSection(origin), createSection(archives)],
         ["a", "o", "l"],
         "t",
         "a"
     );
+    var sections = [atelier, origin, archives];
+    var cardlists = sections.map(section => displayer.createCardlist(section));
+    var tabber = createTabber(
+        uvSel,
+        cardlists
+    );
     tabber.enableDocumentReady();
+    cardlists.forEach(function(sR){pfiavG.pageIdx.included.pages = pfiavG.pageIdx.included.pages.concat(sR.cardRefs);})
 </script>
 <ul class="nav nav-tabs nav-justified">
 <script>

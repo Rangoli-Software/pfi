@@ -11,7 +11,7 @@ permalink: "<%- page.inputPath.substring(1) %>"
 <% } %>
 </head>
 <body>
-<script>var pg_blacklist = [<%- "'" + page.inputPath.substring(1) + "'" %>];</script>
+<script>pfiavG.pageIdx = createPageIndex(<%- "'" + page.inputPath.substring(1) + "'" %>);</script>
 <% if ( locals.prerender ) { %>
 <%- pfi.getShopHeader() %>
 <% } else { %>
@@ -48,7 +48,7 @@ permalink: "<%- page.inputPath.substring(1) %>"
     $(document).ready(onDocumentReady);
 </script>
 </div>
-<script> document.write(storyBrowser(pg_blacklist)); </script>
+<script> document.write(pfiavG.pageIdx.createFeatures()); </script>
 <% if ( locals.prerender ) { %>
 <% if ( locals.brand ) { %>
 <%- pfi.kimBotMenu(page.inputPath.substring(1)) %>

@@ -1,83 +1,99 @@
 ---
 layout: shop
 display: true
+lines: all
 title: Shop by Line
 description: Buy our creations online!
 keywords: shop, catalog, online shopping,
 ---
 <script>
-const imSKUs = ['PRNCDR1501Rv','KWAVDR1601Rv','KDHRDR1601Rv'];
-const hedSKUs = ['OVTPLO1501Vo','VAMPAL1708Kh','LTSDSL1501Kh','BERMPA1609Kh','BALLPA1501Vo','CRPTOP1805Kh'];
-const nightSKUs = ['HLNDRS1505PT','JLTDRS1505PT','BKLLTS1505Je'];
-const awSKUs = ['NKSHMD1501PP','NKSHMC1512PP','FACEMK2005Ta','AWTSHT1604Je','NKSHMU1501PP','NKSHMI1501PP'];
-const menSKUs = [];
-const accSKUs = ['DPDYSF1501PT','KAGTIE1601Kh','CHMPGN1501JL'];
+    const accSKUs = ['DPDYSF1501PT','KAGTIE1601Kh','CHMPGN1501JL'];
 
-function createShopRenderer(isCarousel) {
-    return {
-        isCarousel: isCarousel,
-        catalog: createCatalog(),
-        createShopItem: function(item) {
-            var res = '<div class="col-6 col-md-4">';
-            res += createMerchandisingCard(item, this.catalog);
-            res += '</div>';
-            return res;
-        },
-        createCarouselItem: function(item) {
-            var res = '<div class="col" style="max-width: 240px;">';
-            res += createMerchandisingCard(item, this.catalog);
-            res += '</div>';
-            return res;
-        },
-        getMerchItem: function(sku) {
-            for (var i = 0; i < merchInfo.length; i++) {
-                var res = merchInfo[i];
-                if ( res.SKU == sku ) {
-                    return res;
+    function createCarouselShopRndr() {
+        return {
+            maxN: 6,
+            miPageSet: pfiavG.pageIdx.miPageSet,
+            createSection: function(title, skus) {
+                var res = '<section class="pt-0 pb-0">';
+                res += "<h5>" + title + "</h5>";
+                res += '<div class="flickity-buttons-lg flickity-buttons-offset px-lg-12" data-flickity=\'{"prevNextButtons": true, "wrapAround": false}\'>';
+                var shf = shuffle(skus);
+                for (var i = 0; i < shf.length && i < this.maxN; i++) {
+                    var itm = this.miPageSet.select('SKU', shf[i]);
+                    var item = createMerchandisingRef(itm);
+                    item.setRandImg();
+                    res += '<div class="col" style="max-width: 240px;">';
+                    res += item.createCard();
+                    res += '</div>';
                 }
+                res += '</div>';
+                res += '</section>';
+                return res;
             }
-            return null;
-        },
-        createCarousel: function(skus) {
-            var res = '<div class="flickity-buttons-lg flickity-buttons-offset px-lg-12" data-flickity=\'{"prevNextButtons": true, "wrapAround": false}\'>';
-            var shf = shuffle(skus);
-            for (var i = 0; i < shf.length; i++) {
-                res += this.createCarouselItem(this.getMerchItem(shf[i]));
-            }
-            res += '</div>';
-            return res;
-        },
-        createList: function(skus) {
-            var res = '<div class="container"><div class="row">';
-            var shf = shuffle(skus);
-            for (var i = 0; i < shf.length; i++) {
-                res += this.createShopItem(this.getMerchItem(shf[i]));
-            }
-            res += '</div></div>';
-            return res;
-        },
-        createSection: function(title, skus) {
-            var res = '<section class="pt-0 pb-0">';
-            res += "<h5>" + title + "</h5>";
-            if ( this.isCarousel ) {
-                res += this.createCarousel(skus);
-            } else {
-                res += this.createList(skus);
-            }
-            res += '</section>';
-            return res;
-        }
-    };
-}
+        };
+    }
 
-var renderer = createShopRenderer(false);
-</script>
-<script>
-    document.write(renderer.createSection("Art Wear", awSKUs));
-    document.write(renderer.createSection("It's Magic", imSKUs));
-    document.write(renderer.createSection("Ce Soir", nightSKUs));
-    document.write(renderer.createSection("Happy Everyday", hedSKUs));
-    document.write(renderer.createSection("Accessories", accSKUs));
+    function createShopRenderer() {
+        return {
+            maxN: 6,
+            miPageSet: pfiavG.pageIdx.miPageSet,
+            createCardRefs: function(skus) {
+                var shf = shuffle(skus);
+                var res = [];
+                for (var i = 0; i < shf.length && i < this.maxN; i++) {
+                    var item = this.miPageSet.select('SKU', shf[i]);
+                    var cardRef = createMerchandisingRef(item);
+                    cardRef.setRandImg();
+                    res.push(cardRef);
+                }
+                return res;
+            },
+            createSectionRenderer: function(title, shopURL, skus) {
+                var cr = this.createCardRefs(skus);
+                return {
+                    title: title,
+                    url: shopURL,
+                    cardRefs: cr,
+                    createList: function() {
+                        var res = '<div class="row">';
+                        for( var i = 0; i < this.cardRefs.length; i ++) {
+                            res += '<div class="col-6 col-md-4">';
+                            res += this.cardRefs[i].createCard();
+                            res += '</div>';
+                        }
+                        res += '</div>';
+                        return res;
+                    },
+                    createHTML: function() {
+                        var res = '<section class="pt-0 pb-0">';
+                        res += "<h5>" + this.title + "</h5>";
+                        res += this.createList();
+                        if ( this.url !== null ) {
+                            res += "<p><big>Browse all <strong>" + this.title + '</strong><a  href="' + this.url + '"><i class="fa fa-arrow-right ml-2"></i></a></big></p>';
+                        }
+                        res += '</section>';
+                        return res;
+                    }
+                };
+            }
+        };
+    }
+
+    var lineCatalogs = [artwear.catalog, itsmagic.catalog, cesoir.catalog, happyED.catalog];
+    var mipsInCats = lineCatalogs.map(c => pfiavG.pageIdx.miPageSet.filter(function(page){return c.skus.includes(page.SKU)}).pages)
+    var skus = mipsInCats.map(list => list.map(p=>p.SKU));
+    var titles = lineCatalogs.map(c => c.title);
+    var shopURLs = lineCatalogs.map(c => c.shopURL);
+
+    titles.push("Extras");
+    skus.push(accSKUs);
+    shopURLs.push(null);
+
+    var shopR = createShopRenderer();
+    var secRs = titles.map((t, i) => shopR.createSectionRenderer(t, shopURLs[i], skus[i]));
+
+    secRs.forEach(sR => document.write(sR.createHTML()));
+    secRs.forEach(function(sR){pfiavG.pageIdx.included.pages = pfiavG.pageIdx.included.pages.concat(sR.cardRefs);})
 </script>
 <p>We have just started selling our designs on the website. Over time we will expand the range of items that you can purchase here.</p>
 <p>In the meantime, whether you are ordering for yourself, or for a shop, you can buy just about anything we design by emailing us with a list of items (or follow-up questions).</p>

@@ -7,7 +7,7 @@ permalink: "<%- page.inputPath.substring(1) %>"
 <% include partials/head %>
 </head>
 <body>
-<script>var pg_blacklist = [<%- "'" + page.inputPath.substring(1) + "'" %>];</script>
+<script>pfiavG.pageIdx = createPageIndex(<%- "'" + page.inputPath.substring(1) + "'" %>);</script>
 <% if ( locals.prerender ) { %>
 <%- pfi.getShopHeader() %>
 <%- pfi.pfiTopMenu(page.inputPath.substring(1)) %>
@@ -34,7 +34,7 @@ permalink: "<%- page.inputPath.substring(1) %>"
     $(document).ready(onDocumentReady);
 </script>
 </div>
-<script> document.write(storyBrowser(pg_blacklist)); </script>
+<script> document.write(createFeatureSection()); </script>
 <% if ( locals.prerender ) { %>
 <%- pfi.botMenu(page.inputPath.substring(1)) %>
 <%- pfi.scriptSrcs() %>

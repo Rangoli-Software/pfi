@@ -1,25 +1,29 @@
 ---
 layout: shop
-title: Preview of all Site Cards
+display: true
+title: Preview of all Site Merchandising Cards
 ---
 <div class="row">
 <script>
 function createShopItem(item) {
-    var res = '<div class="col-6 col-md-4">';
-    res += createMerchandisingCard(item);
-    res += '</div>';
+    var ref = createMerchandisingRef(item);
+    var res = '';
+    for (var i = 0; i < item.images.length; i++ ) {
+        ref.setImg(i);
+        ref.setRandLede();
+        res += '<div class="col-6 col-md-4">';
+        res += ref.createCard();
+        res += '</div>';
+    }
     return res;
 }
 function createItems() {
     var res = '';
-    var shf = shuffle(merchInfo);
-    for (var i = 0; i < shf.length; i++) {
-        res += createShopItem(shf[i]);
+    var mips = JSON.parse(JSON.stringify(pfiavG.pageIdx.miPageSet.pages));
+    for (var i = 0; i < mips.length; i++) {
+        res += createShopItem(mips[i]);
     }
     return res;
 }
 document.write(createItems());
 </script>
-</div>
-<p>We have just started selling our designs on the website. Over time we will expand the range of items that you can purchase here.</p>
-<p>In the meantime, whether you are ordering for yourself, or for a shop, you can buy just about anything we design by emailing us with a list of items (or follow-up questions).</p>

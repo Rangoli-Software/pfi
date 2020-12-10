@@ -1,83 +1,20 @@
 ---
 layout: shop
+display: true
 brand: kidinmi
 lines: itsmagic
 title: It's Magic Shop
 ---
 <script>
-    function createCatalogDisplay(catalog) {
-        return {
-            catalog: catalog,
-            createShoppingCard: function(prod, images) {
-                res = '<div class="col-6 col-md-4">';
-                res += '<div class="card">'
-                    + '<div class="card-img">'
-                    + '<img class="card-img-top card-img-front img-fluid" src="' + images[0].url + '" width="1000" height="1500">'
-                    + '</div>';
-                res += '<div class="card-body px-0 pt-6 pb-4">';
-                res += '<div class="card-subtitle mb-1"><span class="sc-item" data-field="price" data-vsku="' + prod.product.sku +'"></span></div>';
-                if  ( prod.product.url !== undefined ) {
-                    res += '<h6 class="card-title mb-2">' + prod.product.name + '<a  href="' + prod.product.url + '"' +  '><i class="fa fa-arrow-right ml-2"></i></a></h6>';
-                }
-                res += '</div>';
-                res += '</div>';
-                res += '</div>';
-                return res;
-            },
-            getMerchItem: function(sku) {
-                for (var i = 0; i < merchInfo.length; i++) {
-                    var res = merchInfo[i];
-                    if ( res.SKU == sku ) {
-                        return res;
-                    }
-                }
-                return null;
-            },
-            createCards: function(fname) {
-                var brkColCls = "col-md-4";
-                var skus = this.catalog[fname];
-                var res = '<section class="pt-5 pb-3"><div class="container"><div class="row">';
-                for (var i = 0; i < skus.length; i++) {
-                    sku = skus[i];
-                    var prod = this.catalog.getProduct(sku);
-                    var merch = this.getMerchItem(sku);
-                    var images = merch.images;
-                    res +=  this.createShoppingCard(prod, images);
-                }
-                res += '</div></div></section>';
-                return res;
-            },
-            getBlacklist: function(fname) {
-                var blacklist = [];
-                var skus = this.catalog[fname];
-                for (var i = 0; i < skus.length; i++) {
-                    sku = skus[i];
-                    var prod = this.catalog.getProduct(sku);
-                    blacklist.push(prod.url);
-                }
-                return blacklist;
-            }
-        }
-    }
-
-    var displayer = createCatalogDisplay(itsmagic.catalog);
-/*
+    var displayer = createCatalogDisplay(itsmagic.catalog, true);
+    var categorizer = itsmagic.categorizer;
+    var uvSel = categorizer.createUrlVarSelector();
+    var cardlists = uvSel.ids.map(id => displayer.createCardlist(id));
     var tabber = createTabber(
-        ["Girls", "Boys"],
-        ["girls", "boys"],
-        [displayer.createCards("girls"), displayer.createCards("boys")],
-        ["g", "b"],
-        "t",
-        "g",
-        displayer
+        uvSel,
+        cardlists
     );
     tabber.enableDocumentReady();
     document.write(tabber.createTabbedSection());
-    pg_blacklist = pg_blacklist.concat(tabber.getBlacklist());
-*/
+    cardlists.forEach(function(sR){pfiavG.pageIdx.included.pages = pfiavG.pageIdx.included.pages.concat(sR.cardRefs);})
 </script>
-<section>
-<script>
-    document.write(displayer.createCards("girls"));
-</script>
-</section>

@@ -1,40 +1,26 @@
 <script>
-    var prodData = {
-        imageFile: "sizing.jpg",
-        dimensionNames: ["A. Width", "B. Height"],
-        dimensionsCm: {
-            Free: [
-                29,
-                15,
-            ]
-        },
-        data: [{
-            vid: "CW1",
-            images: ["nfm01", "b-f", "b-b", "b-l", "many-1"]
-        }],
-        sizes: ['Free'],
-        description: 'The fabric for these face masks come from my <a href="/journey/treasuretrove.html">Treasure Trove</a> of Tangail sari offcuts, hand-woven in the finest cotton and silk. Each mask features a lining and a pocket in hand-woven khadi cotton in a contrasting colour. The elastic ear bands will help the mask fit firmly and provide full coverage from nose to chin. The 3 layers avoid heat-trapping while keeping you safe in style and comfort. You can fill the pocket / sleeve with your own surgical mask / filter, herbs or a pad with a few drops of essential oil. One size fits most.',
-        garmentDetails: '<ul><li>each #artwear mask is <strong>unique - one-of-a-kind</strong></li><li>Outer layer of <a href="/journey/treasuretrove.html">vintage Tangail</a></li><li>2 inner layers of soft washed Khadi</li><li>Universal Size</li><li>Ear-loops of fabric-covered elastic</li><li>Full coverage from nose to chin</li><li>Non-surgical - but has pocket / sleeve to insert surgical filter</li><li>Washable and re-usable</li><li>No returns or exchanges</li><li>Scroll down to shop individual masks</li></ul>',
-    }
-    
-    const washcareHTML = "<ul><li>Wash before first use</li><li>Do not soak</li><li>Hand Wash</li><li>Mild Detergent</li><li>Do Not Bleach</li><li>Dry In Shade</li></ul>";
-
-    const shippingHTML = getShippingInfoUL(['If the item is in stock, it will be ready to ship within 1 business day of your order.']);
+    var thisProduct = artwear.facemask;
 
     var browseInfo = createBrowseInfo(
         [
-            [[origin, '/journey/artwear.html'],[origin, '/journey/treasuretrove.html']],[[clients, '/look/gg.html']]
+            [
+                [origin, '/journey/artwear.html'],
+                [origin, '/journey/treasuretrove.html']
+            ],
+            [
+                [clients, '/look/gg.html']
+            ]
         ],
-        [1,1],
-        pg_blacklist
+        [1, 1],
+        null
     );
-    pg_blacklist = pg_blacklist.concat(browseInfo.getFlattenedURLs());
 
-    const productCatalog = getProductCatalog();
+    const productCatalog = pfiavG.productCatalog;
 
-    var sku = 'FACEMK2005Ta';
-    var factory = getFaceMaskFactory(sku);
-    var prodJSON = createUIProductJSON(sku,factory.base, prodData, null);
+    var sku = thisProduct.SKU;
+    var factory = thisProduct.getFactory(sku);
+    var prodJSON = createUIProductJSON(sku, factory.base, thisProduct.prodData, null);
+
     var detailViewer = createHTMLViewer(prodJSON.skuInfo.garmentDetails);
     var storyViewer = browseInfo.getStoryViewer();
     var viewerFactory = {
@@ -47,15 +33,26 @@
         },
         create: function() {
             return createCatenatedViewer([detailViewer, storyViewer]);
+        },
+        createNavHelper: function() {
+            return createNavHelper(prodJSON, artwear.categorizer, artwear.catalog.title);
         }
     };
     var cardCreator = createUICardCreator();
     var componentGenerator = createComponentGenerator(
         factory, prodJSON, viewerFactory,
-        createColSelData(factory.base,[
-                {colourName: 'Neutral', image: 'neutrals-sm'},
-                {colourName: 'Purple to Yellow', image: 'v-to-y-sm'},
-                {colourName: 'Green to Violet', image: 'g-to-i-sm'}
+        createColSelData(factory.base, [{
+                colourName: 'Neutral',
+                image: 'neutrals-sm'
+            },
+            {
+                colourName: 'Purple to Yellow',
+                image: 'v-to-y-sm'
+            },
+            {
+                colourName: 'Green to Violet',
+                image: 'g-to-i-sm'
+            }
         ]),
         true,
         cardCreator,
@@ -72,31 +69,43 @@
 
     $(document).ready(onDocumentReady);
     document.write(productComponent.getSizeModal());
+
 </script>
 <section>
     <div class="container">
         <script>
             document.write(productComponent.createProductDiv(0, 0));
+
         </script>
     </div>
 </section>
 <h6>Buy Now</h6>
 <p>These are the individual masks that are currently available for sale. Use the colour selector to look for specific matching colours.</p>
-<form><div class="row align-items-center">
-<div class="col-12 col-md-4 text-center">
-    <script>document.write(sizeSelector.createDiv(0));</script>
-</div>
-<div class="col-12 col-md-8 text-center">
-    <script>document.write(itemCategorySelector.createDiv(itemCategorySelector.categories.getFirstNonEmptyIdx(),0));</script>
-</div>
-</div></form>
+<form>
+    <div class="row align-items-center">
+        <div class="col-12 col-md-4 text-center">
+            <script>
+                document.write(sizeSelector.createDiv(0));
+
+            </script>
+        </div>
+        <div class="col-12 col-md-8 text-center">
+            <script>
+                document.write(itemCategorySelector.createDiv(itemCategorySelector.categories.getFirstNonEmptyIdx(), 0));
+
+            </script>
+        </div>
+    </div>
+</form>
 <script>
     document.write(itemsComponent.createDiv());
+
 </script>
 <script>
     document.write(renderProductDetails(
-        '<p>'+ prodJSON.skuInfo.description + '</p>',
+        '<p>' + prodJSON.skuInfo.description + '</p>',
         null,
         washcareHTML,
         shippingHTML));
+
 </script>

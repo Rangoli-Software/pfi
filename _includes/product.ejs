@@ -37,7 +37,7 @@ function onSKUChange(sku) {
     pageComponent.onSKUChange(sku);
 }
 </script>
-<script>var pg_blacklist = [<%- "'" + page.inputPath.substring(1) + "'" %>];</script>
+<script>pfiavG.pageIdx = createPageIndex(<%- "'" + page.inputPath.substring(1) + "'" %>);</script>
 <% if ( locals.prerender ) { %>
 <%- pfi.getShopHeader() %>
 <% } else { %>
@@ -64,7 +64,7 @@ function onSKUChange(sku) {
 <% } %>
 <%- content %>
 </div>
-<script> document.write(storyBrowser(pg_blacklist)); </script>
+<script> document.write(pfiavG.pageIdx.createFeatures()); </script>
 <% if ( locals.prerender ) { %>
 <% if ( locals.brand ) { %>
 <%- pfi.kimBotMenu(page.inputPath.substring(1)) %>

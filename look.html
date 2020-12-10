@@ -5,15 +5,21 @@ description: Looks that feature my garments
 keywords: ootd, potd, lotd
 ---
 <script>
-    var tabber = createTabber(
+    var displayer = createStoryDisplay();
+    var uvSel = createUrlVarSelector(
         ["Prema", "Friends", "Ramp", "Moods"],
         ["look", "friends", "ramp", "moods"],
-        [createSection(lotm), createSection(clients), createSection(ramp), createSection(moods)],
         ["p", "f", "r", "m"],
         "t",
-        "p"
+        "p");
+    var sections = [lotm, clients, ramp, moods];
+    var cardlists = sections.map(section => displayer.createCardlist(section));
+    var tabber = createTabber(
+        uvSel,
+        cardlists
     );
     tabber.enableDocumentReady();
+    cardlists.forEach(function(sR){pfiavG.pageIdx.included.pages = pfiavG.pageIdx.included.pages.concat(sR.cardRefs);})
 </script>
 <ul class="nav nav-tabs nav-justified">
 <script>

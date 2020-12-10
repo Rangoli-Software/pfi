@@ -1,0 +1,73 @@
+---
+layout: product
+lines: naksha
+funnel: ViewContent
+title: Naksha Skirt
+description: Our Art Wear Naksha Skirt. Each piece is one of a kind.
+keywords: skirt, vintage sari border, fabric art, artwear, women's wear
+---
+<script>
+    var browseInfo = createBrowseInfo(
+        [
+            [[origin, '/journey/artwear.html'],[origin, '/journey/salsa.html'],[clients, '/people/resortwear.html']],[[clients, '/people/artwear.html'],[clients, '/people/curators.html']]
+        ],
+        [1,1],
+        null
+    );
+//    pg_blacklist = pg_blacklist.concat(browseInfo.getFlattenedURLs());
+
+    var uicFactory = createUICFactory(
+        nakshaFactory,
+        createColSelData('/products/artwear/skirts/',[
+            {colourName: 'Neutral', image: 'neutral'},
+            {colourName: 'Purple to Yellow', image: 'v-to-y'},
+            {colourName: 'Green to Violet', image: 'g-to-i'},
+        ]),
+        createProdData,
+        browseInfo,
+        nkshSizing
+    );
+
+    var c = nakshaFactory.urlModifier.getCodeOrDefault();
+    nakshaFactory.urlModifier.updateURL(c);
+    var sku = nakshaFactory.encoder.toSKU(c)
+
+    var icGen = uicFactory.createGenerator(sku);
+    var itemsComponent = icGen.createUIC(loadShopWithParam());
+    var itemCategorySelector = itemsComponent.itemCategorySelector;
+    var sizeSelector = itemsComponent.sizeSelector;
+    const pageComponent = createUIPageComponent(pfiavG.productCatalog, itemsComponent, uicFactory);
+
+    var productComponent = itemsComponent.productComponent;
+    var dimensioner = productComponent.sizePanelr.dimensioner;
+
+    $(document).ready(onDocumentReady);
+    document.write(productComponent.getSizeModal());
+</script>
+<section>
+    <div class="container">
+        <script>
+            document.write(productComponent.createProductDiv(0, 0));
+        </script>
+    </div>
+</section>
+<h6>Buy Now</h6>
+<p>These are the individual skirts that are currently available for sale. Use the colour selector to look for specific matching colours.</p>
+<form><div class="row align-items-center">
+<div class="col-12 col-md-4 text-center">
+    <script>document.write(sizeSelector.createDiv(0));</script>
+</div>
+<div class="col-12 col-md-8 text-center">
+    <script>document.write(itemCategorySelector.createDiv(itemCategorySelector.categories.getFirstNonEmptyIdx(),0));</script>
+</div>
+</div></form>
+<script>
+    document.write(itemsComponent.createDiv());
+</script>
+<script>
+    document.write(renderProductDetails(
+        '<p>'+ icGen.prodJSON.skuInfo.description + '</p>',
+        null,
+        washcareHTML,
+        shippingHTML));
+</script>

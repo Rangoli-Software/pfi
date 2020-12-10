@@ -18,7 +18,7 @@ function createLookRow(i) {
     res += '<p>';
     for (var i =  0; i < styles.length; i++) {
         var sty = styles[i];
-        var entry = getProductCatalog().getProduct(sty);
+        var entry = pfiavG.productCatalog.getProduct(sty);
         if ( i > 0 ) {
             res += ' &amp; '
         }

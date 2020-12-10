@@ -1,10 +1,10 @@
 <script>
-const prodJSON = vb_catalog.getProduct(prodSKU);
+const prodJSON = vagabond.catalog.getProduct(prodSKU);
 const sc = prodJSON.skuInfo.getSizeChart();
 const sizer = sc !== null ? createSizeChartr(sc) : null;
 const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath);
-var rendererFactory = createVBComponentFactory(prodJSON, dimensioner, sizer, vb_catalog);
-const pageComponent = createPageComponent(prodJSON, getProductCatalog(), rendererFactory);
+var rendererFactory = vagabond.createComponentFactory(prodJSON, dimensioner, sizer, vagabond.categorizer);
+const pageComponent = createPageComponent(prodJSON, pfiavG.productCatalog, rendererFactory);
 
 $(document).ready(onDocumentReady);
 </script>

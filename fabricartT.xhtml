@@ -479,7 +479,7 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
                 this.updateItemPrices();
             },
             getFilteredPanels(valColour, valSize) {
-                var product = getProductCatalog().getProduct(TSHIRT_SKU);
+                var product = pfiavG.productCatalog.getProduct(TSHIRT_SKU);
                 var panels = createPanelsObject(colListData, product);
 
                 var unsold = panels.filterUnsoldPanels();
@@ -495,7 +495,7 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
         let searchParams = new URLSearchParams(window.location.search);
         var cur = searchParams.has('cur') ? searchParams.get('cur') : null;
         let shop = loadShop(cur);
-        pageComponent = createPageComponent(getProductCatalog());
+        pageComponent = createPageComponent(pfiavG.productCatalog);
         pageComponent.init(shop);
     }
 

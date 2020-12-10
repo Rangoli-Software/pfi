@@ -1,6 +1,6 @@
 ---
 layout: product
-lines: naksha
+lines: aw
 funnel: ViewContent
 title: Naksha Skirt
 description: Our Art Wear Naksha Skirt. Each piece is one of a kind.
@@ -12,31 +12,28 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
             [[origin, '/journey/artwear.html'],[origin, '/journey/salsa.html'],[clients, '/people/resortwear.html']],[[clients, '/people/artwear.html'],[clients, '/people/curators.html']]
         ],
         [1,1],
-        pg_blacklist
+        null
     );
-    pg_blacklist = pg_blacklist.concat(browseInfo.getFlattenedURLs());
+//    pg_blacklist = pg_blacklist.concat(browseInfo.getFlattenedURLs());
 
-    var uicFactory = createUICFactory(
-        nakshaFactory,
+    var uicFactory = naksha.createUICFactory(naksha,
         createColSelData('/products/artwear/skirts/',[
             {colourName: 'Neutral', image: 'neutral'},
             {colourName: 'Purple to Yellow', image: 'v-to-y'},
             {colourName: 'Green to Violet', image: 'g-to-i'},
         ]),
-        createProdData,
-        browseInfo,
-        nkshSizing
+        browseInfo
     );
 
-    var c = nakshaFactory.urlModifier.getCodeOrDefault();
-    nakshaFactory.urlModifier.updateURL(c);
-    var sku = nakshaFactory.encoder.toSKU(c)
+    var c = naksha.urlUpdater.urlModifier.getCodeOrDefault();
+    naksha.urlUpdater.urlModifier.updateURL(c);
+    var sku = naksha.urlUpdater.encoder.toSKU(c)
 
     var icGen = uicFactory.createGenerator(sku);
     var itemsComponent = icGen.createUIC(loadShopWithParam());
     var itemCategorySelector = itemsComponent.itemCategorySelector;
     var sizeSelector = itemsComponent.sizeSelector;
-    const pageComponent = createUIPageComponent(getProductCatalog(), itemsComponent, uicFactory);
+    const pageComponent = createUIPageComponent(pfiavG.productCatalog, itemsComponent, uicFactory);
 
     var productComponent = itemsComponent.productComponent;
     var dimensioner = productComponent.sizePanelr.dimensioner;
@@ -68,6 +65,6 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
     document.write(renderProductDetails(
         '<p>'+ icGen.prodJSON.skuInfo.description + '</p>',
         null,
-        washcareHTML,
-        shippingHTML));
+        naksha.washcareHTML,
+        naksha.shippingHTML));
 </script>

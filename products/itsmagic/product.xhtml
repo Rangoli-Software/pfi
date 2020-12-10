@@ -2,8 +2,8 @@
 const prodJSON = itsmagic.catalog.getProduct(prodSKU);
 const sizer = null;
 const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath);
-var rendererFactory = itsmagic.createComponentFactory(prodJSON, dimensioner, sizer, itsmagic.catalog);
-const pageComponent = createPageComponent(prodJSON, getProductCatalog(), rendererFactory);
+var rendererFactory = itsmagic.createComponentFactory(prodJSON, dimensioner, sizer, itsmagic.categorizer);
+const pageComponent = createPageComponent(prodJSON, pfiavG.productCatalog, rendererFactory);
 
 $(document).ready(onDocumentReady);
 </script>
@@ -20,11 +20,11 @@ document.write(productComponent.createProductDiv(0, 0));
 </section>
 <script>
  document.write(renderProductDetails(
-     '<p>'+ prodJSON.skuInfo.description + '</p>',
+     null,
      '<ul>'
      + prodJSON.skuInfo.garmentDetails
      + '</ul>',
-     khadi_washcareHTML,
-     pret_shippingHTML
+     itsmagic.washcareHTML,
+     itsmagic.shippingHTML
  ));
 </script>

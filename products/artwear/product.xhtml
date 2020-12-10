@@ -1,0 +1,88 @@
+<script>
+    browseInfo = createBrowseInfo(
+        [
+            [
+                [origin, '/journey/artwear.html']
+            ],
+            [
+                [ramp, '/look/bc.html']
+            ]
+        ],
+        [1, 1],
+        null
+    );
+    const productCatalog = pfiavG.productCatalog;
+
+    var sku = thisProduct.SKU;
+    var factory = thisProduct.getFactory(sku);
+    var prodJSON = createUIProductJSON(sku, factory.base, thisProduct.prodData, thisProduct.sizing);
+
+    var detailViewer = createHTMLViewer(prodJSON.skuInfo.garmentDetails);
+    var storyViewer = browseInfo.getStoryViewer();
+    var viewerFactory = {
+        prodJSON: prodJSON,
+        createPre: function() {
+            return createEmptyViewer();
+        },
+        createBase: function(shop) {
+            return createBasePanelr(shop, this.prodJSON.product);
+        },
+        create: function() {
+            return createCatenatedViewer([detailViewer, storyViewer]);
+        },
+        createNavHelper: function() {
+            return createNavHelper(this.prodJSON, artwear.categorizer, artwear.catalog.title);
+        }
+    };
+    var cardCreator = thisProduct.createCardCreator();
+    var componentGenerator = createComponentGenerator(
+        factory, prodJSON, viewerFactory,
+        createColSelData(factory.base, []),
+        true,
+        cardCreator,
+        artwear.modelTxt
+    );
+
+    var itemsComponent = componentGenerator.createUIC(loadShopWithParam());
+    var itemCategorySelector = itemsComponent.itemCategorySelector;
+    var sizeSelector = itemsComponent.sizeSelector;
+    const pageComponent = createUIPageComponent(productCatalog, itemsComponent);
+
+    var productComponent = itemsComponent.productComponent;
+
+    $(document).ready(onDocumentReady);
+    document.write(productComponent.getSizeModal());
+
+</script>
+<section>
+    <div class="container">
+        <script>
+            document.write(productComponent.createProductDiv(0, 0));
+
+        </script>
+    </div>
+</section>
+<h6>Buy Now</h6>
+<p></p>
+<form>
+    <div class="row align-items-center">
+        <div class="col-12 text-center">
+            <script>
+                document.write(sizeSelector.createDiv(0));
+
+            </script>
+        </div>
+    </div>
+</form>
+<script>
+    document.write(itemsComponent.createDiv());
+
+</script>
+<script>
+    document.write(renderProductDetails(
+        '<p>' + prodJSON.skuInfo.description + '</p>',
+        null,
+        artwear.washcareHTML,
+        thisProduct.shippingHTML));
+
+</script>

@@ -1,9 +1,9 @@
 <script>
-const prodJSON = hed_catalog.getProduct(prodSKU);
+const prodJSON = happyED.catalog.getProduct(prodSKU);
 const sizer = createSizeChartr(prodJSON.skuInfo.getSizeChart());
 const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath);
-var rendererFactory = createHEDComponentFactory(prodJSON, dimensioner, sizer, hed_lookbook, hed_catalog, getProductCatalog());
-const pageComponent = createPageComponent(prodJSON, getProductCatalog(), rendererFactory);
+var rendererFactory = happyED.createComponentFactory(prodJSON, dimensioner, sizer, hed_lookbook, happyED.categorizer, pfiavG.productCatalog);
+const pageComponent = createPageComponent(prodJSON, pfiavG.productCatalog, rendererFactory);
 
 $(document).ready(onDocumentReady);
 </script>
