@@ -122,17 +122,6 @@ function createShop(version, metric, currency, currencyString) {
 			}
 			return tot;
 		},
-		getTotalWithOffer: function (cart) {
-			var offer = cart.offer;
-			if (offer === undefined) {
-				return this.getTotal(cart);
-			}
-			var tot = 0.0;
-			for (var i = 0; i < cart.items.length; i++) {
-				tot += this.getItemVal(offer.applyToItem(cart.items[i]));
-			}
-			return tot;
-		},
 		getItemVal: function (item) {
 			return this.fromINR(item.price * item.quantity)
 		},
@@ -412,6 +401,7 @@ function createOffer(code, discountPercentage) {
 			}
 			var res = createCart(cart.version, items);
 			res.offer = this;
+			res.unpromotedcart = cart;
 			return res;
 		}
 	}
@@ -774,9 +764,6 @@ function createFinalizeComponent(componentId, shop, cart, allCartC) {
 			this.allCartC.setShippingCalc(shippingCalc);
 			this.updateUI();
 		},
-		setCodeFieldHelp: function(){
-			
-		},
 		onApplyPromo: function () {
 			var that = this;
 			var code = this.getOfferCodeField();
@@ -838,9 +825,6 @@ function createFinalizeComponent(componentId, shop, cart, allCartC) {
 			$(idString).on('show.bs.modal', function (event) {
 				that.resetCart();
 			});
-			$(idString).on('hide.bs.modal', function (event) {
-				that.resetCart();
-			});
 		},
 		showUI: function () {
 			var idString = '#' + this.componentId;
@@ -852,13 +836,13 @@ function createFinalizeComponent(componentId, shop, cart, allCartC) {
 		},
 		updateUI: function () {
 			var idString = '#' + this.componentId;
-			var subTotal = this.shop.getTotal(this.outcart);
+			var base = this.shop.getTotal(this.cart);
 			var shipping = this.shop.getShipping(this.outcart, this.allCartC.shippingCalc);
-			var discount = -this.shop.getDiscount(this.outcart);
-			var total = Math.round((subTotal + shipping + discount) * 100) / 100;
+			var discount = this.shop.getTotal(this.outcart) - base;
+			var total = Math.round((base + shipping + discount) * 100) / 100;
 			$(idString + ' .sc-badge-items').text(this.outcart.getNumItems());
 			$(idString + ' .sc-currency-string').html(this.shop.currencyString);
-			$(idString + ' .sc-subtotal').text(subTotal);
+			$(idString + ' .sc-subtotal').text(base);
 			$(idString + ' .sc-shipping').text(shipping);
 			$(idString + ' .sc-total').text(total);
 			if (discount !== null) {
@@ -907,10 +891,7 @@ function createCheckoutComponent(componentId, shop, cart, allCartC) {
 			var subTotal = this.shop.getTotal(this.cart);
 			var shipping = this.shop.getShipping(this.cart, this.allCartC.shippingCalc);
 			var total = Math.round((subTotal + shipping) * 100) / 100;
-			$(idString + ' .sc-badge-items').text(this.cart.getNumItems());
 			$(idString + ' .sc-currency-string').html(this.shop.currencyString);
-			$(idString + ' .sc-subtotal').text(subTotal);
-			$(idString + ' .sc-shipping').text(shipping);
 			$(idString + ' .sc-total').text(total);
 		}
 	};
