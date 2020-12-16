@@ -1,111 +1,138 @@
 <script>
-    var thisProduct = artwear.facemask;
+	var thisProduct = artwear.facemask;
 
-    var browseInfo = createBrowseInfo(
-        [
-            [
-                [origin, '/journey/artwear.html'],
-                [origin, '/journey/treasuretrove.html']
-            ],
-            [
-                [clients, '/look/gg.html']
-            ]
-        ],
-        [1, 1],
-        null
-    );
+	var browseInfo = createBrowseInfo(
+		[
+			[
+				[origin, '/journey/artwear.html'],
+				[origin, '/journey/treasuretrove.html']
+			],
+			[
+				[clients, '/look/gg.html']
+			]
+		],
+		[1, 1],
+		null
+	);
 
-    const productCatalog = pfiavG.productCatalog;
+	const productCatalog = pfiavG.productCatalog;
 
-    var sku = thisProduct.SKU;
-    var factory = thisProduct.getFactory(sku);
-    var prodJSON = createUIProductJSON(sku, factory.base, thisProduct.prodData, null);
+	var sku = thisProduct.SKU;
+	var factory = thisProduct.getFactory(sku);
+	var prodJSON = createUIProductJSON(sku, factory.base, thisProduct.prodData, null);
 
-    var detailViewer = createHTMLViewer(prodJSON.skuInfo.garmentDetails);
-    var storyViewer = browseInfo.getStoryViewer();
-    var viewerFactory = {
-        product: prodJSON.product,
-        createPre: function() {
-            return createEmptyViewer();
-        },
-        createBase: function(shop) {
-            return createBasePanelr(shop, this.product);
-        },
-        create: function() {
-            return createCatenatedViewer([detailViewer, storyViewer]);
-        },
-        createNavHelper: function() {
-            return createNavHelper(prodJSON, artwear.categorizer, artwear.catalog.title);
-        }
-    };
-    var cardCreator = createUICardCreator();
-    var componentGenerator = createComponentGenerator(
-        factory, prodJSON, viewerFactory,
-        createColSelData(factory.base, [{
-                colourName: 'Neutral',
-                image: 'neutrals-sm'
-            },
-            {
-                colourName: 'Purple to Yellow',
-                image: 'v-to-y-sm'
-            },
-            {
-                colourName: 'Green to Violet',
-                image: 'g-to-i-sm'
-            }
-        ]),
-        true,
-        cardCreator,
-        ""
-    );
+	var detailViewer = createHTMLViewer(prodJSON.skuInfo.garmentDetails);
+	var storyViewer = browseInfo.getStoryViewer();
+	var colSelData = createColSelData(factory.base, [{
+			colourName: 'Neutral',
+			image: 'neutrals-sm'
+		},
+		{
+			colourName: 'Purple to Yellow',
+			image: 'v-to-y-sm'
+		},
+		{
+			colourName: 'Green to Violet',
+			image: 'g-to-i-sm'
+		}
+	]);
+	var viewerFactory = {
+		product: prodJSON.product,
+		createPre: function() {
+			return createEmptyViewer();
+		},
+		createBase: function(shop) {
+			return createBasePanelr(shop, this.product);
+		},
+		create: function() {
+			return createCatenatedViewer([detailViewer, storyViewer]);
+		},
+		createNavHelper: function() {
+			return createNavHelper(prodJSON, artwear.categorizer, artwear.catalog.title);
+		},
+		createList: function() {
+			return createUniqueItemList(factory.listData, factory);
+		},
+		createCategorySelector: function() {
+			var selCategory = createColourCategories(colSelData, factory);
+			return createColourCategorySelector(selCategory);
+		},
+		createVarSel: function() {
+			return {
+				getSelectedIdx: function() {
+					return 0;
+				}
+			}
+		},
+		createPanelRVs: function() {
+			var itemsRVlist = [SelChangeReason.colorCategoryChange, SelChangeReason.currencyChanges];
+			var hasSizes = prodJSON.skuInfo.sizes.length > 1;
+			if (hasSizes)  {
+				itemsRVlist.push(SelChangeReason.sizeChange)
+			}
+			return createPanelRVs(
+				SelChangeReason.createValidator(itemsRVlist),
+				SelChangeReason.createValidator([SelChangeReason.colorChange]),
+				SelChangeReason.createValidator([SelChangeReason.currencyChange]),
+				SelChangeReason.createValidator([SelChangeReason.unitChange])
+			);
+		}
+	};
+	var cardCreator = createUICardCreator();
+	var sizeSelector = createSizeSelector(prodJSON.skuInfo.sizes, pfiavG.sizeModalInfo.getToggleHTML(), null, "onSizeChange", "Size");
+	var componentGenerator = createComponentGenerator(
+		factory, prodJSON, viewerFactory, sizeSelector,
+		true,
+		cardCreator
+	);
 
-    var itemsComponent = componentGenerator.createUIC(loadShopWithParam());
-    var itemCategorySelector = itemsComponent.itemCategorySelector;
-    var sizeSelector = itemsComponent.sizeSelector;
-    const pageComponent = createUIPageComponent(productCatalog, itemsComponent);
+	var itemsComponent = componentGenerator.createUIC(loadShopWithParam());
+	var itemCategorySelector = itemsComponent.itemCategorySelector;
+	var sizeSelector = itemsComponent.sizeSelector;
+	const pageComponent = createUIPageComponent(productCatalog, itemsComponent);
 
-    var productComponent = itemsComponent.productComponent;
-    var dimensioner = productComponent.sizePanelr.dimensioner;
+	var productComponent = itemsComponent.productComponent;
+	var dimensioner = productComponent.sizePanelr.dimensioner;
 
-    $(document).ready(onDocumentReady);
-    document.write(productComponent.getSizeModal());
+	$(document).ready(onDocumentReady);
+	document.write(productComponent.getSizeModal());
 
 </script>
 <section>
-    <div class="container">
-        <script>
-            document.write(productComponent.createProductDiv(0, 0));
+	<div class="container">
+		<script>
+			document.write(productComponent.createProductDiv(0, 0));
 
-        </script>
-    </div>
+		</script>
+	</div>
 </section>
 <h6>Buy Now</h6>
 <p>These are the individual masks that are currently available for sale. Use the colour selector to look for specific matching colours.</p>
 <form>
-    <div class="row align-items-center">
-        <div class="col-12 col-md-4 text-center">
-            <script>
-                document.write(sizeSelector.createDiv(0));
+	<div class="row align-items-center">
+		<div class="col-12 col-md-4 text-center">
+			<script>
+				document.write(sizeSelector.createDiv(0));
 
-            </script>
-        </div>
-        <div class="col-12 col-md-8 text-center">
-            <script>
-                document.write(itemCategorySelector.createDiv(itemCategorySelector.categories.getFirstNonEmptyIdx(), 0));
+			</script>
+		</div>
+		<div class="col-12 col-md-8 text-center">
+			<script>
+				document.write(itemCategorySelector.colourCategoryUI.createDiv(itemCategorySelector.colourCategoryUI.categories.getFirstNonEmptyIdx(), 0));
 
-            </script>
-        </div>
-    </div>
+			</script>
+		</div>
+	</div>
 </form>
 <script>
-    document.write(itemsComponent.createDiv());
+	document.write(itemsComponent.createDiv());
 
 </script>
 <script>
-    document.write(renderProductDetails(
-        '<p>' + prodJSON.skuInfo.description + '</p>',
-        null,
-        washcareHTML,
-        shippingHTML));
+	document.write(renderProductDetails(
+		'<p>' + prodJSON.skuInfo.description + '</p>',
+		null,
+		thisProduct.washcareHTML,
+		thisProduct.fshippingHTML));
 
 </script>

@@ -22,11 +22,19 @@ function onDocumentReady() {
 }
 
 function onSelectionChange() {
-    pageComponent.onSelectionChange();
+    pageComponent.onSelectionChange(SelChangeReason.selChange);
 }
 
-function onColourCategoryChange(colVal) {
-    pageComponent.onColourCategoryChange(colVal);
+function onColourChange(clr) {
+    pageComponent.onSelectionChange(SelChangeReason.colorChange, clr);
+}
+
+function onSizeChange(size) {
+    pageComponent.onSelectionChange(SelChangeReason.sizeChange, size);
+}
+
+function onColourCategoryChange(colRngVal) {
+    pageComponent.onColourCategoryChange(colRngVal);
 }
 
 function onUnitChange() {
