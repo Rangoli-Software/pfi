@@ -1,30 +1,36 @@
 <script>
-const prodJSON = happyED.catalog.getProduct(prodSKU);
-const sizer = createSizeChartr(prodJSON.skuInfo.getSizeChart());
-const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath);
-var rendererFactory = happyED.createComponentFactory(prodJSON, dimensioner, sizer, hed_lookbook, happyED.categorizer, pfiavG.productCatalog);
-const pageComponent = createPageComponent(prodJSON, pfiavG.productCatalog, rendererFactory);
+	pfiavG.pageIdx.page['SKU'] = prodSKU;
+	const prodJSON = happyED.catalog.getProduct(prodSKU);
+	const skuInfo = prodJSON.skuInfo;
+	const sizer = createSizeChartr(skuInfo.getSizeChart(), skuInfo.sizes);
+	const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath, undefined, skuInfo.sizes);
+	var rendererFactory = happyED.createComponentFactory(prodJSON, dimensioner, sizer, hed_lookbook, happyED.categorizer, pfiavG.productCatalog);
+	const pageComponent = createPageComponent(prodJSON, pfiavG.productCatalog, rendererFactory);
 
-$(document).ready(onDocumentReady);
+	$(document).ready(onDocumentReady);
+
 </script>
 <section>
-<script>
-    var prodComp = pageComponent.createRenderer(loadShopWithParam());
-    document.write(prodComp.getSizeModal());
-</script>
-    <div class="container">
-    <script>
-document.write(prodComp.createProductDiv(0, 0));
-    </script>
-    </div>
+	<script>
+		var prodComp = pageComponent.createRenderer(loadShopWithParam());
+		document.write(prodComp.getSizeModal());
+
+	</script>
+	<div class="container">
+		<script>
+			document.write(prodComp.createProductDiv(0, 0));
+
+		</script>
+	</div>
 </section>
 <script>
- document.write(renderProductDetails(
-     '<p>'+ prodJSON.skuInfo.description + '</p>',
-     '<ul>'
-     + prodJSON.skuInfo.garmentDetails
-     + '</ul>',
-     khadi_washcareHTML,
-     pret_shippingHTML
- ));
+	document.write(renderProductDetails(
+		'<p>' + prodJSON.skuInfo.description + '</p>',
+		'<ul>' +
+		prodJSON.skuInfo.garmentDetails +
+		'</ul>',
+		khadi_washcareHTML,
+		pret_shippingHTML
+	));
+
 </script>

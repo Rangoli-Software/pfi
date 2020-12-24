@@ -13,33 +13,68 @@
 <script>
 const cover = [
 {
-    url: '/journey/PreciousI.jpg',
-    alt: 'Prema Florence Isaac - Bouquet of Borders'
-},
-/*
-{
-    url: '/products/happyeveryday/bnr/pu1.jpg',
-    alt: 'Happy Everyday in a Pigmented Universe'
+    imageURL: '/journey/PreciousI.jpg',
+    alt: 'Prema Florence Isaac - Bouquet of Borders',
+	width: "1500",
+	height: "1500",
+	caption: "My Precious! A Bouquet of Borders in <a href='/journey/pfifabrics.html'><strong>P.F.I. Tangail</strong></a>"
 },
 {
-    url: '/products/happyeveryday/bnr/pu2.jpg',
-    alt: 'Happy Everyday in a Pigmented Universe'
+    imageURL: '/tapestries/PremaShoot (JPEDD)-8810.jpg',
+    alt: 'Prema Florence Isaac - Juliet Dress',
+	width: "1500",
+	height: "2250",
+	caption: "The <a href='/products/night/juliet.html'>Juliet Dress</a> from my <a href='/products/night/shop.html?t=d'><strong>Ce Soir</strong></a> line."
 },
 {
-    url: '/products/happyeveryday/bnr/pu3.jpg',
-    alt: 'Happy Everyday in a Pigmented Universe'
+    imageURL: '/tapestries/PremaShoot (JPEDD)-9191.jpg',
+    alt: 'Prema Florence Isaac - Juliet Dress',
+	width: "1500",
+	height: "1000",
+	caption: "The <a href='/products/night/juliet.html'>Juliet Dress</a> from my <a href='/products/night/shop.html?t=d'><strong>Ce Soir</strong></a> line."
 },
-*/
+{
+    imageURL: '/blog/FlorYellow.jpg',
+    alt: 'Prema Florence Isaac - Celia Mini Skirt',
+	width: "1125",
+	height: "1407",
+	caption: "The <a href='/products/night/celia.html'>Celia Mini Skirt</a> from my <a href='/products/night/shop.html?t=n'><strong>Ce Soir</strong></a> line."
+},
+{
+    imageURL: '/tapestries/PremaShoot (JPEDD)-7385.jpg',
+    alt: 'Prema Florence Isaac - Ravakai Top',
+	width: "1500",
+	height: "1000",
+	caption: "The <a href='/products/artwear/ravakai.html'>Ravakai Top</a> from my <a href='/products/artwear/shop.html?t=s'><strong>Art Wear</strong></a> line."
+},
+{
+    imageURL: '/tapestries/JP-7374.jpg',
+    alt: 'Prema Florence Isaac - Ravakai Top',
+	width: "1500",
+	height: "1200",
+	caption: "The <a href='/products/artwear/ravakai.html'>Ravakai Top</a> from my <a href='/products/artwear/shop.html?t=s'><strong>Art Wear</strong></a> line."
+},
+{
+    imageURL: '/blog/FlorDuomo.jpg',
+    alt: 'Prema Florence Isaac - Aanchal Overtop',
+	width: "1200",
+	height: "1500",
+	caption: "The <a href='/products/artwear/lovertop.html'>Aanchal Overtop</a> from my <a href='/products/artwear/shop.html?t=s'><strong>Art Wear</strong></a> line."
+},
+{
+    imageURL: '/g/look/look03.jpg',
+    alt: 'Prema Florence Isaac - Tamarai Dress',
+	width: "1072",
+	height: "1072",
+	caption: "The <a href='/products/artwear/tamarai.html'>Tamarai Dress</a> from my <a href='/products/artwear/shop.html?t=d'><strong>Art Wear</strong></a> line."
+}
 ];
+
 function createCover() {
     var len = cover.length;
     var rndI = Math.floor(Math.random() * len);
     var img = cover[ rndI ];
-    return '<img src="' + img.url + '" alt="' + img.alt + '" class="embed-responsive-item" style="object-fit: cover"/>';
+    return '<figure class="mb-0"><img src="' + img.imageURL + '" alt="' + img.alt + '" class="img-fluid"' + ' width="' + img.width + '" height="' + img.height + '"/><figcaption>' + img.caption + '</figcaption></figure>';
 }
 </script>
-<figure>
-    <div class="embed-responsive embed-responsive-1by1">
-        <script>document.write(createCover());</script>
-    </div>
-</figure>
+<script>document.write(createCover());</script>

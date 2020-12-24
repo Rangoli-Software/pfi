@@ -5,7 +5,7 @@ lines: aw
 title: Art Wear Shop
 ---
 <script>
-    var displayer = createCatalogDisplay(artwear.catalog, true);
+    var displayer = createCatalogDisplay(artwear.catalog, true, true);
     var categorizer = artwear.categorizer;
     var uvSel = categorizer.createUrlVarSelector();
     var cardlists = uvSel.ids.map(id => displayer.createCardlist(id));

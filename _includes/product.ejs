@@ -17,7 +17,8 @@ function loadShopWithParam() {
 }
 
 function onDocumentReady() {
-    pageComponent.init(loadShopWithParam());
+	updateTopLevelMenus();
+	pageComponent.init(loadShopWithParam());
     pageComponent.onReadyState();
 }
 
@@ -43,6 +44,10 @@ function onUnitChange() {
 
 function onSKUChange(sku) {
     pageComponent.onSKUChange(sku);
+}
+
+function onGenderChange(g) {
+    pageComponent.onSelectionChange(SelChangeReason.genderChange, g);
 }
 </script>
 <script>pfiavG.pageIdx = createPageIndex(<%- "'" + page.inputPath.substring(1) + "'" %>);</script>
@@ -93,4 +98,5 @@ function onSKUChange(sku) {
 <% } %>
 <% include partials/rest-foot %>
 </body>
+<% include partials/foot %>
 </html>

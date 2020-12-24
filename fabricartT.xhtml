@@ -35,7 +35,7 @@ var dimensionVariationInches = 0.5;
 
 var dimensionWidths = [29, 35, 29];
 
-var dimensioner = createDimensioner("in", dimensionNames, dimensionsInches, "/fabricart/TSizing1.jpg", dimensionVariationInches);
+var dimensioner = createDimensioner("in", dimensionNames, dimensionsInches, "/fabricart/TSizing1.jpg", dimensionVariationInches, sizes);
 
 function onUnitChange() {
     $('#SizeTable').empty();
@@ -146,7 +146,7 @@ var womens_sizing = {
 
 function createUnisexSizeChartr() {
     return {
-        chartrs: [createSizeChartr(mens_sizing), createSizeChartr(womens_sizing)],
+        chartrs: [createSizeChartr(mens_sizing, sizes), createSizeChartr(womens_sizing, sizes)],
         tableId: 'IntlSizing',
         radioName: 'GenderVal',
         eventFnStr: 'OnGenderChange()',
@@ -161,11 +161,11 @@ function createUnisexSizeChartr() {
         createButton(rad, isActive) {
             return '<label class="btn btn-xxs btn-outline-dark font-size-xxxs rounded-0 ' + (isActive ? "active" : "") + '"><input type="radio" name="' + this.radioName + '" value="' + rad.value + '" onclick="' + this.eventFnStr + '"' + (isActive ? ' checked' : '') + '>' + rad.text + '</label>';
         },
-        createSexSelectorChart: function (idx, sizes) {
-            return '<div class="row align-items-center"><div class="col-12 text-center py-5"><div class="btn-group btn-group-toggle ml-auto py-5" data-toggle="buttons">' + this.createButton(this.radios[0], idx == 0) + this.createButton(this.radios[1], idx == 1) + '</div>' + '<div id="' + this.tableId + '">' + this.createSelectedChart(idx, sizes) + '</div></div></div>';
+        createSexSelectorChart: function (idx) {
+            return '<div class="row align-items-center"><div class="col-12 text-center py-5"><div class="btn-group btn-group-toggle ml-auto py-5" data-toggle="buttons">' + this.createButton(this.radios[0], idx == 0) + this.createButton(this.radios[1], idx == 1) + '</div>' + '<div id="' + this.tableId + '">' + this.createSelectedChart(idx) + '</div></div></div>';
         },
-        createSelectedChart: function (idx, sizes) {
-            return this.chartrs[idx].createSizeChart(sizes);
+        createSelectedChart: function (idx) {
+            return this.chartrs[idx].createSizeChart();
         },
         getIndex: function(value) {
             for(var i = 0; i < this.radios.length; i++) {
@@ -179,7 +179,7 @@ function createUnisexSizeChartr() {
             $('#' + this.tableId + '').empty();
             var selRadio = $("input[name='" + this.radioName + "']:checked");
             var idx = this.getIndex(selRadio.val())
-            var table = this.createSelectedChart(idx, sizes);
+            var table = this.createSelectedChart(idx);
             $(table).appendTo('#' + this.tableId + '');
         }
     };
@@ -193,7 +193,7 @@ function OnGenderChange() {
 
 function createSizingPanel () {
     return '<h6>International Sizing</h6>' + sizer.createSexSelectorChart(0, sizes) +
-        '<p>The sizing chart above is only approximate. Please check the actual garment measurements below to find your size. Please email us at prema.florence.isaac@gmail.com or WhatsApp +919443362528 if you have further questions or wish to customize your order.</p><h6 class="mb-0">Garment Measurements</h6>' + dimensioner.createMeasurementsPanel("in", sizes);
+        '<p>The sizing chart above is only approximate. Please check the actual garment measurements below to find your size. Please email us at prema.florence.isaac@gmail.com or WhatsApp +919443362528 if you have further questions or wish to customize your order.</p><h6 class="mb-0">Garment Measurements</h6>' + dimensioner.createMeasurementsPanel("in");
 }
 
 var sizingData = {
@@ -513,7 +513,7 @@ function createTShirtRenderer(tshirtDesc, prodDesc, shop, options) {
 </h4>
 <div class="item">
     <script>
-        document.write(getSizeModalWithId('modalSizeChart', createSizingPanel()));
+        document.write(getSizeModalWithId('modalSizeChart', 'contentid', createSizingPanel()));
     </script>
     <figure>
         <img src="/fabricart/TShirtColl.jpg" class="figure-img img-fluid center-block" width="1500" height="1200"/>

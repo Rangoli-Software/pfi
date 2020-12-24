@@ -27,6 +27,7 @@ permalink: "<%- page.inputPath.substring(1) %>"
     var plc = createPageLevelComponent(tlpc);
 
     function onDocumentReady() {
+		updateTopLevelMenus();
         tlpc.onDocumentReady();
         plc.initUI(tlpc);
         plc.updateUI();
@@ -43,4 +44,5 @@ permalink: "<%- page.inputPath.substring(1) %>"
 <script> document.write(scriptSrcs()); </script>
 <% } %>
 </body>
+<% include partials/foot %>
 </html>

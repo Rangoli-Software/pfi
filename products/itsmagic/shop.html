@@ -6,7 +6,7 @@ lines: itsmagic
 title: It's Magic Shop
 ---
 <script>
-    var displayer = createCatalogDisplay(itsmagic.catalog, true);
+    var displayer = createCatalogDisplay(itsmagic.catalog, true, true);
     var categorizer = itsmagic.categorizer;
     var uvSel = categorizer.createUrlVarSelector();
     var cardlists = uvSel.ids.map(id => displayer.createCardlist(id));

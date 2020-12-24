@@ -7,8 +7,6 @@ description: Buy our creations online!
 keywords: shop, catalog, online shopping,
 ---
 <script>
-    const accSKUs = ['DPDYSF1501PT','KAGTIE1601Kh','CHMPGN1501JL'];
-
     function createCarouselShopRndr() {
         return {
             maxN: 6,
@@ -20,7 +18,7 @@ keywords: shop, catalog, online shopping,
                 var shf = shuffle(skus);
                 for (var i = 0; i < shf.length && i < this.maxN; i++) {
                     var itm = this.miPageSet.select('SKU', shf[i]);
-                    var item = createMerchandisingRef(itm);
+                    var item = createMerchandisingRef(itm, undefined, true);
                     item.setRandImg();
                     res += '<div class="col" style="max-width: 240px;">';
                     res += item.createCard();
@@ -37,25 +35,26 @@ keywords: shop, catalog, online shopping,
         return {
             maxN: 6,
             miPageSet: pfiavG.pageIdx.miPageSet,
-            createCardRefs: function(skus) {
-                var shf = shuffle(skus);
+            createCardRefs: function(keys, pgkey) {
+                var shf = shuffle(keys);
                 var res = [];
                 for (var i = 0; i < shf.length && i < this.maxN; i++) {
-                    var item = this.miPageSet.select('SKU', shf[i]);
-                    var cardRef = createMerchandisingRef(item);
+                    var item = this.miPageSet.select(pgkey, shf[i]);
+                    var cardRef = createMerchandisingRef(item, undefined, true);
                     cardRef.setRandImg();
                     res.push(cardRef);
                 }
                 return res;
             },
-            createSectionRenderer: function(title, shopURL, skus) {
-                var cr = this.createCardRefs(skus);
+            createSectionRenderer: function(title, shopURL, keys, nItems, pgkey) {
+                var cr = this.createCardRefs(keys, pgkey);
+				var mx = this.maxN;
                 return {
                     title: title,
                     url: shopURL,
                     cardRefs: cr,
                     createList: function() {
-                        var res = '<div class="row">';
+                        var res = '<div class="row no-gutters mx-n1 mx-md-n2">';
                         for( var i = 0; i < this.cardRefs.length; i ++) {
                             res += '<div class="col-6 col-md-4">';
                             res += this.cardRefs[i].createCard();
@@ -68,7 +67,7 @@ keywords: shop, catalog, online shopping,
                         var res = '<section class="pt-0 pb-0">';
                         res += "<h5>" + this.title + "</h5>";
                         res += this.createList();
-                        if ( this.url !== null ) {
+                        if ( this.url !== null && mx < nItems) {
                             res += "<p><big>Browse all <strong>" + this.title + '</strong><a  href="' + this.url + '"><i class="fa fa-arrow-right ml-2"></i></a></big></p>';
                         }
                         res += '</section>';
@@ -79,19 +78,19 @@ keywords: shop, catalog, online shopping,
         };
     }
 
-    var lineCatalogs = [artwear.catalog, itsmagic.catalog, cesoir.catalog, happyED.catalog];
-    var mipsInCats = lineCatalogs.map(c => pfiavG.pageIdx.miPageSet.filter(function(page){return c.skus.includes(page.SKU)}).pages)
-    var skus = mipsInCats.map(list => list.map(p=>p.SKU));
+    var lineCatalogs = [wovencanvas.catalog, artwear.catalog, itsmagic.catalog, cesoir.catalog, happyED.catalog, extras.catalog];
+	var lineKeys = ['skuvariants','skus','skus','skus','skus','skus'];
+	var pageKeys = ['SKUvid','SKU','SKU','SKU','SKU','SKU'];
+	var lineNItems =  lineCatalogs.map((c, i) => c[lineKeys[i]].length);
+    var mipsInCats = lineCatalogs.map((c, i) => pfiavG.pageIdx.miPageSet.filter(function(page){return c[lineKeys[i]].includes(page[pageKeys[i]])}).pages)
+    var keys = mipsInCats.map((list, i) => list.map(p=>p[pageKeys[i]]));
     var titles = lineCatalogs.map(c => c.title);
     var shopURLs = lineCatalogs.map(c => c.shopURL);
 
-    titles.push("Extras");
-    skus.push(accSKUs);
-    shopURLs.push(null);
-
     var shopR = createShopRenderer();
-    var secRs = titles.map((t, i) => shopR.createSectionRenderer(t, shopURLs[i], skus[i]));
-
+    var secRs = titles.map((t, i) => shopR.createSectionRenderer(t, shopURLs[i], keys[i], lineNItems[i], pageKeys[i]));
+</script>
+<script>
     secRs.forEach(sR => document.write(sR.createHTML()));
     secRs.forEach(function(sR){pfiavG.pageIdx.included.pages = pfiavG.pageIdx.included.pages.concat(sR.cardRefs);})
 </script>

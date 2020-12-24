@@ -6,7 +6,7 @@ title: Preview of all Site Merchandising Cards
 <div class="row">
 <script>
 function createShopItem(item) {
-    var ref = createMerchandisingRef(item);
+    var ref = createMerchandisingRef(item, undefined, false);
     var res = '';
     for (var i = 0; i < item.images.length; i++ ) {
         ref.setImg(i);

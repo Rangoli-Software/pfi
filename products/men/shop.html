@@ -4,7 +4,7 @@ lines: men
 title: Men's Shop
 ---
 <script>
-    var displayer = createCatalogDisplay(vagabond.catalog, false);
+    var displayer = createCatalogDisplay(vagabond.catalog, false, true);
     var categorizer = vagabond.categorizer;
     var uvSel = categorizer.createUrlVarSelector();
     var cardlists = uvSel.ids.map(id => displayer.createCardlist(id));
@@ -14,4 +14,5 @@ title: Men's Shop
     );
     tabber.enableDocumentReady();
     document.write(tabber.createTabbedSection());
+    cardlists.forEach(function(sR){pfiavG.pageIdx.included.pages = pfiavG.pageIdx.included.pages.concat(sR.cardRefs);})
 </script>

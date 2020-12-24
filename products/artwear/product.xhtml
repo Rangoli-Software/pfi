@@ -1,4 +1,6 @@
 <script>
+	var sku = thisProduct.SKU;
+	pfiavG.pageIdx.page['SKU'] = sku;
 	browseInfo = createBrowseInfo(
 		[
 			[
@@ -13,7 +15,6 @@
 	);
 	const productCatalog = pfiavG.productCatalog;
 
-	var sku = thisProduct.SKU;
 	var factory = thisProduct.getFactory(sku);
 	var prodJSON = createUIProductJSON(sku, factory.base, thisProduct.prodData, thisProduct.sizing);
 
@@ -29,7 +30,7 @@
 			return createEmptyViewer();
 		},
 		createBase: function(shop) {
-			return createBasePanelr(shop, this.prodJSON.product);
+			return createBasePanelr(shop, null, this.prodJSON.product);
 		},
 		create: function() {
 			return createCatenatedViewer([detailViewer, storyViewer]);
@@ -74,7 +75,8 @@
 	var componentGenerator = createComponentGenerator(
 		factory, prodJSON, viewerFactory, sizeSelector,
 		true,
-		cardCreator
+		cardCreator,
+		0
 	);
 
 	var itemsComponent = componentGenerator.createUIC(loadShopWithParam());

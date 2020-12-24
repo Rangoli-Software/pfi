@@ -1,167 +1,45 @@
 ---
-layout: oldprod
+layout: product
+lines: x
 funnel: ViewContent
 title: Dip-Dye Scarf
 description: A gorgeous example of the Tangail Weavers' Craft
 ---
 <script>
-    var rowHeaderName = ["Dimension", "Measurement"];
-    var colWidths = [64, 26];
-    var colNames = ["Length", "Width", "Pom-Pom Fringe Width"];
+	var prodSKU = extras.dipdye.SKU;
+	pfiavG.pageIdx.page['SKU'] = prodSKU;
+	const prodJSON = extras.catalog.getProduct(prodSKU);
+	const skuInfo = prodJSON.skuInfo;
+	var sc = skuInfo.getSizeChart();
+	const sizer = (sc !== null) ? createSizeChartr(sc, skuInfo.sizes) : null;
+	const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath, undefined, skuInfo.sizes);
+	var rendererFactory = extras.createComponentFactory(prodJSON, dimensioner, sizer, extras.categorizer);
+	const pageComponent = createPageComponent(prodJSON, pfiavG.productCatalog, rendererFactory);
 
-    var colDimensionsCm = [
-        [183, 186],
-        [59, 60],
-        [2.5]
-    ];
+	$(document).ready(onDocumentReady);
 
-    function createSizingTable(units) {
-        var unTxt = (units == "in" ? " inches" :  "  cm")
-        var table = '<div class="table-responsive"><table class="dim-table table table-bordered table-hover table-sm mb-0 text-center" style="padding: 6px;"><caption><strong>Measurements (in' + unTxt + ')</strong></caption>';
-
-        var fn = units == "in" ? cm2inches : identity;
-        table += '<thead><tr><td class="text-left" width="' + colWidths[0] + '%"><strong>' + rowHeaderName[0] + '</strong></td>';
-        for (var i = 1; i < rowHeaderName.length; i++) {
-            table += '<td width="' + colWidths[i] + '%"><strong>' + rowHeaderName[i] + '</strong></td>';
-        }
-        table += '</tr></thead><tbody>';
-        for (var i = 0; i < colNames.length; i++) {
-            var colName = colNames[ i ];
-            table += '<tr><td class="text-left">' + colName + '</td>';
-            subdim = colDimensionsCm[i];
-            if ( subdim.length == 1) {
-                table += '<td>' + fn(subdim[0]) + '</td>';
-            } else {
-                table += '<td>' + fn(subdim[0]) + " - " + fn(subdim[1]) + '</td>';
-            }
-            table += '</tr>'
-        }
-        table += '</tbody></table></div>';
-        return table;
-    }
-    
-function onUnitChange() {
-    $('#SizeTable').empty();
-    var selRadio = $("input[name='SizeChartUnits']:checked");
-    var units = selRadio.val();
-    var table = createSizingTable(units);
-    $(table).appendTo('#SizeTable');
-}
-
-    var DDS_SKU = 'DPDYSF1501PT';
-
-    var ddsListData = [
-        ['1', '/products/scarves/dipdye/rr.jpg', 'Black Currant'],
-        ['2', '/products/scarves/dipdye/sand.jpg', 'Sand'],
-        ['3', '/products/scarves/dipdye/cc.jpg', 'Charcoal'],
-        ['4', '/products/scarves/dipdye/indigo.jpg', 'Azure'],
-        ['5', '/products/scarves/dipdye/blsh.jpg', 'Blush'],
-        ['6', '/products/scarves/dipdye/gold.jpg', 'Gold']
-//        ['7', '/products/scarves/dipdye/bv.jpg', 'Bougainvillea'],
-    ];
-
-
-    var tlpc = createProductPageComponent(DDS_SKU, ddsListData);
-
-    function onDocumentReady() {
-        tlpc.onDocumentReady();
-    }
 </script>
-<h4>Dip-Dye Scarf</h4>
-<div class="row">
-    <div class="col-md-8 offset-md-2">
-    <figure>
-        <script>
-        var carItems = [
-        {imageURL: "TurbanMood.jpg"},
-        {imageURL: "ShawlMood.jpg"},
-        {imageURL: "/g/look/look01.jpg"},
-        {imageURL: "/g/look/look02.jpg"}
-        ];
-        document.write(createCarousel("carousel-dd-scf", carItems));
-        </script>
-    </figure>
-    </div>
-</div>
-    <p>I love designing scarves. They allow me to collaborate with the artisanal tangail weavers to create distinctive, original fabrics that incorporate the finest of the hand-loom tradition and techniques. Most of my scarves feature <strong><a href="/journey/pfifabrics.html">P.F.I. Tangail</a></strong> fabrics, designed by me and custom-woven for my atelier.</p>
-<div class="row">
-    <div class="col-md-8 offset-md-2">
-    <figure class="text-center">
-        <img src="LinedUpLtd.jpg" class="img-fluid center-block" />
-    </figure>
-    </div>
-</div>
-<div class="item">
-    <p>This Dip-Dye scarf is woven from a hand-spun yarn which is a blend of 60% cotton and 40% silk fibers. The finished scarf is then dyed by hand in a variety of vibrant shades. The process of dyeing involves dipping the scarf into a pot of dye and then slowly drawing it out giving it a beautiful colour gradient.</p>
-    <p>Fibers that are left protruding out around the edge of the fabric are gathered together and used to attach individual hand-made pom-poms. The scarf is soft, with a buttery feel.</p>
-    <p>The yarn used to weave the scarf is very fine, so the fabric is extremely light-weight. The pom-poms add just enough weight that the entire scarf drapes and falls like one made from a much heavier fabric. It fits snugly around your frame without needing constant adjustment.</p>
-</div>
-<div class="item">
-    <p>This scarf is a versatile garment. It can be worn as a turban, a shawl, as a cravat, and even as a Ninja-style head-cover and dust-mask!</p>
-</div>
-<h5>The Scarves</h5>
-<div class="row align-items-center">
-    <div class="col-md-6">
-        <div id="scpp-0"></div>
-    </div>
-    <div class="col-md-6">
-        <div id="scpp-1"></div>
-    </div>
-</div>
-<div class="row align-items-center">
-    <div class="col-md-6">
-        <div id="scpp-2"></div>
-    </div>
-    <div class="col-md-6">
-        <div id="scpp-3"></div>
-    </div>
-</div>
-<div class="row align-items-center">
-    <div class="col-md-6">
-        <div id="scpp-4"></div>
-    </div>
-    <div class="col-md-6">
-        <div id="scpp-5"></div>
-    </div>
-</div>
+<section>
+	<script>
+		var productComponent = pageComponent.createRenderer(loadShopWithParam());
+		document.write(productComponent.getSizeModal());
+
+	</script>
+	<div class="container">
+		<script>
+			document.write(productComponent.createProductDiv(0, 0));
+
+		</script>
+	</div>
+</section>
 <script>
-    $(document).ready(onDocumentReady);
-</script>
-<section class="pt-7"><div class="container"><div class="row"><div class="col-12">
-    <div class="nav nav-tabs nav-overflow justify-content-start justify-content-md-center border-bottom">
-        <a class="nav-link active" data-toggle="tab" href="#details">
-            Details
-        </a>
-        <a class="nav-link" data-toggle="tab" href="#shipping">
-            Availability
-        </a>
-    </div>
-    <div class="tab-content">
-        <div class="tab-pane fade show active" id="details"><div class="item">
-                <h6>Sizing</h6>
-            <div class="row align-items-center">
-                <div class="col-md-12 text-center py-5">
-                    <div class="btn-group btn-group-toggle ml-auto py-5" data-toggle="buttons">
-                    <label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 active">
-                        <input type="radio" name="SizeChartUnits" value="in" onclick="onUnitChange()" checked>IN
-                    </label>
-                    <label class="btn btn-xxs btn-circle btn-outline-dark font-size-xxxs rounded-0 ml-2">
-                        <input type="radio" name="SizeChartUnits" value="cm" onclick="onUnitChange()">CM
-                    </label>
-                    </div>
+	document.write(renderProductDetails(
+		'<p>' + prodJSON.skuInfo.description + '</p>',
+		'<ul>' +
+		prodJSON.skuInfo.garmentDetails +
+		'</ul>',
+		khadi_washcareHTML,
+		pret_shippingHTML
+	));
 
-                    <div id="SizeTable">
-                    <script>
-                        document.write(createSizingTable("in"));
-                    </script>
-                    </div>
-                </div>
-            </div>
-                <h6>Wash Care</h6>
-                <p>Dry clean only</p>
-        </div></div>
-        <div class="tab-pane fade" id="shipping"><div class="item py-5">
-            <p>The scarf is available to ship within one business day of your  order.</p>
-        </div></div>
-    </div>
-</div></div></div></section>
+</script>

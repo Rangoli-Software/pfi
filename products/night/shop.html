@@ -3,8 +3,9 @@ layout: shop
 lines: night
 title: Ce Soir
 ---
-<script>
-    var displayer = createCatalogDisplay(cesoir.catalog, false);
+<p>My line of occasion wear, hand-crafted in diaphanous <a href="/journey/pfifabrics.html">P.F.I. Tangail</a>, hand-woven from the finest cotton, lustrous Madka and Mysore silks.</p>
+  <script>
+    var displayer = createCatalogDisplay(cesoir.catalog, false, true);
     var categorizer = cesoir.categorizer;
     var uvSel = categorizer.createUrlVarSelector();
     var cardlists = uvSel.ids.map(id => displayer.createCardlist(id));
@@ -14,4 +15,5 @@ title: Ce Soir
     );
     tabber.enableDocumentReady();
     document.write(tabber.createTabbedSection());
+    cardlists.forEach(function(sR){pfiavG.pageIdx.included.pages = pfiavG.pageIdx.included.pages.concat(sR.cardRefs);})
 </script>

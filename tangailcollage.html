@@ -1,100 +1,74 @@
 ---
 layout: shop
 title: Tangail Art
+lines: wc
 description: Collages created from my treasure-trove of vintage hand-woven Tangail sari borders
 keywords: vintage, fabric art, textile art, artwork, collage art, abstract art, modern art, quilting, patchwork, art collectors
 ---
-<script type="text/javascript" src="/tbc/tbc20102000.js"></script>
 <script>
-    function createPanel(img, text, bgcolor, fgcolor) {
-        return '<div class="col-sm-4" style="background-color: ' + bgcolor + '; padding-top: 2.5ex; padding-bottom: 1.5ex; border-width: thick; border-color: white">\
-    <div class="row">\
-        <div class="col-10 offset-1">\
-            <figure>\
-                    <img src="' + img + '" class="img-fluid center-block">\
-            </figure>\
-            <p style="color: ' + fgcolor + '; text-align: center">' + text + '</p>\
-        </div>\
-    </div></div>';
-    }
+	var factory = wovencanvas.tshirt.getFactory(wovencanvas.tshirt.SKU);
+	var panelslist = createPanelsList(factory.listData, factory).filterOutColour('Indigo');
+	var cardDrawer = {
+		createPanel: function(url, txt, bgclr, fgclr) {
+			return '<div class="col-sm-4" style="background-color: ' + bgclr + '; padding-top: 2.5ex; padding-bottom: 1.5ex; border-width: thick; border-color: white"><div class="row"><div class="col-10 offset-1"><figure>' +
+				'<img src="' + url + '" class="img-fluid center-block">' +
+				'</figure><p style="color: ' + fgclr + '; text-align: center">' + txt + '</p>' +
+			'</div></div></div>';
+		},
+		createRowPanel: function(desc, images) {
+			var bgclr = desc.getBGColor();
+			var fgclr = desc.getFGColor();
+			var url = images.getImage(0).url;
+			var text = "Woven Canvas" + desc.getDescription();
+			return this.createPanel(url, text, bgclr, fgclr);
+		}
+	}
 
-    function createRowPanel(row) {
-        var bgcolor = row[2] === "Black" ? "black" : "white";
-        var fgcolor = row[2] === "Black" ? "white" : "black";
-        var text = "# " + row[0];
-        if ( row[4] !== "") {
-            text += '<br>' + row[4] + " cm. x " + row[3] + " cm.";
-        }
-        if (row[5] === "") {
-            if (row[8] === "") {
-                text += '<br><a href="/fabricartT.html">Available</a> to Collect';
-            } else {
-                text += '<br>On Exhibit at Curator';
-            }
-        } else {
-            text += (row[5] === "" ? "" : "<br>Collected in " + row[5]) +
-                (row[6] === "" ? "" : " by " + row[6]);
-        }
-        return createPanel(row[1], text, bgcolor, fgcolor);
-    }
-    
-    function filterPanels(ld) {
-        var res = [];
-        for(var i  = 0; i < ld.length; i++) {
-            var row =  ld[ i ];
-            if ( row[2] === "" )
-                continue;
-            res.push(row);
-        }
-        return res;
-    }
+	function createPanels() {
+		shuffle(panelslist.base);
+		var res = '';
+		var total = 12;
+		for (var i = panelslist.base.length - 1; i >= 0 && total > 0; i--, total--) {
+			res += cardDrawer.createRowPanel(panelslist.getDescriptor(i), panelslist.getImages(i));
+		}
+		return res;
+	}
 
-    function createNPanels(ld, s, n) {
-        var ret = "";
-        for (var i = s; n > 0 && i >= 0; i--, n--) {
-            ret += createRowPanel(ld[i]);
-        }
-        return ret;
-    }
-
-    function createAllPanels(ld) {
-        return createNPanels(ld, ld.length - 1, 9);
-    }
 </script>
 <h4>Tangail Art</h4>
 <div class="item">
-    <figure>
-        <img src="/fabricart/Collage02.jpg" class="img-fluid center-block">
-    </figure>
-    <p>In late 2016, I found a beautiful new way to use my <a href="/journey/treasuretrove.html"><strong>Treasure Trove</strong> of Tangail Borders</a>. I started creating numbered, one-of-a-kind art-pieces: Woven Canvases! At the moment, we offer them as the chest panel of our <a href="/fabricartT.html"><strong>Woven Canvas</strong> T-Shirts</a>.</p>
+	<figure>
+		<img src="/fabricart/Collage02.jpg" class="img-fluid center-block">
+	</figure>
+	<p>In late 2016, I found a beautiful new way to use my <a href="/journey/treasuretrove.html"><strong>Treasure Trove</strong> of Tangail Borders</a>. I started creating numbered, one-of-a-kind art-pieces: Woven Canvases! At the moment, we offer them as the chest panel of our <a href="/fabricartT.html"><strong>Woven Canvas</strong> T-Shirts</a>.</p>
 </div>
 <div class="row">
-    <div class="col-sm-6">
-        <figure>
-            <img src="/fabricart/Collage03.jpg" class="img-fluid center-block">
-        </figure>
-        <p>I create each collage with the background color in mind. I start with a few hundred candidate borders (selected from thousands), playing with different hues and motifs. I fold and unfold, pleat and play, looking for a harmonious flow of color and form. I keep exploring alternatives until I am happy with the final composition.
-        </p>
-    </div>
-    <div class="col-sm-6">
-        <figure>
-            <img src="/fabricart/Collage01.jpg" class="img-fluid center-block">
-        </figure>
-        <p>I number and pin together the strips of folded fabric as I work and the finished piece is then stitched together. A thin layer of soft fusing is ironed onto the bottom of the collage for additional stability.
-        </p>
-    </div>
+	<div class="col-sm-6">
+		<figure>
+			<img src="/fabricart/Collage03.jpg" class="img-fluid center-block">
+		</figure>
+		<p>I create each collage with the background color in mind. I start with a few hundred candidate borders (selected from thousands), playing with different hues and motifs. I fold and unfold, pleat and play, looking for a harmonious flow of color and form. I keep exploring alternatives until I am happy with the final composition.
+		</p>
+	</div>
+	<div class="col-sm-6">
+		<figure>
+			<img src="/fabricart/Collage01.jpg" class="img-fluid center-block">
+		</figure>
+		<p>I number and pin together the strips of folded fabric as I work and the finished piece is then stitched together. A thin layer of soft fusing is ironed onto the bottom of the collage for additional stability.
+		</p>
+	</div>
 </div>
 <div class="item">
-    <p>I create the collages using from 3 to 12 borders, but mostly they are assembled from 6 or 7. The panel is 11.5 to 12.5 cm. (4.53 to 4.92 in.) high when stitched, and from 25 to 35 cm (9.84 to 13.78 in.) wide.
-    </p>
+	<p>I create the collages using from 3 to 12 borders, but mostly they are assembled from 6 or 7. The panel is 11.5 to 12.5 cm. (4.53 to 4.92 in.) high when stitched, and from 25 to 35 cm (9.84 to 13.78 in.) wide.
+	</p>
 </div>
 <div class="item">
-    <p><strong>Photography by Mathilde Hauser</strong></p>
+	<p><strong>Photography by Mathilde Hauser</strong></p>
 </div>
 <h5 id="fullseries">The Series</h5>
-<p>To celebrate the 50th anniversary of Auroville, which coincided with the launch of this line, we decided to number the first collage 50 1, or 501. The sequence then continues roughly in the order that I created them.</p>
+<p>To celebrate the 50th anniversary of Auroville, which coincided with the launch of this line, we decided to number the first collage 50 1, or 501. The sequence then continues roughly in the order that I created them. Here you see a random selection of some of the canvases that have been created so far.</p>
 <div id="AllPanels" class="row">
-<script>
-    document.write(createAllPanels(filterPanels(colListData)));
-</script>
+	<script>
+		document.write(createPanels());
+	</script>
 </div>

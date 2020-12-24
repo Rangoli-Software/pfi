@@ -12,7 +12,7 @@ title: Happy Everyday Shop
         var sfx = imgSfx[ rndI ];
         return '<img class="img-fluid" src="/products/happyeveryday/mood/sld-' + sfx + '.jpg" width="1500" height="1000">';
     }
-    var displayer = createCatalogDisplay(happyED.catalog, false);
+    var displayer = createCatalogDisplay(happyED.catalog, false, true);
     var categorizer = happyED.categorizer;
     var uvSel = categorizer.createUrlVarSelector();
     var cardlists = uvSel.ids.map(id => displayer.createCardlist(id));
@@ -29,4 +29,5 @@ title: Happy Everyday Shop
 </figure>
 <script>
     document.write(tabber.createTabbedSection());
+    cardlists.forEach(function(sR){pfiavG.pageIdx.included.pages = pfiavG.pageIdx.included.pages.concat(sR.cardRefs);})
 </script>

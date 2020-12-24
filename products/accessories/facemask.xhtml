@@ -1,5 +1,7 @@
 <script>
 	var thisProduct = artwear.facemask;
+	var sku = thisProduct.SKU;
+	pfiavG.pageIdx.page.SKU = sku;
 
 	var browseInfo = createBrowseInfo(
 		[
@@ -17,7 +19,6 @@
 
 	const productCatalog = pfiavG.productCatalog;
 
-	var sku = thisProduct.SKU;
 	var factory = thisProduct.getFactory(sku);
 	var prodJSON = createUIProductJSON(sku, factory.base, thisProduct.prodData, null);
 
@@ -42,13 +43,13 @@
 			return createEmptyViewer();
 		},
 		createBase: function(shop) {
-			return createBasePanelr(shop, this.product);
+			return createBasePanelr(shop,  null, this.product);
 		},
 		create: function() {
 			return createCatenatedViewer([detailViewer, storyViewer]);
 		},
 		createNavHelper: function() {
-			return createNavHelper(prodJSON, artwear.categorizer, artwear.catalog.title);
+			return createNavHelper(prodJSON, extras.categorizer, extras.catalog.title);
 		},
 		createList: function() {
 			return createUniqueItemList(factory.listData, factory);
@@ -83,7 +84,8 @@
 	var componentGenerator = createComponentGenerator(
 		factory, prodJSON, viewerFactory, sizeSelector,
 		true,
-		cardCreator
+		cardCreator,
+		0
 	);
 
 	var itemsComponent = componentGenerator.createUIC(loadShopWithParam());
