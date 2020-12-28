@@ -1,0 +1,41 @@
+---
+layout: product
+lines: all
+funnel: ViewContent
+title: Kagera Tie
+---
+<script>
+	var prodSKU = vagabond.kageratie.SKU;
+	pfiavG.pageIdx.page['SKU'] = prodSKU;
+	pfiavG.pageIdx.page['SKUvid'] = prodSKU;
+	const prodJSON = extras.catalog.getProduct(prodSKU);
+	const skuInfo = prodJSON.skuInfo;
+	var sc = skuInfo.getSizeChart();
+	const sizer = (sc !== null) ? createSizeChartr(sc, skuInfo.sizes) : null;
+	const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath, undefined, skuInfo.sizes);
+	var rendererFactory = vagabond.createComponentFactory(prodJSON, dimensioner, sizer, extras.categorizer);
+	const pageComponent = createPageComponent(prodJSON, pfiavG.productCatalog, rendererFactory);
+</script>
+<section>
+	<script>
+		var productComponent = pageComponent.createRenderer(loadShopWithParam());
+		document.write(productComponent.getSizeModal());
+
+	</script>
+	<div class="container">
+		<script>
+			document.write(productComponent.createProductDiv(0, 0));
+
+		</script>
+	</div>
+</section>
+<script>
+	document.write(renderProductDetails(
+		'<p>' + prodJSON.skuInfo.description + '</p>',
+		'<ul>' +
+		prodJSON.skuInfo.garmentDetails +
+		'</ul>',
+		khadi_washcareHTML,
+		pret_shippingHTML
+	));
+</script>

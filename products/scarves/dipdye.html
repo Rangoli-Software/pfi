@@ -1,6 +1,6 @@
 ---
 layout: product
-lines: x
+lines: all
 funnel: ViewContent
 title: Dip-Dye Scarf
 description: A gorgeous example of the Tangail Weavers' Craft
@@ -8,6 +8,7 @@ description: A gorgeous example of the Tangail Weavers' Craft
 <script>
 	var prodSKU = extras.dipdye.SKU;
 	pfiavG.pageIdx.page['SKU'] = prodSKU;
+	pfiavG.pageIdx.page['SKUvid'] = prodSKU;
 	const prodJSON = extras.catalog.getProduct(prodSKU);
 	const skuInfo = prodJSON.skuInfo;
 	var sc = skuInfo.getSizeChart();
@@ -15,9 +16,6 @@ description: A gorgeous example of the Tangail Weavers' Craft
 	const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath, undefined, skuInfo.sizes);
 	var rendererFactory = extras.createComponentFactory(prodJSON, dimensioner, sizer, extras.categorizer);
 	const pageComponent = createPageComponent(prodJSON, pfiavG.productCatalog, rendererFactory);
-
-	$(document).ready(onDocumentReady);
-
 </script>
 <section>
 	<script>

@@ -1,0 +1,18 @@
+---
+layout: shop
+lines: wc
+title: Woven Canvas Shop
+---
+<script>
+    var displayer = createCatalogDisplay(wovencanvas.catalog, true, false);
+    var categorizer = wovencanvas.categorizer;
+    var uvSel = categorizer.createUrlVarSelector();
+    var cardlists = uvSel.ids.map(id => displayer.createCardlist(id));
+    var tabber = createTabber(
+        uvSel,
+        cardlists,
+    );
+    tabber.enableDocumentReady();
+    document.write(tabber.createTabbedSection());
+    cardlists.forEach(function(sR){pfiavG.pageIdx.includePages(sR.cardRefs);})
+</script>

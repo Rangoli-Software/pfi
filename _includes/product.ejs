@@ -50,7 +50,7 @@ function onGenderChange(g) {
     pageComponent.onSelectionChange(SelChangeReason.genderChange, g);
 }
 </script>
-<script>pfiavG.pageIdx = createPageIndex(<%- "'" + page.inputPath.substring(1) + "'" %>);</script>
+<script>pfiavG.pageIdx = createPageIndex(<%- "{url:'" + page.inputPath.substring(1) + "'}" %>);</script>
 <% if ( locals.prerender ) { %>
 <%- pfi.getShopHeader() %>
 <% } else { %>
@@ -76,6 +76,10 @@ function onGenderChange(g) {
 <script> document.write(getShopTop()); </script>
 <% } %>
 <%- content %>
+<script>
+	pfiavG.pageIdx.includePages([pfiavG.pageIdx.page])
+    $(document).ready(onDocumentReady);
+</script>
 </div>
 <script> document.write(pfiavG.pageIdx.createFeatures()); </script>
 <% if ( locals.prerender ) { %>

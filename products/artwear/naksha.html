@@ -30,7 +30,8 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
     naksha.urlUpdater.urlModifier.updateURL(c);
     var sku = naksha.urlUpdater.encoder.toSKU(c)
 
-	pfiavG.pageIdx.page.SKU = sku;
+	pfiavG.pageIdx.page['SKU'] = sku;
+	pfiavG.pageIdx.page['SKUvid'] = sku;
     var icGen = uicFactory.createGenerator(sku);
     var itemsComponent = icGen.createUIC(loadShopWithParam());
     var itemCategorySelector = itemsComponent.itemCategorySelector;
@@ -40,7 +41,6 @@ keywords: skirt, vintage sari border, fabric art, artwear, women's wear
     var productComponent = itemsComponent.productComponent;
     var dimensioner = productComponent.sizePanelr.dimensioner;
 
-    $(document).ready(onDocumentReady);
     document.write(productComponent.getSizeModal());
 </script>
 <section>

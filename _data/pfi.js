@@ -16,7 +16,7 @@ const moods = {
 		{
 			title: "Summer Dreams",
 			url: "/summerdreams.html",
-			lede: "<strong>Summer Dreams</strong> - A line in Black, Ivory and Silver, in P.F.I. Tangail using the finest Bengal cotton, lustrous Madka and Mysore silks.",
+			lede: "The first capsule in my <strong>Ce Soir</strong> line.",
 			imageURL: "/products/summerdreams/Line.jpg"
         },
 		{
@@ -60,7 +60,7 @@ const ramp = {
 			title: 'Move~in',
 			url: '/look/wc.html',
 			lede: 'Casual Looks featuring my Woven Canvas Ts',
-			imageURL: "/look/ramp/wcw2.jpg"
+			imageURL: "/look/ramp/wcm.jpg"
         }
     ]
 };
@@ -380,7 +380,7 @@ const buzz = {
 		{
 			title: "Yves Richez",
 			url: "https://www.talentreveal.com/blog/rencontre-avec-prema-florence-isaac-creatrice-et-entrepreneuse-solidaire-en-inde",
-			lede: 'Presenting a short documentary (in French) created by the delightful <a href="https://www.facebook.com/richez.yves">Yves Richez</a>, who visited the atelier a while ago. Scholar, writer and teacher par-excellence, Yves is committed to finding and developing human potential all around him. During his short visit, he taught me how to start creating my own videos. His presence is inspirational!</p><p>We are still trying to decide if he looks more like Richard Gere or Aidan Gillen :-)',
+			lede: 'Presenting a short documentary (in French) created by the delightful <a href="https://www.facebook.com/richez.yves">Yves Richez</a>, who visited the atelier a while ago. Scholar, writer and teacher par-excellence, Yves is committed to finding and developing human potential all around him. During his short visit, he taught me how to start creating my own videos. His presence is inspirational! We are still trying to decide if he looks more like Richard Gere or Aidan Gillen :-)',
 			imageHTML: '<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/UD5KhbKHvCI?start=5" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
         },
 		{
@@ -502,373 +502,6 @@ function getSubEntry(item, url) {
 	}
 	return null;
 }
-
-const merchInfo = [
-	{
-		SKU: 'AWTSHT1604Je',
-		vidx: '2',
-		vid: "CW2",
-		SKUvid: 'AWTSHT1604Je-CW2',
-		ledes: ['In Black. For that #oneofakind person!'],
-		images: [{
-			url: '/g/merch/wc3.jpg'
-		}, {
-			url: '/people/ooak/sl01.jpg'
-		}, {
-			url: '/people/ooak/sl02.jpg'
-		}, {
-			url: '/g/merch/wc1.jpg'
-		}, {
-			url: '/g/merch/wc4.jpg'
-		}]
-    },
-	{
-		SKU: 'AWTSHT1604Je',
-		vidx: '1',
-		vid: "CW1",
-		SKUvid: 'AWTSHT1604Je-CW1',
-		ledes: ['In White. A #oneofakind T-shirt.'],
-		images: [{
-			url: '/g/merch/wc2.jpg'
-		}]
-    },
-	{
-		SKU: 'OVTPSH1501Pa',
-		ledes: [''],
-		images: [{
-			url: '/g/merch/sovr.jpg'
-		}]
-    },
-	{
-		SKU: 'OVTPLO1501Pa',
-		ledes: [''],
-		images: [{
-			url: '/blog/FlorDuomo.jpg'
-		}, {
-			url: '/g/merch/lovr1.jpg'
-		}, {
-			url: '/g/merch/lovr2.jpg'
-		}]
-    },
-	{
-		SKU: 'TRPZTP1807Pa',
-		ledes: [''],
-		images: [{
-			url: '/g/merch/payara2.jpg'
-		}]
-    },
-	{
-		SKU: 'MDRSTP1606PP',
-		ledes: [''],
-		images: [{
-			url: '/g/merch/mdrs.jpg'
-		}]
-    },
-	{
-		SKU: 'JULITP1501Pa',
-		ledes: [''],
-		images: [{
-			url: '/g/merch/rvk1.jpg'
-		},{
-			url: '/tapestries/PremaShoot (JPEDD)-7385.jpg'
-		}]
-    },
-	{
-		SKU: 'SARITP1501Pa',
-		ledes: [''],
-		images: [{
-			url: '/g/merch/sari1.jpg'
-		}, {
-			url: '/g/merch/sari2.jpg'
-		}]
-    },
-	{
-		SKU: 'LNKFTN1501Ja',
-		ledes: [''],
-		images: [{
-			url: '/products/holydaysreboot/Kaftan.jpg'
-		}, {
-			url: '/g/aw/HDRKaftan1AW.jpg'
-		}]
-    },
-	{
-		SKU: 'LOTSDR1501Ja',
-		ledes: [''],
-		images: [{
-			url: '/products/holydaysreboot/Lotus.jpg'
-		}, {
-			url: '/g/merch/kmlm.jpg'
-		}]
-    },
-	{
-		SKU: 'NKSHDR1501Ta',
-		ledes: [''],
-		images: [{
-			url: '/look/ramp/j201.jpg'
-		}, {
-			url: '/people/tmribzSq.jpg'
-		}, {
-			url: '/g/merch/tmri.jpg'
-		}]
-	}
-	,
-	{
-		SKU: 'KLGTLY1601Rv',
-		ledes: [''],
-		images: [{
-			url: '/products/itsmagic/LightLayer.jpg'
-		}]
-    },
-	{
-		SKU: 'KGYPST1601Rv',
-		ledes: [''],
-		images: [{
-			url: '/products/itsmagic/GypsySet.jpg'
-		}, {
-			url: '/g/merch/gypsy.jpg'
-		}]
-    },
-	{
-		SKU: 'KRAJPT1601Kh',
-		ledes: [''],
-		images: [{
-			url: '/products/itsmagic/RajPantsSq2.jpg'
-		}]
-    },
-	{
-		SKU: 'FAIRST2011Rv',
-		ledes: [''],
-		images: [{
-			url: '/products/itsmagic/FairySet.jpg'
-		}]
-    },
-	{
-		SKU: 'KBALPA1601Vo',
-		ledes: [''],
-		images: [{
-			url: '/products/itsmagic/Balloon.jpg'
-		}]
-    },
-	{
-		SKU: 'KRAJKT1601Rv',
-		ledes: [''],
-		images: [{
-			url: '/products/itsmagic/RajKurta.jpg'
-		}, {
-			url: '/products/itsmagic/RajBoy.jpg'
-		}, {
-			url: '/g/merch/royal1.jpg'
-		}, {
-			url: '/g/merch/royal2.jpg'
-		}]
-    },
-	{
-		SKU: 'YUVRTC1601Rv',
-		ledes: [''],
-		images: [{
-			url: '/g/merch/prince.jpg'
-		}]
-    },
-	{
-		SKU: 'HLFPNT1601Kh',
-		ledes: [''],
-		images: [{
-			url: '/products/itsmagic/HalfPant.jpg'
-		}]
-    },
-	{
-		SKU: 'KIDIKI1501Vi',
-		ledes: [''],
-		images: [{
-			url: '/products/itsmagic/Kidikini.jpg'
-		}]
-    },
-	{
-		SKU: 'PRNCDR1501Rv',
-		ledes: [''],
-		images: [{
-			url: '/products/itsmagic/Princess.jpg'
-		}, {
-			url: '/g/merch/princess.jpg'
-		}]
-    },
-	{
-		SKU: 'KWAVDR1601Rv',
-		ledes: [''],
-		images: [{
-			url: '/products/itsmagic/Wave.jpg'
-		}, {
-			url: '/g/merch/wave.jpg'
-		}]
-    },
-	{
-		SKU: 'KDHRDR1601Rv',
-		ledes: [''],
-		images: [{
-			url: '/products/itsmagic/Dhara.jpg'
-		}]
-    },
-	{
-		SKU: 'HLNDRS1505PT',
-		ledes: [''],
-		images: [{
-			url: '/look/moods/cs/helena.jpg'
-		}]
-    },
-	{
-		SKU: 'JLTDRS1505PT',
-		ledes: [''],
-		images: [{
-			url: '/look/moods/cs/juliet.jpg'
-		}]
-    },
-	{
-		SKU: 'BKLLTS1505Je',
-		ledes: [''],
-		images: [{
-			url: '/look/moods/cs/tamora.jpg'
-		}]
-    },
-	{
-		SKU: 'NKSHMU1501PP',
-		ledes: ["Full length #oneofakind skirt for all ages and sizes!"],
-		images: [{
-			url: '/look/friends/1.jpg'
-		}]
-    },
-	{
-		SKU: 'NKSHMD1501PP',
-		ledes: ["#oneofakind skirt for all ages and sizes!"],
-		images: [{
-			url: '/people/mmib.jpg'
-		}, {
-			url: '/people/slkb.jpg'
-		}, {
-			url: '/people/ibgirl.jpg'
-		}, {
-			url: '/look/friends/2.jpg'
-		}, {
-			url: '/g/look/nkshofstp.jpg'
-		}]
-    },
-	{
-		SKU: 'NKSHMI1501PP',
-		ledes: ["#oneofakind mini skirt for all ages and sizes!"],
-		images: [{
-			url: '/people/EricaNaksha1.jpg'
-		}]
-    },
-	{
-		SKU: 'NKSHMC1512PP',
-		ledes: ["#oneofakind micro skirt for all ages and sizes!"],
-		images: [{
-			url: '/people/nmnibz.jpg'
-		}]
-    },
-	{
-		SKU: 'FACEMK2005Ta',
-		ledes: ["#oneofakind facemask to keep you safe in style and comfort"],
-		images: [{
-			url: '/people/nfm01.jpg'
-		}, {
-			url: '/people/nfm02.jpg'
-		}, {
-			url: '/people/nfm03.jpg'
-		}, {
-			url: '/look/friends/gg-pink.jpg'
-		}, {
-			url: '/look/friends/gg-aqua.jpg'
-		}, {
-			url: '/look/friends/gg-ind-1.jpg'
-		}]
-    },
-	{
-		SKU: 'DPDYSF1501PT',
-		ledes: ["A gorgeous example of the Tangail Weavers' Craft"],
-		images: [{
-			url: '/products/scarves/TurbanMood.jpg'
-		}, {
-			url: '/products/scarves/ShawlMood.jpg'
-		}, {
-			url: '/people/nmnibz.jpg'
-		}, {
-			url: '/g/look/look01.jpg'
-		}]
-    },
-	{
-		SKU: 'KAGTIE1601Kh',
-		ledes: ['Artsy, hand-woven, hand-crafted Neckwear', 'For the gentleman of refined taste - a two-tone khadi tie with a border of treasured tangail'],
-		images: [{
-			url: '/products/ties/Black.jpg'
-		}, {
-			url: '/products/ties/Red.jpg'
-		}]
-    },
-	{
-		SKU: 'CHMPGN1501JL',
-		ledes: ['The perfect gift bag for that exclusive vintage'],
-		images: [{
-			url: '/products/home/CBCCMD.jpg'
-		}, {
-			url: '/products/home/CBCGMD.jpg'
-		}, {
-			url: '/products/home/CBMBMD.jpg'
-		}]
-    },
-	{
-		SKU: 'TRPZTP1807Kh',
-		ledes: [''],
-		images: [{
-			url: '/look/friends/tt.jpg'
-		}]
-    },
-	{
-		SKU: 'CRPTOP1805Kh',
-		ledes: ['Basic summer top'],
-		images: [{
-			url: '/products/happyeveryday/mood/mch-1.jpg'
-		}]
-    },
-	{
-		SKU: 'VAMPAL1708Kh',
-		ledes: ['Handwoven khadi to lighten up your summers'],
-		images: [{
-			url: '/products/happyeveryday/mood/mch-2.jpg'
-		}, {
-			url: '/products/happyeveryday/mood/mch-7.jpg'
-		}]
-    },
-	{
-		SKU: 'OVTPLO1501Vo',
-		ledes: ['Light breezy jacket for spring'],
-		images: [{
-			url: '/products/happyeveryday/mood/mch-3.jpg'
-		}, {
-			url: '/blog/joyofcolour/2.jpg'
-		}]
-    },
-	{
-		SKU: 'BERMPA1609Kh',
-		ledes: ['Casual pants to work and lounge in'],
-		images: [{
-			url: '/products/happyeveryday/mood/mch-4.jpg'
-		}]
-    },
-	{
-		SKU: 'LTSDSL1501Kh',
-		ledes: ['A dress that works from dawn to dusk'],
-		images: [{
-			url: '/products/happyeveryday/mood/mch-5.jpg'
-		}]
-    },
-	{
-		SKU: 'BALLPA1501Vo',
-		ledes: ['Everyday basics for every mood'],
-		images: [{
-			url: '/products/happyeveryday/mood/mch-6.jpg'
-		}]
-    }
-];
 
 function getHostName(url) {
 	var match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
@@ -1047,73 +680,6 @@ function createAboutMenuHTML() {
 	return createDDContents([col1]);
 }
 
-function createStyledList(jsonArray) {
-	var res = '<ul class="list-styled mb-6 font-size-sm">';
-	for (var i = 0; i < jsonArray.length; i++) {
-		var item = jsonArray[i];
-		if (item.title === undefined) {
-			continue;
-		}
-		res += '<li class="list-styled-item">' + createItemUrl(item, "list-styled-link") + '</li>';
-	}
-	res += '</ul>';
-	return res;
-}
-
-function createDropdownColumn(itemLists, colCls) {
-	var res = '<div class="' + colCls + '">';
-	for (var i = 0; i < itemLists.length; i++) {
-		var item = itemLists[i];
-		if (item.title === undefined) {
-			continue;
-		}
-		res += '<div class="' + (i === 0 ? "mb-5" : "my-5") + ' font-weight-bold">';
-		res += createItemUrl(item, null);
-		res += '</div>';
-		res += createStyledList(item.sub);
-	}
-	res += '</div>';
-	return res;
-}
-
-function createDropdownCard(cols) {
-	var res = '<div class="card"><div class="card-body"><div class="row">';
-	for (var i = 0; i < cols.length; i++) {
-		res += cols[i];
-	}
-	res += '</div></div></div>';
-	return res;
-}
-
-function createMinWidthWithContents(html, width, alignRight) {
-	var res = '<div class="dropdown-menu' + (alignRight ? " dropdown-menu-right" : "") + '" style="min-width: ' + width + ';">';
-	res += html;
-	res += '</div>';
-	return res;
-}
-
-function createLookDDContents() {
-	var col1 = createDropdownColumn([lotm, moods], "col-6");
-	var col2 = createDropdownColumn([clients, ramp], "col-6");
-	return createDropdownCard([col1, col2]);
-}
-
-function createBlogDDContents() {
-	var col1 = createDropdownColumn([atelier], "col-6");
-	var col2 = createDropdownColumn([origin, archives], "col-6");
-	return createDropdownCard([col1, col2]);
-}
-
-function createAboutDDContents() {
-	var col1 = createDropdownColumn([about, buzzTL, lookbook], "col-12");
-	return createDropdownCard([col1]);
-}
-
-function createShopDDContents() {
-	var col1 = createDropdownColumn([shop, faqs], "col-12");
-	return createDropdownCard([col1]);
-}
-
 function createMerchColumn(colCls) {
 	var res = '<div class="py-3 ' + colCls + '">';
 	res += pfiavG.pageIdx.createShopCard();
@@ -1122,7 +688,9 @@ function createMerchColumn(colCls) {
 }
 
 function createMerchShopMenuHTML() {
-	var col = createDDColumn([shop, faqs], "col-5");
+	var shopPlusFeatures = JSON.parse(JSON.stringify(shop));
+	shopPlusFeatures.sub = pfiavG.pageIdx.createShopFeatureList(1).concat(shop.sub);
+	var col = createDDColumn([shopPlusFeatures, faqs], "col-5");
 	var mch = createMerchColumn("col-7");
 	return createDDContents([col, mch]);
 }
@@ -1141,12 +709,10 @@ function createLookMM() {
 
 function createBlogDD() {
 	return createDDMenu("tlBlogMnu", true, "295px", createBlogMenuHTML());
-//	return createMinWidthWithContents(createBlogDDContents(), "320px", true);
 }
 
 function createAboutDD() {
 	return createDDMenu("tlAboutMnu", true, "140px", createAboutMenuHTML());
-//	return createMinWidthWithContents(createAboutDDContents(), "145px", true);
 }
 
 function createTopNav() {
@@ -1327,31 +893,23 @@ function shuffle(array) {
 	return array;
 }
 
-function createCarousel(carId, carItems) {
-	var id = "carousel-" + carId;
-	var res = '<div id="' + id + '" class="carousel slide" data-ride="carousel" data-interval="2500"><ol class="carousel-indicators">';
-	for (var i = 0; i < carItems.length; i++) {
-		res += '<li data-target="#' + id + '" data-slide-to="' + i + '"' + (i === 0 ? '" class="active"' : '') + '></li>';
-	}
-	res += '</ol><div class="carousel-inner">';
-	for (i = 0; i < carItems.length; i++) {
-		var itm = carItems[i];
-		res += '<div class="carousel-item' + (i === 0 ? ' active' : '') + '">' +
-			'<img class="d-block img-fluid" src="' + itm.imageURL + '"' + (itm.width !== undefined ? 'width="' + itm.width + '"' : "") +
-			(itm.height !== undefined ? 'height="' + itm.height + '"' : "") + '>' +
-			'</div>';
-	}
-	res += '</div>\
-<a class="carousel-control-prev" href="#' + id + '" role="button" data-slide="prev">\
-<span class="carousel-control-prev-icon" aria-hidden="true"></span>\
-<span class="sr-only">Previous</span>\
-</a>\
-<a class="carousel-control-next" href="#' + id + '" role="button" data-slide="next">\
-<span class="carousel-control-next-icon" aria-hidden="true"></span>\
-<span class="sr-only">Next</span>\
-</a>\
-</div>';
-	return res;
+function createProductSchemaHTML (name, imgurl, description, priceString) {
+	var jsonTempl = {
+		"@context" : "http://schema.org",
+		"@type" : "Product",
+		brand : {
+    		"@type" : "Prema Florence Isaac",
+			logo : "https://www.premaflorenceisaac.com/g/since199900.svg"
+  		},
+		offers : {
+			"@type" : "Offer",
+		}
+	};
+	jsonTmpl['name'] = name;
+	jsonTmpl['image'] = imgurl;
+	jsonTmpl['description'] = description;
+	jsonTmpl['offers']['price'] = priceString;
+	return '<script type="application/ld+json">' + JSON.Stringify(jsonTmpl) + '</script>';
 }
 
 function gaFunnel(funnel) {
@@ -1467,6 +1025,7 @@ function createINBtn(location) {
 	return '<script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script><script type="IN/Share" data-url="' + location + '"></script>';
 }
 
+/*
 function createMCSignup() {
 	return '<center><div class="form-group">\
 <form action="https://premaflorenceisaac.us12.list-manage.com/subscribe/post?u=66ac2e4e6cda6ea157ef47afd&amp;id=0c8cc89a5b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>\
@@ -1474,6 +1033,11 @@ function createMCSignup() {
 <input type="submit" value="Sign Up" name="subscribe" class="button">\
 <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_66ac2e4e6cda6ea157ef47afd_0c8cc89a5b" tabindex="-1" value=""></div>\
 </form></div></center>';
+}
+*/
+
+function createMCSignup() {
+	return '<center><form action="https://premaflorenceisaac.us12.list-manage.com/subscribe/post?u=66ac2e4e6cda6ea157ef47afd&amp;id=0c8cc89a5b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate><div class="form-group" style="width: 340px"><div class="input-group"><input type="email" class="form-control" placeholder="Your EMail Address" name="EMAIL"><div class="input-group-append"><button type="submit" class="btn btn-secondary" name="subscribe">Sign Up</button></div></div><div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_66ac2e4e6cda6ea157ef47afd_0c8cc89a5b" tabindex="-1" value=""></div></div></form></center>';
 }
 
 function createShareBar(location) {
@@ -1496,7 +1060,7 @@ function createShareBar(location) {
 function botNav(botImgTag, location) {
 	return createShareBar(location) +
 		'<div class="rwell">\
-<p class="text-center"><strong>Light . Beauty . Freedom</strong></p>\
+<p class="text-center"><strong>☀️ Light 🌺 Beauty 💃 Freedom</strong></p>\
 </div>\
 <div class="container">\
 <div class="pb-2"><center><div class="row">\
@@ -1766,7 +1330,7 @@ function createSM(path) {
 
 module.exports = {
     createSM,
-    createCarousel,
+	createMCSignup,
     gaInit,
     gaFunnel,
     fbInit,

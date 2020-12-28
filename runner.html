@@ -1,0 +1,72 @@
+---
+layout: product
+lines: all
+funnel: ViewContent
+title: Handloom Face Mask
+description: A stylish, comfortable one-of-a-kind fashion accessory
+---
+<script>
+    var lineCatalogs = [wovencanvas.catalog, artwear.catalog, itsmagic.catalog, cesoir.catalog, happyED.catalog, extras.catalog];
+    var mipsInCats = lineCatalogs.map(c => pfiavG.pageIdx.miPageSet.filter(function(page){return c.skus.includes(page.SKU)}).pages);
+    var skus = mipsInCats.map(list => list.map(p=>p.SKU));
+    var sections = lineCatalogs.map(function(c){return {title: c.title, url: c.shopURL}});
+	document.write(JSON.stringify(skus));
+	document.write(JSON.stringify(sections));
+</script>
+<!--
+<script>
+function createNewWCListData(listData) {
+	var res = [];
+	for (var i = 0; i < listData.length; i++) {
+		var oldrow = listData[i];
+		var row = [];
+		row.push(oldrow[0])
+		row.push([oldrow[1]])
+		row.push('')
+		row.push('')
+		if (oldrow[5] !== '') {
+			var collected = {};
+			var dt = new Date(oldrow[5]);
+			collected.Date = "" + dt.getFullYear() + "-" + ("0" +(dt.getMonth() + 1)).slice(-2);
+			if (oldrow[6] !== '') {
+				collected.Name = oldrow[6];
+			}
+			row.push(collected);
+		} else {
+			row.push(null);
+		}
+		var cw = null;
+		var color = oldrow[2];
+		if ( color === 'White' ) {
+			cw =  'CW1';
+		} else if ( color === 'Black' ) {
+			cw =  'CW2';
+		} else {
+			cw = 'CW3';
+		}
+		row.push(cw);
+		var garment = {color: color};
+		if (oldrow[7] !== '') {
+			garment.size = oldrow[7];
+			row.push(oldrow[7]);
+		} else {
+			row.push(null);
+		}
+		var panel = {Height : oldrow[3], Width: oldrow[4]};
+		row.push(panel);
+		row.push(garment);
+		if (oldrow[8] !== '') {
+			var curated = {code: oldrow[8]};
+			row.push(curated);
+		} else {
+			row.push(null);
+		}
+		res.push(row);
+	}
+	return res;
+}
+	var oldlist = getWovenCanvasFactory(wovencanvas.tshirt.SKU).listData;
+	var newlist = createNewWCListData(oldlist);
+	document.write(JSON.stringify(newlist));
+</script>
+-->

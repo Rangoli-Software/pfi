@@ -1,6 +1,7 @@
 <script>
 	var sku = thisProduct.SKU;
 	pfiavG.pageIdx.page['SKU'] = sku;
+	pfiavG.pageIdx.page['SKUvid'] = sku;
 	browseInfo = createBrowseInfo(
 		[
 			[
@@ -87,7 +88,6 @@
 	var productComponent = itemsComponent.productComponent;
 	var dimensioner = productComponent.sizePanelr.dimensioner;
 
-	$(document).ready(onDocumentReady);
 	document.write(productComponent.getSizeModal());
 
 </script>

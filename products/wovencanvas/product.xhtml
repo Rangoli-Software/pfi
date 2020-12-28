@@ -1,0 +1,144 @@
+<script>
+	var sku = thisProduct.SKU;
+	pfiavG.pageIdx.page['SKU'] = sku;
+	browseInfo = createBrowseInfo(
+		[
+			[
+				[origin, '/journey/treasuretrove.html']
+			],
+			[
+				[atelier, '/tangailcollage.html']
+			]
+		],
+		[1, 1],
+		null
+	);
+	const productCatalog = pfiavG.productCatalog;
+
+	var factory = thisProduct.getFactory(sku);
+	var prodJSON = createUIProductJSON(sku, factory.base, thisProduct.prodData, null);
+
+	var encoder = {
+		toCW: function(code) {
+			return "CW" + code;
+		},
+		toCode: function(cw) {
+			return cw.slice(2);
+		}
+	};
+	var modifier = createURLModifer("v", "1");
+	var c = modifier.getCodeOrDefault();
+	modifier.updateURL(c);
+	var cw = encoder.toCW(c)
+	var vntidx = prodJSON.variants.getVarIdx('vid', cw);
+	pfiavG.pageIdx.page['SKUvid'] = sku + "-" + cw;
+
+	var colSelData = createColSelData(factory.base,
+		[{
+				colourName: 'White',
+				image: 'GirlWhiteS'
+			},
+			{
+				colourName: 'Black',
+				image: 'ManBlackS'
+			}
+		]);
+	var detailViewer = createHTMLViewer(prodJSON.skuInfo.garmentDetails);
+	var storyViewer = browseInfo.getStoryViewer();
+	var sizeSelector = createSizeSelector(this.prodJSON.skuInfo.sizes, pfiavG.sizeModalInfo.getToggleHTML(), 'onSizeChange', '', "Size");
+	var selCategory = createColourChoiceCategories(colSelData, factory);
+	var clszCat = createColourSizeCategorySelector(selCategory, sizeSelector);
+	var viewerFactory = {
+		prodJSON: prodJSON,
+		createPre: function() {
+			return createEmptyViewer();
+		},
+		createBase: function(shop) {
+			return createBasePanelr(shop, this.prodJSON.variants, this.prodJSON.product);
+		},
+		create: function() {
+			return createCatenatedViewer([createCategoryUIViewer(clszCat.colourCategoryUI, 0), detailViewer, storyViewer]);
+		},
+		createNavHelper: function() {
+			return createNavHelper(this.prodJSON, wovencanvas.categorizer, wovencanvas.catalog.title);
+		},
+		createList: function() {
+			return createPanelsList(factory.listData, factory);
+		},
+		createCategorySelector: function() {
+			return clszCat;
+		},
+		createVarSel: function() {
+			return clszCat;
+		},
+		createPanelRVs: function() {
+			return createPanelRVs(
+				SelChangeReason.createValidator([SelChangeReason.currencyChange, SelChangeReason.colorChange, SelChangeReason.sizeChange, SelChangeReason.colorCategoryChange]),
+				SelChangeReason.createValidator([SelChangeReason.colorChange]),
+				SelChangeReason.createValidator([SelChangeReason.colorChange, SelChangeReason.currencyChange]),
+				SelChangeReason.createValidator([SelChangeReason.unitChange, SelChangeReason.genderChange])
+			);
+		},
+		createSizeChartr: function() {
+			return createGenderSizeChartr(thisProduct.menssizing, thisProduct.womensizing, this.prodJSON.skuInfo.sizes);
+		},
+		getURLUpdater: function() {
+			return {
+				updateURL: function(arg) {
+					var vidx = clszCat.getSelectedIdx();
+					var cw = prodJSON.variants.getVarVal('vid', vidx);
+					var c = encoder.toCode(cw);
+					modifier.updateURL(c);
+				}
+			}
+		}
+	};
+	var cardCreator = thisProduct.createCardCreator();
+	var componentGenerator = createComponentGenerator(
+		factory, prodJSON, viewerFactory, sizeSelector,
+		true,
+		cardCreator,
+		vntidx
+	);
+
+	var itemsComponent = componentGenerator.createUIC(loadShopWithParam());
+	var itemCategorySelector = itemsComponent.itemCategorySelector;
+	var sizeSelector = itemsComponent.sizeSelector;
+	const pageComponent = createUIPageComponent(productCatalog, itemsComponent);
+
+	var productComponent = itemsComponent.productComponent;
+	var dimensioner = productComponent.sizePanelr.dimensioner;
+	document.write(productComponent.getSizeModal());
+</script>
+<section>
+	<div class="container">
+		<script>
+			document.write(productComponent.createProductDiv(vntidx, 0));
+
+		</script>
+	</div>
+</section>
+<h6>Buy Now</h6>
+<p></p>
+<form>
+	<div class="row align-items-center">
+		<div class="col-12 text-center">
+			<script>
+				document.write(sizeSelector.createDiv(0));
+
+			</script>
+		</div>
+	</div>
+</form>
+<script>
+	document.write(itemsComponent.createDiv());
+
+</script>
+<script>
+	document.write(renderProductDetails(
+		'<p>' + prodJSON.skuInfo.description + '</p>',
+		null,
+		thisProduct.washcareHTML,
+		thisProduct.shippingHTML));
+
+</script>

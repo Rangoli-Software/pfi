@@ -11,7 +11,7 @@ permalink: "<%- page.inputPath.substring(1) %>"
 <% } %>
 </head>
 <body>
-<script>pfiavG.pageIdx = createPageIndex(<%- "'" + page.inputPath.substring(1) + "'" %>);</script>
+<script>pfiavG.pageIdx = createPageIndex(<%- "{url:'" + page.inputPath.substring(1) + "'}" %>);</script>
 <% if ( locals.prerender ) { %>
 <%- pfi.getShopHeader() %>
 <% } else { %>
@@ -46,6 +46,7 @@ permalink: "<%- page.inputPath.substring(1) %>"
 </script>
 <%- content %>
 <script>
+	pfiavG.pageIdx.includePages([pfiavG.pageIdx.page])
     $(document).ready(onDocumentReady);
 </script>
 </div>

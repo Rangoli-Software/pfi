@@ -1,5 +1,6 @@
 <script>
 	pfiavG.pageIdx.page['SKU'] = prodSKU;
+	pfiavG.pageIdx.page['SKUvid'] = prodSKU;
 	const prodJSON = vagabond.catalog.getProduct(prodSKU);
 	const skuInfo = prodJSON.skuInfo;
 	var sc = skuInfo.getSizeChart();
@@ -7,9 +8,6 @@
 	const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath, undefined, skuInfo.sizes);
 	var rendererFactory = vagabond.createComponentFactory(prodJSON, dimensioner, sizer, vagabond.categorizer);
 	const pageComponent = createPageComponent(prodJSON, pfiavG.productCatalog, rendererFactory);
-
-	$(document).ready(onDocumentReady);
-
 </script>
 <section>
 	<script>

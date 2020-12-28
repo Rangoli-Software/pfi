@@ -1,0 +1,10 @@
+{
+	"brackets-file-tree-exclude.excludeList": [
+		"/.git/",
+        "/dist/",
+        "/bower_components/",
+        "/node_modules/",
+        "/shopper-1.0.3/",
+        "/_site/"
+    ]
+}

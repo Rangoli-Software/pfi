@@ -2,29 +2,7 @@
 <div class="row">
 	<div class="col-md-8 offset-md-2">
 		<figure>
-			<script>
-				var images = {
-					items: [{
-							url: "/products/men/kagera/kag1.jpg"
-						},
-						{
-							url: "/products/men/kagera/kag2.jpg"
-						},
-						{
-							url: "/products/men/kagera/kag3.jpg"
-						}
-					],
-					getNumImages: function() {
-						return this.items.length;
-					},
-					getImage: function(i) {
-						return this.items[i];
-					}
-				};
-				var carousel = createSquareImageCarousel(images, "carousel-kagera");
-				document.write(carousel.createImageCarousel());
-
-			</script>
+			<img src="/products/men/kagera/kag1.jpg" width="1500" height="2000" class="img-fluid">
 		</figure>
 	</div>
 </div>
@@ -79,6 +57,29 @@
 	<p>All of the ties can be worn with neutral coloured suits for business wear. The black and grey can be worn for formal occasions, and the coloured ones with a coordinated evening jacket for a night out, or even with just a shirt and jeans.</p>
 	<figure><img src="/products/men/kagera/17.jpg" class="img-fluid center-block" /></figure>
 	<p>I designed many combinations, some of which could only be made in limited quantities, due to the scarcity of the border. At the moment, we have <a href="/products/men/kagera.html">6 ties available</a></p>
+</div>
+<div class="row">
+	<div class="col-md-8 offset-md-2">
+		<figure>
+			<script>
+				var items = [
+					{
+						url: "/products/men/kagera/kag2.jpg",
+						width: 1500,
+						height: 2000
+					},
+					{
+						url: "/products/men/kagera/kag3.jpg",
+						width: 1500,
+						height: 2000
+					}
+				];
+				document.write(createFlickityCarousel("carousel-kagera", items));
+			</script>
+		</figure>
+	</div>
+</div>
+<div class="item">
 	<p>The ties had just been finished when we did our photo shoot for Vagabond. The model was our favorite world-traveling maverick, photographer and documentary film-maker Sri Kolari, and the photographer for the shoot was Samvit Blass, creator and executive at Light Fish Designs.</p>
 	<p>We got to fooling around with the tie and they both wound up modeling it - Sri in the Blue and Samvit in the Red. I think you'll agree that the results were really interesting!</p>
 </div>

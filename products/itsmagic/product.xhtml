@@ -1,13 +1,11 @@
 <script>
 	pfiavG.pageIdx.page['SKU'] = prodSKU;
+	pfiavG.pageIdx.page['SKUvid'] = prodSKU;
 	const prodJSON = itsmagic.catalog.getProduct(prodSKU);
 	const sizer = null;
 	const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath, undefined, prodJSON.skuInfo.sizes);
 	var rendererFactory = itsmagic.createComponentFactory(prodJSON, dimensioner, sizer, itsmagic.categorizer);
 	const pageComponent = createPageComponent(prodJSON, pfiavG.productCatalog, rendererFactory);
-
-	$(document).ready(onDocumentReady);
-
 </script>
 <section>
 	<script>
