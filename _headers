@@ -1,25 +1,31 @@
-/shopper-1.0.3/fonts/feather/*.css
+/shopper-1.0.4/css/*
 	Cache-Control: public, max-age=31536000,  immutable
 
-/shopper-1.0.3/fonts/feather/fonts/*
+/shopper-1.0.4/js/*
 	Cache-Control: public, max-age=31536000,  immutable
 
-/shopper-1.0.3/libs/flickity/dist/*
+/shopper-1.0.4/fonts/jost/*
 	Cache-Control: public, max-age=31536000,  immutable
 
-/shopper-1.0.3/libs/flickity-fade/*
+/shopper-1.0.4/fonts/feather/*.css
 	Cache-Control: public, max-age=31536000,  immutable
 
-/shopper-1.0.3/libs/@fancyapps/fancybox/dist/*
+/shopper-1.0.4/fonts/feather/fonts/*
+	Cache-Control: public, max-age=31536000,  immutable
+
+/shopper-1.0.4/libs/flickity/dist/*
+	Cache-Control: public, max-age=31536000,  immutable
+
+/shopper-1.0.4/libs/flickity-fade/*
+	Cache-Control: public, max-age=31536000,  immutable
+
+/shopper-1.0.4/libs/@fancyapps/fancybox/dist/*
 	Cache-Control: public, max-age=31536000,  immutable
 
 /js/*.css
 	Cache-Control: public, max-age=31536000,  immutable
 
 /js/*.js
-	Cache-Control: public, max-age=31536000,  immutable
-
-/js/unique/*.js
 	Cache-Control: public, max-age=31536000,  immutable
 
 /atelier/*.jpg
@@ -43,6 +49,9 @@
 /g/*.jpg
 	Cache-Control: public, max-age=31536000,  immutable
 
+/g/*.svg
+	Cache-Control: public, max-age=31536000,  immutable
+
 /g/aw/*.jpg
 	Cache-Control: public, max-age=31536000,  immutable
 
@@ -53,6 +62,9 @@
 	Cache-Control: public, max-age=31536000,  immutable
 
 /g/look/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/g/merch/*.jpg
 	Cache-Control: public, max-age=31536000,  immutable
 
 /g/p/*.jpg
@@ -97,7 +109,22 @@
 /products/anotherway/*.jpg
 	Cache-Control: public, max-age=31536000,  immutable
 
-/products/artwear/*.jpg
+/products/artwear/kaftan/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/artwear/kamalam/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/artwear/madras/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/artwear/overtops/2019/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/artwear/payara/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/artwear/sari/*.jpg
 	Cache-Control: public, max-age=31536000,  immutable
 
 /products/artwear/skirts/*.jpg
@@ -113,6 +140,12 @@
 	Cache-Control: public, max-age=31536000,  immutable
 
 /products/artwear/skirts/mu/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/artwear/sovrtop/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/artwear/tamarai/*.jpg
 	Cache-Control: public, max-age=31536000,  immutable
 
 /products/happyeveryday/*.jpg
@@ -178,10 +211,49 @@
 /products/itsmagic/*.jpg
 	Cache-Control: public, max-age=31536000,  immutable
 
+/products/itsmagic/balloon/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/itsmagic/fairy/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/itsmagic/flow/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/itsmagic/fullpant/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/itsmagic/gypsy/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/itsmagic/halfpant/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/itsmagic/kidikini/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/itsmagic/layer/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/itsmagic/prince/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/itsmagic/princess/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/itsmagic/royal/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/itsmagic/wave/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
 /products/men/angkor/*.jpg
 	Cache-Control: public, max-age=31536000,  immutable
 
 /products/men/arambol/*.jpg
+	Cache-Control: public, max-age=31536000,  immutable
+
+/products/men/kagera/*.jpg
 	Cache-Control: public, max-age=31536000,  immutable
 
 /products/men/koh/*.jpg
@@ -263,7 +335,4 @@
 	Cache-Control: public, max-age=31536000,  immutable
 
 /tbc/sqIC/*.jpg
-	Cache-Control: public, max-age=31536000,  immutable
-
-/g/*.svg
 	Cache-Control: public, max-age=31536000,  immutable

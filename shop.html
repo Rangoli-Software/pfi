@@ -65,13 +65,8 @@ keywords: shop, catalog, online shopping,
                     },
                     createHTML: function() {
                         var res = '<section class="pt-0 pb-0">';
-                        res += "<h5>" + this.title + ((this.url !== null && mx < nItems) ? '<a  href="' + this.url + '"><i class="fa fa-arrow-right ml-2"></i></a>' : '')+ '</h5>';
+                        res += "<h5>" + this.title + ((this.url !== null && mx < nItems) ? '<a  href="' + this.url + '"><i class="fe fe-arrow-right ml-2"></i></a>' : '')+ '</h5>';
                         res += this.createList();
-/*
-                        if ( this.url !== null && mx < nItems) {
-                            res += "<p><big>Browse all <strong>" + this.title + '</strong><a  href="' + this.url + '"><i class="fa fa-arrow-right ml-2"></i></a></big></p>';
-                        }
-*/
                         res += '</section>';
                         return res;
                     }

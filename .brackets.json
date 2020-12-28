@@ -5,6 +5,7 @@
         "/bower_components/",
         "/node_modules/",
         "/shopper-1.0.3/",
+        "/shopper-1.0.4/",
         "/_site/"
     ]
 }

@@ -316,19 +316,19 @@ function createCart(version, items) {
 
 function createShopForCur(fx, version) {
 	if (fx === 'USD') {
-		return createShop(version, false, 'USD', '<i class="fa fa-usd"></i>', true);
+		return createShop(version, false, 'USD', '$', true);
 	} else if (fx === 'EUR') {
-		return createShop(version, true, 'EUR', '<i class="fa fa-eur"></i>', true);
+		return createShop(version, true, 'EUR', '&euro;', true);
 	} else if (fx === 'GBP') {
-		return createShop(version, true, 'GBP', '<i class="fa fa-gbp"></i>', true);
+		return createShop(version, true, 'GBP', '&pound;', true);
 	} else if (fx === 'AUD') {
-		return createShop(version, true, 'AUD', 'A<i class="fa fa-usd"></i>', true);
+		return createShop(version, true, 'AUD', 'A$', true);
 	} else if (fx === 'CAD') {
-		return createShop(version, 'true, CAD', 'C<i class="fa fa-usd"></i>', true);
+		return createShop(version, 'true, CAD', 'C$', true);
 	} else if (fx === 'CHF') {
 		return createShop(version, true, 'CHF', 'SFr.', true);
 	} else {
-		return createShop(version, true, 'INR', '<i class="fa fa-inr"></i>', fx !== null);
+		return createShop(version, true, 'INR', '₹', fx !== null);
 	}
 }
 
@@ -589,7 +589,7 @@ function createItemRenderer(parentId, item, shop, options) {
 			//            return this.item.quantity + " " + this.item.size + " " + this.item.colour + " T-Shirt";
 		},
 		createRemoveFromCartButton: function () {
-			return '<button id="' + this.getButtonID() + '" class="btn btn-outline-dark btn-sm" type="button"><span class="fa fa-times"></span> Remove From Cart</button>';
+			return '<button id="' + this.getButtonID() + '" class="btn btn-outline-dark btn-sm" type="button"><span class="fe fe-x"></span> Remove From Cart</button>';
 		},
 		createRow: function (html) {
 			return '<div class="row border border-dark p-2" " style="background-color:' + this.options.bgColor + '; color:' + this.options.fgColor + '">' +

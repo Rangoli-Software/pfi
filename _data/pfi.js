@@ -610,7 +610,7 @@ function createItemUrl(item, cls) {
 		if (getHostName(item.url) === null) {
 			res += '</a>';
 		} else {
-			res += '<i class="fa fa-external-link-alt"></i></a>';
+			res += '<i class="fe fe-external-link"></i></a>';
 		}
 	}
 	return res;
@@ -912,6 +912,35 @@ function createProductSchemaHTML (name, imgurl, description, priceString) {
 	return '<script type="application/ld+json">' + JSON.Stringify(jsonTmpl) + '</script>';
 }
 
+/*
+function createCarousel(carId, carItems) {
+	var id = "carousel-" + carId;
+	var res = '<div id="' + id + '" class="carousel slide" data-ride="carousel" data-interval="2500"><ol class="carousel-indicators">';
+	for (var i = 0; i < carItems.length; i++) {
+		res += '<li data-target="#' + id + '" data-slide-to="' + i + '"' + (i === 0 ? '" class="active"' : '') + '></li>';
+	}
+	res += '</ol><div class="carousel-inner">';
+	for (i = 0; i < carItems.length; i++) {
+		var itm = carItems[i];
+		res += '<div class="carousel-item' + (i === 0 ? ' active' : '') + '">' +
+			'<img class="d-block img-fluid" src="' + itm.imageURL + '"' + (itm.width !== undefined ? 'width="' + itm.width + '"' : "") +
+			(itm.height !== undefined ? 'height="' + itm.height + '"' : "") + '>' +
+			'</div>';
+	}
+	res += '</div>\
+<a class="carousel-control-prev" href="#' + id + '" role="button" data-slide="prev">\
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>\
+<span class="sr-only">Previous</span>\
+</a>\
+<a class="carousel-control-next" href="#' + id + '" role="button" data-slide="next">\
+<span class="carousel-control-next-icon" aria-hidden="true"></span>\
+<span class="sr-only">Next</span>\
+</a>\
+</div>';
+	return res;
+}
+*/
+
 function gaFunnel(funnel) {
 	if (funnel === "Lead") {
 		return "generate_lead";
@@ -1065,14 +1094,14 @@ function botNav(botImgTag, location) {
 <div class="container">\
 <div class="pb-2"><center><div class="row">\
 <div class="col-sm-6">\
-Instagram <i class="fa fa-instagram"></i>: <a href="https://www.instagram.com/_prema.florence.isaac_/">@_prema.florence.isaac_</a><br>\
-Facebook <i class="fa fa-facebook-square"></i>: <a href="https://www.facebook.com/rangolibyprema">@rangolibyprema</a><br>\
+Instagram <i class="fe fe-instagram"></i>: <a href="https://www.instagram.com/_prema.florence.isaac_/">@_prema.florence.isaac_</a><br>\
+Facebook <i class="fe fe-facebook"></i>: <a href="https://www.facebook.com/rangolibyprema">@rangolibyprema</a><br>\
 WhatsApp <i class="fa fa-whatsapp"></i>: <a href="https://wa.me/919443362528?text=Website%20Enquiry">+919443362528</a><br>\
-Mail <i class="fa fa-envelope-o"></i>: <a href="mailto:premaflorenceisaac@gmail.com">prema.florence.isaac@gmail.com</a><br>\
-Phone <i class="fa fa-phone"></i>: <a href="tel:+919443362528">+919443362528</a>\
+Mail <i class="fe fe-mail"></i>: <a href="mailto:premaflorenceisaac@gmail.com">prema.florence.isaac@gmail.com</a><br>\
+Phone <i class="fe fe-phone"></i>: <a href="tel:+919443362528">+919443362528</a>\
 </div>\
 <div class="col-sm-6">\
-Visit <i class="fa fa-map-marker"></i>: <a href="https://goo.gl/maps/rszKWi3P7xM2">Rangoli Atelier<br>Aurosarjan Complex<br>Auroshilpam<br>Auroville 605101<br>Tamil Nadu, India</a>\
+Visit <i class="fe fe-map-pin"></i>: <a href="https://goo.gl/maps/rszKWi3P7xM2">Rangoli Atelier<br>Aurosarjan Complex<br>Auroshilpam<br>Auroville 605101<br>Tamil Nadu, India</a>\
 </div>\
 </div></center></div>\
 <center>Sign up for our (few-times-a-year) newsletter.<br>' + createMCSignup() + '</center>\
@@ -1101,11 +1130,11 @@ function scriptSrcs() {
 }
 
 function getShopTop() {
-	return '<div class="modal fade" id="shopping-cart" tabindex="-1" role="dialog" aria-labelledby="shoppingCartTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><div class="modal-title" id="shoppingCartTitle"><div class="row p-1 text-left"> <strong>Your Shopping Cart</strong> </div></div><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="modal-body"><div class="item p-1 text-left"> <strong><span>Total: <span class="sc-currency-string"><i class="fa fa-inr"> </i></span> <span class="sc-total">0</span></span></strong><br><span>Subtotal: <span class="sc-currency-string"><i class="fa fa-inr"> </i></span> <span class="sc-subtotal">0</span></span><br><span>Shipping: <span class="sc-currency-string"><i class="fa fa-inr"></i></span> <span class="sc-shipping">0</span></span> </div><div class="item sc-item-list"> </div><div class="row p-1" style="background-color: white; color: black"><div class="col align-self-center"><span></span></div></div></div><div class="modal-footer"> <button class="btn btn-secondary btn-sm sc-save-changes float-left" type="button">Save Cart</button> <button class="btn btn-warning btn-sm sc-finalize float-right" type="button">Proceed to Buy</button> </div></div></div></div><div class="modal fade" id="finalize-form" tabindex="-1" role="dialog" aria-labelledby="finalizeFormTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><div class="modal-title" id="finalizeFormTitle"><p><strong>Finalize Order</strong></p></div><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="modal-body"><div class="row p-1"><div class="col-12"><small><strong><span>Total: <span class="sc-currency-string"><i class="fa fa-inr"></i></span> <span class="sc-total">0</span></span></strong><br><span>Subtotal: <span class="sc-currency-string"><i class="fa fa-inr"> </i></span> <span class="sc-subtotal">0</span></span><br><span class="sc-discount-display"><span>Discount: <span class="sc-currency-string"><i class="fa fa-inr"></i></span> <span class="sc-discount">0</span></span><br></span><span>Shipping: <span class="sc-currency-string"><i class="fa fa-inr"></i></span> <span class="sc-shipping">0</span></span></small></div></div><div id="form-group" class="row p-1" style="background-color: white; color: black"><div class="col text-center"><div class="form-check form-check-inline"> <input class="form-check-input" id="sc-ship-to-india" type="checkbox" value=""> <label class="form-check-label" for="sc-ship-to-india">Ship to India</label> </div><div class="form-check form-check-inline"> <input class="form-check-input" id="sc-ship-express" type="checkbox" value=""> <label class="form-check-label" for="sc-ship-express">Express Shipping</label> </div></div></div><div class="row p-1"><div class="col text-center"><small><button id="btnOffer" class="btn btn-outline btn-sm dropdown-toggle" type="button" data-target="#promoForm" data-toggle="collapse" aria-haspopup="true" aria-expanded="false">Add Gift Card or Promo Code</button><form class="collapse" id="promoForm"><div class="form-group sc-code-group"><div class="input-group"><input type="text" class="form-control" id="sc-offer-code" placeholder="Enter Code" aria-describedby="codeHelpBlock"><div class="input-group-append"><button class="btn btn-secondary sc-apply-code" type="button">Apply</button></div></div><small id="codeHelpBlock" class="form-text text-muted"></small></div></form></small></div></div></div><div class="modal-footer"><button class="btn btn-warning btn-sm sc-checkout float-right" type="button">Checkout</button></div></div></div></div><div class="modal fade" id="checkout-form" tabindex="-1" role="dialog" aria-labelledby="checkoutFormTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><div class="modal-title" id="checkoutFormTitle"><p><strong>Checkout with Paypal<span class="align-top">*</span></strong></p></div><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="modal-body"><div class="row p-1"><div class="col-12"><p class="float-left"><strong><span>Order Total: <span class="sc-currency-string"><i class="fa fa-inr"></i></span> <span class="sc-total">0</span></span></strong></p><div id="sc-paypal-btn" class="float-right"></div></div></div><div class="item sc-item-list"> </div></div><div class="modal-footer sc-checkout-btn"><div><p><span class="align-top">*</span><small>To maximize the security of your data, we do not collect your personal details on our website. When you complete your secure payment through PayPal, we receive your contact information and shipping address from them.</small></p></div></div></div></div></div><div class="modal fade" id="paypal-return" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><div class="modal-title pptitle"></div><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="modal-body"><p class="ppmessage"></p></div></div></div></div>';
+	return '<div class="modal fade" id="shopping-cart" tabindex="-1" role="dialog" aria-labelledby="shoppingCartTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><div class="modal-title" id="shoppingCartTitle"><div class="row p-1 text-left"> <strong>Your Shopping Cart</strong> </div></div><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="modal-body"><div class="item p-1 text-left"> <strong><span>Total: <span class="sc-currency-string">₹</span> <span class="sc-total">0</span></span></strong><br><span>Subtotal: <span class="sc-currency-string">₹</span> <span class="sc-subtotal">0</span></span><br><span>Shipping: <span class="sc-currency-string">₹</span> <span class="sc-shipping">0</span></span> </div><div class="item sc-item-list"> </div><div class="row p-1" style="background-color: white; color: black"><div class="col align-self-center"><span></span></div></div></div><div class="modal-footer"> <button class="btn btn-secondary btn-sm sc-save-changes float-left" type="button">Save Cart</button> <button class="btn btn-warning btn-sm sc-finalize float-right" type="button">Proceed to Buy</button> </div></div></div></div><div class="modal fade" id="finalize-form" tabindex="-1" role="dialog" aria-labelledby="finalizeFormTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><div class="modal-title" id="finalizeFormTitle"><p><strong>Finalize Order</strong></p></div><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="modal-body"><div class="row p-1"><div class="col-12"><small><strong><span>Total: <span class="sc-currency-string">₹</span> <span class="sc-total">0</span></span></strong><br><span>Subtotal: <span class="sc-currency-string">₹</span> <span class="sc-subtotal">0</span></span><br><span class="sc-discount-display"><span>Discount: <span class="sc-currency-string">₹</span> <span class="sc-discount">0</span></span><br></span><span>Shipping: <span class="sc-currency-string">₹</span> <span class="sc-shipping">0</span></span></small></div></div><div id="form-group" class="row p-1" style="background-color: white; color: black"><div class="col text-center"><div class="form-check form-check-inline"> <input class="form-check-input" id="sc-ship-to-india" type="checkbox" value=""> <label class="form-check-label" for="sc-ship-to-india">Ship to India</label> </div><div class="form-check form-check-inline"> <input class="form-check-input" id="sc-ship-express" type="checkbox" value=""> <label class="form-check-label" for="sc-ship-express">Express Shipping</label> </div></div></div><div class="row p-1"><div class="col text-center"><small><button id="btnOffer" class="btn btn-outline btn-sm dropdown-toggle" type="button" data-target="#promoForm" data-toggle="collapse" aria-haspopup="true" aria-expanded="false">Add Gift Card or Promo Code</button><form class="collapse" id="promoForm"><div class="form-group sc-code-group"><div class="input-group"><input type="text" class="form-control" id="sc-offer-code" placeholder="Enter Code" aria-describedby="codeHelpBlock"><div class="input-group-append"><button class="btn btn-secondary sc-apply-code" type="button">Apply</button></div></div><small id="codeHelpBlock" class="form-text text-muted"></small></div></form></small></div></div></div><div class="modal-footer"><button class="btn btn-warning btn-sm sc-checkout float-right" type="button">Checkout</button></div></div></div></div><div class="modal fade" id="checkout-form" tabindex="-1" role="dialog" aria-labelledby="checkoutFormTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><div class="modal-title" id="checkoutFormTitle"><p><strong>Checkout with Paypal<span class="align-top">*</span></strong></p></div><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="modal-body"><div class="row p-1"><div class="col-12"><p class="float-left"><strong><span>Order Total: <span class="sc-currency-string">₹</span> <span class="sc-total">0</span></span></strong></p><div id="sc-paypal-btn" class="float-right"></div></div></div><div class="item sc-item-list"> </div></div><div class="modal-footer sc-checkout-btn"><div><p><span class="align-top">*</span><small>To maximize the security of your data, we do not collect your personal details on our website. When you complete your secure payment through PayPal, we receive your contact information and shipping address from them.</small></p></div></div></div></div></div><div class="modal fade" id="paypal-return" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><div class="modal-title pptitle"></div><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="modal-body"><p class="ppmessage"></p></div></div></div></div>';
 }
 
 function getShopHeader() {
-	return '<div class="container"> <div class="row py-1"> <div class="col-12"><div id="currencies" class="text-left float-left" style="font-size: 12px"><span data-currency="INR" id="currencies-inr">INR(&#8377;)</span><span data-currency="GBP" id="currencies-gbp">GBP(&pound;)</span> <span data-currency="EUR" id="currencies-eur">EUR(&euro;)</span> <span data-currency="USD" id="currencies-usd">USD(&dollar;)</span></div><div id="shop-cart-summary" class="text-right float-right" style="font-size: 12px"> <a id="sc-edit-id" class="disabled" aria-disabled="true" type="button" data-toggle="modal" data-target="#shopping-cart"> <i class="fa fa-shopping-cart"></i> (<span class="sc-badge-items">0</span>) <span class="sc-non-empty" style="display:none"> - </span> <span class="sc-currency-string sc-non-empty" style="display:none"><i class="fa fa-inr"></i></span> <span class="sc-total sc-non-empty" style="display:none">0</span> </a> <div class="item sc-item-list" style="display: none"> </div></div></div></div></div>';
+	return '<div class="container"> <div class="row py-1"> <div class="col-12"><div id="currencies" class="text-left float-left" style="font-size: 12px"><span data-currency="INR" id="currencies-inr">INR(&#8377;)</span><span data-currency="GBP" id="currencies-gbp">GBP(&pound;)</span> <span data-currency="EUR" id="currencies-eur">EUR(&euro;)</span> <span data-currency="USD" id="currencies-usd">USD(&dollar;)</span></div><div id="shop-cart-summary" class="text-right float-right" style="font-size: 12px"> <a id="sc-edit-id" class="disabled" aria-disabled="true" type="button" data-toggle="modal" data-target="#shopping-cart"> <i class="fe fe-shopping-cart"></i> (<span class="sc-badge-items">0</span>) <span class="sc-non-empty" style="display:none"> - </span> <span class="sc-currency-string sc-non-empty" style="display:none">₹</span> <span class="sc-total sc-non-empty" style="display:none">0</span> </a> <div class="item sc-item-list" style="display: none"> </div></div></div></div></div>';
 }
 
 function createSizeRadio(name, idPfx, val, i, checked) {
@@ -1290,7 +1319,7 @@ function createDimensioner(units, dimensionNames, dimensions, imagePath, dimVari
 }
 
 function getSizeDialog(contentid, contents) {
-	return '<div class="modal-dialog modal-dialog-centered modal-lg" role="document"><div class="modal-content"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button><div class="modal-header line-height-fixed font-size-lg"><strong class="mx-auto">Sizing</strong></div><div class="modal-body border-bottom" id="' + contentid + '">' + contents + '</div></div></div>'
+	return '<div class="modal-dialog modal-dialog-centered modal-lg" role="document"><div class="modal-content"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fe fe-x" aria-hidden="true"></i></button><div class="modal-header line-height-fixed font-size-lg"><strong class="mx-auto">Sizing</strong></div><div class="modal-body border-bottom" id="' + contentid + '">' + contents + '</div></div></div>'
 }
 
 function getSizeModalWithId(id, contentid, contents) {
@@ -1298,39 +1327,11 @@ function getSizeModalWithId(id, contentid, contents) {
 }
 
 function createAddToCartButton(id) {
-	return '<button id="' + id + '" class="btn btn-warning btn-block" type="button"><span class="fa fa-cart-plus"></span> Add to Cart</button>';
-}
-
-function createSiteMapGenerator(path) {
-	return {
-		path: path,
-		createSMNode: function (node) {
-			var res = "";
-			if (node.url !== undefined && getHostName(node.url) === null) {
-				res += "<url><loc>" + this.path + node.url + "</loc></url>";
-			};
-			if (node.sub !== undefined) {
-				res += this.createSM(node.sub);
-			}
-			return res;
-		},
-		createSM: function (nodeArr) {
-			var res = "";
-			for (var i = 0; i < nodeArr.length; i++) {
-				res += this.createSMNode(nodeArr[i]);
-			}
-			return res;
-		}
-	};
-}
-
-function createSM(path) {
-	return createSiteMapGenerator(path).createSM(siteMap);
+	return '<button id="' + id + '" class="btn btn-warning btn-block" type="button"><span class="fe fe-shopping-cart ml-2"></span> Add to Cart</button>';
 }
 
 module.exports = {
-    createSM,
-	createMCSignup,
+ 	createMCSignup,
     gaInit,
     gaFunnel,
     fbInit,
