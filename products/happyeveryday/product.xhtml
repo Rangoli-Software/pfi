@@ -10,14 +10,12 @@
 </script>
 <section>
 	<script>
-		var prodComp = pageComponent.createRenderer(loadShopWithParam());
+		var prodComp = pageComponent.createProductComponent(loadShopWithParam());
 		document.write(prodComp.getSizeModal());
-
 	</script>
 	<div class="container">
 		<script>
 			document.write(prodComp.createProductDiv(0, 0));
-
 		</script>
 	</div>
 </section>
@@ -30,5 +28,4 @@
 		khadi_washcareHTML,
 		pret_shippingHTML
 	));
-
 </script>

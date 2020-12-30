@@ -80,7 +80,7 @@
 		}
 	};
 	var cardCreator = createUICardCreator();
-	var sizeSelector = createSizeSelector(prodJSON.skuInfo.sizes, pfiavG.sizeModalInfo.getToggleHTML(), null, "onSizeChange", "Size");
+	var sizeSelector = createSizeSelector(prodJSON.skuInfo.sizes, pfiavG.sizeModalInfo.getToggleHTML(), "onSizeChange", '', "Size");
 	var componentGenerator = createComponentGenerator(
 		factory, prodJSON, viewerFactory, sizeSelector,
 		true,
@@ -133,6 +133,6 @@
 		'<p>' + prodJSON.skuInfo.description + '</p>',
 		null,
 		thisProduct.washcareHTML,
-		thisProduct.fshippingHTML));
+		thisProduct.shippingHTML));
 
 </script>

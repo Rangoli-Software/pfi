@@ -16,15 +16,18 @@ description: The perfect gift bag for that exclusive vintage
 	const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath, undefined, skuInfo.sizes);
 	var rendererFactory = extras.createComponentFactory(prodJSON, dimensioner, sizer, extras.categorizer);
 	const pageComponent = createPageComponent(prodJSON, pfiavG.productCatalog, rendererFactory);
+
 </script>
 <section>
 	<script>
-		var productComponent = pageComponent.createRenderer(loadShopWithParam());
+		var productComponent = pageComponent.createProductComponent(loadShopWithParam());
 		document.write(productComponent.getSizeModal());
+
 	</script>
 	<div class="container">
 		<script>
 			document.write(productComponent.createProductDiv(0, 0));
+
 		</script>
 	</div>
 </section>
@@ -37,4 +40,26 @@ description: The perfect gift bag for that exclusive vintage
 		khadi_washcareHTML,
 		pret_shippingHTML
 	));
+
+	function createSKUInfo(prodJSON) {
+		return {
+			prodJSON: prodJSON,
+			createSchema: function(vidx) {
+				var sku = prodJSON.skuInfo.SKU;
+				var product = pfiavG.productCatalog.getProduct(sku);
+				var images = prodJSON.getImages(vidx);
+				var imgurl = images.getImage(0).url;
+				var inrPrice = product.inrPrice;
+				var fxPrices = pfiavG.allShops.shops.map(function(shop) {
+					return {
+						price: shop.fromINR(inrPrice),
+						currency: shop.currency
+					};
+				});
+				return createProductSchemaHTML(sku, product.name, window.location, imgurl, product.description, fxPrices);
+			}
+		};
+	}
+	document.write(createSKUInfo(prodJSON).createSchema(0));
+
 </script>

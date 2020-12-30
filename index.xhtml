@@ -9,7 +9,6 @@
 			"https://www.facebook.com/rangolibyprema/"
 		]
 	}
-
 </script>
 <script>
 	const cover = [{
@@ -69,17 +68,22 @@
 			caption: "The <a href='/products/artwear/tamarai.html'>Tamarai Dress</a> from my <a href='/products/artwear/shop.html?t=d'><strong>Art Wear</strong></a> line."
 		}
 	];
-
-	function createCover() {
+	
+	function selectImageIdx() {
 		var len = cover.length;
-		var rndI = Math.floor(Math.random() * len);
-		var img = cover[rndI];
+		return Math.floor(Math.random() * len);
+	}
+
+	function createCover(i) {
+		var img = cover[i];
 		return '<figure class="mb-4"><img src="' + img.imageURL + '" alt="' + img.alt + '" class="img-fluid"' + ' width="' + img.width + '" height="' + img.height + '"/><figcaption>' + img.caption + '</figcaption></figure>';
 	}
 
 </script>
 <script>
-	document.write(createCover());
+	var idx = selectImageIdx();
+	pfiavG.pageIdx.includePages([cover[idx]]);
+	document.write(createCover(idx));
 
 </script>
 <script>

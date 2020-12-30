@@ -62,19 +62,18 @@
 	<div class="col-md-8 offset-md-2">
 		<figure>
 			<script>
-				var items = [
-					{
+				var items = [{
 						url: "/products/men/kagera/kag2.jpg",
-						width: 1500,
-						height: 2000
 					},
 					{
 						url: "/products/men/kagera/kag3.jpg",
-						width: 1500,
-						height: 2000
 					}
 				];
-				document.write(createFlickityCarousel("carousel-kagera", items));
+				document.write(createFlickityCarousel("carousel-kagera", items, {
+					width: 1500,
+					height: 2000
+				}));
+
 			</script>
 		</figure>
 	</div>

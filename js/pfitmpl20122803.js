@@ -1334,19 +1334,3 @@ function getSizeModalWithId(id, contentid, contents) {
 function createAddToCartButton(id) {
 	return '<button id="' + id + '" class="btn btn-warning btn-block" type="button"><span class="fe fe-shopping-cart ml-2"></span> Add to Cart</button>';
 }
-
-module.exports = {
- 	createMCSignup,
-    gaInit,
-    gaFunnel,
-    fbInit,
-    fbFunnel,
-    kimTopMenu,
-    pfiTopMenu,
-    kimBotMenu,
-    botMenu,
-    scriptSrcs,
-    pfisig,
-    getShopTop,
-    getShopHeader
-}

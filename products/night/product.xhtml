@@ -10,14 +10,12 @@
 </script>
 <section>
 	<script>
-		var productComponent = pageComponent.createRenderer(loadShopWithParam());
+		var productComponent = pageComponent.createProductComponent(loadShopWithParam());
 		document.write(productComponent.getSizeModal());
-
 	</script>
 	<div class="container">
 		<script>
 			document.write(productComponent.createProductDiv(0, 0));
-
 		</script>
 	</div>
 </section>
@@ -30,5 +28,4 @@
 		tangail_washcareHTML,
 		surmesure_shippingHTML
 	));
-
 </script>
