@@ -1,10 +1,10 @@
 const cesoir = {};
 
-cesoir.createComponentFactory = function (prodInfo, dimensioner, sizer, categorizer) {
+cesoir.createComponentFactory = function (prodInfo, dimensioner, sizer, categorizer, modelTxt) {
     var navHelper = createNavHelper(prodInfo, categorizer, cesoir.catalog.title);
     var relatedviewer = createEmptyViewer();
-    var modelTxt = "The model is 5 ft 7 in (171 cm.) and wearing size '" + prodInfo.skuInfo.sizes[0] + "'<br>This garment is bespoke-tailored (sur-mesure), so the sizes in the chart are only the starting point for your order<br>";
-    return createProductComponentFactory(prodInfo, dimensioner, sizer, relatedviewer, navHelper, modelTxt, "Size", true);
+    var mT = modelTxt + " and wearing size '" + prodInfo.skuInfo.sizes[0] + "'<br>This garment is bespoke-tailored, so the chart size is only the starting point for your order<br>";
+    return createProductComponentFactory(prodInfo, dimensioner, sizer, relatedviewer, navHelper, mT, "Size", true);
 }
 
 const sd_sizing_tops = {
@@ -254,14 +254,68 @@ cesoir.bianca = {
 
 };
 
-cesoir.celia = {
+cesoir.celiamini = {
     SKU: "NKSHMI1501PT",
-    imgDir: 'celia',
+    imgDir: 'celiamini',
     sizing: sd_sizing_bottoms,
     imageFile: "sizing1.jpg",
     dimensionNames: ["A. Length", "B. Outer Layer Length", "C. Hem", "D. Waist - Relaxed", "D. Waist - Stretched"],
     dimensionsCm: {
         Free: [62, 53, 336, 72, 130]
+    },
+    getFabric: function (varidx) {
+        return "P.F.I. Tangail";
+    },
+    data: [
+        {
+            colourName: "Black &amp; Silver",
+            vid: "CW1",
+            colourPfx: "b",
+            colourSfxs: ["1", "2", "3"]
+        }
+    ],
+    sizes: ['Free'],
+    description: 'Celia Skirt is one of our favourite silhouettes. It\'s cut in the finest cotton P.F.I. Tangail. This exquisite cotton is often mistaken as silk by my clients. It has an incredible volume to play around in and is freesize! The waist band is made up of 9 rows of elastic. Because of the need for care while working with the delicate Tangail fabric, it can take a skilled tailor almost a full day of work to create this waistband. The result is a freesize waist with a snug, comfortable fit. It can work from day to night and it\'s groovy flare will have you swirling all day. Pair it with our Portia Top to take it up a notch or wear a basic t-shirt to keep it subtle.',
+    garmentDetails: '<li>Freesize - Broad elastic at the waist</li><li>P.F.I. Tangail</li><li>Midi length</li><li>A line with voluminous flare</li>'
+};
+cesoir.celiamidi = {
+    SKU: "NKSHMD1501PT",
+    imgDir: 'celiamidi',
+    sizing: sd_sizing_bottoms,
+    imageFile: "sizing.jpg",
+    dimensionNames: ["A. Length", "B. Outer Layer Length", "C. Hem", "D. Waist - Relaxed", "D. Waist - Stretched"],
+    dimensionsCm: {
+		Free: [81, 72, 376, 72, 130]
+    },
+    getFabric: function (varidx) {
+        return "P.F.I. Tangail";
+    },
+    data: [
+        {
+            colourName: "Black &amp; Silver",
+            vid: "CW1",
+            colourPfx: "b",
+            colourSfxs: ["1", "2", "3"]
+        },
+        {
+            colourName: "White",
+            vid: "CW2",
+            colourPfx: "w",
+            colourSfxs: ["1", "2", "3"]
+        }
+    ],
+    sizes: ['Free'],
+    description: 'Celia Skirt is one of our favourite silhouettes. It\'s cut in the finest cotton P.F.I. Tangail. This exquisite cotton is often mistaken as silk by my clients. It has an incredible volume to play around in and is freesize! The waist band is made up of 9 rows of elastic. Because of the need for care while working with the delicate Tangail fabric, it can take a skilled tailor almost a full day of work to create this waistband. The result is a freesize waist with a snug, comfortable fit. It can work from day to night and it\'s groovy flare will have you swirling all day. Pair it with our Portia Top to take it up a notch or wear a basic t-shirt to keep it subtle.',
+    garmentDetails: '<li>Freesize - Broad elastic at the waist</li><li>P.F.I. Tangail</li><li>Midi length</li><li>A line with voluminous flare</li>',
+};
+cesoir.celiaminuit = {
+    SKU: "NKSHMU1501PT",
+    imgDir: 'celiaminuit',
+    sizing: sd_sizing_bottoms,
+    imageFile: "sizing.jpg",
+    dimensionNames: ["A. Length", "B. Outer Layer Length", "C. Hem", "D. Waist - Relaxed", "D. Waist - Stretched"],
+    dimensionsCm: {
+		Free: [102, 93, 392, 72, 130]
     },
     getFabric: function (varidx) {
         return "P.F.I. Tangail";
@@ -446,7 +500,7 @@ cesoir.nerissatop = {
     ],
     sizes: ['S', 'M', 'L', 'XL'],
     description: 'The Nerissa Top has a high-low curved hem that exposes your mid-riff just right. It\'s cut in ivory ahimsa silk and the neck is highlighted in P.F.I. Tangail striped cotton. The boxy fit adds an edgy element to this sleeveless top. It\'s versatile and can be paired with high-waisted trousers or our Nerissa Pants. ',
-    garmentDetails: '<li>Round neck</li><li>Sleeveless</li><li>Cropped length</li><li>Curved hemline</li><li>Khadi striped panel at the neckline</li><li>Slips on</li>'
+    garmentDetails: '<li>Round neck</li><li>Sleeveless</li><li>Cropped length</li><li>Curved hemline</li><li>Cotton striped panel at the neckline</li><li>Slips on</li>'
 };
 
 cesoir.nerissapant = {
@@ -616,6 +670,29 @@ cesoir.viola = {
     garmentDetails: '<li>Round neck</li><li>Sleeveless</li><li>Asymmetrical</li><li>A line with voluminous flare</li><li>Slips on</li>'
 };
 
+cesoir.clutch = {
+    SKU: "CHNCLT1510",
+    imgDir: 'clutch',
+    imageFile: "sizing.jpg",
+    dimensionNames: ['A. Drop', 'B. Height', 'C. Width'],
+    dimensionsCm: {
+		Free: []
+    },
+    getFabric: function (varidx) {
+        return "P.F.I. Tangail";
+    },
+    data: [
+        {
+            vid: "CW1",
+            colourPfx: "b",
+            colourSfxs: ["1", "2", "3", "4"]
+        }
+    ],
+    sizes: ['Free'],
+    description: 'This clutch is a quilted velvet bag with a metal chain-link. The shoulder bag can effortlessly transition from a brunch date to an evening clutch, just detach the chain. It accentuates your outfit by adding a pop of colour. It has multiple compartments to carry your phone and keys, and your lipstick for a quick touch up.',
+    garmentDetails: '<ul><li>Quilted velvet finish</li><li>Lining in satin</li><li>3 compartments</li><li>Zip fastening in the top</li><li>Detachable chain shoulder strap</li></ul>'
+};
+
 cesoir.createJSON = function (style) {
     var basePath = "/products/night/" + style.imgDir + "/";
     return createProductJSON(style.SKU, basePath, style, style.sizing, createCWImageFactory);
@@ -625,16 +702,16 @@ cesoir.catalog = {
     title: "Ce Soir",
     shopURL: "/products/night/shop.html",
     skus: null,
-    styles: [cesoir.bianca, cesoir.celia, cesoir.cleopatrashorts, cesoir.cleopatratop, cesoir.emilia, cesoir.helena, cesoir.juliet, cesoir.nerissapant, cesoir.nerissatop, cesoir.ophelia, cesoir.portia, cesoir.tamora, cesoir.titania, cesoir.viola],
+    styles: [cesoir.bianca, cesoir.celiamini, cesoir.cleopatrashorts, cesoir.cleopatratop, cesoir.emilia, cesoir.helena, cesoir.juliet, cesoir.nerissapant, cesoir.nerissatop, cesoir.ophelia, cesoir.portia, cesoir.tamora, cesoir.titania, cesoir.viola],
     dresses: [cesoir.emilia.SKU, cesoir.helena.SKU, cesoir.juliet.SKU, cesoir.ophelia.SKU, cesoir.tamora.SKU, cesoir.titania.SKU, cesoir.viola.SKU],
-    nondresses: [cesoir.cleopatrashorts.SKU, cesoir.cleopatratop.SKU, cesoir.celia.SKU, cesoir.portia.SKU],
+    nondresses: [cesoir.cleopatrashorts.SKU, cesoir.cleopatratop.SKU, cesoir.portia.SKU, cesoir.celiamini.SKU],
     productDB: null,
     getProduct: function (sku) {
         return this.productDB[sku];
     }
 };
 
-pfiavG.getLineInitializer(cesoir).initialize();
+pfiavG.getLineInitializer(cesoir).initialize(true);
 
 cesoir.categorizer = createFieldCategorizer(
     cesoir.catalog,

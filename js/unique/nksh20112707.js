@@ -74,7 +74,10 @@ function getNakshaMicroFactory(base, product, varPL) {
 [6, ['6', '6a'], '#1F1F1F', 'Mine Shaft', null],
 [7, ['7', '7a'], '#222526', 'Shark', null],
 [8, ['8', '8a'], '#512F2B', 'Cork', {Name: 'Michel', Date: '2020-11'}],
-[9, ['9', '9a'], '#CAF1F5', '', null, 'CW1'],
+[9, ['9.1', '9a.1'], '#CAF1F5', '', null, 'CW1'],
+[10, ['10', '10a'], '#27212D', 'Bastille', null, 'CW1'],
+[11, ['11', '11a'], '#A04E78', 'Tapestry', null],
+[12, ['12', '12a'], '#547A4C', 'Dingley', null],
 ];
     return createNakshaFactory(base + 'mc/', listData, product, varPL);
 }
@@ -101,19 +104,21 @@ function getNakshaMidiFactory(base, product, varPL) {
 [11, ['11.6', '11a.6'], '#171B1C', 'Woodsmoke', {Name: 'Judith', Date:'2020-12'}],
 [12, ['12.6', '12a.6'], '#674857', 'Eggplant', null],
 [13, ['13.6','13a.6'],'#DDBEA2','Cameo',{Name: 'Judith', Date: '2020-07'}],
-[14, ['14.6', '14a.6'], '#FBFCFD', 'Zircon', null],
+[14, ['14.6', '14a.6'], '#FBFCFD', 'Zircon', {Name: 'Naomi', Date: '2021-02'}],
 [15, ['15.6', '15a.6'], '#753D69', 'Cosmic', null],
 [16, ['16.6', '16a.6'], '#244A41', 'Plantation', null],
-[17, ['17.6', '17a.6'], '#80505E', 'Ferra', null],
+[17, ['17.6', '17a.6'], '#80505E', 'Ferra', {Name: 'Naomi', Date: '2021-02'}],
 [18, ['18.6', '18a.6'], '#B5AF50', 'Husk', {Name: 'Naomi', Date: '2020-08'}],
 [19, ['19.6', '19a.6'], '#823B6A', 'Cannon Pink', null],
 [20, ['20.6', '20a.6'], '#674567', 'Eggplant', null],
 [21, ['21.6', '21a.6'], '#263E55', '', null, 'CW2'],
 [22, ['22.6', '22a.6'], '#6F3045', 'Finn', null],
-[23, ['23.6', '23a.6'], '#389288', 'Lochinvar', null],
+[23, ['23.6', '23a.6'], '#389288', 'Lochinvar', {Name: 'Naomi', Date: '2021-02'}],
 [24, ['24.6', '24a.6'], '#C7AA64', 'Laser', null],
-[25, ['25.6', '25a.6'], '#7E3D51', 'Cosmic', null],
+[25, ['25.6', '25a.6'], '#7E3D51', 'Cosmic', {Name: 'Ange', Date: '2021-01'}],
 [26, ['26.6', '26a.6'], '#7EB54E', 'Sushi', null],
+[27, ['27', '27a'], '#A5516F', 'Cadillac', null],
+[28, ['28', '28a'], '#1E2223', 'Shark', null],
 ];
     return createNakshaFactory(base + 'md/', listData, product, varPL);
 }
@@ -127,7 +132,7 @@ function getNakshaMinuitFactory(base, product, varPL) {
 [5, ['5.6', '5a.6'], '#D26690', 'Hopbush', null, 'CW1'],
 [6, ['6.6', '6a.6'], '#D96A56', 'Terracotta', {Name: 'Indre', Date: '2020-09'}],
 [7, ['7.6', '7a.6'], '#D29E59', 'Di Serria', null, 'CW1'],
-[8, ['8.6', '8a.6'], '#498640', 'Fern Green', null, 'CW1'],
+[8, ['8.6', '8a.6'], '#498640', 'Fern Green', {Name: 'Margaret', Date: '2021-01'}, 'CW1'],
 [9, ['9.6', '9a.6'], '#C97983', 'Old Rose', null],
 [10, ['10.6', '10a.6'], '#CAF1F5', '', null, 'CW1'],
 [11, ['11', '11a'], '#6BB3C1', 'Tradewind', null, 'CW1'],

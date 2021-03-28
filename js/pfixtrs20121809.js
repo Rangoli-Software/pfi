@@ -9,7 +9,7 @@ extras.createComponentFactory = function (prodInfo, dimensioner, sizer, categori
 }
 
 extras.shippingHTML = getShippingInfoUL(['If the item is in stock,  it will be ready to ship within 1 business day of your order.']);
-extras.washcareHTML = khadi_washcareHTML;
+extras.washcareHTML = cotton_washcareHTML;
 
 extras.dipdye = {
 	SKU: 'DPDYSF1501PT',
@@ -70,10 +70,10 @@ extras.champagnebag = {
 	SKU: 'CHMPGN1501JL',
 	basePath: '/products/xtras/',
 	imgDir: 'chambag',
-	imageFile: ".jpg",
-	dimensionNames: ["A. Height", "B. Circumference"],
+	imageFile: "sizing.jpg",
+	dimensionNames: ["A. Height", "B. Diameter"],
 	dimensionsCm: {
-		Free: [31, 30]
+		Free: [31, 9.55]
 	},
 	getFabric: function (varidx) {
 		return "Jacquard Lace";
@@ -85,7 +85,7 @@ extras.champagnebag = {
 			width: "1000",
 			height: "1000",
             colourPfx: "CBCG",
-            colourSfxs: ["MD"]
+            colourSfxs: ["MD","F","B"]
         },
 		{
 			colourName: "Champagne",
@@ -93,7 +93,7 @@ extras.champagnebag = {
 			width: "1000",
 			height: "1000",
             colourPfx: "CBCC",
-            colourSfxs: ["MD"]
+            colourSfxs: ["MD","F","B"]
         },
 		{
 			colourName: "Midnight Blue",
@@ -101,7 +101,7 @@ extras.champagnebag = {
 			width: "1000",
 			height: "1000",
             colourPfx: "CBMB",
-            colourSfxs: ["MD"]
+            colourSfxs: ["MD","F","B"]
         }
     ],
 	sizes: ['Free'],
@@ -118,7 +118,9 @@ extras.catalog = {
 	title: "Extras",
 	shopURL: "/products/xtras/shop.html",
 	skus: null,
-	styles: [artwear.facemask, extras.dipdye, vagabond.kageratie, extras.champagnebag],
+	styles: [artwear.facemask, extras.dipdye, vagabond.kageratie, extras.champagnebag, artwear.tote, artwear.liljhola, artwear.tablet, artwear.postman, artwear.lilajhola],
+	bags: [artwear.tote.SKU, artwear.liljhola.SKU, artwear.tablet.SKU, artwear.postman.SKU, artwear.lilajhola.SKU],
+	xtras: [artwear.facemask.SKU, extras.dipdye.SKU, vagabond.kageratie.SKU, extras.champagnebag.SKU],
 	productDB: null,
 	getProduct: function (sku) {
 		return this.productDB[sku];
@@ -129,8 +131,8 @@ pfiavG.getLineInitializer(extras).initialize();
 
 extras.categorizer = createFieldCategorizer(
 	extras.catalog,
-    ["All"],
-    ["skus"],
-    ["a"],
+    ["Handbags", "Other"],
+    ["bags", "xtras"],
+    ["b", "x"],
 	"t",
-	"a");
+	"b");

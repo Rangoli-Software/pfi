@@ -22,7 +22,7 @@ const moods = {
 		{
 			title: "Vagabond",
 			url: "/vagabond.html",
-			lede: "The <strong>Vagabond</strong>: A capsule in a bio-washed, hand-spun, hand-loomed khadi and P.F.I. tangail - inspired by the travelers and mavericks of the world.....",
+			lede: "The <strong>Vagabond</strong>: A capsule in a bio-washed cotton and P.F.I. tangail - inspired by the travelers and mavericks of the world.....",
 			imageURL: "/products/vagabond/KohBoy.jpg"
         },
 		{
@@ -291,6 +291,12 @@ const clients = {
 	url: "/look.html?t=f",
 	sub: [
 		{
+			title: "#oneofakind",
+			url: "/people/oneofakind.html",
+			lede: "One-of-a-kind individuals who have collected my Woven Canvases",
+			imageURL: "/people/ooak/dan.jpg"
+        },
+		{
 			title: "#artwear",
 			url: "/people/artwear.html",
 			lede: "Images of friends wearing my signature Art Wear silhouettes",
@@ -307,12 +313,6 @@ const clients = {
 			url: "/look/gg.html",
 			lede: "Fun with Face Masks",
 			imageURL: "/look/friends/gg-aqua.jpg"
-        },
-		{
-			title: "#oneofakind",
-			url: "/people/oneofakind.html",
-			lede: "The unique individuals who have collected my woven canvases",
-			imageURL: "/people/ooak/sl02.jpg"
         },
 		{
 			title: "Curators",
@@ -666,7 +666,7 @@ function createShopMenuHTML() {
 function createLookMenuHTML() {
 	var col1 = createDDColumn([lotm, moods], "col-7");
 	var col2 = createDDColumn([clients, ramp], "col-5");
-	return createDDContents([col1, col2]);
+	return createDDContents([col2, col1]);
 }
 
 function createBlogMenuHTML() {
@@ -704,11 +704,11 @@ function createShopMM() {
 }
 
 function createLookMM() {
-	return createDDMenu("tlLookMnu", true, "295px", createLookMenuHTML());
+	return createDDMenu("tlLookMnu", true, "255px", createLookMenuHTML());
 }
 
 function createBlogDD() {
-	return createDDMenu("tlBlogMnu", true, "295px", createBlogMenuHTML());
+	return createDDMenu("tlBlogMnu", true, "265px", createBlogMenuHTML());
 }
 
 function createAboutDD() {
@@ -754,6 +754,9 @@ function getPriceStringHTML(shop, product, vid) {
 		}
 		return priceString;
 	} else {
+		if ( varPL === undefined ) {
+			return priceString;
+		}
 		var prV = varPL[vid];
 		if (prV !== undefined) {
 			return shop.getFXPriceHTML(prV);

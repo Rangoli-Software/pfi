@@ -332,7 +332,7 @@ function createComponentGenerator(uiFactory, prodJSON, viewerFactory, sizeSelect
 			var sizeChartr;
 			if (viewerFactory.createSizeChartr === undefined) {
 				var chart = skuInfo.getSizeChart();
-				sizeChartr = chart !== null ? createSizeChartr(chart, skuInfo.sizes) : null;
+				sizeChartr = chart !== null && chart !== undefined ? createSizeChartr(chart, skuInfo.sizes) : null;
 			} else {
 				sizeChartr = viewerFactory.createSizeChartr();
 			}
@@ -1251,7 +1251,7 @@ function createProductComponent(prePanelr, basePanelr, sizePanelr, carousel, var
 			return this.sizePanelr.getSizeModal();
 		},
 		createProductDiv: function (varIdx, szIdx) {
-			return '<div class="row" id="' + this.prodPanelId + '"><div class="col-12 col-md-7">' +
+			return '<div class="row no-gutters mx-n1 mx-md-n2" id="' + this.prodPanelId + '"><div class="col-12 col-md-7">' +
 				this.prePanelr.createDiv() +
 				this.createImageDiv(varIdx) +
 				'</div><div class="col-12 col-md-5 pl-lg-10">' +
@@ -1348,7 +1348,7 @@ function createUIProductComponent(prePanelr, basePanelr, sizePanelr, carousel, a
 			return this.sizePanelr.getSizeModal();
 		},
 		createProductDiv: function () {
-			return '<div class="row" id="' + this.prodPanelId + '"><div class="col-12 col-md-7">' +
+			return '<div class="row no-gutters mx-n1 mx-md-n2" id="' + this.prodPanelId + '"><div class="col-12 col-md-7">' +
 				this.prePanelr.createDiv() +
 				this.createImageDiv() +
 				'</div><div class="col-12 col-md-5 pl-lg-10">' +
@@ -1810,7 +1810,7 @@ function renderProductDetails(summary, detailsHTML, washcareHTML, shippingInfoHT
 	return res;
 }
 
-const khadi_washcareHTML = "<ul><li>Machine Wash Cold</li><li>Mild Detergent</li><li>Gentle Cycle</li><li>Do Not Bleach</li><li>Dry In Shade</li><li>Medium Iron</li></ul>";
+const cotton_washcareHTML = "<ul><li>Machine Wash Cold</li><li>Mild Detergent</li><li>Gentle Cycle</li><li>Do Not Bleach</li><li>Dry In Shade</li><li>Medium Iron</li></ul>";
 
 const pret_shippingHTML = getShippingInfoUL(['If the item is in stock,  it will be ready to ship within 1 business day of your order.', 'If the item is not in stock, it will be ready to ship within 2-3 business days of your order.']);
 

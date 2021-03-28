@@ -76,8 +76,8 @@ keywords: shop, catalog, online shopping,
     }
 
     var lineCatalogs = [wovencanvas.catalog, artwear.catalog, itsmagic.catalog, cesoir.catalog, happyED.catalog, extras.catalog];
-	var lineKeys = ['skuvariants','skus','skus','skus','skus','skus'];
-	var pageKeys = ['SKUvid','SKU','SKU','SKU','SKU','SKU'];
+	var lineKeys = ['skuvariants','skus','skus','skuvariants','skus','skus'];
+	var pageKeys = ['SKUvid','SKU','SKU','SKUvid','SKU','SKU'];
 	var lineNItems =  lineCatalogs.map((c, i) => c[lineKeys[i]].length);
     var mipsInCats = lineCatalogs.map((c, i) => pfiavG.pageIdx.miPageSet.filter(function(page){return c[lineKeys[i]].includes(page[pageKeys[i]])}).pages)
     var keys = mipsInCats.map((list, i) => list.map(p=>p[pageKeys[i]]));

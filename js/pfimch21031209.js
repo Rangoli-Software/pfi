@@ -8,6 +8,10 @@ const merchInfo = [
 		images: [{
 			url: '/g/merch/wc3.jpg'
 		}, {
+			url: '/people/ooak/dan.jpg'
+		}, {
+			url: '/people/ooak/edgar.jpg'
+		}, {
 			url: '/people/ooak/sl01.jpg'
 		}, {
 			url: '/people/ooak/sl02.jpg'
@@ -24,7 +28,44 @@ const merchInfo = [
 		SKUvid: 'AWTSHT1604Je-CW1',
 		ledes: ['In White. A #oneofakind T-shirt.'],
 		images: [{
-			url: '/g/merch/wc2.jpg'
+			url: '/products/wovencanvas/wc/GirlWhiteS.jpg'
+		},{
+			url: '/people/ooak/michel.jpg'
+		}]
+    },
+	{
+		SKU: 'TNTGBG1501',
+		ledes: [''],
+		images: [{
+			url: '/g/merch/ttote.jpg'
+		}]
+    },
+	{
+		SKU: 'LLBGSM1501TB',
+		ledes: [''],
+		images: [{
+			url: '/g/merch/liljhola.jpg'
+		}]
+    },
+	{
+		SKU: 'LLBGMD1501TB',
+		ledes: [''],
+		images: [{
+			url: '/g/merch/tablet.jpg'
+		}]
+    },
+	{
+		SKU: 'LLBGMD1701TB',
+		ledes: [''],
+		images: [{
+			url: '/g/merch/postman.jpg'
+		}]
+    },
+	{
+		SKU: 'LLBGBG1501TB',
+		ledes: [''],
+		images: [{
+			url: '/g/merch/lila.jpg'
 		}]
     },
 	{
@@ -202,7 +243,40 @@ const merchInfo = [
 		}]
     },
 	{
+		SKU: 'NKSHMD1501PT',
+		SKUvid: 'NKSHMD1501PT-CW1',
+		vidx: '1',
+		vid: "CW1",
+		ledes: [''],
+		images: [{
+			url: '/g/merch/celmdb.jpg'
+		}]
+    },
+	{
+		SKU: 'NKSHMD1501PT',
+		vidx: '2',
+		vid: "CW2",
+		SKUvid: 'NKSHMD1501PT-CW2',
+		ledes: [''],
+		images: [{
+			url: '/g/merch/celmdw.jpg'
+		},{
+			url: '/g/merch/celmdw2.jpg'
+		}]
+    },
+	{
+		SKU: 'NKSHMU1501PT',
+		vid: "CW1",
+		SKUvid: 'NKSHMU1501PT-CW1',
+		ledes: [''],
+		images: [{
+			url: '/g/merch/celmu.jpg'
+		}]
+    },
+	{
 		SKU: 'HLNDRS1505PT',
+		vid: "CW1",
+		SKUvid: 'HLNDRS1505PT-CW1',
 		ledes: [''],
 		images: [{
 			url: '/look/moods/cs/helena.jpg'
@@ -210,6 +284,8 @@ const merchInfo = [
     },
 	{
 		SKU: 'JLTDRS1505PT',
+		vid: "CW1",
+		SKUvid: 'JLTDRS1505PT-CW1',
 		ledes: [''],
 		images: [{
 			url: '/look/moods/cs/juliet.jpg'
@@ -217,6 +293,8 @@ const merchInfo = [
     },
 	{
 		SKU: 'NKSHMI1501PT',
+		vid: "CW1",
+		SKUvid: 'NKSHMI1501PT-CW1',
 		ledes: [''],
 		images: [{
 			url: '/blog/FlorYellow.jpg'
@@ -224,6 +302,8 @@ const merchInfo = [
     },
 	{
 		SKU: 'BKLLTS1505Je',
+		vid: "CW1",
+		SKUvid: 'BKLLTS1505Je-CW1',
 		ledes: [''],
 		images: [{
 			url: '/look/moods/cs/tamora.jpg'
@@ -299,7 +379,7 @@ const merchInfo = [
     },
 	{
 		SKU: 'KAGTIE1601Kh',
-		ledes: ['Artsy, hand-woven, hand-crafted Neckwear', 'For the gentleman of refined taste - a two-tone khadi tie with a border of treasured tangail'],
+		ledes: ['Artsy, hand-crafted Neckwear', 'For the gentleman of refined taste - a two-tone cotton tie with a border of treasured tangail'],
 		images: [{
 			url: '/products/men/kagera/kag1.jpg'
 		}, {
@@ -335,7 +415,7 @@ const merchInfo = [
     },
 	{
 		SKU: 'VAMPAL1708Kh',
-		ledes: ['Handwoven khadi to lighten up your summers'],
+		ledes: ['100% cotton to lighten up your summers'],
 		images: [{
 			url: '/products/happyeveryday/mood/mch-2.jpg'
 		}, {
@@ -424,7 +504,7 @@ function createMIPageSet() {
 	var catalog = pfiavG.catalog;
 	for (var i = 0; i < pages.length; i++) {
 		var item = pages[i];
-		item.SKUvid = item.SKU + (item.vid !== undefined ? "-" + item.vid: "");
+		item.SKUvid = item.SKU + (item.vid !== undefined ? "-" + item.vid : "");
 		item.title = catalog[item.SKU].name;
 		item.url = catalog[item.SKU].url;
 	}
@@ -438,7 +518,7 @@ function createPageIndex(page) {
 		mentioned: createPageSet([]),
 		miPageSet: createMIPageSet(),
 
-		includePages: function(pages) {
+		includePages: function (pages) {
 			this.included.pages = this.included.pages.concat(pages);
 		},
 		createFeatures: function () {
@@ -455,7 +535,7 @@ function createPageIndex(page) {
 			this.included = createPageSet(this.included.pages.concat(merch));
 			return merch[0].createCard();
 		},
-		createShopFeatureList: function(nItem) {
+		createShopFeatureList: function (nItem) {
 			var pageSel = createPageSelector(this.miPageSet);
 			return pageSel.selectShopFeatureList(nItem).pages;
 		}
@@ -536,14 +616,14 @@ function createStorySampler(all) {
 }
 
 function createPageSelector(mips) {
-	var shopFeatureSKUs = [['AWTSHT1604Je-CW1','AWTSHT1604Je-CW2','NKSHMD1501PP','FACEMK2005Ta','NKSHMD1501PP']];
+	var shopFeatureSKUs = [['AWTSHT1604Je-CW1', 'AWTSHT1604Je-CW2', 'NKSHMD1501PP', 'FACEMK2005Ta', 'NKSHMD1501PP']];
 	var lineMerchSKUs = [
-    ["AWTSHT1604Je-CW1","AWTSHT1604Je-CW2"],
-    ["OVTPSH1501Pa", "OVTPLO1501Pa", "TRPZTP1807Pa", "MDRSTP1606PP", "SARITP1501Pa", "LNKFTN1501Ja", "LOTSDR1501Ja", "NKSHDR1501Ta", "NKSHMU1501PP", "NKSHMD1501PP", "JULITP1501Pa", "NKSHMC1512PP"],
-    ["KLGTLY1601Rv", "KGYPST1601Rv", "KRAJPT1601Kh", "FAIRST2011Rv", "KBALPA1601Vo", "KRAJKT1601Rv", "YUVRTC1601Rv", "HLFPNT1601Kh", "KIDIKI1501Vi", "PRNCDR1501Rv", "KWAVDR1601Rv", "KDHRDR1601Rv"],
-    ["HLNDRS1505PT", "JLTDRS1505PT", "BKLLTS1505Je", "NKSHMI1501PT"],
-    ["TRPZTP1807Kh", "CRPTOP1805Kh", "VAMPAL1708Kh", "OVTPLO1501Vo", "BERMPA1609Kh", "LTSDSL1501Kh", "BALLPA1501Vo"],
-    ["DPDYSF1501PT", "FACEMK2005Ta", "KAGTIE1601Kh", "CHMPGN1501JL"]
+    ["AWTSHT1604Je-CW1", "AWTSHT1604Je-CW2"],
+	["OVTPSH1501Pa", "OVTPLO1501Pa", "TRPZTP1807Pa", "MDRSTP1606PP", "JULITP1501Pa", "SARITP1501Pa", "LNKFTN1501Ja", "LOTSDR1501Ja", "NKSHDR1501Ta", "NKSHMU1501PP", "NKSHMD1501PP", "NKSHMI1501PP", "NKSHMC1512PP"], 
+	["KLGTLY1601Rv", "KGYPST1601Rv", "KRAJPT1601Kh", "FAIRST2011Rv", "KBALPA1601Vo", "KRAJKT1601Rv", "YUVRTC1601Rv", "HLFPNT1601Kh", "KIDIKI1501Vi", "PRNCDR1501Rv", "KWAVDR1601Rv", "KDHRDR1601Rv"], 
+	["HLNDRS1505PT-CW1", "JLTDRS1505PT-CW1", "NKSHMI1501PT-CW1", "BKLLTS1505Je-CW1"], 
+	["TRPZTP1807Kh", "CRPTOP1805Kh", "VAMPAL1708Kh", "OVTPLO1501Vo", "BERMPA1609Kh", "LTSDSL1501Kh", "BALLPA1501Vo"],
+	["FACEMK2005Ta", "DPDYSF1501PT", "KAGTIE1601Kh", "CHMPGN1501JL", "TNTGBG1501", "LLBGSM1501TB","LLBGMD1501TB","LLBGMD1701TB","LLBGBG1501TB"]
 	];
 	var lineMerchSections = [
 		{
@@ -585,7 +665,7 @@ function createPageSelector(mips) {
 		merchSKUs: merchSKUs,
 		merchSKUSampler: createMerchandisingSampler(lineMerchSKUs, lineMerchSections, lineMerchWeights),
 		storySampler: createStorySampler(allstories),
-		selectShopFeatureList: function(nItems) {
+		selectShopFeatureList: function (nItems) {
 			var skulist = this.shopSKUsSampler.sampleN(nItems).sample.map(s => s.SKUvid);
 			return this.miPageSet.filter(pg => skulist.includes(pg.SKUvid));
 		},
@@ -661,10 +741,10 @@ function createProductCard(sku, title, url, imageURL, lede, isSq, section, vid) 
 	res += '<div class="card-body px-0 pt-6 pb-4">';
 	if (section === undefined) {
 		res += '<div class="card-subtitle mb-1"><span class="sc-item" data-field="price" data-vsku="' + sku + '"' + (vid === undefined ? '' : ' data-vid="' + vid + '"') + '></span></div>';
-		res += '<h6 class="card-title mb-2">' + title + '<a  href="' + url + '"><i class="fe fe-arrow-right ml-2"></i></a></h6>';
+		res += '<h6 class="card-title mb-2"><a  href="' + url + '">' + title + '<i class="fe fe-arrow-right ml-2"></i></a></h6>';
 	} else {
-		res += '<div class="card-subtitle mb-1"><a class="text-muted" href="' + section.url + '">' + section.title + '</a></div>';
-		res += '<h6 class="card-title mb-2">' + title + '<a  href="' + url + '"><i class="fe fe-arrow-right ml-2"></i></a></h6>';
+		res += '<div class="card-subtitle mb-1"><a href="' + section.url + '">' + section.title + '</a></div>';
+		res += '<h6 class="card-title mb-2"><a href="' + url + '">' + title + '<i class="fe fe-arrow-right ml-2"></i></a></h6>';
 		res += '<p class="mb-1"><span class="sc-item" data-field="price" data-vsku="' + sku + '"' + (vid === undefined ? '' : ' data-vid="' + vid + '"') + '></span></p>'
 	}
 	if (lede !== null) {
@@ -741,13 +821,13 @@ function createStoryRef(s, itm, inContext) {
 				res += eval(this.imageScript);
 			}
 			res += '<div class="card-body px-0 pt-6 pb-4">';
-			if ( ! inContext ) {
-				res += '<div class="card-subtitle mb-1"><a class="text-muted" href="' + this.sec.url + '">' + this.sec.title + '</a></div>';
+			if (!inContext) {
+				res += '<div class="card-subtitle mb-1"><a href="' + this.sec.url + '">' + this.sec.title + '</a></div>';
 			}
 			if (item.url !== undefined) {
-				res += '<h6 class="card-title mb-2">' + this.title + '<a  href="' + this.url + '"' + (getHostName(this.url) === null ? '' : ' target="_blank"') + '><i class="fe ' + (getHostName(this.url) === null ? 'fe-arrow-right' : 'fe-external-link') + ' ml-2"></i></a></h6>';
+				res += '<h6 class="card-title mb-2"><a href="' + this.url + '"' + (getHostName(this.url) === null ? '' : ' target="_blank"') + '>' + this.title + '<i class="fe ' + (getHostName(this.url) === null ? 'fe-arrow-right' : 'fe-external-link') + ' ml-2"></i></a></h6>';
 			}
-			if ( ! inContext ) {
+			if (!inContext) {
 				res += '<p class="mb-1 pfi-lc" style="--lcn: 2">' + this.lede + '</p>';
 			} else {
 				res += '<p class="mb-1">' + this.lede + '</p>';
