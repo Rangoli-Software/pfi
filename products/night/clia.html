@@ -1,0 +1,40 @@
+---
+layout: product
+lines: night
+funnel: ViewContent
+title: Celia Skirt
+description: The Celia Skirt.
+---
+<script>
+    var c = celia.urlUpdater.urlModifier.getCodeOrDefault();
+    celia.urlUpdater.urlModifier.updateURL(c);
+    var sku = celia.urlUpdater.encoder.toSKU(c)
+
+	pfiavG.pageIdx.page['SKU'] = sku;
+	pfiavG.pageIdx.page['SKUvid'] = sku;
+
+	const prodJSON = cesoir.catalog.getProduct(sku);
+	const skuInfo = prodJSON.skuInfo;
+	const sizer = createSizeChartr(skuInfo.getSizeChart(), skuInfo.sizes);
+	const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath, undefined, skuInfo.sizes);
+	var rendererFactory = cesoir.createComponentFactory(prodJSON, dimensioner, sizer, cesoir.categorizer);
+	const pageComponent = createPageComponent(prodJSON, pfiavG.productCatalog, rendererFactory);
+</script>
+<section>
+	<script>
+	var productComponent = pageComponent.createProductComponent(loadShopWithParam());
+    document.write(productComponent.getSizeModal());
+	</script>
+    <div class="container">
+        <script>
+            document.write(productComponent.createProductDiv(0, 0));
+        </script>
+    </div>
+</section>
+<script>
+    document.write(renderProductDetails(
+        '<p>'+ icGen.prodJSON.skuInfo.description + '</p>',
+        null,
+        celia.washcareHTML,
+        celia.shippingHTML));
+</script>

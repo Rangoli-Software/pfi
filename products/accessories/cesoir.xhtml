@@ -1,0 +1,32 @@
+<script>
+	var prodSKU = thisProduct.SKU;
+	pfiavG.pageIdx.page['SKU'] = prodSKU;
+	pfiavG.pageIdx.page['SKUvid'] = prodSKU;
+	const prodJSON = extras.catalog.getProduct(prodSKU);
+	const skuInfo = prodJSON.skuInfo;
+	var sc = skuInfo.getSizeChart();
+	const sizer = (sc !== null) ? createSizeChartr(sc, skuInfo.sizes) : null;
+	const dimensioner = createDimensioner("cm", prodJSON.dimensionNames, prodJSON.dimensionsCm, prodJSON.styleImagePath, undefined, skuInfo.sizes);
+    var rendererFactory = createProductComponentFactory(prodJSON, dimensioner, sizer, createCatenatedViewer([createHTMLViewer(prodJSON.skuInfo.garmentDetails)]), extras.categorizer, "", "Size", true);
+	const pageComponent = createPageComponent(prodJSON, pfiavG.productCatalog, rendererFactory);
+</script>
+<section>
+	<script>
+		var productComponent = pageComponent.createProductComponent(loadShopWithParam());
+		document.write(productComponent.getSizeModal());
+
+	</script>
+	<div class="container">
+		<script>
+			document.write(productComponent.createProductDiv(0, 0));
+		</script>
+	</div>
+</section>
+<script>
+	document.write(renderProductDetails(
+		'<p>' + prodJSON.skuInfo.description + '</p>',
+		null,
+		cotton_washcareHTML,
+		pret_shippingHTML
+	));
+</script>

@@ -1,0 +1,25 @@
+---
+layout: shop
+title: FX Converter
+description: Calculate FX value for INR based on website conversion rate
+keywords: sign up, newsletter
+---
+<script type="text/javascript">
+function update()
+{
+  var form = document.forms[1];
+  var inr = form.INR.value;
+  var fx = FX['USD'];
+  form.USD.value = isNaN(inr) ? "" : Math.round(inr / fx);
+}
+</script>
+
+<form name="form1" onsubmit="false">
+<fieldset>
+<legend>Convert INR to USD based on Paypal FX rate and commissions</legend>
+<label for="f1">INR</label>
+<input id="f1" name="INR" type="number" onchange="update()">
+<label for="f3">USD</label>
+<input id="f3" name="USD" readonly="readonly">
+</fieldset>
+</form>
