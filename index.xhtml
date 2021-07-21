@@ -76,7 +76,7 @@
 
 	function createCover(i) {
 		var img = cover[i];
-		return '<figure class="mb-4"><img src="' + img.imageURL + '" alt="' + img.alt + '" class="img-fluid"' + ' width="' + img.width + '" height="' + img.height + '"/><figcaption>' + img.caption + '</figcaption></figure>';
+		return '<figure class="mb-4"><img src="' + img.imageURL + '" alt="' + img.alt + '" class="img-fluid"' + ' width="' + img.width + '" height="' + img.height + '" loading="lazy"/><figcaption>' + img.caption + '</figcaption></figure>';
 	}
 
 </script>
@@ -169,9 +169,9 @@
 		}
 	];
 	var lineMerchWeights = [3, 1, 2];
-	var sampler = createMerchandisingSampler(lineMerchSKUs, lineMerchSections, lineMerchWeights);
-	var skulist = sampler.sampleN(3).sample.map(s => s.SKUvid);
-	var pages = pfiavG.pageIdx.miPageSet.filter(pg => skulist.includes(pg.SKUvid)).pages;
+	var sampler = createMerchandisingSampler(lineMerchSKUs, lineMerchSections, lineMerchWeights, "SKU");
+	var skulist = sampler.sampleN(3).sample.map(s => s.SKU);
+	var pages = pfiavG.pageIdx.miPageSet.filter(pg => skulist.includes(pg.SKU)).pages;
 	pfiavG.pageIdx.includePages(pages);
 	var res = [];
 	for (var i = 0; i < pages.length; i++) {

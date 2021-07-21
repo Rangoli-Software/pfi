@@ -1,0 +1,331 @@
+<script>
+	function createIndexRenderer(hasL, hasIO) {
+		const IGimages = [
+			{
+				imageURL: '/people/nfm01.jpg',
+				href: '/products/accessories/facemask.html'
+			},
+			{
+				imageURL: '/people/nfm02.jpg',
+				href: '/products/accessories/facemask.html'
+			},
+			{
+				imageURL: '/people/nfm03.jpg',
+				href: '/products/accessories/facemask.html'
+			},
+			{
+				imageURL: '/g/merch/lila.jpg',
+				href: '/products/accessories/lila.html'
+			},
+			{
+				imageURL: '/g/merch/postman.jpg',
+				href: '/products/accessories/postman.html'
+			},
+			{
+				imageURL: '/g/merch/ttote.jpg',
+				href: '/products/accessories/tote.html'
+			},
+			{
+				imageURL: '/people/ooak/dan.jpg',
+				href: '/products/wovencanvas/tshirt.html?v=2'
+			},
+			{
+				imageURL: '/people/ooak/edgar.jpg',
+				href: '/products/wovencanvas/tshirt.html?v=2'
+			},
+			{
+				imageURL: '/people/ooak/michel1.jpg',
+				href: '/products/wovencanvas/tshirt.html?v=1'
+			},
+			{
+				imageURL: '/products/wovencanvas/wc/Collage03.jpg',
+			},
+			{
+				imageURL: '/look/ig/prema.jpg',
+			},
+			{
+				imageURL: '/products/wovencanvas/wc/Collage01.jpg',
+			},
+			{
+				imageURL: '/g/merch/kmlm.jpg',
+				href: '/products/artwear/kamalam.html'
+			},
+			{
+				imageURL: '/look/ig/st.jpg',
+				href: '/products/artwear/sari.html'
+			},
+			{
+				imageURL: '/look/ig/lovt.jpg',
+				href: '/products/artwear/lovertop.html'
+			},
+			{
+				imageURL: '/g/merch/gypsy.jpg',
+				href: '/products/itsmagic/gypsy.html'
+			},
+			{
+				imageURL: '/g/merch/prince.jpg',
+				href: '/products/itsmagic/prince.html'
+			},
+			{
+				imageURL: '/g/merch/princess.jpg',
+				href: '/products/itsmagic/princess.html'
+			},
+			{
+				imageURL: '/g/merch/royal2.jpg',
+				href: '/products/itsmagic/royal.html'
+			},
+			{
+				imageURL: '/g/merch/wave.jpg',
+				href: '/products/itsmagic/wave.html'
+			},
+			{
+				imageURL: '/g/merch/royal1.jpg',
+				href: '/products/itsmagic/royal.html'
+			},
+			{
+				imageURL: '/people/expat/marnari.jpg',
+				href: '/products/men/narigama.html'
+			},
+			{
+				imageURL: '/people/expat/marman.jpg',
+				href: '/products/men/manhattanS.html'
+			},
+			{
+				imageURL: '/people/expat/marang.jpg',
+				href: '/products/men/angkor.html'
+			},
+			{
+				imageURL: '/look/moods/cs/juliet.jpg',
+				href: '/products/night/juliet.html'
+			},
+			{
+				imageURL: '/look/moods/cs/tamora.jpg',
+				href: '/products/night/tamora.html'
+			},
+			{
+				imageURL: '/look/moods/cs/helena.jpg',
+				href: '/products/night/helena.html'
+			},
+			{
+				imageURL: '/look/friends/naomi.jpg',
+				href: '/products/artwear/naksha.html?s=d'
+			},
+			{
+				imageURL: '/look/friends/1.jpg',
+				href: '/products/artwear/naksha.html?s=u'
+			},
+			{
+				imageURL: '/look/friends/2.jpg',
+				href: '/products/artwear/naksha.html?s=d'
+			},
+			{
+				imageURL: '/products/happyeveryday/mood/mch-5.jpg',
+				href: '/products/happyeveryday/shoulderstring.html'
+			},
+			{
+				imageURL: '/blog/joyofcolour/c.jpg',
+				href: '/products/happyeveryday/sideslit.html'
+			},
+			{
+				imageURL: '/products/happyeveryday/mood/mch-4.jpg',
+				href: '/products/happyeveryday/bermuda.html'
+			},
+			{
+				imageURL: '/products/happyeveryday/mood/mch-7.jpg',
+				href: '/products/happyeveryday/sideslit.html'
+			},
+			{
+				imageURL: '/products/happyeveryday/mood/mch-6.jpg',
+				href: '/products/happyeveryday/balloon.html'
+			},
+			{
+				imageURL: '/blog/joyofcolour/2.jpg',
+				href: '/products/happyeveryday/lovertop.html'
+			},
+			{
+				imageURL: '/look/friends/onset.jpg',
+				href: '/products/happyeveryday/balloon.html'
+			},
+			{
+				imageURL: '/look/friends/tt.jpg',
+				href: '/products/happyeveryday/wings.html'
+			},
+			{
+				imageURL: '/look/friends/outside.jpg',
+			},
+			{
+				imageURL: '/look/friends/gg-pink.jpg',
+				href: '/products/accessories/facemask.html'
+			},
+			{
+				imageURL: '/look/friends/gg-aqua.jpg',
+				href: '/products/accessories/facemask.html'
+			},
+			{
+				imageURL: '/look/friends/gg-ind-1.jpg',
+				href: '/products/accessories/facemask.html'
+			},
+			{
+				imageURL: '/look/prema/ss03.jpg',
+			},
+			{
+				imageURL: '/look/prema/ss05.jpg',
+			},
+			{
+				imageURL: '/look/prema/ss02.jpg',
+			},
+			{
+				imageURL: '/look/ramp/j3.jpg',
+				href: '/products/artwear/naksha.html?s=d'
+			},
+			{
+				imageURL: '/look/ramp/j201.jpg',
+				href: '/products/artwear/tamarai.html'
+			},
+			{
+				imageURL: '/look/ramp/j101.jpg',
+				href: '/products/artwear/naksha.html?s=c'
+			},
+			{
+				imageURL: '/people/slkb.jpg',
+				href: '/products/artwear/naksha.html?s=d'
+			},
+			{
+				imageURL: '/people/mmib.jpg',
+				href: '/products/artwear/naksha.html?s=d'
+			},
+			{
+				imageURL: '/people/minm.jpg',
+				href: '/products/artwear/naksha.html?s=u'
+			},
+			{
+				imageURL: '/blog/FlorDuomo.jpg',
+				href: '/products/artwear/lovertop.html'
+			},
+			{
+				imageURL: '/blog/FlorYellow.jpg',
+				href: '/products/night/celiamini.html'
+			},
+			{
+				imageURL: '/blog/FlorBridge.jpg',
+			},
+			{
+				imageURL: '/look/ig/voftree.jpg',
+			},
+			{
+				imageURL: '/look/ig/vofsed.jpg',
+			},
+			{
+				imageURL: '/look/ig/vofvgn.jpg',
+			},
+			{
+				imageURL: '/look/ramp/bj.jpg',
+			},
+			{
+				imageURL: '/look/ramp/em.jpg',
+				href: '/products/night/emilia.html'
+			},
+			{
+				imageURL: '/look/ramp/pnc.jpg',
+				href: '/products/night/portia.html'
+			},
+			{
+				imageURL: '/look/ramp/wcw1.jpg',
+				href: '/products/wovencanvas/tshirt.html?v=2'
+			},
+			{
+				imageURL: '/look/ramp/wcm.jpg',
+				href: '/products/wovencanvas/tshirt.html?v=2'
+			},
+			{
+				imageURL: '/look/ramp/wcw2.jpg',
+				href: '/products/wovencanvas/tshirt.html?v=1'
+			},
+			{
+				imageURL: '/look/ramp/cel.jpg',
+			},
+			{
+				imageURL: '/look/ramp/lots.jpg',
+				href: '/products/artwear/tamarai.html'
+			},
+			{
+				imageURL: '/look/ramp/oo.jpg',
+			},
+		];
+		return {
+			maxImages: 36,
+			hasL: hasL,
+			hasIO: hasIO,
+			createDiv: function(i) {
+				if (!hasL && !hasIO && this.maxImages <= i) {
+					return "";
+				}
+				var post = IGimages[i];
+				var res = '<div class="col-4">';
+				res += post.href === undefined ? '' : '<a href="' + post.href + '">';
+				res += '<div class="embed-responsive embed-responsive-1by1">';
+				if (this.hasL) {
+					res += '<img src="' + post.imageURL + '" class="embed-responsive-item" loading="lazy" style="object-fit: cover; border: 1px solid #ffffff">'
+				} else if (this.hasIO) {
+					res += '<img src="" data-src="' + post.imageURL + '" class="lazy embed-responsive-item" style="object-fit: cover; border: 1px solid #ffffff">'
+				} else {
+					res += '<img src="' + post.imageURL + '" class="embed-responsive-item" style="object-fit: cover; border: 1px solid #ffffff">'
+				}
+				res += '</div>';
+				res += post.href === undefined ? '' : '</a>';
+				res += '</div>';
+				return res;
+			},
+			createListRenderer: function() {
+				var that = this;
+				return {
+					createPosts: function() {
+						var res = "";
+						for (var i = 0; i < IGimages.length; i++) {
+							res += that.createDiv(i);
+						}
+						return res;
+					},
+				};
+			}
+		};
+	}
+	var hasL = ('loading' in HTMLImageElement.prototype);
+	var hasIO = ("IntersectionObserver" in window);
+	var indexRenderer = createIndexRenderer(hasL, hasIO);
+	
+	function lazyLoaderCB() {
+		if (hasIO) {
+			var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+
+			let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+				entries.forEach(function(entry) {
+					if (entry.isIntersecting) {
+						let lazyImage = entry.target;
+						lazyImage.src = lazyImage.dataset.src;
+						lazyImage.classList.remove("lazy");
+						lazyImageObserver.unobserve(lazyImage);
+					}
+				});
+			});
+
+			lazyImages.forEach(function(lazyImage) {
+				lazyImageObserver.observe(lazyImage);
+			});
+		}
+	}
+	if (!hasL) {
+		document.addEventListener("DOMContentLoaded", lazyLoaderCB);
+	}
+</script>
+<section>
+	<p class="text-center"><strong>Instagram Index - Tap Image to Shop</strong></p>
+</section>
+<section class="p-0">
+	<div class="row no-gutters mx-n4">
+		<script>
+			document.write(indexRenderer.createListRenderer().createPosts());
+
+		</script>
+	</div>
+</section>

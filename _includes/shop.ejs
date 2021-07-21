@@ -50,7 +50,11 @@ permalink: "<%- page.inputPath.substring(1) %>"
     $(document).ready(onDocumentReady);
 </script>
 </div>
+<% if ( ! locals.featureless ) { %>
 <script> document.write(pfiavG.pageIdx.createFeatures()); </script>
+<% } else { %>
+<script> document.write(pfiavG.pageIdx.createFeatureless()); </script>
+<% } %>
 <% if ( locals.prerender ) { %>
 <% if ( locals.brand ) { %>
 <%- pfi.kimBotMenu(page.inputPath.substring(1)) %>

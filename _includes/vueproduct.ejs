@@ -1,0 +1,106 @@
+---
+permalink: "<%- page.inputPath.substring(1) %>"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<% include partials/head %>
+<% include partials/shoplist %>
+<% include partials/rest-head %>
+</head>
+<body>
+<script>
+function loadShopWithParam() {
+    let searchParams = new URLSearchParams(window.location.search);
+    var cur = searchParams.has('cur') ? searchParams.get('cur') : null;
+    return loadShop(cur);
+}
+
+function onDocumentReady() {
+	updateTopLevelMenus();
+	pageComponent.init(loadShopWithParam());
+    pageComponent.onReadyState();
+}
+
+function onSelectionChange() {
+    pageComponent.onSelectionChange(SelChangeReason.selChange);
+}
+
+function onColourChange(clr) {
+    pageComponent.onSelectionChange(SelChangeReason.colorChange, clr);
+}
+
+function onSizeChange(size) {
+    pageComponent.onSelectionChange(SelChangeReason.sizeChange, size);
+}
+
+function onColourCategoryChange(colRngVal) {
+    pageComponent.onColourCategoryChange(colRngVal);
+}
+
+function onUnitChange() {
+    pageComponent.onUnitChange(dimensioner);
+}
+
+function onSKUChange(sku) {
+    pageComponent.onSKUChange(sku);
+}
+
+function onGenderChange(g) {
+    pageComponent.onSelectionChange(SelChangeReason.genderChange, g);
+}
+</script>
+<script>pfiavG.pageIdx = createPageIndex(<%- "{url:'" + page.inputPath.substring(1) + "'}" %>);</script>
+<% if ( locals.prerender ) { %>
+<%- pfi.getShopHeader() %>
+<% } else { %>
+<script> document.write(getShopHeader()); </script>
+<% } %>
+<% if ( locals.prerender ) { %>
+<% if ( locals.brand ) { %>
+<%- pfi.kimTopMenu(page.inputPath.substring(1)) %>
+<% } else { %>
+<%- pfi.pfiTopMenu(page.inputPath.substring(1)) %>
+<% } %>
+<% } else { %>
+<% if ( locals.brand ) { %>
+<script> document.write(kimTopMenu(<%- '"' + page.inputPath.substring(1) + '"' %>)); </script>
+<% } else { %>
+<script> document.write(pfiTopMenu(<%- '"' + page.inputPath.substring(1) + '"' %>)); </script>
+<% } %>
+<% } %>
+<div class="container">
+<% if ( locals.prerender ) { %>
+<%- pfi.getShopTop() %>
+<% } else { %>
+<script> document.write(getShopTop()); </script>
+<% } %>
+<%- content %>
+<script>
+	pfiavG.pageIdx.includePages([pfiavG.pageIdx.page])
+    $(document).ready(onDocumentReady);
+</script>
+</div>
+<script> document.write(pfiavG.pageIdx.createFeatures()); </script>
+<% if ( locals.prerender ) { %>
+<% if ( locals.brand ) { %>
+<%- pfi.kimBotMenu(page.inputPath.substring(1)) %>
+<% } else { %>
+<%- pfi.botMenu(page.inputPath.substring(1)) %>
+<% } %>
+<% } else { %>
+<% if ( locals.brand ) { %>
+<script> document.write(kimBotMenu(<%- '"' + page.inputPath.substring(1) + '"' %>)); </script>
+<% } else { %>
+<script> document.write(botMenu(<%- '"' + page.inputPath.substring(1) + '"' %>)); </script>
+<% } %>
+<% } %>
+<% if ( locals.prerender ) { %>
+<%- pfi.scriptSrcs() %>
+<% } else { %>
+<script> document.write(scriptSrcs()); </script>
+<% } %>
+<% include partials/rest-foot %>
+</body>
+<% include partials/foot %>
+</html>
