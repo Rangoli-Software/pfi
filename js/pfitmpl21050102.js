@@ -1113,7 +1113,7 @@ function botNav(botImgTag, location) {
 <div class="container">\
 <div class="pb-2"><center><div class="row">\
 <div class="col-sm-6">\
-Instagram <i class="fe fe-instagram"></i>: <a href="https://www.instagram.com/_prema.florence.isaac_/">@_prema.florence.isaac_</a><br>\
+Instagram <i class="fe fe-instagram"></i>: <a href="https://www.instagram.com/prema.florence.isaac/">@prema.florence.isaac</a><br>\
 Facebook <i class="fe fe-facebook"></i>: <a href="https://www.facebook.com/rangolibyprema">@rangolibyprema</a><br>\
 WhatsApp <i class="icon-whatsapp"></i>: <a href="https://wa.me/919443362528?text=Website%20Enquiry">+919443362528</a><br>\
 Mail <i class="fe fe-mail"></i>: <a href="mailto:premaflorenceisaac@gmail.com">prema.florence.isaac@gmail.com</a><br>\

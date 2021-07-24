@@ -399,7 +399,7 @@ const buzz = {
 			title: "Auroville.com",
 			url: "https://www.auroville.com/blog/post/meet-auroville:-prema-from-rangoli",
 			lede: 'I was interviewed by Taranti for this nice article on the blog of the  Auroville Online Store.',
-			imageHTML: '<figure><img src="/g/premabydinh.jpg" class="img-fluid center-block"><figcaption><small>Image: Dinh Thi Thien</small></figcaption></figure>'
+			imageHTML: '<figure><img src="/g/premabydinh.jpg" class="img-fluid center-block" loading="lazy"><figcaption><small>Image: Dinh Thi Thien</small></figcaption></figure>'
         },
 		{
 			title: "Erika Lernot",
@@ -559,7 +559,7 @@ function createWovenCanvasImage() {
 	var len = panelImgs.length;
 	var rndI = Math.floor(Math.random() * len);
 	var itm = panelImgs[rndI];
-	return '<img class="d-block img-fluid" src="' + itm.imageURL + '" alt="Woven Canvas #' + panelNums[rndI] + '">';
+	return '<img class="d-block img-fluid" src="' + itm.imageURL + '" alt="Woven Canvas #' + panelNums[rndI] + '" loading="lazy">';
 }
 
 function createBreadCrumb(location) {
@@ -1094,7 +1094,7 @@ function createShareBar(location) {
 		creatFBShareBtn(location) +
 		'</span>' +
 		'<span>' +
-		'<a data-pin-do="buttonBookmark" data-pin-tall="true" data-pin-round="true" href="https://www.pinterest.com/pin/create/button/"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_32.png"/>Save</a>' +
+		'<a data-pin-do="buttonBookmark" data-pin-tall="true" data-pin-round="true" href="https://www.pinterest.com/pin/create/button/"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_32.png" loading="lazy"/>Save</a>' +
 		'</span>' +
 		'<span>' +
 		creatTweetBtn(location) +
@@ -1113,7 +1113,7 @@ function botNav(botImgTag, location) {
 <div class="container">\
 <div class="pb-2"><center><div class="row">\
 <div class="col-sm-6">\
-Instagram <i class="fe fe-instagram"></i>: <a href="https://www.instagram.com/_prema.florence.isaac_/">@_prema.florence.isaac_</a><br>\
+Instagram <i class="fe fe-instagram"></i>: <a href="https://www.instagram.com/prema.florence.isaac/">@prema.florence.isaac</a><br>\
 Facebook <i class="fe fe-facebook"></i>: <a href="https://www.facebook.com/rangolibyprema">@rangolibyprema</a><br>\
 WhatsApp <i class="icon-whatsapp"></i>: <a href="https://wa.me/919443362528?text=Website%20Enquiry">+919443362528</a><br>\
 Mail <i class="fe fe-mail"></i>: <a href="mailto:premaflorenceisaac@gmail.com">prema.florence.isaac@gmail.com</a><br>\
@@ -1132,11 +1132,11 @@ Visit <i class="fe fe-map-pin"></i>: <a href="https://goo.gl/maps/rszKWi3P7xM2">
 }
 
 function kimBotMenu(location) {
-	return botNav('<img src="/g/kimgphsimp.svg" alt="KidinMi Graphic" class="img-fluid center-block" width="150px" height="300px">', location);
+	return botNav('<img src="/g/kimgphsimp.svg" alt="KidinMi Graphic" class="img-fluid center-block" width="150px" height="300px" loading="lazy">', location);
 }
 
 function botMenu(location) {
-	return botNav('<img src="/g/since199900.svg" alt="Rangoli Graphic" class="img-fluid center-block" width="150px" height="300px">', location);
+	return botNav('<img src="/g/since199900.svg" alt="Rangoli Graphic" class="img-fluid center-block" width="150px" height="300px" loading="lazy">', location);
 }
 
 function scriptSrcs() {
@@ -1279,7 +1279,7 @@ function createDimensioner(units, dimensionNames, dimensions, imagePath, dimVari
 		unitFieldName: 'SizeChartUnits',
 		eventFnStr: 'onUnitChange',
 		createMeasurementsPanel: function (units) {
-			return '<div class="row align-items-center"><div class="col-md-4 text-center py-5"><img src="' + this.imagePath + '" class="img-fluid center-block"/></div><div class="col-md-8 text-center py-5">' + this.createMeasurementsTable(units) + '</div></div>'
+			return '<div class="row align-items-center"><div class="col-md-4 text-center py-5"><img src="' + this.imagePath + '" class="img-fluid center-block" loading="lazy"/></div><div class="col-md-8 text-center py-5">' + this.createMeasurementsTable(units) + '</div></div>'
 		},
 		createUnitInput(units, sel, lbl) {
 			return '<input type="radio" name="' + this.unitFieldName + '" value="' + sel + '" onclick="' + this.eventFnStr + '(\'' + sel + '\')"' + ((units === sel) ? ' checked' : '') + '>' + lbl;
