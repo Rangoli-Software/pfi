@@ -16,7 +16,7 @@
     "html-minifier": "^3.5.21",
     "jquery": "^3.5.1",
     "netlify-lambda": "^2.0.1",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "terser": "^3.17.0",
     "uglify-js": "^3.10.4"
   }
