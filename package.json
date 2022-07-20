@@ -17,7 +17,7 @@
     "jquery": "^3.5.1",
     "netlify-lambda": "^2.0.1",
     "node-fetch": "^2.6.1",
-    "terser": "^3.17.0",
+    "terser": "^4.8.1",
     "uglify-js": "^3.10.4"
   }
 }
